@@ -4,7 +4,7 @@ CFML in 100 minutes was modified from "Ruby in 100 Minutes":http://jumpstartlab.
 
 h2. License
 
-These works were created by Jeff Casimir (jeff@jumpstartlab.com) and Jumpstart Lab (http://jumpstartlab.com). They are licensed "Attribution-Noncommercial-Share Alike 3.0":http://creativecommons.org/licenses/by-nc-sa/3.0/us/ . If they are useful to you please drop me an email!
+These works were created by Jeff Casimir (jeff@jumpstartlab.com) and Jumpstart Lab (http://jumpstartlab.com). They are licensed "Attribution-Noncommercial-Share Alike 3.0":http://creativecommons.org/licenses/by-nc-sa/3.0/us/ . If they are useful to you please drop him an email!
 
 h2. Contributors 
 
