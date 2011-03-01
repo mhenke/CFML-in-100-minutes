@@ -3,7 +3,11 @@ h1. readme
 CFML in 100 minutes was modified from "Ruby in 100 Minutes":http://jumpstartlab.com/resources/ruby-jumpstart/ruby/
 
 h2. License
+
 These works were created by Jeff Casimir (jeff@jumpstartlab.com) and Jumpstart Lab (http://jumpstartlab.com). They are licensed "Attribution-Noncommercial-Share Alike 3.0":http://creativecommons.org/licenses/by-nc-sa/3.0/us/ . If they are useful to you please drop me an email!
 
-h2. Contributors (please add yourself if you helped)
+h2. Contributors 
+
+Please add yourself if you helped
+
 Mike Henke (henke.mike@gmail.com) - https://github.com/mhenke/CFML-in-100-minutes
