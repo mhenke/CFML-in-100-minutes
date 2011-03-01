@@ -1,0 +1,273 @@
+h1. CFML in 100 minutes
+
+CFML is a great language for beginners because it was written to make the programmers job easy and not care if the computer's job is hard. In this brief introduction well look at the key language features you need to get started.
+
+# Syntax and Engines
+# Variables
+# Methods
+# Strings
+# Numbers
+# Collections
+# Arrays
+# Structures
+# Conditionals
+## Conditional Decisions
+## Conditional Looping
+# Nulls & Nothingness
+
+h2. CFML History
+
+CFML (ColdFusion Markup Language) is thought of by many as an old programming language, but it actually has been continuously improved by Allaire, Macromedia, and now Adobe. There are also open source options like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
+
+ColdFusion was released in 95 and it grew an audience quickly in the government and public sector. CFML tag syntax resembles HTML and its script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
+
+And if you want to learn CFML, here goes!
+
+h2. 1. Code Syntax & Engines
+
+There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. You will write one or more instructions in a file then run that file through the CFML engine. We might have a file named my_program.cfm like this:
+
+@class Sample def hello puts "Hello, World!" end end s = Sample.new s.hello@
+TODO: CFML TAG EXAMPLE
+
+Or we could code the program like this:
+TODO: CFML SCRIPT EXAMPLE
+
+ColdFusion has different CFML engines available: Adobe, Railo, and OpenBD.
+
+h2. 2. Variables
+
+Everything needs a name so we can refer to it. A variable, like in math, is just a name for a piece of data. In CFML variables are very flexible and can be changed at any time. Variables are assigned using a single equals sign ( = ) where the *right* side of the equals sign is evaluated first, then the value is assigned to the variable named on the *left* side of the equals. 
+
+Go into a CFML file , enter in these example instructions, and observe the output that CFML gives you back:
+
+@<cfscript>@
+	@a = 5;@
+	@b = 10 + 5;@
+	@c = 15 + a + b;@
+	@b = c - a;@
+	@d = "Hello, ";@
+	@e = "World!";@
+	@f = d & e;@
+	@g = d & a & e;@
+	@b = "hi!";@
+@</cfscript>@
+
+@<cfoutput>@
+	@a = #a#;<br/>@
+	@b = #b#;<br/>@
+	@c = #c#;<br/>@
+	@d = #d#;<br/>@
+	@e = #e#;<br/>@
+	@f = #f#;<br/>@
+	@g = #g#;<br/>@
+@</cfoutput>@
+
+*The first few lines are simple if you've kind with any programming language before, but the last few get interesting when combining strings and numbers.
+
+h2. 3. Objects, Attributes, and Methods
+
+TODO: Improve "cfc represents an object"
+
+In CFML, cfc represents an object. Objects know information, called attributes, and they can do actions, called methods.
+
+For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections well look at a few specific kinds of objects common in CFML.
+
+TODO: Make example CFML
+
+In CFML we define an object using the @class@ keyword, Here's an example defining the object type @PersonalChef@ :
+
+class PersonalChef endInside the class we usually define one or more methods using the @def@ keyword like this:
+
+TODO: Make example CFML
+
+class PersonalChef def make_toast puts "Making your toast!" end endInside the @def@ and @end@ lines wed put the instructions for how the chef should make the toast.
+
+A class is an *abstract* idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. Wed call this actual chair an *instance* it is a realization of the idea chair. It has measurable attributes like height, color, weight. The *class* chair, on the other hand, has an abstract weight, color, and size we can't determine them ahead of time.
+
+Once we define a class, we create an @instance@ of that class like this:
+
+frank = PersonalChef.newWere calling the @new@ method on the class @PersonalChef@ and storing it into the variable named @frank@. Once we have that instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: @object.method_name@. So if you have a person named @frank@ you would tell him to make toast by calling @frank.make_toast@.
+
+h3. Method Parameters
+
+Sometimes methods take one or more _parameters_ that tell them _how_ to do what theyre supposed to do. For instance, I might call @frank.make_toast('burned')@ for him to burn my toast. Or maybe he has another method where I call @frank.make_breakfast("toast","eggs")@ for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter itll look like this:
+
+class PersonalChef def make_toast(color) puts "Making your toast #{color}" end endWhere the method is expecting us to pass in a @color@ telling it how to do the method @make_toast@.
+
+h3. Return Value
+
+In CFML, every time you call a method you get a value back. By default, a CFML method returns the value of the last expression it evaluated. If you called the @make_toast@ method above, you should have seen the return value @nil@. The @puts@ instruction always returns @nil@ , so since that was the last instruction in your method you saw @nil@ when calling that method.
+
+For the purposes of our next section Im going to explicitly return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef @frank@. You sayFrank, go make my toast, he tells you hes making the toast, goes to make it, then comes back to you to receive more instructions. Hesreturninghimself to you. Here's how we implement it in code:
+
+class PersonalChef def make_toast(color) puts "Making your toast #{color}" return self end endh3. An Aside on Running CFML from a File
+
+Its getting annoying to rewrite the @PersonalChef@ class in %(caps)IRB% every time we want to make a change, right? Lets put it into a text file and run the CFML code from there.
+
+* Exit your %(caps)IRB% session
+* Note which folder your terminal is currently in, this is yourworking directory
+* Using a plain-text editor like Notepad, Textmate, or CFMLMine, create a file named @personal_chef.rb@ with the contents from the previous section
+* Reopen @irb@ from your terminal
+* Tell CFML to load the file with the command @require 'personal_chef'@ 
+* Recreate @frank@ with the line @frank = PersonalChef.new@ 
+* Call the @make_toast@ method by entering @frank.make_toast("light_brown")@ 
+
+That should work just like it did before when we ran it in %(caps)IRB%. Now lets make a change to the file by adding in this method:
+
+def make_eggs(quantity) puts "Making you #{quantity} eggs!" return self endSave the file in your editor. Then we need to tell CFML to re-read the file. We can do that with this instruction in %(caps)IRB% :
+
+load 'personal_chef.rb'Now try calling @frank.make_eggs(6)@ and it should work.
+
+h2. 4. Strings
+
+In CFML a string is defined as a quote ( @"@ ) followed by zero or more letters, numbers, or symbols and followed by another quote ( @"@ ). Some simple strings would be @"hello"@ or @"This sentence is a string!"@. Strings can be anything from @""@ , the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important methods that well use.
+
+*  @length@ 
+Call @length@ on a string to get back the number of characters in the string. For instance @"hello".length@ would give you back @5@.
+*  @delete@ 
+Delete lets you specify a set of characters that should be removed from the original string. For instance, @"hello".delete("l")@ would give you back @"heo"@ after deleting all occurrences of @"l"@ , or @"Good Morning!".delete("on")@ would give you @"Gd Mrig"@ 
+*  @gsub@ 
+Call @gsub@ to replace a substring with a different string. For instance, @"hello".gsub("ll","y yo")@ would give you back @"hey yoo"@.
+*  @split@ 
+The @split@ method is somewhat complex because its used to break a single string into a set of strings. For instance, I could call @"Welcome to CFML Jumpstart".split(" ")@ and it would find the three occurrences of @" "@ (a blank space) and split the string at those points, giving you back a set like this: @["Welcome","to","CFML","Jumpstart"]@ 
+
+Experiment with the following samples in %(caps)IRB% :
+
+tester = "Good Morning Everyone!" tester.length tester.delete("o") tester.gsub("Everyone!","Friends!") t2 = "sample,data,from,a,CSV" t2.split(",")Often with strings we want to pull out just a part of the wholethis is called a substring. Try out these examples in @irb@ assuming you already have @tester@ from the last examples:
+
+tester[0..3] tester[5..11] tester[13..-1]The numbers inside the @[]@ brackets specify which of the characters you want pulled out. Theyre numbered starting with zero. So the first example pulls out the letters from zero, the beginning of the string, up to position three. The second example pulls from @5@ up to @11@. The last one goes from @12@ up to @-1@ ? If you specify a negative value, that is like counting back from the end. Using @-1@ means the end of the string, so @12..-1@ meansfrom @12@ to the end of the string.
+
+If you just need a single character, tHere's agotchaitd be tempting to write @tester[2]@ to get the character at position two. In the latest versions of CFML (1.9+) thats exactly how it works. But in 1.8.6 and some versions of 1.8.7, that code will give you back an integer representing the %(caps)ASCII% code for that letterpretty useless! The hack, which works on any version of CFML, is to take a substring that is only one character long like this: @tester[2..2]@ 
+
+h3. Combining Strings and Variables
+
+It is extremely common that we want to combine the value of a variable with other strings. For instance, lets start with this simple example string:
+
+"Happy Saturday!"When we put that into %(caps)IRB% it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying @"Happy"@ then the day of the week. So we cant just put a string like @"Happy Saturday!"@ or itd be saying Saturday even on Tuesday.
+
+What we need to do is combine a variable with the string. There are two ways to do that. The first and easiest approach is called _string concatenation_ which is basically just adding strings together like this:
+
+today = "Saturday" puts "Happy " + today + "!"In the first line we setup a variable to hold the day of the week, then in the second line we printed the string @Happy@ combined with the value of the variable @today@ and the string @!@. You might be thinkingWhat was the point of that since we still just wrote Saturday in the first line?Ok, well, if you were writing a real program youd use CFMLs built-in date functions like this:
+
+today = Date.today.strftime("%A") puts "Happy " + today + "!"If you get an error complaining about @Date@ being unitialized, type @require 'Date'@ , enter, then try it again.
+
+String concatenation works fine most of the time, but there is a gotcha that pops up. Try this:
+
+today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year + " day of the year."You should get an error complaining that CFMLcant convert Fixnum into String. What does that mean? When CFML is assembling the parts of that string it sees a string @"Happy "@ , then a string in the variable @today@ , then a string with the ! and a few words, then a the variable @day_of_year@ , then the string @"day of the year."@.
+
+The problem is that ruby knows how to add one string to another, but its not sure how to add a string to a number. @day_of_year@ contains a number, and when it tries to combine the strings with that number CFML isnt sure what to do. Thankfully numbers have a conversion method which converts them into a string so they can be combined with strings. That method is @.to_s@ forto string. Retry your example with this slight change:
+
+today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year.to_s + " day of the year."Great, no errors and our output looks correct. Having to remember that @.to_s@ whenever you use a number is kind of a pain, though. There is another combination method that forces theto stringconversion for you called _string interpolation_.
+
+ *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#{}@ to mark where in a string the value of a variable should be inserted. Inside those brackets we can put any variables or CFML code which will be evaluated, converted to a string, and output in that spot. Our previous example could be rewritten like this:
+
+puts "Happy #{today}! It is the #{day_of_year} day of the year."If you compare the output youll see that this second method gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
+
+You can also put code or calculations inside the brackets when interpolating like this example:
+
+modifier = "very " mood = "excited" puts "I am #{modifier * 3}#{mood} for today's class!"Basically interpolating meansevaluate the code inside this @#{}@ wrapper and put it into this string. You can see the first interpolation has a multiplication inside there so itll repeat the string @modifier@ three times but the second will just plug in the value of the variable @mood@.
+
+h2. 5. Numbers
+
+There are two basic kinds of numbers: integers (whole numbers) and floats (have a decimal point). For our workshop well only be dealing with integers. You can use normal math operations with integers including @+@ , @-@ , @/@ , and @*@. Integers have a bunch of methods to help you do math-related things, but the only one we might use controls a loop.
+
+The @times@ method can be used to repeat one or more instructions a certain number of times. Try out this example:
+
+5.times do puts "Hello, world!" endIn this example were using the @times@ method with a @do@ / @end@ block. When we call the @times@ method we need to tell it what to do that number of times. CFML looks for the starting keyword @do@ and the ending keyword @end@. Each instruction between the @do@ and @end@ will be executed this number of @times@. Try this example with multiple instructions:
+
+5.times do puts "Good morning!" puts "...is it lunch time yet?" endh2. 6. Symbols
+
+Symbols are difficult to explain. A symbol starts with a colon then one or more letter. Here are some example symbols: @:one@ , @:tester@ , @:first@ 
+
+We wont use them very often in when writing pure CFML, but they are used frequently in Rails. If you see an object that looks like @:this@ , youll know its a symbol. Think of it as a stripped down string that has barely any methods and no string interpolation. Theyre only used to represent data _inside_ the program. Wed never print a symbol out to a user, it is just a type of marker used within our code.
+
+h2. 7. Collections
+
+Often we need to organize a group of objects and put them into a collection. There are two main types of collections: *arrays* and *hashes*.
+
+h4. Arrays
+
+An *array* is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the *indices*. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The *index* is the address of a specific element inside the array. In CFML the index always begins with @0@. An array is defined in CFML as an opening [, then zero or more elements, then a closing ]. Try out this code:
+
+favorite_colors = ["red","blue","green","black","brown"] puts favorite_colors[3] puts favorite_colors.first puts favorite_colors.lastKeep going with these, but note that the first line below should give you some unusual output. Try and understand what CFML is telling you:
+
+puts favorite_colors[5] favorite_colors<<"orange" puts favorite_colors[5] puts favorite_colorsIn order to get a specific element in the array you use the syntax @arrayname[index]@. So looking at the @favorite_colors@ array
+
+* Whats the index of @"brown"@ ?
+* Why did the fifth line of the example give you @nil@ ? (For more discussion of @nil@ , check out the very end of this document).
+* What did the @<<@ operator do to the collection?
+
+There are lots of cool things to do with an array. You can rearrange the order of the elements using the @sort@ method. You can iterate through each element using the @each@ method. You can mash them together into one string using the @join@ method. You can find the address of a specific element by using the @index@ method. You can ask an array if an element is present with the @include?@ method. Try out this example that brings a bunch of things together:
+
+sorted_colors = favorite_colors.sort sorted_colors.each do |color| puts "#{color} is #{color.length} letters long" end puts sorted_colors.join("&") target = "green" position = favorite_colors.index(target) puts "The color #{target} is in position #{position}"We use arrays whenever we need a list where the elements are in a specific order.
+
+h4. Structures
+
+A hash is a collection of data where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read aslook in the collection named @science@ and find the thing named @Joey@.
+
+A hash is an unordered collection, its just a bunch of data collected together where each one has a unique name. Structures have a more complicated syntax that takes some getting used to:
+
+ages = {"joey" =>12, "jill" =>14, "jack" =>11, "jane" =>12} puts "Joey is #{ages['joey']} years old"Here we create a hash named @ages@. Structures are made up what are calledkey-value pairs.The *key* is used as the address and the *value* is the object at that address. In the @ages@ hash we have keys including @"joey"@ and @"jill"@ and values including @12@ and @14@. When creating a hash the key and value are linked by the @=>@ symbol which is called a _rocket_. So hashes start with a curly bracket @{@ , have zero or more entries made up of a _key_ , a rocket, and a _value_ separated by commas, then end with a closing curly bracket @}@.
+
+ages["jimmy"] = 14 ages["joey"] = 9 puts ages.keys puts ages.valuesIn the second chunk of the example, we add a new value to the hash. Since the @"jimmy"@ key wasnt in the original hash, its added with the value of @14@. If the key @"jimmy"@ already existed then the value would be replaced by @14@. Every key in a hash must be unique! In the second line we reference the key @"joey"@ which already exists, so the value gets replaced with the @9@. Then, just to show you the state of the hash, we print out the list of keys and the list of values.
+
+students = ages.keys.sort students.each do |student| puts "#{student} is #{ages[student]} years old." endThe last chunk of the example calls the @keys@ method on the hash @ages@. @keys@ gives back an array holding all the key values inside the hash. We then called @sort@ on that array to put them in alphabetical order before storing the array into the variable @students@. We then iterated through the array @students@ using the method @each@ , gave each element of the list the name @student@ , then printed out one line with that student name and the students age from @ages@.
+
+While that last part probably seemed complicated, its just to illustrate that although hashes are by nature unordered, you can still manipulate and output the data in ordered, meaningful ways.
+
+h2. 8. Conditionals
+
+Conditional statements evaluate to @true@ or @false@ only. The most common conditional operators are @==@ (equal), @>@ (greater than), @>=@ (greater than or equal to), @<@ (less than), and @<=@ (less than or equal to).
+
+Some objects also have methods which return a @true@ or @false@ , so theyre used in conditional statements. For example every object has the method @.nil?@ which is @true@ only when the object is @nil@. Arrays have a method named @.include?@ which returns true if the array includes the specified element.
+
+h4. Conditional Branching / Instructions
+
+Why do we have conditional statements? Most often its to control conditional instructions, especially @if@ / @elsif@ / @else@ structures. Lets write an example by adding a method to our @PersonalChef@ class:
+
+def water_boiling?(minutes) if minutes<7 puts "The water is not boiling yet." elsif minutes == 7 puts "It's just barely boiling" elsif minutes == 8 puts "It's boiling!" else puts "Hot! Hot! Hot!" end return self endTry this example using @5@ , @7@ , @8@ and @9@ for the values of @minutes@.
+
+When the @minutes@ is 5, here is how the execution goes:Is it @true@ that 5 is less than 7? Yes, it is, so print out the line @The water is not boiling yet.@.
+
+When the @minutes@ is 7, it goes like this:Is it @true@ that 7 is less than 7? No. Next, is it @true@ that 7 is equal to 7? Yes, it is, so print out the line @It's just barely boiling@.
+
+When the @minutes@ is 8, it goes like this:Is it @true@ that 8 is less than 7? No. Next, is it @true@ that 8 is equal to 7? No. Next, is it @true@ that 8 is equal to 8? Yes, it is, so print out the line @It's boiling!@.
+
+Lastly, when total is 9, it goes:"Is it @true@ that 9 is less than 7? No. Next, is it @true@ that 9 is equal to 7? No. Next, is it @true@ that 9 is equal to 8? No. Since none of those are true, execute the @else@ and print the line @Hot! Hot! Hot!@.
+
+An @if@ block has
+
+* One @if@ statement whose instructions are executed only if the statement is true
+* Zero or more @elsif@ statements whose instructions are executed only if the statement is true
+* Zero or one @else@ statement whose instructions are executed if no @if@ nor @elsif@ statements were true
+
+Only _one_ section of the @if@ / @elsif@ / @else@ structure can have its instructions run. If the @if@ is @true@ , for instance, CFML will never look at the @elsif@. Once one block executes, thats it.
+
+h4. Conditional Looping
+
+Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your @personal_chef.rb@ :
+
+def countdown(counter) while counter>0 puts "The counter is #{counter}" counter = counter - 1 end return self endSee how that works? The @counter@ starts out as whatever parameter we pass in. The @while@ instruction evaluates the conditional statement @counter>0@ and finds that yes, the counter is greater than zero. Since the condition is true, execute the instructions inside the loop. First print out @"The counter is #{counter}"@ then take the value of @counter@ , subtract one from it, and store it back into @counter@. Then the loop goes back to the @while@ statement. Is it still true? If so, print the line and subtract one again. Keep repeating until the condition is false.
+
+I most often use @while@ , but you can achieve the same results using @until@ as well. Try this
+
+def countdown(counter) until counter == 0 puts "The counter is #{counter}" counter = counter - 1 end return self endThe #1 mistake people encounter when writing conditional statements is the difference between @=@ and @==@.
+
+*  @=@ is an _assignment_. It meanstake whats on the right side and stick it into whatever is on the left sideits _telling_ , not _asking_ 
+*  @==@ is a _question_. It meansis the thing on the right equal to the thing on the left?its _asking_ , not _telling_ 
+
+You can also combine conditional statements using logical operators. The most common are known aslogical andandlogical or. In CFML you can write a logical and with either the work @and@ or with double ampersands like this: @&&@. You can write a logical or with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
+
+h2. 9. Nulls & Nothingness
+
+What is nothingness? Is there nothingness only in outer space? Really, when we think of nothing isnt it just the absence of something? Ok, thats too much philosophy
+
+ColdFusion does not have a way of referring to nothingness. However, ColdFusion can recieve a NULL value from an external source. ColdFusion will maintain the NULL value until you use it. Then ColdFusion will convert the NULL into an empty string.
+
+If you have three eggs, eat three eggs, then you might think you have nothing, but in terms of eggs you have 0. Zero is something, its a number, and its not nothing.
+
+A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our @make_eggs@ method to illustrate @nil@ :
+
+REWRITE ISDEFINED()
+def make_eggs(quantity) if quantity.nil? puts "How am I supposed to make nothingness number of eggs?" else puts "Making your #{quantity} eggs!" quantity.times do puts "Making an Egg." end end return self endReload the file, call @frank.make_eggs(3)@ then try @frank.make_eggs(nil)@. The only method we can rely on @nil@ executing is @.nil?@ , pretty much anything else will create an error.
