@@ -121,10 +121,10 @@ load 'personal_chef.rb'Now try calling @frank.make_eggs(6)@ and it should work.
 
 h2. 4. Strings
 
-In CFML a string is defined as a quote ( @"@ ) followed by zero or more letters, numbers, or symbols and followed by another quote ( @"@ ). Some simple strings would be @"hello"@ or @"This sentence is a string!"@. Strings can be anything from @""@ , the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important methods that well use.
+In CFML a string is defined as a quote ( @"@ ) followed by zero or more letters, numbers, or symbols and followed by another quote ( @"@ ). Some simple strings would be @"hello"@ or @"This sentence is a string!"@. Strings can be anything from @""@ , the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important functions that we'll use.
 
-*  @length@ 
-Call @length@ on a string to get back the number of characters in the string. For instance @"hello".length@ would give you back @5@.
+*  @Len@ 
+Call @Len@ on a string to get back the number of characters in the string. For instance @"hello".Len@ would give you back @5@.
 *  @delete@ 
 Delete lets you specify a set of characters that should be removed from the original string. For instance, @"hello".delete("l")@ would give you back @"heo"@ after deleting all occurrences of @"l"@ , or @"Good Morning!".delete("on")@ would give you @"Gd Mrig"@ 
 *  @gsub@ 
@@ -134,7 +134,7 @@ The @split@ method is somewhat complex because its used to break a single string
 
 Experiment with the following samples in %(caps)IRB% :
 
-tester = "Good Morning Everyone!" tester.length tester.delete("o") tester.gsub("Everyone!","Friends!") t2 = "sample,data,from,a,CSV" t2.split(",")Often with strings we want to pull out just a part of the wholethis is called a substring. Try out these examples in @irb@ assuming you already have @tester@ from the last examples:
+tester = "Good Morning Everyone!" tester.Len tester.delete("o") tester.gsub("Everyone!","Friends!") t2 = "sample,data,from,a,CSV" t2.split(",")Often with strings we want to pull out just a part of the wholethis is called a substring. Try out these examples in @irb@ assuming you already have @tester@ from the last examples:
 
 tester[0..3] tester[5..11] tester[13..-1]The numbers inside the @[]@ brackets specify which of the characters you want pulled out. Theyre numbered starting with zero. So the first example pulls out the letters from zero, the beginning of the string, up to position three. The second example pulls from @5@ up to @11@. The last one goes from @12@ up to @-1@ ? If you specify a negative value, that is like counting back from the end. Using @-1@ means the end of the string, so @12..-1@ meansfrom @12@ to the end of the string.
 
