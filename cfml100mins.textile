@@ -337,7 +337,7 @@ String concatenation works fine most of the time, but there is a gotcha that pop
 
 today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year + " day of the year."You should get an error complaining that CFMLcant convert Fixnum into String. What does that mean? When CFML is assembling the parts of that string it sees a string @"Happy "@ , then a string in the variable @today@ , then a string with the ! and a few words, then a the variable @day_of_year@ , then the string @"day of the year."@.
 
-The problem is that ruby knows how to add one string to another, but its not sure how to add a string to a number. @day_of_year@ contains a number, and when it tries to combine the strings with that number CFML isnt sure what to do. Thankfully numbers have a conversion method which converts them into a string so they can be combined with strings. That method is @.to_s@ forto string. Retry your example with this slight change:
+The problem is that ruby knows how to add one string to another, but its not sure how to add a string to a number. @day_of_year@ contains a number, and when it tries to combine the strings with that number CFML isn't  sure what to do. Thankfully numbers have a conversion method which converts them into a string so they can be combined with strings. That method is @.to_s@ forto string. Retry your example with this slight change:
 
 today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year.to_s + " day of the year."
 
@@ -462,7 +462,7 @@ You can also combine conditional statements using logical operators. The most co
 
 h2. 9. Nulls & Nothingness
 
-What is nothingness? Is there nothingness only in outer space? Really, when we think of nothing isnt it just the absence of something? Ok, thats too much philosophy
+What is nothingness? Is there nothingness only in outer space? Really, when we think of nothing isn't  it just the absence of something? Ok, thats too much philosophy
 
 ColdFusion does not have a way of referring to nothingness. However, ColdFusion can recieve a NULL value from an external source. ColdFusion will maintain the NULL value until you use it. Then ColdFusion will convert the NULL into an empty string.
 
