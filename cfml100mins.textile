@@ -41,31 +41,62 @@ Everything needs a name so we can refer to it. A variable, like in math, is just
 
 Go into a CFML file , enter in these example instructions, and observe the output that CFML gives you back:
 
+<table>
+<tr>
+<td>
 <pre>
 <code>
-<cfscript>
-	a = 5;
-	b = 10 + 5;
-	c = 15 + a + b;
-	b = c - a;
-	d = "Hello, ";
-	e = "World!";
-	f = d & e;
-	g = d & a & e;
-	b = "hi!";
-</cfscript>
+ <cfset a = 5 />
+ <cfset b = 10 + 5 />
+ <cfset c = 15 + a + b />
+ <cfset b = c - a />
+ <cfset d = "Hello, " />
+ <cfset e = "World!" />
+ <cfset f = d & e />
+ <cfset g = d & a & e />
+ <cfset b = "hi!" />
 
-<cfoutput>
-	a = #a#;<br/>
-	b = #b#;<br/>
-	c = #c#;<br/>
-	d = #d#;<br/>
-	e = #e#;<br/>
-	f = #f#;<br/>
-	g = #g#;<br/>
-</cfoutput>
+ <cfoutput>
+  a = #a# /><br/>
+  b = #b# /><br/>
+  c = #c# /><br/>
+  d = #d# /><br/>
+  e = #e# /><br/>
+  f = #f# /><br/>
+  g = #g# /><br/>
+ </cfoutput>
 </code>
 </pre>
+</td>
+<td>
+<pre>
+<code>
+ <cfscript>
+  a = 5;
+  b = 10 + 5;
+  c = 15 + a + b;
+  b = c - a;
+  d = "Hello, ";
+  e = "World!";
+  f = d & e;
+  g = d & a & e;
+  b = "hi!";
+  
+  writeOutput("a = #a#");<br/>
+  writeOutput("b = #b#");<br/>
+  writeOutput("c = #c#");<br/>
+  writeOutput("d = #d#");<br/>
+  writeOutput("e = #e#");<br/>
+  writeOutput("f = #f#");<br/>
+  writeOutput("g = #g#");<br/>
+ </cfscript>
+</code>
+</pre>
+
+</td>
+</tr>
+</table>
+
 
 *The first few lines are simple if you've kind with any programming language before, but the last few get interesting when combining strings and numbers.
 
