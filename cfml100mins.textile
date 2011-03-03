@@ -17,7 +17,7 @@ CFML is a great language for beginners because it was written to make the progra
 
 h2. CFML History
 
-CFML (ColdFusion Markup Language) is thought of by many as an old programming language, but it actually has been continuously improved by Allaire, Macromedia, and now Adobe. There are also open source options like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
+CFML (ColdFusion Markup Language) is thought of by many as an old programming language, but it actually has been continuously improved by Allaire, Macromedia, and now Adobe. ColdFusion originated as proprietary technology, however, it is becoming a less closed technology through the availability of competing products. Open source technology CFML options are available like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
 
 ColdFusion was released in 95 and it grew an audience quickly in the government and public sector. CFML tag syntax resembles HTML and its script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
 
@@ -261,26 +261,6 @@ In CFML, every time you call a method you don't get a value back. By default, a 
 For the purposes of our next section I'm going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef @frank@. You sayFrank, go make my toast, he tells you hes making the toast, goes to make it, then comes back to you to receive more instructions. He's returning himself to you. Here's how we implement it in code:
 
 class PersonalChef def make_toast(color) puts "Making your toast #{color}" return self end end
-
-h3. An Aside on Running CFML from a File
-
-Its getting annoying to rewrite the @PersonalChef@ class in %(caps)IRB% every time we want to make a change, right? Lets put it into a text file and run the CFML code from there.
-
-* Exit your %(caps)IRB% session
-* Note which folder your terminal is currently in, this is yourworking directory
-* Using a plain-text editor like Notepad, Textmate, or CFMLMine, create a file named @personal_chef.rb@ with the contents from the previous section
-* Reopen @irb@ from your terminal
-* Tell CFML to load the file with the command @require 'personal_chef'@ 
-* Recreate @frank@ with the line @frank = PersonalChef.new@ 
-* Call the @make_toast@ method by entering @frank.make_toast("light_brown")@ 
-
-That should work just like it did before when we ran it in %(caps)IRB%. Now lets make a change to the file by adding in this method:
-
-def make_eggs(quantity) puts "Making you #{quantity} eggs!" return self end
-
-Save the file in your editor. Then we need to tell CFML to re-read the file. We can do that with this instruction in %(caps)IRB% :
-
-load 'personal_chef.rb'Now try calling @frank.make_eggs(6)@ and it should work.
 
 h2. 4. Strings
 
