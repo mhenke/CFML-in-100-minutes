@@ -161,7 +161,7 @@ h2. 3. Components, Methods, and Parameters
 
 h3. Components
 
-In CFML, a ColdFusion component (CFC) file contains data and functions. Components are a building for Objects. Objects know information, called attributes, and they can do actions, called methods. In ColdFusion @cffunction@ tag is used to define methods within a CFC.
+In CFML, a ColdFusion component (CFC) file contains data and functions. Components are a building blocks for Objects. Objects know information, called attributes, and they can do actions, called methods. In ColdFusion @cffunction@ tag is used to define methods within a CFC.
 
 For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections well look at a few specific kinds of objects common in CFML.
 
