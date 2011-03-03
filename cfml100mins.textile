@@ -27,11 +27,39 @@ h2. 1. Code Syntax & Engines
 
 There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. You will write one or more instructions in a file then run that file through the CFML engine. We might have a file named my_program.cfm like this:
 
-@class Sample def hello puts "Hello, World!" end end s = Sample.new s.hello@
-TODO: CFML TAG EXAMPLE
 
-Or we could code the program like this:
-TODO: CFML SCRIPT EXAMPLE
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ <cfcomponent>
+  <cffunction name="hello">
+   <cfreturn "Hello, World!" />
+  </cffunction>
+ </cfcomponent>
+
+ <cfset s = CreateObject("component","Sample") />
+
+ <cfoutput>
+  #s.hello()#
+ </cfoutput>
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ script example here
+</code>
+</pre>
+</td>
+</tr>
+</table>
+
 
 ColdFusion has different CFML engines available: Adobe, Railo, and OpenBD.
 
