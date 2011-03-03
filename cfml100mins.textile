@@ -27,7 +27,7 @@ h2. 1. Code Syntax & Engines
 
 h3. Code Syntax
 
-There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. You will write one or more instructions in a file then run that file through the CFML engine. We might have a file named my_program.cfm like this:
+There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. You will write one or more instructions in a file then run that file through the CFML engine. We might have a file named my_program.cfm and Sample.cfc like this:
 
 <table>
 <tr>
@@ -35,28 +35,43 @@ There are two ways to write CFML code. You can use the tag or script syntax. For
 </tr>
 <tr>
 <td>
-<pre>
-<code>
- <cfcomponent>
-  <cffunction name="hello">
-   <cfreturn "Hello, World!" />
-  </cffunction>
- </cfcomponent>
-
- <cfset s = CreateObject("component","Sample") />
-
- <cfoutput>
-  #s.hello()#
- </cfoutput>
-</code>
-</pre>
+	<table>
+		<tr>
+			<td>my_program.cfm</td>
+			<td>Sample.cfc</td>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+				<code>
+				 <cfset s = CreateObject("component","Sample") />
+				
+				 <cfoutput>
+				  #s.hello()#
+				 </cfoutput>
+				</code>
+				</pre>
+			</td>
+			<td>
+				<pre>
+				<code>
+				 <cfcomponent>
+				  <cffunction name="hello">
+				   <cfreturn "Hello, World!" />
+				  </cffunction>
+				 </cfcomponent>
+				</code>
+				</pre>
+			</td>
+		</tr>
+	</table>
 </td>
 <td>
-<pre>
-<code>
- script example here
-</code>
-</pre>
+	<pre>
+	<code>
+	 script example here
+	</code>
+	</pre>
 </td>
 </tr>
 </table>
