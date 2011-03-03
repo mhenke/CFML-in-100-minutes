@@ -65,15 +65,26 @@ h3. Tag Syntax
 h3. Script Syntax
 
 <table>
-<tr>
-<td>
+	<tr>
+		<td>my_program.cfm</td>
+		<td>Sample.cfc</td>
+	</tr>
+	<tr>
+		<td>
+<pre>
+<code>
+  script example here
+</code>
+</pre>
+		</td>
+		<td>
 <pre>
 <code>
  script example here
 </code>
 </pre>
-</td>
-</tr>
+		</td>
+	</tr>
 </table>
 
 h3. Engines
