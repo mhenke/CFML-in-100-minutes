@@ -128,9 +128,7 @@ In CFML we define an object using the @cfcomponent@ keyword and saving the file 
 <td>
 <pre>
 <code>
- <cfcomponent>
-
- </cfcomponent>
+ script example here
 </code>
 </pre>
 </td>
@@ -158,11 +156,7 @@ Inside the cfc we usually define one or more methods using the @cffunction@ keyw
 <td>
 <pre>
 <code>
- <cfcomponent>
-	<cffunction name="make_toast">
-		<cfset makeToast = "Making your toast!" />
-	</cffunction>
- </cfcomponent>
+ script example here
 </code>
 </pre>
 </td>
