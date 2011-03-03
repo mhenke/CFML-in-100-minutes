@@ -43,6 +43,9 @@ Go into a CFML file , enter in these example instructions, and observe the outpu
 
 <table>
 <tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
 <td>
 <pre>
 <code>
