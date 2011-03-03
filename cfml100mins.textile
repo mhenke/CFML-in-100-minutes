@@ -63,7 +63,7 @@ There are two ways to write CFML code. You can use the tag or script syntax. For
 
 h3. Engines
 
-ColdFusion has different CFML engines available: Adobe, Railo, and OpenBD. ADD MORE INFORMATION
+ColdFusion has different CFML engines available: Adobe, Railo, and OpenBD. TODO: ADD MORE INFORMATION
 
 h2. 2. Variables
 
@@ -295,13 +295,19 @@ h3. Combining Strings and Variables
 
 It is extremely common that we want to combine the value of a variable with other strings. For instance, lets start with this simple example string:
 
-"Happy Saturday!"When we put that into %(caps)IRB% it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying @"Happy"@ then the day of the week. So we cant just put a string like @"Happy Saturday!"@ or itd be saying Saturday even on Tuesday.
+"Happy Saturday!"
+
+When we put that into %(caps)IRB% it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying @"Happy"@ then the day of the week. So we cant just put a string like @"Happy Saturday!"@ or itd be saying Saturday even on Tuesday.
 
 What we need to do is combine a variable with the string. There are two ways to do that. The first and easiest approach is called _string concatenation_ which is basically just adding strings together like this:
 
-today = "Saturday" puts "Happy " + today + "!"In the first line we setup a variable to hold the day of the week, then in the second line we printed the string @Happy@ combined with the value of the variable @today@ and the string @!@. You might be thinkingWhat was the point of that since we still just wrote Saturday in the first line?Ok, well, if you were writing a real program youd use CFMLs built-in date functions like this:
+today = "Saturday" puts "Happy " + today + "!"
 
-today = Date.today.strftime("%A") puts "Happy " + today + "!"If you get an error complaining about @Date@ being unitialized, type @require 'Date'@ , enter, then try it again.
+In the first line we setup a variable to hold the day of the week, then in the second line we printed the string @Happy@ combined with the value of the variable @today@ and the string @!@. You might be thinkingWhat was the point of that since we still just wrote Saturday in the first line?Ok, well, if you were writing a real program youd use CFMLs built-in date functions like this:
+
+today = Date.today.strftime("%A") puts "Happy " + today + "!"
+
+If you get an error complaining about @Date@ being unitialized, type @require 'Date'@ , enter, then try it again.
 
 String concatenation works fine most of the time, but there is a gotcha that pops up. Try this:
 
@@ -309,15 +315,21 @@ today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + 
 
 The problem is that ruby knows how to add one string to another, but its not sure how to add a string to a number. @day_of_year@ contains a number, and when it tries to combine the strings with that number CFML isnt sure what to do. Thankfully numbers have a conversion method which converts them into a string so they can be combined with strings. That method is @.to_s@ forto string. Retry your example with this slight change:
 
-today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year.to_s + " day of the year."Great, no errors and our output looks correct. Having to remember that @.to_s@ whenever you use a number is kind of a pain, though. There is another combination method that forces theto stringconversion for you called _string interpolation_.
+today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year.to_s + " day of the year."
+
+Great, no errors and our output looks correct. Having to remember that @.to_s@ whenever you use a number is kind of a pain, though. There is another combination method that forces theto stringconversion for you called _string interpolation_.
 
  *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#{}@ to mark where in a string the value of a variable should be inserted. Inside those brackets we can put any variables or CFML code which will be evaluated, converted to a string, and output in that spot. Our previous example could be rewritten like this:
 
-puts "Happy #{today}! It is the #{day_of_year} day of the year."If you compare the output youll see that this second method gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
+puts "Happy #{today}! It is the #{day_of_year} day of the year."
+
+If you compare the output youll see that this second method gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
 
 You can also put code or calculations inside the brackets when interpolating like this example:
 
-modifier = "very " mood = "excited" puts "I am #{modifier * 3}#{mood} for today's class!"Basically interpolating meansevaluate the code inside this @#{}@ wrapper and put it into this string. You can see the first interpolation has a multiplication inside there so it'll repeat the string @modifier@ three times but the second will just plug in the value of the variable @mood@.
+modifier = "very " mood = "excited" puts "I am #{modifier * 3}#{mood} for today's class!"
+
+Basically interpolating meansevaluate the code inside this @#{}@ wrapper and put it into this string. You can see the first interpolation has a multiplication inside there so it'll repeat the string @modifier@ three times but the second will just plug in the value of the variable @mood@.
 
 h2. 5. Numbers
 
@@ -339,7 +351,9 @@ h4. Arrays
 
 An *array* is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the *indices*. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The *index* is the address of a specific element inside the array. In CFML the index always begins with @0@. An array is defined in CFML as an opening [, then zero or more elements, then a closing ]. Try out this code:
 
-favorite_colors = ["red","blue","green","black","brown"] puts favorite_colors[3] puts favorite_colors.first puts favorite_colors.lastKeep going with these, but note that the first line below should give you some unusual output. Try and understand what CFML is telling you:
+favorite_colors = ["red","blue","green","black","brown"] puts favorite_colors[3] puts favorite_colors.first puts favorite_colors.last
+
+Keep going with these, but note that the first line below should give you some unusual output. Try and understand what CFML is telling you:
 
 puts favorite_colors[5] favorite_colors<<"orange" puts favorite_colors[5] puts favorite_colors
 
@@ -351,19 +365,21 @@ In order to get a specific element in the array you use the syntax @arrayname[in
 
 There are lots of cool things to do with an array. You can rearrange the order of the elements using the @sort@ method. You can iterate through each element using the @each@ method. You can mash them together into one string using the @join@ method. You can find the address of a specific element by using the @index@ method. You can ask an array if an element is present with the @include?@ method. Try out this example that brings a bunch of things together:
 
-sorted_colors = favorite_colors.sort sorted_colors.each do |color| puts "#{color} is #{color.length} letters long" end puts sorted_colors.join("&") target = "green" position = favorite_colors.index(target) puts "The color #{target} is in position #{position}"We use arrays whenever we need a list where the elements are in a specific order.
+sorted_colors = favorite_colors.sort sorted_colors.each do |color| puts "#{color} is #{color.length} letters long" end puts sorted_colors.join("&") target = "green" position = favorite_colors.index(target) puts "
+
+The color #{target} is in position #{position}"We use arrays whenever we need a list where the elements are in a specific order.
 
 h4. Structures
 
-A structure is a collection of data where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read aslook in the collection named @science@ and find the thing named @Joey@.
+A structure is a collection of data where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read as look in the collection named @science@ and find the thing named @Joey@.
 
 A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name. Structures have a more complicated syntax that takes some getting used to:
 
-ages = {"joey" =>12, "jill" =>14, "jack" =>11, "jane" =>12} puts "Joey is #{ages['joey']} years old"Here we create a structure named @ages@. Structures are made up what are calledkey-value pairs.The *key* is used as the address and the *value* is the object at that address. In the @ages@ structure we have keys including @"joey"@ and @"jill"@ and values including @12@ and @14@. When creating a structure the key and value are linked by the @=>@ symbol which is called a _rocket_. So structures start with a curly bracket @{@ , have zero or more entries made up of a _key_ , a rocket, and a _value_ separated by commas, then end with a closing curly bracket @}@.
+ages = {"joey" =>12, "jill" =>14, "jack" =>11, "jane" =>12} puts "Joey is #{ages['joey']} years old"Here we create a structure named @ages@. Structures are made up what are called key-value pairs.The *key* is used as the address and the *value* is the object at that address. In the @ages@ structure we have keys including @"joey"@ and @"jill"@ and values including @12@ and @14@. When creating a structure the key and value are linked by the @=>@ symbol which is called a _rocket_. So structures start with a curly bracket @{@ , have zero or more entries made up of a _key_ , a rocket, and a _value_ separated by commas, then end with a closing curly bracket @}@.
 
 ages["jimmy"] = 14 ages["joey"] = 9 puts ages.keys puts ages.values
 
-In the second chunk of the example, we add a new value to the structure. Since the @"jimmy"@ key wasnt in the original structure, its added with the value of @14@. If the key @"jimmy"@ already existed then the value would be replaced by @14@. Every key in a structure must be unique! In the second line we reference the key @"joey"@ which already exists, so the value gets replaced with the @9@. Then, just to show you the state of the structure, we print out the list of keys and the list of values.
+In the second chunk of the example, we add a new value to the structure. Since the @"jimmy"@ key wasn't in the original structure, its added with the value of @14@. If the key @"jimmy"@ already existed then the value would be replaced by @14@. Every key in a structure must be unique! In the second line we reference the key @"joey"@ which already exists, so the value gets replaced with the @9@. Then, just to show you the state of the structure, we print out the list of keys and the list of values.
 
 students = ages.keys.sort students.each do |student| puts "#{student} is #{ages[student]} years old." end
 
@@ -385,13 +401,13 @@ def water_boiling?(minutes) if minutes<7 puts "The water is not boiling yet." el
 
 Try this example using @5@ , @7@ , @8@ and @9@ for the values of @minutes@.
 
-When the @minutes@ is 5, here is how the execution goes:Is it @true@ that 5 is less than 7? Yes, it is, so print out the line @The water is not boiling yet.@.
+When the @minutes@ is 5, here is how the execution goes: Is it @true@ that 5 is less than 7? Yes, it is, so print out the line @The water is not boiling yet.@.
 
-When the @minutes@ is 7, it goes like this:Is it @true@ that 7 is less than 7? No. Next, is it @true@ that 7 is equal to 7? Yes, it is, so print out the line @It's just barely boiling@.
+When the @minutes@ is 7, it goes like this: Is it @true@ that 7 is less than 7? No. Next, is it @true@ that 7 is equal to 7? Yes, it is, so print out the line @It's just barely boiling@.
 
-When the @minutes@ is 8, it goes like this:Is it @true@ that 8 is less than 7? No. Next, is it @true@ that 8 is equal to 7? No. Next, is it @true@ that 8 is equal to 8? Yes, it is, so print out the line @It's boiling!@.
+When the @minutes@ is 8, it goes like this: Is it @true@ that 8 is less than 7? No. Next, is it @true@ that 8 is equal to 7? No. Next, is it @true@ that 8 is equal to 8? Yes, it is, so print out the line @It's boiling!@.
 
-Lastly, when total is 9, it goes:"Is it @true@ that 9 is less than 7? No. Next, is it @true@ that 9 is equal to 7? No. Next, is it @true@ that 9 is equal to 8? No. Since none of those are true, execute the @else@ and print the line @Hot! Hot! Hot!@.
+Lastly, when total is 9, it goes:" Is it @true@ that 9 is less than 7? No. Next, is it @true@ that 9 is equal to 7? No. Next, is it @true@ that 9 is equal to 8? No. Since none of those are true, execute the @else@ and print the line @Hot! Hot! Hot!@.
 
 An @if@ block has
 
