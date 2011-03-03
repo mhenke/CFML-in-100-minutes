@@ -38,26 +38,26 @@ h3. Tag Syntax
 	</tr>
 	<tr>
 		<td>
-			<pre>
-			<code>
-			 <cfset s = CreateObject("component","Sample") />
-			
-			 <cfoutput>
-			  #s.hello()#
-			 </cfoutput>
-			</code>
-			</pre>
+<pre>
+<code>
+ <cfset s = CreateObject("component","Sample") />
+
+ <cfoutput>
+  #s.hello()#
+ </cfoutput>
+</code>
+</pre>
 		</td>
 		<td>
-			<pre>
-			<code>
-			 <cfcomponent>
-			  <cffunction name="hello">
-			   <cfreturn "Hello, World!" />
-			  </cffunction>
-			 </cfcomponent>
-			</code>
-			</pre>
+<pre>
+<code>
+ <cfcomponent>
+  <cffunction name="hello">
+   <cfreturn "Hello, World!" />
+  </cffunction>
+ </cfcomponent>
+</code>
+</pre>
 		</td>
 	</tr>
 </table>
@@ -67,11 +67,11 @@ h3. Script Syntax
 <table>
 <tr>
 <td>
-	<pre>
-	<code>
-	 script example here
-	</code>
-	</pre>
+<pre>
+<code>
+ script example here
+</code>
+</pre>
 </td>
 </tr>
 </table>
@@ -140,11 +140,9 @@ Go into a CFML file , enter in these example instructions, and observe the outpu
  </cfscript>
 </code>
 </pre>
-
 </td>
 </tr>
 </table>
-
 
 *The first few lines are simple if you've kind with any programming language before, but the last few get interesting when combining strings and numbers.
 
@@ -195,9 +193,9 @@ Inside the cfc we usually define one or more methods using the @cffunction@ keyw
 <pre>
 <code>
  <cfcomponent>
-	<cffunction name="make_toast">
-		<cfset makeToast = "Making your toast!" />
-	</cffunction>
+  <cffunction name="make_toast">
+   <cfset makeToast = "Making your toast!" />
+  </cffunction>
  </cfcomponent>
 </code>
 </pre>
@@ -226,14 +224,14 @@ Once we define a class, we create an @instance@ of that class like this:
 <td>
 <pre>
 <code>
-	<cfset frank = CreateObject("component","PersonalChef") />
+ <cfset frank = CreateObject("component","PersonalChef") />
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
-	frank = CreateObject("component","PersonalChef");
+ frank = CreateObject("component","PersonalChef");
 </code>
 </pre>
 </td>
@@ -255,10 +253,10 @@ Sometimes methods take one or more _parameters_ that tell them _how_ to do what 
 <pre>
 <code>
  <cfcomponent>
-	<cffunction name="make_toast">
-		<cfargument name="color" required="yes">
-		<cfset makeToast = "Making your toast #arguments.color#!" />
-	</cffunction>
+  <cffunction name="make_toast">
+   <cfargument name="color" required="yes">
+    <cfset makeToast = "Making your toast #arguments.color#!" />
+  </cffunction>
  </cfcomponent>
 </code>
 </pre>
