@@ -41,27 +41,31 @@ Everything needs a name so we can refer to it. A variable, like in math, is just
 
 Go into a CFML file , enter in these example instructions, and observe the output that CFML gives you back:
 
-@<cfscript>@
-	@a = 5;@
-	@b = 10 + 5;@
-	@c = 15 + a + b;@
-	@b = c - a;@
-	@d = "Hello, ";@
-	@e = "World!";@
-	@f = d & e;@
-	@g = d & a & e;@
-	@b = "hi!";@
-@</cfscript>@
+<pre>
+<code>
+<cfscript>
+	a = 5;
+	b = 10 + 5;
+	c = 15 + a + b;
+	b = c - a;
+	d = "Hello, ";
+	e = "World!";
+	f = d & e;
+	g = d & a & e;
+	b = "hi!";
+</cfscript>
 
-@<cfoutput>@
-	@a = #a#;<br/>@
-	@b = #b#;<br/>@
-	@c = #c#;<br/>@
-	@d = #d#;<br/>@
-	@e = #e#;<br/>@
-	@f = #f#;<br/>@
-	@g = #g#;<br/>@
-@</cfoutput>@
+<cfoutput>
+	a = #a#;<br/>
+	b = #b#;<br/>
+	c = #c#;<br/>
+	d = #d#;<br/>
+	e = #e#;<br/>
+	f = #f#;<br/>
+	g = #g#;<br/>
+</cfoutput>
+</code>
+</pre>
 
 *The first few lines are simple if you've kind with any programming language before, but the last few get interesting when combining strings and numbers.
 
