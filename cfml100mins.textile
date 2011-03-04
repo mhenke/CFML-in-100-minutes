@@ -297,23 +297,54 @@ h2. 4. Strings
 In CFML a string is defined as a quote ( @"@ ) followed by zero or more letters, numbers, or symbols and followed by another quote ( @"@ ). Some simple strings would be @"hello"@ or @"This sentence is a string!"@. Strings can be anything from @""@ , the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important functions that we'll use.
 
 *  @Len@ 
-Call @Len@ on a string to get back the number of characters in the string. For instance @"hello".Len@ would give you back @5@.
-*  @delete@ 
-Delete lets you specify a set of characters that should be removed from the original string. For instance, @"hello".delete("l")@ would give you back @"heo"@ after deleting all occurrences of @"l"@ , or @"Good Morning!".delete("on")@ would give you @"Gd Mrig"@ 
+Call @Len@ on a string to get back the number of characters in the string. For instance @Len("Hello")@ would give you back @5@.
+*  @Replace@ 
+Replaces occurrences of substring1 in a string with substring2, in a specified scope. The search is case sensitive. For instance, @Replace("Hello", "e", "")@ would give you back @"hllo"@ after replacing the first occurrence of @"e"@ , or @Replace("Good Morning!", "o", "", "All")"@ would give you @"Gd Mrning!"@ 
 *  @gsub@ 
 Call @gsub@ to replace a substring with a different string. For instance, @"hello".gsub("ll","y yo")@ would give you back @"hey yoo"@.
-*  @split@ 
-The @split@ method is somewhat complex because its used to break a single string into a set of strings. For instance, I could call @"Welcome to CFML Jumpstart".split(" ")@ and it would find the three occurrences of @" "@ (a blank space) and split the string at those points, giving you back a set like this: @["Welcome","to","CFML","Jumpstart"]@ 
+*  @Mid@ 
+The @mid@ function extracts a substring from a string. For instance, I could call @Mid("Welcome to CFML Jumpstart",4,12)@ and it would give you back: @come to CFML@.
 
-Experiment with the following samples in %(caps)IRB% :
+Experiment with the following samples in a CFML file:
 
-tester = "Good Morning Everyone!" tester.Len tester.delete("o") tester.gsub("Everyone!","Friends!") t2 = "sample,data,from,a,CSV" t2.split(",")
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+<cfset tester = "Good Morning Everyone!" />
+<cfset tester.Len />
+<cfoutput>#tester#</cfoutput>
+<cfset tester.delete("o") />
+<cfoutput>#tester#</cfoutput>
+<cfset tester.gsub("Everyone!","Friends!") /> 
+<cfoutput>#tester#</cfoutput>
+<cfset t2 = "sample,data,from,a,CSV" /> 
+<cfset t2.split(",") />
+<cfoutput>#ts#</cfoutput>
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 Often with strings we want to pull out just a part of the whole this is called a substring. Try out these examples in @irb@ assuming you already have @tester@ from the last examples:
 
-tester[0..3] tester[5..11] tester[13..-1]The numbers inside the @[]@ brackets specify which of the characters you want pulled out. they're numbered starting with zero. So the first example pulls out the letters from zero, the beginning of the string, up to position three. The second example pulls from @5@ up to @11@. The last one goes from @12@ up to @-1@ ? If you specify a negative value, that is like counting back from the end. Using @-1@ means the end of the string, so @12..-1@ meansfrom @12@ to the end of the string.
+tester[0..3] tester[5..11] tester[13..-1]
 
-If you just need a single character, tHere's agotchaitd be tempting to write @tester[2]@ to get the character at position two. In the latest versions of CFML (1.9+) thats exactly how it works. But in 1.8.6 and some versions of 1.8.7, that code will give you back an integer representing the %(caps)ASCII% code for that letterpretty useless! The hack, which works on any version of CFML, is to take a substring that is only one character long like this: @tester[2..2]@ 
+The numbers inside the @[]@ brackets specify which of the characters you want pulled out. they're numbered starting with zero. So the first example pulls out the letters from zero, the beginning of the string, up to position three. The second example pulls from @5@ up to @11@. The last one goes from @12@ up to @-1@ ? If you specify a negative value, that is like counting back from the end. Using @-1@ means the end of the string, so @12..-1@ meansfrom @12@ to the end of the string.
+
+If you just need a single character, t Here's a gotcha it'd be tempting to write @tester[2]@ to get the character at position two. In the latest versions of CFML (1.9+) thats exactly how it works. But in 1.8.6 and some versions of 1.8.7, that code will give you back an integer representing the %(caps)ASCII% code for that letter pretty useless! The hack, which works on any version of CFML, is to take a substring that is only one character long like this: @tester[2..2]@ 
 
 h3. Combining Strings and Variables
 
@@ -321,7 +352,7 @@ It is extremely common that we want to combine the value of a variable with othe
 
 "Happy Saturday!"
 
-When we put that into %(caps)IRB% it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying @"Happy"@ then the day of the week. So we cant just put a string like @"Happy Saturday!"@ or itd be saying Saturday even on Tuesday.
+When we put that into %(caps)IRB% it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying @"Happy"@ then the day of the week. So we can't just put a string like @"Happy Saturday!"@ or it'd be saying Saturday even on Tuesday.
 
 What we need to do is combine a variable with the string. There are two ways to do that. The first and easiest approach is called _string concatenation_ which is basically just adding strings together like this:
 
@@ -335,25 +366,29 @@ If you get an error complaining about @Date@ being unitialized, type @require 'D
 
 String concatenation works fine most of the time, but there is a gotcha that pops up. Try this:
 
-today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year + " day of the year."You should get an error complaining that CFMLcant convert Fixnum into String. What does that mean? When CFML is assembling the parts of that string it sees a string @"Happy "@ , then a string in the variable @today@ , then a string with the ! and a few words, then a the variable @day_of_year@ , then the string @"day of the year."@.
+today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year + " day of the year."You should get an error complaining that CFML can't convert Fixnum into String. What does that mean? 
 
-The problem is that ruby knows how to add one string to another, but its not sure how to add a string to a number. @day_of_year@ contains a number, and when it tries to combine the strings with that number CFML isn't  sure what to do. Thankfully numbers have a conversion method which converts them into a string so they can be combined with strings. That method is @.to_s@ forto string. Retry your example with this slight change:
+When CFML is assembling the parts of that string it sees a string @"Happy "@ , then a string in the variable @today@ , then a string with the ! and a few words, then a the variable @day_of_year@ , then the string @"day of the year."@.
 
-today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year.to_s + " day of the year."
+The problem is that ruby knows how to add one string to another, but its not sure how to add a string to a number. @day_of_year@ contains a number, and when it tries to combine the strings with that number CFML isn't sure what to do. Thankfully numbers have a conversion method which converts them into a string so they can be combined with strings. That method is @.to_s@ forto string. Retry your example with this slight change:
 
-Great, no errors and our output looks correct. Having to remember that @.to_s@ whenever you use a number is kind of a pain, though. There is another combination method that forces theto stringconversion for you called _string interpolation_.
+today = Date.today.strftime("%A") 
+day_of_year = Date.today.yday 
+puts "Happy " + today + "! It is the " + day_of_year.to_s + " day of the year."
+
+Great, no errors and our output looks correct. Having to remember that @.to_s@ whenever you use a number is kind of a pain, though. There is another combination method that forces the to string conversion for you called _string interpolation_.
 
  *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#{}@ to mark where in a string the value of a variable should be inserted. Inside those brackets we can put any variables or CFML code which will be evaluated, converted to a string, and output in that spot. Our previous example could be rewritten like this:
 
 puts "Happy #{today}! It is the #{day_of_year} day of the year."
 
-If you compare the output youll see that this second method gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
+If you compare the output you'll see that this second method gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
 
 You can also put code or calculations inside the brackets when interpolating like this example:
 
 modifier = "very " mood = "excited" puts "I am #{modifier * 3}#{mood} for today's class!"
 
-Basically interpolating meansevaluate the code inside this @#{}@ wrapper and put it into this string. You can see the first interpolation has a multiplication inside there so it'll repeat the string @modifier@ three times but the second will just plug in the value of the variable @mood@.
+Basically interpolating means evaluate the code inside this @#{}@ wrapper and put it into this string. You can see the first interpolation has a multiplication inside there so it'll repeat the string @modifier@ three times but the second will just plug in the value of the variable @mood@.
 
 h2. 5. Numbers
 
