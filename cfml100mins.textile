@@ -288,9 +288,33 @@ h3. Return Value
 
 In CFML, every time you call a method you won't get a value back. By default, a CFML method returns nothing. If you called the @make_toast@ method above, you should have seen the return value @nil@. The @cfreturn@ instruction returns a @value@, so since that wasn't the last instruction before the ending @cffunction@ in your method you saw @nil@ when calling that method.
 
-For the purposes of our next section I'm going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef @frank@. You sayFrank, go make my toast, he tells you hes making the toast, goes to make it, then comes back to you to receive more instructions. He's returning himself to you. Here's how we implement it in code:
+For the purposes of our next section I'm going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef @frank@. You sayFrank, go make my toast, he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's returning himself to you. Here's how we implement it in code:
 
-class PersonalChef def make_toast(color) puts "Making your toast #{color}" return self end end
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ class PersonalChef 
+  def make_toast(color) 
+   puts "Making your toast #{color}" 
+   return self 
+  end 
+ end
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 h2. 4. Strings
 
@@ -315,16 +339,19 @@ Experiment with the following samples in a CFML file:
 <td>
 <pre>
 <code>
-<cfset tester = "Good Morning Everyone!" />
-<cfset tester.Len />
-<cfoutput>#tester#</cfoutput>
-<cfset tester.delete("o") />
-<cfoutput>#tester#</cfoutput>
-<cfset tester.gsub("Everyone!","Friends!") /> 
-<cfoutput>#tester#</cfoutput>
-<cfset t2 = "sample,data,from,a,CSV" /> 
-<cfset t2.split(",") />
-<cfoutput>#ts#</cfoutput>
+ <cfset tester = "Good Morning Everyone!" />
+ <cfset tester.Len />
+ <cfoutput>#tester#</cfoutput>
+
+ <cfset tester.delete("o") />
+ <cfoutput>#tester#</cfoutput>
+
+ <cfset tester.gsub("Everyone!","Friends!") /> 
+ <cfoutput>#tester#</cfoutput>
+
+ <cfset t2 = "sample,data,from,a,CSV" /> 
+ <cfset t2.split(",") />
+ <cfoutput>#ts#</cfoutput>
 </code>
 </pre>
 </td>
@@ -394,7 +421,7 @@ Basically interpolating means evaluate the code inside this @#{}@ wrapper and pu
 
 h2. 5. Numbers
 
-There are two basic kinds of numbers in CFML: integers (whole numbers) and real (have a decimal point). For our workshop well only be dealing with integers. You can use normal math operations with integers including @+@, @-@, @/@, and @*@. Integers have a bunch of methods to help you do math-related things, but the only one we might use controls a loop.
+There are two basic kinds of numbers in CFML: integers (whole numbers) and real (have a decimal point). For our workshop we'll only be dealing with integers. You can use normal math operations with integers including @+@, @-@, @/@, and @*@. Integers have a bunch of functions to help you do math-related things, but the only one we might use controls a loop.
 
 The @times@ method can be used to repeat one or more instructions a certain number of times. Try out this example:
 
@@ -410,13 +437,37 @@ Often we need to organize a group of objects and put them into a collection. The
 
 h4. Arrays
 
-An *array* is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the *indices*. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The *index* is the address of a specific element inside the array. In CFML the index always begins with @0@. An array is defined in CFML as an opening [, then zero or more elements, then a closing ]. Try out this code:
+An *array* is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the *indices*. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The *index* is the address of a specific element inside the array. In CFML the index always begins with @1@. An array is defined in CFML as an opening [, then zero or more elements, then a closing ]. Try out this code:
 
-favorite_colors = ["red","blue","green","black","brown"] puts favorite_colors[3] puts favorite_colors.first puts favorite_colors.last
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ <cfset favorite_colors = ["red","blue","green","black","brown"] />
+ <cfdump var="#favorite_colors[3]#" />
+ <cfdump var="#favorite_colors.1#" />
+ <cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" />
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 Keep going with these, but note that the first line below should give you some unusual output. Try and understand what CFML is telling you:
 
-puts favorite_colors[5] favorite_colors<<"orange" puts favorite_colors[5] puts favorite_colors
+puts favorite_colors[5] favorite_colors<<"orange" 
+puts favorite_colors[5] puts favorite_colors
 
 In order to get a specific element in the array you use the syntax @arrayname[index]@. So looking at the @favorite_colors@ array
 
@@ -426,7 +477,11 @@ In order to get a specific element in the array you use the syntax @arrayname[in
 
 There are lots of cool things to do with an array. You can rearrange the order of the elements using the @sort@ method. You can iterate through each element using the @each@ method. You can mash them together into one string using the @join@ method. You can find the address of a specific element by using the @index@ method. You can ask an array if an element is present with the @include?@ method. Try out this example that brings a bunch of things together:
 
-sorted_colors = favorite_colors.sort sorted_colors.each do |color| puts "#{color} is #{color.length} letters long" end puts sorted_colors.join("&") target = "green" position = favorite_colors.index(target) puts "
+sorted_colors = favorite_colors.sort sorted_colors.each do |color| 
+puts "#{color} is #{color.length} letters long" end 
+puts sorted_colors.join("&") 
+target = "green" 
+position = favorite_colors.index(target) puts "
 
 The color #{target} is in position #{position}"We use arrays whenever we need a list where the elements are in a specific order.
 
@@ -438,7 +493,10 @@ A structure is an unordered collection, its just a bunch of data collected toget
 
 ages = {"joey" =>12, "jill" =>14, "jack" =>11, "jane" =>12} puts "Joey is #{ages['joey']} years old"Here we create a structure named @ages@. Structures are made up what are called key-value pairs.The *key* is used as the address and the *value* is the object at that address. In the @ages@ structure we have keys including @"joey"@ and @"jill"@ and values including @12@ and @14@. When creating a structure the key and value are linked by the @=>@ symbol which is called a _rocket_. So structures start with a curly bracket @{@, have zero or more entries made up of a _key_, a rocket, and a _value_ separated by commas, then end with a closing curly bracket @}@.
 
-ages["jimmy"] = 14 ages["joey"] = 9 puts ages.keys puts ages.values
+ages["jimmy"] = 14 
+ages["joey"] = 9 
+puts ages.keys 
+puts ages.values
 
 In the second chunk of the example, we add a new value to the structure. Since the @"jimmy"@ key wasn't in the original structure, its added with the value of @14@. If the key @"jimmy"@ already existed then the value would be replaced by @14@. Every key in a structure must be unique! In the second line we reference the key @"joey"@ which already exists, so the value gets replaced with the @9@. Then, just to show you the state of the structure, we print out the list of keys and the list of values.
 
