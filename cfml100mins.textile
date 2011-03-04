@@ -425,11 +425,56 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 
 The @times@ method can be used to repeat one or more instructions a certain number of times. Try out this example:
 
-5.times do puts "Hello, world!" end
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ 5.times do 
+ 	puts "Hello, world!" 
+ end
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 In this example were using the @times@ method with a @do@ / @end@ block. When we call the @times@ method we need to tell it what to do that number of times. CFML looks for the starting keyword @do@ and the ending keyword @end@. Each instruction between the @do@ and @end@ will be executed this number of @times@. Try this example with multiple instructions:
 
-5.times do puts "Good morning!" puts "...is it lunch time yet?" end
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ 5.times do 
+  puts "Good morning!" 
+  puts "...is it lunch time yet?" 
+ end
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 h2. 7. Collections
 
@@ -466,8 +511,28 @@ An *array* is a number-indexed list. Picture a city block of houses. Together th
 
 Keep going with these, but note that the first line below should give you some unusual output. Try and understand what CFML is telling you:
 
-puts favorite_colors[5] favorite_colors<<"orange" 
-puts favorite_colors[5] puts favorite_colors
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ puts favorite_colors[5] favorite_colors<<"orange" 
+ puts favorite_colors[5] puts favorite_colors
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 In order to get a specific element in the array you use the syntax @arrayname[index]@. So looking at the @favorite_colors@ array
 
@@ -477,11 +542,35 @@ In order to get a specific element in the array you use the syntax @arrayname[in
 
 There are lots of cool things to do with an array. You can rearrange the order of the elements using the @sort@ method. You can iterate through each element using the @each@ method. You can mash them together into one string using the @join@ method. You can find the address of a specific element by using the @index@ method. You can ask an array if an element is present with the @include?@ method. Try out this example that brings a bunch of things together:
 
-sorted_colors = favorite_colors.sort sorted_colors.each do |color| 
-puts "#{color} is #{color.length} letters long" end 
-puts sorted_colors.join("&") 
-target = "green" 
-position = favorite_colors.index(target) puts "
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ sorted_colors = favorite_colors.sort 
+ sorted_colors.each do |color| 
+  puts "#{color} is #{color.length} letters long" 
+ end 
+ puts sorted_colors.join("&") 
+ target = "green" 
+ position = favorite_colors.index(target) 
+ puts ""
+ end
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 The color #{target} is in position #{position}"We use arrays whenever we need a list where the elements are in a specific order.
 
@@ -493,14 +582,57 @@ A structure is an unordered collection, its just a bunch of data collected toget
 
 ages = {"joey" =>12, "jill" =>14, "jack" =>11, "jane" =>12} puts "Joey is #{ages['joey']} years old"Here we create a structure named @ages@. Structures are made up what are called key-value pairs.The *key* is used as the address and the *value* is the object at that address. In the @ages@ structure we have keys including @"joey"@ and @"jill"@ and values including @12@ and @14@. When creating a structure the key and value are linked by the @=>@ symbol which is called a _rocket_. So structures start with a curly bracket @{@, have zero or more entries made up of a _key_, a rocket, and a _value_ separated by commas, then end with a closing curly bracket @}@.
 
-ages["jimmy"] = 14 
-ages["joey"] = 9 
-puts ages.keys 
-puts ages.values
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ ages["jimmy"] = 14 
+ ages["joey"] = 9 
+ puts ages.keys 
+ puts ages.values
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 In the second chunk of the example, we add a new value to the structure. Since the @"jimmy"@ key wasn't in the original structure, its added with the value of @14@. If the key @"jimmy"@ already existed then the value would be replaced by @14@. Every key in a structure must be unique! In the second line we reference the key @"joey"@ which already exists, so the value gets replaced with the @9@. Then, just to show you the state of the structure, we print out the list of keys and the list of values.
 
-students = ages.keys.sort students.each do |student| puts "#{student} is #{ages[student]} years old." end
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ students = ages.keys.sort 
+ students.each do |student| 
+ puts "#{student} is #{ages[student]} years old." 
+ end
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 The last chunk of the example calls the @keys@ method on the structure @ages@. @keys@ gives back an array holding all the key values inside the structure. We then called @sort@ on that array to put them in alphabetical order before storing the array into the variable @students@. We then iterated through the array @students@ using the method @each@, gave each element of the list the name @student@, then printed out one line with that student name and the students age from @ages@.
 
@@ -516,7 +648,38 @@ h4. Conditional Branching / Instructions
 
 Why do we have conditional statements? Most often its to control conditional instructions, especially @if@ / @elsif@ / @else@ structures. Lets write an example by adding a method to our @PersonalChef@ class:
 
-def water_boiling?(minutes) if minutes<7 puts "The water is not boiling yet." elsif minutes == 7 puts "It's just barely boiling" elsif minutes == 8 puts "It's boiling!" else puts "Hot! Hot! Hot!" end return self end
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ def water_boiling?(minutes) 
+  if minutes<7 
+   puts "The water is not boiling yet." 
+  elsif minutes == 7 
+   puts "It's just barely boiling" 
+  elsif minutes == 8 
+   puts "It's boiling!" 
+  else 
+   puts "Hot! Hot! Hot!" 
+ end 
+ return self 
+ end
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 Try this example using @5@, @7@, @8@ and @9@ for the values of @minutes@.
 
@@ -540,13 +703,62 @@ h4. Conditional Looping
 
 Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your @personal_chef.rb@ :
 
-def countdown(counter) while counter>0 puts "The counter is #{counter}" counter = counter - 1 end return self end
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ def countdown(counter) 
+  while counter>0 
+   puts "The counter is #{counter}" 
+   counter = counter - 1 
+  end 
+ return self 
+ end
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 See how that works? The @counter@ starts out as whatever parameter we pass in. The @while@ instruction evaluates the conditional statement @counter>0@ and finds that yes, the counter is greater than zero. Since the condition is true, execute the instructions inside the loop. First print out @"The counter is #{counter}"@ then take the value of @counter@, subtract one from it, and store it back into @counter@. Then the loop goes back to the @while@ statement. Is it still true? If so, print the line and subtract one again. Keep repeating until the condition is false.
 
 I most often use @while@, but you can achieve the same results using @until@ as well. Try this
 
-def countdown(counter) until counter == 0 puts "The counter is #{counter}" counter = counter - 1 end return self end
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ def countdown(counter) 
+  until counter == 0 
+   puts "The counter is #{counter}" counter = counter - 1 
+  end 
+ return self 
+ end
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 The #1 mistake people encounter when writing conditional statements is the difference between @=@ and @==@.
 
@@ -565,8 +777,36 @@ If you have three eggs, eat three eggs, then you might think you have nothing, b
 
 A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our @make_eggs@ method to illustrate @nil@ :
 
-REWRITE ISDEFINED()
-def make_eggs(quantity) if quantity.nil? puts "How am I supposed to make nothingness number of eggs?" else puts "Making your #{quantity} eggs!" quantity.times do puts "Making an Egg." end end return self end
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ def make_eggs(quantity) 
+  if quantity.nil? 
+   puts "How am I supposed to make nothingness number of eggs?" 
+  else 
+   puts "Making your #{quantity} eggs!" 
+   quantity.times do 
+    puts "Making an Egg." 
+   end 
+  end 
+ return self 
+ end
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 Reload the file, call @frank.make_eggs(3)@ then try @frank.make_eggs(nil)@. The only method we can rely on @nil@ executing is @.nil?@, pretty much anything else will create an error.
 
