@@ -367,7 +367,26 @@ Experiment with the following samples in a CFML file:
 
 Often with strings we want to pull out just a part of the whole this is called a substring. Try out these examples in @irb@ assuming you already have @tester@ from the last examples:
 
-tester[0..3] tester[5..11] tester[13..-1]
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ tester[0..3] tester[5..11] tester[13..-1]
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 The numbers inside the @[]@ brackets specify which of the characters you want pulled out. they're numbered starting with zero. So the first example pulls out the letters from zero, the beginning of the string, up to position three. The second example pulls from @5@ up to @11@. The last one goes from @12@ up to @-1@ ? If you specify a negative value, that is like counting back from the end. Using @-1@ means the end of the string, so @12..-1@ means from @12@ to the end of the string.
 
@@ -377,23 +396,43 @@ h3. Combining Strings and Variables
 
 It is extremely common that we want to combine the value of a variable with other strings. For instance, lets start with this simple example string:
 
-"Happy Saturday!"
+@"Happy Saturday!"@
 
 When we put that into %(caps)IRB% it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying @"Happy"@ then the day of the week. So we can't just put a string like @"Happy Saturday!"@ or it'd be saying Saturday even on Tuesday.
 
 What we need to do is combine a variable with the string. There are two ways to do that. The first and easiest approach is called _string concatenation_ which is basically just adding strings together like this:
 
-today = "Saturday" puts "Happy " + today + "!"
+@today = "Saturday" puts "Happy " + today + "!"@
 
 In the first line we setup a variable to hold the day of the week, then in the second line we printed the string @Happy@ combined with the value of the variable @today@ and the string @!@. You might be thinkingWhat was the point of that since we still just wrote Saturday in the first line?Ok, well, if you were writing a real program you'd use CFMLs built-in date functions like this:
 
-today = Date.today.strftime("%A") puts "Happy " + today + "!"
+@today = Date.today.strftime("%A") puts "Happy " + today + "!"@
 
 If you get an error complaining about @Date@ being unitialized, type @require 'Date'@, enter, then try it again.
 
 String concatenation works fine most of the time, but there is a gotcha that pops up. Try this:
 
-today = Date.today.strftime("%A") day_of_year = Date.today.yday puts "Happy " + today + "! It is the " + day_of_year + " day of the year."
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ today = Date.today.strftime("%A") day_of_year = Date.today.yday 
+ puts "Happy " + today + "! It is the " + day_of_year + " day of the year."
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 You should get an error complaining that CFML can't convert Fixnum into String. What does that mean? 
 
@@ -401,21 +440,82 @@ When CFML is assembling the parts of that string it sees a string @"Happy "@, th
 
 The problem is that ruby knows how to add one string to another, but its not sure how to add a string to a number. @day_of_year@ contains a number, and when it tries to combine the strings with that number CFML isn't sure what to do. Thankfully numbers have a conversion method which converts them into a string so they can be combined with strings. That method is @.to_s@ forto string. Retry your example with this slight change:
 
-today = Date.today.strftime("%A") 
-day_of_year = Date.today.yday 
-puts "Happy " + today + "! It is the " + day_of_year.to_s + " day of the year."
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ today = Date.today.strftime("%A") 
+ day_of_year = Date.today.yday 
+ puts "Happy " + today + "! It is the " + day_of_year.to_s + " day of the year."
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 Great, no errors and our output looks correct. Having to remember that @.to_s@ whenever you use a number is kind of a pain, though. There is another combination method that forces the to string conversion for you called _string interpolation_.
 
  *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#{}@ to mark where in a string the value of a variable should be inserted. Inside those brackets we can put any variables or CFML code which will be evaluated, converted to a string, and output in that spot. Our previous example could be rewritten like this:
 
-puts "Happy #{today}! It is the #{day_of_year} day of the year."
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ puts "Happy #{today}! It is the #{day_of_year} day of the year."
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 If you compare the output you'll see that this second method gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
 
 You can also put code or calculations inside the brackets when interpolating like this example:
 
-modifier = "very " mood = "excited" puts "I am #{modifier * 3}#{mood} for today's class!"
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ modifier = "very " 
+ mood = "excited" 
+ puts "I am #{modifier * 3}#{mood} for today's class!"
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 Basically interpolating means evaluate the code inside this @#{}@ wrapper and put it into this string. You can see the first interpolation has a multiplication inside there so it'll repeat the string @modifier@ three times but the second will just plug in the value of the variable @mood@.
 
@@ -534,7 +634,7 @@ Keep going with these, but note that the first line below should give you some u
 </tr>
 </table>
 
-In order to get a specific element in the array you use the syntax @arrayname[index]@. So looking at the @favorite_colors@ array
+In order to get a specific element in the array you use the syntax @arrayname[index]@. So looking at the @favorite_colors@ array:
 
 * Whats the index of @"brown"@ ?
 * Why did the fifth line of the example give you @nil@ ? (For more discussion of @nil@, check out the very end of this document).
@@ -809,23 +909,3 @@ A large percentage of the errors you encounter while writing CFML code will invo
 </table>
 
 Reload the file, call @frank.make_eggs(3)@ then try @frank.make_eggs(nil)@. The only method we can rely on @nil@ executing is @.nil?@, pretty much anything else will create an error.
-
-<table>
-<tr>
-<td>tag</td><td>script</td>
-</tr>
-<tr>
-<td>
-<pre>
-<code>
-</code>
-</pre>
-</td>
-<td>
-<pre>
-<code>
-</code>
-</pre>
-</td>
-</tr>
-</table>
