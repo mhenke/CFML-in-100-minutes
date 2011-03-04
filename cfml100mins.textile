@@ -299,9 +299,9 @@ In CFML a string is defined as a quote ( @"@ ) followed by zero or more letters,
 *  @Len@ 
 Call @Len@ on a string to get back the number of characters in the string. For instance @Len("Hello")@ would give you back @5@.
 *  @Replace@ 
-Replaces occurrences of substring1 in a string with substring2, in a specified scope. The search is case sensitive. For instance, @Replace("Hello", "e", "")@ would give you back @"hllo"@ after replacing the first occurrence of @"e"@, or @Replace("Good Morning!", "o", "", "All")"@ would give you @"Gd Mrning!"@ 
-*  @gsub@ 
-Call @gsub@ to replace a substring with a different string. For instance, @"hello".gsub("ll","y yo")@ would give you back @"hey yoo"@.
+Replaces occurrences of substring1 in a string with substring2, in a specified scope. The search is case sensitive. For instance, @Replace("Hello", "e", "")@ would give you back @"hllo"@ after replacing the first occurrence of @"e"@, or @Replace("Good Morning!", "o", "e", "All")"@ would give you @"Geed Merning!"@ 
+*  @Remove@ 
+Call @remove@ to removes characters from a string.. For instance, @RemoveChars("hello bob", 2, 5)@ would give you back @"hbob"@.  
 *  @Mid@ 
 The @mid@ function extracts a substring from a string. For instance, I could call @Mid("Welcome to CFML Jumpstart",4,12)@ and it would give you back: @come to CFML@.
 
