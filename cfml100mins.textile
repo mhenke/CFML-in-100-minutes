@@ -286,7 +286,9 @@ Where the method is expecting us to pass in a @color@ telling it how to do the m
 
 h3. Return Value
 
-In CFML, every time you call a method you won't get a value back. By default, a CFML method returns nothing. If you called the @make_toast@ method above, you should have seen the return value @nil@. The @cfreturn@ instruction returns a @value@, so since that wasn't the last instruction before the ending @cffunction@ in your method you saw @nil@ when calling that method.
+In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns @null@ which ColdFusion can't handle. We'll talk about @null@ in the last section of CFML in 100 minutes. If you called @make_toast@ method above like @<cfset result = frank.make_toast('burned') />@ or @ set result = frank.make_toast('burned');@, and tried to output @result@ you should have seen @Variable RESULT is undefined.@.
+
+@cfreturn@ instructs the function to return a @value@. Since that wasn't the last instruction before the ending @cffunction@ in your @make_toast@ method, you received @undefiend@ putting the calling of method into a variable.
 
 For the purposes of our next section I'm going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef @frank@. You sayFrank, go make my toast, he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's returning himself to you. Here's how we implement it in code:
 
@@ -301,7 +303,7 @@ For the purposes of our next section I'm going to return the chef instance itsel
  class PersonalChef 
   def make_toast(color) 
    puts "Making your toast #{color}" 
-   return self 
+   return this
   end 
  end
 </code>
