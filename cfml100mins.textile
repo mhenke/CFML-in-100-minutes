@@ -300,12 +300,6 @@ For the purposes of our next section I'm going to return the chef instance itsel
 <td>
 <pre>
 <code>
- class PersonalChef 
-  def make_toast(color) 
-   puts "Making your toast #{color}" 
-   return this
-  end 
- end
  <cfcomponent>
   <cffunction name="make_toast">
    <cfargument name="color" required="yes">
