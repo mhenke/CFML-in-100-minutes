@@ -249,7 +249,7 @@ Once we define a class, we create an @instance@ of that class like this:
 </tr>
 </table>
 
-We're calling the @new@ method on the class @PersonalChef@ and storing it into the variable named @frank@. Once we have that instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: @object.method_name()@. So if you have a person named @frank@ you would tell him to make toast by calling @frank.make_toast()@.
+We're calling the @CreateObject@ function on the class @PersonalChef@ and storing it into the variable named @frank@. Once we have that instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: @object.method_name()@. So if you have a person named @frank@ you would tell him to make toast by calling @frank.make_toast()@.
 
 h3. Method Parameters
 
