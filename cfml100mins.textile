@@ -2,7 +2,7 @@ h1. CFML in 100 minutes
 
 ColdFusion Markup Language (CFML) is a great programming language for beginners because it was written to make the programmer's job easy and not care if the computer's job is hard. In this brief introduction we'll look at the key language features you need to get started.
 
-# Syntax & Engines
+# Syntax
 # Variables
 # Methods
 # Strings
@@ -17,21 +17,19 @@ ColdFusion Markup Language (CFML) is a great programming language for beginners 
 
 h2. CFML History
 
-CFML is thought of by many as an old programming language, but it actually has been continuously improved by Allaire, Macromedia, and now Adobe. ColdFusion is often used synonymously with CFML. ColdFusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
+CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. ColdFusion is often used synonymously with CFML. ColdFusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
 
 ColdFusion was released and it grew an audience quickly in the government and public sector. CFML tag syntax resembles HTML and the script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
 
 And you want to learn CFML so here goes!
 
-h2. 1. Code Syntax & Engines
+h2. 1. Code Syntax
 
-h3. Code Syntax
-
-There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions that you use in pages.  You will write one or more instructions in a file then run that file through the CFML engine. Two ColdFusion instructions we will use in this tutorial are @CFSET@ and @CFOUTPUT@. @CFSET@ is used to create a variable and assign it a value. Also used to call functions. @CFCOUTPUT@ displays the variable's value. 
+There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions that you use in pages.  You will write one or more instructions in a file then run that file through the CFML engine. Two CFML instructions we will use in this tutorial are @CFSET@ and @CFOUTPUT@. @CFSET@ is used to create a variable and assign it a value. Also it is used to call functions. @CFCOUTPUT@ displays the variable's value.
 
 We might have a file named @my_program.cfm@ and @Sample.cfc@ like this:
 
-h4. Tag Syntax
+h3. Tag Syntax
 
 <table>
 	<tr>
@@ -64,7 +62,7 @@ h4. Tag Syntax
 	</tr>
 </table>
 
-h4. Script Syntax
+h3. Script Syntax
 
 <table>
 	<tr>
@@ -88,10 +86,6 @@ h4. Script Syntax
 		</td>
 	</tr>
 </table>
-
-h3. Engines
-
-ColdFusion has different CFML engines available: Adobe, Railo, and OpenBD. TODO: ADD MORE INFORMATION
 
 h2. 2. Variables
 
