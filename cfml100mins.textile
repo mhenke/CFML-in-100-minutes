@@ -1,8 +1,8 @@
 h1. CFML in 100 minutes
 
-CFML is a great language for beginners because it was written to make the programmer's job easy and not care if the computer's job is hard. In this brief introduction we'll look at the key language features you need to get started.
+ColdFusion Markup Language (CFML) is a great programming language for beginners because it was written to make the programmer's job easy and not care if the computer's job is hard. In this brief introduction we'll look at the key language features you need to get started.
 
-# Syntax and Engines
+# Syntax & Engines
 # Variables
 # Methods
 # Strings
@@ -17,19 +17,27 @@ CFML is a great language for beginners because it was written to make the progra
 
 h2. CFML History
 
-CFML (ColdFusion Markup Language) is thought of by many as an old programming language, but it actually has been continuously improved by Allaire, Macromedia, and now Adobe. ColdFusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
+CFML is thought of by many as an old programming language, but it actually has been continuously improved by Allaire, Macromedia, and now Adobe. ColdFusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
 
-ColdFusion was released and it grew an audience quickly in the government and public sector. CFML tag syntax resembles HTML and its script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
+TODO: CFML verses ColdFusion
 
-And if you want to learn CFML, here goes!
+ColdFusion was released and it grew an audience quickly in the government and public sector. CFML tag syntax resembles HTML and the script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
+
+And you want to learn CFML so here goes!
 
 h2. 1. Code Syntax & Engines
 
 h3. Code Syntax
 
-There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. You will write one or more instructions in a file then run that file through the CFML engine. We might have a file named my_program.cfm and Sample.cfc like this:
+There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. You will write one or more instructions in a file then run that file through the CFML engine. 
 
-h3. Tag Syntax
+h4. CFSET & CFOUTPUT
+
+This will mention CFSET AND CFOUTPUT
+
+We might have a file named my_program.cfm and Sample.cfc like this:
+
+h4. Tag Syntax
 
 <table>
 	<tr>
@@ -62,7 +70,7 @@ h3. Tag Syntax
 	</tr>
 </table>
 
-h3. Script Syntax
+h4. Script Syntax
 
 <table>
 	<tr>
@@ -163,7 +171,7 @@ h3. Components
 
 In CFML, a ColdFusion component (CFC) file contains data and functions. Components are a building blocks for objects. Objects know information, called attributes, and they can do actions, called methods. In ColdFusion the @cffunction@ tag is used to define methods within a CFC.
 
-For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections well look at a few specific kinds of objects common in CFML.
+For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections we'll look at a few specific kinds of objects common in CFML.
 
 In CFML we define an object using the @cfcomponent@ keyword and save the file as @.cfc@, here’s an example defining the object type @PersonalChef.cfc@:
 
@@ -223,7 +231,7 @@ Inside the CFC we usually define one or more methods using the @cffunction@ keyw
 
 Inside the @cffunction@ keyword we'd put the instructions for how the chef should make the toast.
 
-A class is an *abstract* idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an *instance* it is a realization of the idea chair. It has measurable attributes like height, color, weight. The *class* chair, on the other hand, has an abstract weight, color, and size we can't determine them ahead of time.
+A class is an *abstract* idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an *instance* it is a __realization__  of the idea chair. It has measurable attributes like height, color, weight. The *class* chair, on the other hand, is __abstract__ . The class's weight, color, and size we can't determine them ahead of time.
 
 Once we define a class, we create an @instance@ of that class like this:
 
