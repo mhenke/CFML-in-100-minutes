@@ -25,7 +25,7 @@ And you want to learn CFML so here goes!
 
 h2. 1. Code Syntax
 
-There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions that you use in pages.  You will write one or more instructions in a file then run that file through the CFML engine. Two CFML instructions we will use in this tutorial are @CFSET@ and @CFOUTPUT@. @CFSET@ is used to create a variable and assign it a value. Also it is used to call functions. @CFCOUTPUT@ displays the variable's value.
+There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions that you use in pages.  You will write one or more instructions in a file then run the file through a CFML engine. Two CFML instructions we will use in this tutorial are @CFSET@ and @CFOUTPUT@. @CFSET@ is used to create a variable and assign it a value. Also it is used to call functions. @CFCOUTPUT@ displays a variable's value.
 
 We might have a file named @my_program.cfm@ and @Sample.cfc@ like this:
 
