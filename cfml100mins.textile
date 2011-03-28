@@ -346,9 +346,9 @@ In CFML a string is defined as a quote ( @"@ ) followed by zero or more letters,
 *  @Len@ 
 Call @Len@ on a string to get back the number of characters in the string. For instance @Len("Hello")@ would give you back @5@.
 *  @Replace@ 
-The @Replace@ instruction replaces occurrences of @substring1@ in a string with @substring2@, in a specified scope. The search is case sensitive and the default scope is one. For instance, @Replace("Hello", "e", "")@ would give you back @"hllo"@ after replacing the __first__ occurrence of @"e"@, or @Replace("Good Morning!", "o", "e", "All")"@ would give you @"Geed Merning!"@ 
-*  @Remove@ 
-Call @remove@ to remove characters from a string. For instance, @RemoveChars("hello bob", 2, 5)@ would give you back @"hbob"@.  
+The @Replace@ instruction replaces occurrences of *substring1* in a string with *substring2*, in a specified scope. The search is case sensitive and the scope default is one. For instance, @Replace("Hello", "e", "")@ would give you back @"hllo"@ after replacing the __first__ occurrence of @"e"@, or @Replace("Good Morning!", "o", "e", "All")"@ would give you @"Geed Merning!"@ 
+*  @RemoveChars@ 
+Call @RemoveChars@ to remove characters from a string. For instance, @RemoveChars("hello bob", 2, 5)@ would give you back @"hbob"@.  
 *  @Mid@ 
 The @mid@ function extracts a substring from a string. For instance, I could call @Mid("Welcome to CFML Jumpstart",4,12)@ and it would give you back: @come to CFML@.
 
@@ -363,25 +363,27 @@ Experiment with the following samples in a CFML file:
 <pre>
 <code>
  <cfset tester = "Good Morning Everyone!" />
- <cfset tester.Len />
- <cfoutput>#tester#</cfoutput>
-
- <cfset tester.delete("o") />
- <cfoutput>#tester#</cfoutput>
-
- <cfset tester.gsub("Everyone!","Friends!") /> 
- <cfoutput>#tester#</cfoutput>
-
- <cfset t2 = "sample,data,from,a,CSV" /> 
- <cfset t2.split(",") />
- <cfoutput>#ts#</cfoutput>
+ <cfoutput>#len(tester)#</cfoutput><br>
+ <cfoutput>#Replace(tester, "o", "e", "All")#</cfoutput><br>
+ <cfoutput>#RemoveChars(tester, 2, 5)#</cfoutput><br>
+ <cfset t2 = "sample,data,from,a,CSV" />
+ <cfset t3 = Mid(t2,8,len(t2)) />
+ <cfoutput>#t3#</cfoutput><br>
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
- Script Example
+ <cfscript>
+ tester = "Good Morning Everyone!";
+ writeOutput("#len(tester)#<br/>");
+ writeOutput(Replace(tester, "o", "e", "All") & "<br/>");
+ writeOutput(RemoveChars(tester, 2, 5) & "<br/>");
+ t2 = "sample,data,from,a,CSV";
+ t3 = Mid(t2,8,len(t2));
+ writeOutput(t3);
+</cfscript>
 </code>
 </pre>
 </td>
