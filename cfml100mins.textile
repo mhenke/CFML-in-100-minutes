@@ -13,27 +13,27 @@ ColdFusion Markup Language (CFML) is a great programming language for beginners 
 # Conditionals
 ## Conditional Decisions
 ## Conditional Looping
-# Nulls & Nothingness
+# Nothingness & Null
 
 h2. CFML History
 
-CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. ColdFusion is often used synonymously with CFML. ColdFusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
+CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. The term __ColdFusion__ is often used synonymously with __CFML__. ColdFusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but now ColdFusion includes advanced features for enterprise integration and application development. 
 
-ColdFusion was released and it grew an audience quickly in the government and public sector. CFML tag syntax resembles HTML and the script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
+When ColdFusion was originally released, it grew an audience quickly in the government and public sector. CFML tag syntax resembles HTML and the script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
 
 And you want to learn CFML so here goes!
 
 h2. 1. Code Syntax
 
-There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions that you use in pages.  You will write one or more instructions in a file then run the file through a CFML engine. Two CFML instructions we will use in this tutorial are @CFSET@ and @CFOUTPUT@. @CFSET@ is used to create a variable and assign it a value. Also it is used to call functions. @CFCOUTPUT@ displays a variable's value.
+There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages.  You will write one or more instructions in a file then run the file through a CFML engine. Two CFML instructions we will use in this tutorial are @CFSET@ and @CFOUTPUT@. @CFSET@ is used to create a variable and assign it a value. Also it is used to call functions. @CFCOUTPUT@ displays a variable's value.
 
-We might have a file named @my_program.cfm@ and @Sample.cfc@ like this:
+We might have a file named @myprogram.cfm@ and @Sample.cfc@ like this:
 
 h3. Tag Syntax
 
 <table>
 	<tr>
-		<td>my_program.cfm</td>
+		<td>myprogram.cfm</td>
 		<td>Sample.cfc</td>
 	</tr>
 	<tr>
@@ -66,21 +66,30 @@ h3. Script Syntax
 
 <table>
 	<tr>
-		<td>my_program.cfm</td>
+		<td>myprogram.cfm</td>
 		<td>Sample.cfc</td>
 	</tr>
 	<tr>
 		<td>
 <pre>
 <code>
-  script example here
+<cfscript>
+ s = CreateObject("component","Sample");
+ writeOutput( s.hello() );
+</cfscript>
 </code>
 </pre>
 		</td>
 		<td>
 <pre>
 <code>
- script example here
+<cfscript>
+component {
+ public string function hello(){
+  return( "Hello, World!" );
+ }
+}
+</cfscript>
 </code>
 </pre>
 		</td>
@@ -137,13 +146,13 @@ Go into a CFML file, enter in these example instructions, and observe the output
   g = d & a & e;
   b = "hi!";
   
-  writeOutput("a = " & a & "<br/>");
-  writeOutput("b = " & b & "<br/>");
-  writeOutput("c = " & c & "<br/>");
-  writeOutput("d = " & d & "<br/>");
-  writeOutput("e = " & e & "<br/>");
-  writeOutput("f = " & f & "<br/>");
-  writeOutput("g = " & g & "<br/>");
+  writeOutput("a = #a#"<br/>");
+  writeOutput("b = #b#"<br/>");
+  writeOutput("c = #c#"<br/>");
+  writeOutput("d = #d#"<br/>");
+  writeOutput("e = #e#"<br/>");
+  writeOutput("f = #f#"<br/>");
+  writeOutput("g = #g#"<br/>");
  </cfscript>
 </code>
 </pre>
