@@ -119,13 +119,13 @@ Go into a CFML file, enter in these example instructions, and observe the output
  <cfset b = "hi!" />
 
  <cfoutput>
-  a = #a# /><br/>
-  b = #b# /><br/>
-  c = #c# /><br/>
-  d = #d# /><br/>
-  e = #e# /><br/>
-  f = #f# /><br/>
-  g = #g# /><br/>
+  a = #a#<br/>
+  b = #b#<br/>
+  c = #c#<br/>
+  d = #d#<br/>
+  e = #e#<br/>
+  f = #f#<br/>
+  g = #g#<br/>
  </cfoutput>
 </code>
 </pre>
