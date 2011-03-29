@@ -12,6 +12,7 @@ Please add yourself if you helped
 
 Mike Henke (henke.mike@gmail.com) - https://github.com/mhenke/
 russplaysguitar - https://github.com/russplaysguitar/
+Daniel Short (@danshort on twitter) - http://www.dansshorts.com
 
 h2. Git Workflow for Contributors
 
