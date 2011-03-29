@@ -219,7 +219,6 @@ Inside the CFC we usually define one or more methods using the @cffunction@ keyw
 <td>
 <pre>
 <code>
-<cfscript>
 component {
  public string function make_toast(){
   makeToast = "Making your toast!";
