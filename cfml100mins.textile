@@ -875,7 +875,7 @@ h2. 9. Nulls & Nothingness
 
 What is nothingness? Is there nothingness only in outer space? Really, when we think of nothing isn't it just the absence of something? Ok, thats too much philosophy
 
-ColdFusion does not have a way of referring to nothingness. However, ColdFusion can recieve a @NULL@ value from an external source. ColdFusion will maintain the @NULL@ value until you use it. Then ColdFusion will convert the @NULL@ into an empty string.
+Prior to ColdFusion 9, ColdFusion did not have a way of referring to nothingness. However, ColdFusion could recieve a @NULL@ value from an external source. ColdFusion would maintain the @NULL@ value until you tried to use it, and then ColdFusion would convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. ColdFusion 9, however, has added greater support for @NULL@ values, allowing you to return a @NULL@ value from a function and use the @IsNull()@ function to test for @NULL@ values.
 
 If you have three eggs, eat three eggs, then you might think you have __nothing__ , but in terms of eggs you have @0@. Zero is something, its a number, and its __not nothing__ .
 
