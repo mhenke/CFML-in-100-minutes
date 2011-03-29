@@ -260,30 +260,6 @@ Once we define a class, we create an @instance@ of that class like this:
 
 We're calling the @CreateObject@ instruction on the class @PersonalChef@ and storing it into the variable named @frank@. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: @object.method_name()@. So if you have a person named @frank@ you would tell him to make toast by calling @frank.make_toast()@.
 
-In ColdFusion 9 you can also use the @New@ operator to create a new instance of an object and call it's @init()@ method (if it exists). Any arguments supplied to the object using the @New@ operator will be passed as arguments to the @init()@ method of the component. The @init()@ method should return the object instance using @return this;@ in order to have the same expected behavior as the @CreateObject@ statement. If no @init()@ method exists, no errors will be thrown, and the object will be returned normally:
-
-<table>
-<tr>
-<td>tag</td><td>script</td>
-</tr>
-<tr>
-<td>
-<pre>
-<code>
- <cfset frank = New PersonalChef() />
-</code>
-</pre>
-</td>
-<td>
-<pre>
-<code>
- frank = New PersonalChef();
-</code>
-</pre>
-</td>
-</tr>
-</table>
-
 h3. Method Parameters
 
 Sometimes methods take one or more _parameters_ that tell them *how* to do what they're supposed to do. For instance, I might call @frank.make_toast('burned')@ for him to burn my toast. Or maybe he has another method where I call @frank.make_breakfast("toast","eggs")@ for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the @cfargument@ instruction, it'll look like this:
@@ -356,6 +332,32 @@ component {
   return this;
  }
 }
+</code>
+</pre>
+</td>
+</tr>
+</table>
+
+h3. New Operator in ColdFusion 9
+
+In ColdFusion 9 you can also use the @New@ operator to create a new instance of an object and call it's @init()@ method (if it exists). Any arguments supplied to the object using the @New@ operator will be passed as arguments to the @init()@ method of the component. The @init()@ method should return the object instance using @return this;@ in order to have the same expected behavior as the @CreateObject@ statement. If no @init()@ method exists, no errors will be thrown, and the object will be returned normally:
+
+<table>
+<tr>
+<td>tag</td><td>script</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ <cfset frank = New PersonalChef() />
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ frank = New PersonalChef();
 </code>
 </pre>
 </td>
