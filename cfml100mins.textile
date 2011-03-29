@@ -144,13 +144,13 @@ Go into a CFML file, enter in these example instructions, and observe the output
   g = d & a & e;
   b = "hi!";
   
-  writeOutput("a = #a#"<br/>");
-  writeOutput("b = #b#"<br/>");
-  writeOutput("c = #c#"<br/>");
-  writeOutput("d = #d#"<br/>");
-  writeOutput("e = #e#"<br/>");
+  writeOutput("a = #a#<br/>");
+  writeOutput("b = #b#<br/>");
+  writeOutput("c = #c#<br/>");
+  writeOutput("d = #d#<br/>");
+  writeOutput("e = #e#<br/>");
   writeOutput("f = #f#"<br/>");
-  writeOutput("g = #g#"<br/>");
+  writeOutput("g = #g#<br/>");
  </cfscript>
 </code>
 </pre>
