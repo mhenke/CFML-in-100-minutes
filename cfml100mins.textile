@@ -8,8 +8,8 @@ ColdFusion Markup Language (CFML) is a great programming language for beginners 
 # Strings
 # Numbers
 # Queries
-# Collection: Arrays
-# Collection: Structures
+# Arrays
+# Structures
 # Conditionals
 ## Conditional Decisions
 ## Conditional Looping
@@ -570,7 +570,7 @@ h2. 6. Queries
 
 TODO: More about Queries objects in CFML.
 
-h2. 7. Collection: Arrays
+h2. 7. Arrays
 
 Often we need to organize a group and put them into a __collection__. There are two main types of collections: *arrays* and *structures*.
 
@@ -682,7 +682,7 @@ There are lots of cool things to do with an array. You can rearrange the order o
 
 The color #{target} is in position #{position}"We use arrays whenever we need a list where the elements are in a specific order.
 
-h2. 8. Collection: Structures
+h2. 8. Structures
 
 A structure is a collection of data where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read as look in the collection named @science@ and find the thing named @Joey@.
 
@@ -879,7 +879,7 @@ h2. 10. Nulls & Nothingness
 
 What is __nothingness__? Is there nothingness only in outer space? Really, when we think of __nothing__ isn't it just the absence of something? Ok, thats too much philosophy
 
-ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion could recieve a @NULL@ value from an external source and would maintain the @NULL@ value until you tried to use it. ColdFusion would convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for @NULL@ values, ColdFusion allows you to return a @NULL@ value from a function. @IsNull()@ instruction will test for @NULL@ values and return @true@ or @false@.
+ColdFusion did not have a way of referring to nothingness until version 9. Prior to 9, ColdFusion could recieve a @NULL@ value from an external source and would maintain the @NULL@ value until you tried to use it. ColdFusion would convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for @NULL@ values, ColdFusion allows you to return a @NULL@ value from a function. @IsNull()@ instruction will test for @NULL@ values and return @true@ or @false@.
 
 If you have three eggs, eat three eggs, then you might think you have __nothing__ , but in terms of eggs you have @0@. Zero is something, its a number, and its __not nothing__ .
 
