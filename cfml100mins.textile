@@ -7,9 +7,9 @@ ColdFusion Markup Language (CFML) is a great programming language for beginners 
 # Methods
 # Strings
 # Numbers
-# Collections
-# Arrays
-# Structures
+# Queries
+# Collection: Arrays
+# Collection: Structures
 # Conditionals
 ## Conditional Decisions
 ## Conditional Looping
@@ -23,7 +23,7 @@ When ColdFusion was originally released, it grew an audience quickly in the gove
 
 And you want to learn CFML so here goes!
 
-h2. 1. Code Syntax
+h2. 1. Syntax
 
 There are two ways to write CFML code. You can use the tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages.  You will write one or more instructions in a file then run the file through a CFML engine. Two CFML instructions we will use in this tutorial are @CFSET@ and @CFOUTPUT@. @CFSET@ is used to create a variable and assign it a value. Also it is used to call functions. @CFCOUTPUT@ displays a variable's value.
 
@@ -244,21 +244,23 @@ Once we define a class, we create an @instance@ of that class like this:
 <td>
 <pre>
 <code>
- <cfset frank = CreateObject("component","PersonalChef") />
+ <cfset frank = New PersonalChef() />
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
- frank = CreateObject("component","PersonalChef");
+ frank = New PersonalChef();
 </code>
 </pre>
 </td>
 </tr>
 </table>
 
-We're calling the @CreateObject@ instruction on the class @PersonalChef@ and storing it into the variable named @frank@. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: @object.method_name()@. So if you have a person named @frank@ you would tell him to make toast by calling @frank.make_toast()@.
+We're calling the @New@ instruction on the class @PersonalChef@ and storing it into the variable named @frank@. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: @object.method_name()@. So if you have a person named @frank@ you would tell him to make toast by calling @frank.make_toast()@.
+
+The @New@ instruction creates a new instance of an object and call it’s init() method (if it exists). Any arguments supplied to the object will be passed as arguments to the init() method of the component. The init() method should return the object instance using return this; in order to have the same expected behavior as the @CreateObject@ statement. If no init() method exists, no errors will be thrown, and the object will be returned normally:
 
 h3. Method Parameters
 
@@ -273,7 +275,7 @@ Sometimes methods take one or more _parameters_ that tell them *how* to do what 
 <pre>
 <code>
  <cfcomponent>
-  <cffunction name="make_toast">
+  <cffunction name="make_toast" returnType="string">
    <cfargument name="color" required="yes">
     <cfset makeToast = "Making your toast #arguments.color#!" />
   </cffunction>
@@ -285,7 +287,7 @@ Sometimes methods take one or more _parameters_ that tell them *how* to do what 
 <pre>
 <code>
 component {
- public string function make_toast(String color){
+ public string function make_toast(required String color){
   makeToast = "Making your toast #arguments.color#!";
  }
 }
@@ -314,7 +316,7 @@ For the purposes of our next section I'm going to return the chef instance itsel
 <pre>
 <code>
  <cfcomponent>
-  <cffunction name="make_toast">
+  <cffunction name="make_toast" returnType="component">
    <cfargument name="color" required="yes">
     <cfset this.makeToast = "Making your toast #arguments.color#!" />
     <cfreturn this />
@@ -590,11 +592,13 @@ In this example were using the @times@ method with a @do@ / @end@ block. When we
 </tr>
 </table>
 
-h2. 7. Collections
+h2. 6. Queries
 
-Often we need to organize a group and put them into a collection. There are two main types of collections: *arrays* and *structures*.
+TODO: More about Queries objects in CFML.
 
-h4. Arrays
+h2. 7. Collection: Arrays
+
+Often we need to organize a group and put them into a __collection__. There are two main types of collections: *arrays* and *structures*.
 
 An *array* is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the *indices*. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The *index* is the address of a specific element inside the array. In CFML the index always begins with @1@. An array is defined in CFML as an opening [, then zero or more elements, then a closing ]. Try out this code:
 
@@ -704,7 +708,7 @@ There are lots of cool things to do with an array. You can rearrange the order o
 
 The color #{target} is in position #{position}"We use arrays whenever we need a list where the elements are in a specific order.
 
-h4. Structures
+h2. 8. Collection: Structures
 
 A structure is a collection of data where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read as look in the collection named @science@ and find the thing named @Joey@.
 
@@ -768,13 +772,13 @@ The last chunk of the example calls the @keys@ method on the structure @ages@. @
 
 While that last part probably seemed complicated, its just to illustrate that although structures are by nature unordered, you can still manipulate and output the data in ordered, meaningful ways.
 
-h2. 8. Conditionals
+h2. 9. Conditionals
 
 Conditional statements evaluate to @true@ or @false@ only. The most common conditional operators are @==@ (equal), @>@ (greater than), @>=@ (greater than or equal to), @<@ (less than), and @<=@ (less than or equal to).
 
 Some objects also have methods which return a @true@ or @false@, so they're used in conditional statements. For example every object has the method @.nil?@ which is @true@ only when the object is @nil@. Arrays have a method named @.include?@ which returns true if the array includes the specified element.
 
-h4. Conditional Branching / Instructions
+h3. Conditional Decisions
 
 Why do we have conditional statements? Most often its to control conditional instructions, especially @if@ / @elsif@ / @else@ structures. Lets write an example by adding a method to our @PersonalChef@ class:
 
@@ -829,7 +833,7 @@ An @if@ block has
 
 Only _one_ section of the @if@ / @elsif@ / @else@ structure can have its instructions run. If the @if@ is @true@, for instance, CFML will never look at the @elsif@. Once one block executes, thats it.
 
-h4. Conditional Looping
+h3. Conditional Looping
 
 Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your @personal_chef.rb@ :
 
@@ -897,9 +901,9 @@ The #1 mistake people encounter when writing conditional statements is the diffe
 
 You can also combine conditional statements using logical operators. The most common are known aslogical andandlogical or. In CFML you can write a logical and with either the work @and@ or with double ampersands like this: @&&@. You can write a logical or with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
 
-h2. 9. Nulls & Nothingness
+h2. 10. Nulls & Nothingness
 
-What is nothingness? Is there nothingness only in outer space? Really, when we think of nothing isn't it just the absence of something? Ok, thats too much philosophy
+What is __nothingness__? Is there nothingness only in outer space? Really, when we think of __nothing__ isn't it just the absence of something? Ok, thats too much philosophy
 
 ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion could recieve a @NULL@ value from an external source and would maintain the @NULL@ value until you tried to use it. ColdFusion would convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for @NULL@ values, ColdFusion allows you to return a @NULL@ value from a function. @IsNull()@ instruction will test for @NULL@ values and return @true@ or @false@.
 
