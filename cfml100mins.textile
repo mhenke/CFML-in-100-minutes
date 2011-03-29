@@ -433,7 +433,7 @@ What we need to do is combine a variable with the string. There are two ways to 
 
 @today =  "Saturday"@
 
-In the first line we setup a variable to hold the day of the week. Then we'll printed the string @Happy@ combined with the value of the variable @today@ and the string @!@. You might be thinking. What was the point of that since we still just wrote Saturday in the first line? Ok, well, if you were writing a real program you'd use CFMLs built-in date functions like this:
+In the first line we setup a variable to hold the day of the week. Then we'll printed the string __Happy__ combined with the value of the variable @today@ and the string __!__. You might be thinking. What was the point of that since we still just wrote __Saturday__ in the first line? Ok, well, if you were writing a real program you'd use CFMLs built-in date functions like this:
 
 @today = DayOfWeek(Now())@
 
@@ -469,9 +469,9 @@ In the first line we setup a variable to hold the day of the week. Then we'll pr
 </tr>
 </table>
 
-Great, no errors and our output looks correct. There is another combination method called _string interpolation_.
+Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick. There is another string combination method called _string interpolation_.
 
- *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#{}@ to mark where in a string the value of a variable should be inserted. Inside those brackets we can put any variables or CFML code which will be evaluated, converted to a string, and output in that spot. Our previous example could be rewritten like this:
+ *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#@ around the @variable@ where in a string the value should be inserted. Inside those hashes we can put any variables and output in that spot. Our previous example could be rewritten like this:
 
 <table>
 <tr>
@@ -505,33 +505,7 @@ Great, no errors and our output looks correct. There is another combination meth
 
 If you compare the output you'll see that this second method gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
 
-You can also put code or calculations inside the brackets when interpolating like this example:
-
-<table>
-<tr>
-<td>tag</td><td>script</td>
-</tr>
-<tr>
-<td>
-<pre>
-<code>
- modifier = "very " 
- mood = "excited" 
- puts "I am #{modifier * 3}#{mood} for today's class!"
-</code>
-</pre>
-</td>
-<td>
-<pre>
-<code>
- Script Example Here
-</code>
-</pre>
-</td>
-</tr>
-</table>
-
-Basically interpolating means evaluate the code inside this @#{}@ wrapper and put it into this string. You can see the first interpolation has a multiplication inside there so it'll repeat the string @modifier@ three times but the second will just plug in the value of the variable @mood@.
+Basically interpolating means evaluate the code inside this @#@ wrapper and put it into the string.
 
 h2. 5. Numbers
 
@@ -607,16 +581,23 @@ An *array* is a number-indexed list. Picture a city block of houses. Together th
 <pre>
 <code>
  <cfset favorite_colors = ["red","blue","green","black","brown"] />
- <cfdump var="#favorite_colors[3]#" />
- <cfdump var="#favorite_colors.1#" />
- <cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" />
+ <cfdump var="#favorite_colors#" /><br>
+ <cfdump var="#favorite_colors[2]#" /><br>
+ <cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" /><br>
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
- Script Example Here
+  <cfscript>
+  set favorite_colors = ["red","blue","green","black","brown"];
+  writeDump(favorite_colors);
+  writeOutput("<br>");
+  writeDump(favorite_colors[2]);
+  writeOutput("<br>");
+  writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
+  </cfscript>
 </code>
 </pre>
 </td>
@@ -633,15 +614,24 @@ Keep going with these, but note that the first line below should give you some u
 <td>
 <pre>
 <code>
- puts favorite_colors[5] favorite_colors<<"orange" 
- puts favorite_colors[5] puts favorite_colors
+ <cfset ArrayAppend(favorite_colors, "orange") />
+ <cfdump var="#favorite_colors#" /><br>
+ <cfset ArraySort(favorite_colors,"text") />
+ <cfdump var="#favorite_colors#" /><br>
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
- Script Example Here
+ <cfscript>
+ set = ArrayAppend(favorite_colors, "orange");
+ writeDump(favorite_colors);
+ writeOutput("<br>");
+ set = ArraySort(favorite_colors,"text");
+ writeDump(var=favorite_colors);
+ writeOutput("<br>"); 
+ </cfscript>
 </code>
 </pre>
 </td>
@@ -654,7 +644,7 @@ In order to get a specific element in the array you use the syntax @arrayname[in
 * Why did the fifth line of the example give you @nil@ ? (For more discussion of @nil@, check out the very end of this document).
 * What did the @<<@ operator do to the collection?
 
-There are lots of cool things to do with an array. You can rearrange the order of the elements using the @sort@ method. You can iterate through each element using the @each@ method. You can mash them together into one string using the @join@ method. You can find the address of a specific element by using the @index@ method. You can ask an array if an element is present with the @include?@ method. Try out this example that brings a bunch of things together:
+There are lots of cool things to do with an array. You can rearrange the order of the elements using the @ArraySort@ instruction. You can iterate through each element using the @each@ method. You can mash them together into one string using the @join@ method. You can find the address of a specific element by using the @index@ method. You can ask an array if an element is present with the @include?@ method. Try out this example that brings a bunch of things together:
 
 <table>
 <tr>
