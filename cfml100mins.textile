@@ -168,7 +168,7 @@ In CFML, a ColdFusion component (CFC) file contains data and functions. Componen
 
 For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections we'll look at a few specific instructions in CFML.
 
-In CFML we define an object using the @cfcomponent@ keyword and save the file as @.cfc@, here’s an example defining the object type @PersonalChef.cfc@:
+In CFML we define an object using the @cfcomponent@ instruction and save the file as @.cfc@, here’s an example defining the object type @PersonalChef.cfc@:
 
 <table>
 <tr>
@@ -198,7 +198,7 @@ component {
 
 h3. Methods
 
-Inside the CFC we usually define one or more methods using the @cffunction@ keyword like this:
+Inside the CFC we usually define one or more methods using the @cffunction@ instruction like this:
 
 <table>
 <tr>
@@ -230,7 +230,7 @@ component {
 </tr>
 </table>
 
-Inside the @cffunction@ keyword we'd put the code for how the chef should make the toast.
+Inside the @cffunction@ instruction we'd put the code for how the chef should make the toast.
 
 A class is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an *instance*. It is a __realization__  of the idea chair. It has measurable attributes like height, color, weight. The *class* chair, on the other hand, is __abstract__ . The class's weight, color, and size we can't determine them ahead of time.
 
@@ -262,7 +262,7 @@ We're calling the @CreateObject@ instruction on the class @PersonalChef@ and sto
 
 h3. Method Parameters
 
-Sometimes methods take one or more _parameters_ that tell them *how* to do what they're supposed to do. For instance, I might call @frank.make_toast('burned')@ for him to burn my toast. Or maybe he has another method where I call @frank.make_breakfast("toast","eggs")@ for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the @cfargument@ keyword, it'll look like this:
+Sometimes methods take one or more _parameters_ that tell them *how* to do what they're supposed to do. For instance, I might call @frank.make_toast('burned')@ for him to burn my toast. Or maybe he has another method where I call @frank.make_breakfast("toast","eggs")@ for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the @cfargument@ instruction, it'll look like this:
 
 <table>
 <tr>
@@ -328,7 +328,7 @@ For the purposes of our next section I'm going to return the chef instance itsel
 <code>
 component {
  public component function make_toast(required String color){
-  makeToast = "Making your toast #arguments.color#!";
+  this.makeToast = "Making your toast #arguments.color#!";
   return this;
  }
 }
@@ -573,7 +573,7 @@ The @times@ method can be used to repeat one or more instructions a certain numb
 </tr>
 </table>
 
-In this example were using the @times@ method with a @do@ / @end@ block. When we call the @times@ method we need to tell it what to do that number of times. CFML looks for the starting keyword @do@ and the ending keyword @end@. Each instruction between the @do@ and @end@ will be executed this number of @times@. Try this example with multiple instructions:
+In this example were using the @times@ method with a @do@ / @end@ block. When we call the @times@ method we need to tell it what to do that number of times. CFML looks for the starting instruction @do@ and the ending instruction @end@. Each instruction between the @do@ and @end@ will be executed this number of @times@. Try this example with multiple instructions:
 
 <table>
 <tr>
