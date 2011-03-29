@@ -11,6 +11,7 @@ h2. Contributors
 Please add yourself if you helped
 
 Mike Henke (henke.mike@gmail.com) - https://github.com/mhenke/
+russplaysguitar - https://github.com/russplaysguitar/
 
 h2. Git Workflow for Contributors
 
