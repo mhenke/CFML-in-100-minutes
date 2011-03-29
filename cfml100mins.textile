@@ -4,7 +4,7 @@ ColdFusion Markup Language (CFML) is a great programming language for beginners 
 
 # Syntax
 # Variables
-# Methods
+# Components, Methods, and Parameters
 # Strings
 # Numbers
 # Queries
@@ -234,7 +234,7 @@ Inside the @cffunction@ instruction we'd put the code for how the chef should ma
 
 A class is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an *instance*. It is a __realization__  of the idea chair. It has measurable attributes like height, color, weight. The *class* chair, on the other hand, is __abstract__ . The class's weight, color, and size we can't determine them ahead of time.
 
-Once we define a class, we create an @instance@ of that class like this:
+Once we define a class, we create an instance of that class like this:
 
 <table>
 <tr>
@@ -334,32 +334,6 @@ component {
   return this;
  }
 }
-</code>
-</pre>
-</td>
-</tr>
-</table>
-
-h3. New Operator in ColdFusion 9
-
-In ColdFusion 9 you can also use the @New@ operator to create a new instance of an object and call it's @init()@ method (if it exists). Any arguments supplied to the object using the @New@ operator will be passed as arguments to the @init()@ method of the component. The @init()@ method should return the object instance using @return this;@ in order to have the same expected behavior as the @CreateObject@ statement. If no @init()@ method exists, no errors will be thrown, and the object will be returned normally:
-
-<table>
-<tr>
-<td>tag</td><td>script</td>
-</tr>
-<tr>
-<td>
-<pre>
-<code>
- <cfset frank = New PersonalChef() />
-</code>
-</pre>
-</td>
-<td>
-<pre>
-<code>
- frank = New PersonalChef();
 </code>
 </pre>
 </td>
