@@ -260,7 +260,7 @@ Once we define a class, we create an instance of that class like this:
 
 We're calling the @New@ instruction on the class @PersonalChef@ and storing it into the variable named @frank@. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: @object.method_name()@. So if you have a person named @frank@ you would tell him to make toast by calling @frank.make_toast()@.
 
-The @New@ instruction creates a new instance of an object and call it’s init() method (if it exists). Any arguments supplied to the object will be passed as arguments to the init() method of the component. The init() method should return the object instance using return this; in order to have the same expected behavior as the @CreateObject@ statement. If no init() method exists, no errors will be thrown, and the object will be returned normally:
+The @New@ instruction creates a new instance of an object and calls it’s init() method (if existing). Any arguments supplied to the object will be passed to the init() method. The init() method should return the object instance using @return this;@ in order to have the same expected behavior as the @CreateObject@ statement. If no init() method exists, the object will be returned normally.
 
 h3. Method Parameters
 
