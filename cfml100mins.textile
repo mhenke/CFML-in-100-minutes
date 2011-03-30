@@ -390,12 +390,12 @@ Experiment with the following samples in a CFML file:
 <pre>
 <code>
  <cfset tester = "Good Morning Everyone!" />
- <cfoutput>#len(tester)#</cfoutput><br>
- <cfoutput>#Replace(tester, "o", "e", "All")#</cfoutput><br>
- <cfoutput>#RemoveChars(tester, 2, 5)#</cfoutput><br>
+ <cfoutput>#len(tester)#<br></cfoutput>
+ <cfoutput>#Replace(tester, "o", "e", "All")#<br></cfoutput>
+ <cfoutput>#RemoveChars(tester, 2, 5)#<br></cfoutput>
  <cfset t2 = "sample,data,from,a,CSV" />
  <cfset t3 = Mid(t2,8,len(t2)) />
- <cfoutput>#t3#</cfoutput><br>
+ <cfoutput>#t3#<br></cfoutput>
 </code>
 </pre>
 </td>
