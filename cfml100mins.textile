@@ -879,7 +879,7 @@ h2. 10. Nulls & Nothingness
 
 What is __nothingness__? Is there nothingness only in outer space? Really, when we think of __nothing__ isn't it just the absence of something? Ok, thats too much philosophy
 
-ColdFusion did not have a way of referring to nothingness until version 9. Prior to 9, ColdFusion could recieve a @NULL@ value from an external source and would maintain the @NULL@ value until you tried to use it. ColdFusion would convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for @NULL@ values, ColdFusion allows you to return a @NULL@ value from a function. @IsNull()@ instruction will test for @NULL@ values and return @true@ or @false@.
+ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a @NULL@ value from an external source and maintain the @NULL@ value until you try to use it. ColdFusion will convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for @NULL@ values, ColdFusion allows you to return a @NULL@ value from a function. @IsNull()@ instruction will test for @NULL@ values and return @true@ or @false@.
 
 If you have three eggs, eat three eggs, then you might think you have __nothing__ , but in terms of eggs you have @0@. Zero is something, its a number, and its __not nothing__ .
 
@@ -893,27 +893,28 @@ A large percentage of the errors you encounter while writing CFML code will invo
 <td>
 <pre>
 <code>
- def make_eggs(quantity) 
-  if quantity.nil? 
-   puts "How am I supposed to make nothingness number of eggs?" 
-  else 
-   puts "Making your #{quantity} eggs!" 
-   quantity.times do 
-    puts "Making an Egg." 
-   end 
-  end 
- return self 
- end
+ tag example
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
+ public component function make_eggs(numeric quantity){
+  if(IsNull(arguments.quantity)) {
+   this.makeEggs = "How am I supposed to make nothingness number of eggs?";
+  } else {
+   this.makeEggs = "Making your #arguments.quantity# eggs!";
+   this.myEggs = ArrayNew(1);
+    do { ArrayAppend(this.myEggs, "Making an Egg."); } 
+	while (ArrayLen(this.myEggs) LT arguments.quantity);
+  }
+  return this;
+ }
 </code>
 </pre>
 </td>
 </tr>
 </table>
 
-Reload the file, call @frank.make_eggs(3)@ then try @frank.make_eggs(nil)@. The only method we can rely on @nil@ executing is @.nil?@, pretty much anything else will create an error.
+Reload the file, call @frank.make_eggs(3)@ then try @frank.make_eggs()@. TODO: More Explaination
