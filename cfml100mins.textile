@@ -906,8 +906,8 @@ A large percentage of the errors you encounter while writing CFML code will invo
   } else {
    this.makeEggs = "Making your #arguments.quantity# eggs!";
    this.yourEggs = ArrayNew(1);
-    do { ArrayAppend(this.yourEggs, "Making an Egg."); } 
-	while (ArrayLen(this.yourEggs) LT arguments.quantity);
+   while (ArrayLen(this.yourEggs) LT arguments.quantity)
+	{ ArrayAppend(this.yourEggs, "Making an Egg."); };
   }
   return this;
  }
