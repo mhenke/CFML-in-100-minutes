@@ -879,7 +879,7 @@ h2. 10. Nulls & Nothingness
 
 What is __nothingness__? Is there nothingness only in outer space? Really, when we think of __nothing__ isn't it just the absence of something? Ok, thats too much philosophy
 
-ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a @NULL@ value from an external source and maintain the @NULL@ value until you try to use it. ColdFusion will convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for @NULL@ values, ColdFusion allows you to return a @NULL@ value from a function. @IsNull()@ instruction will test for @NULL@ values and return @true@ or @false@.
+ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a @NULL@ value from an external source and maintain the @NULL@ value until you try to use it. ColdFusion will convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for @NULL@ values, ColdFusion allows you to pass in and return a @NULL@ value from a method. @IsNull()@ instruction will test for @NULL@ values and return @true@ or @false@.
 
 If you have three eggs, eat three eggs, then you might think you have __nothing__ , but in terms of eggs you have @0@. Zero is something, its a number, and its __not nothing__ .
 
@@ -905,9 +905,9 @@ A large percentage of the errors you encounter while writing CFML code will invo
    this.makeEggs = "How am I supposed to make nothingness number of eggs?";
   } else {
    this.makeEggs = "Making your #arguments.quantity# eggs!";
-   this.myEggs = ArrayNew(1);
-    do { ArrayAppend(this.myEggs, "Making an Egg."); } 
-	while (ArrayLen(this.myEggs) LT arguments.quantity);
+   this.yourEggs = ArrayNew(1);
+    do { ArrayAppend(this.yourEggs, "Making an Egg."); } 
+	while (ArrayLen(this.yourEggs) LT arguments.quantity);
   }
   return this;
  }
