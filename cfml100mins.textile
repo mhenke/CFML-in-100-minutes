@@ -340,7 +340,7 @@ component {
 
 h3. New Operator in ColdFusion 9
 
-In ColdFusion 9 you can also use the @New@ operator to create a new instance of an object and call it's @init()@ method (if it exists). Any arguments supplied to the object using the @New@ operator will be passed as arguments to the @init()@ method of the component. The @init()@ method should return the object instance using @return this;@ in order to have the same expected behavior as the @CreateObject@ statement. If no @init()@ method exists, no errors will be thrown, and the object will be returned normally:
+In ColdFusion 9 you can also use the @New@ operator to create a new instance of an object and call its @init()@ method (if it exists). Any arguments supplied to the object using the @New@ operator will be passed as arguments to the @init()@ method of the component. The @init()@ method should return the object instance using @return this;@ in order to have the same expected behavior as the @CreateObject@ statement. If no @init()@ method exists, no errors will be thrown, and the object will be returned normally:
 
 <table>
 <tr>
