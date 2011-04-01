@@ -786,7 +786,7 @@ Some objects also have methods which return a @true@ or @false@, so they're used
 
 h3. Conditional Decisions
 
-Why do we have conditional statements? Most often its to control conditional instructions, especially @if@ / @elsif@ / @else@ structures. Lets write an example by adding a method to our @PersonalChef@ class:
+Why do we have conditional statements? Most often its to control conditional instructions, especially @if@ / @else if@ / @else@ structures. Lets write an example by adding a method to our @PersonalChef@ class:
 
 <table>
 <tr>
@@ -840,11 +840,11 @@ An @if@ block has
 * Zero or more @else if@ statements whose instructions are executed only if the statement is true
 * Zero or one @else@ statement whose instructions are executed if no @if@ nor @else if@ statements were true
 
-Only _one_ section of the @if@ / @elsif@ / @else@ structure can have its instructions run. If the @if@ is @true@, for instance, CFML will never look at the @else if@. Once one block executes, thats it.
+Only _one_ section of the @if@ / @else if@ / @else@ structure can have its instructions run. If the @if@ is @true@, for instance, CFML will never look at the @else if@. Once one block executes, thats it.
 
 h3. Conditional Looping
 
-Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your @personal_chef.rb@ :
+Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your @PersonalChef.cfc@ :
 
 <table>
 <tr>
@@ -854,19 +854,21 @@ Another time we use conditional statements is when we want to repeat a set of in
 <td>
 <pre>
 <code>
- def countdown(counter) 
-  while counter>0 
-   puts "The counter is #{counter}" 
-   counter = counter - 1 
-  end 
- return self 
- end
+ the tag example
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
+ public component function countdown(numeric counter){
+  this.timer = "";
+  while (counter > 0) { 
+   this.timer &= "The counter is #arguments.counter#.<br>";
+   counter = counter--;
+  }
+  return this;
+ }
 </code>
 </pre>
 </td>
