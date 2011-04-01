@@ -102,7 +102,7 @@ Go into a CFML file, enter in these example instructions, and observe the output
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -172,7 +172,7 @@ In CFML we define an object using the @cfcomponent@ instruction and save the fil
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -202,7 +202,7 @@ Inside the CFC we usually define one or more methods using the @cffunction@ inst
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -238,7 +238,7 @@ Once we define a class, we create an instance of that class like this:
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -268,7 +268,7 @@ Sometimes methods take one or more _parameters_ telingl them *how* to do what th
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -309,7 +309,7 @@ For the purposes of our next section I'm going to return the chef instance itsel
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -357,7 +357,7 @@ Experiment with the following samples in a CFML file:
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -395,7 +395,7 @@ Often a string may store a list. A list isn't the best for performance and usage
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -443,7 +443,7 @@ In the first line we setup a variable to hold the day of the week. Then we'll pr
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -477,7 +477,7 @@ Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -515,7 +515,7 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -545,7 +545,7 @@ In this example were using the @for@ method with a @do@ / @end@ block. When we c
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -586,7 +586,7 @@ An *array* is a number-indexed list. Picture a city block of houses. Together th
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -620,7 +620,7 @@ Keep going with these, but note that the first line below should give you some u
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -660,7 +660,7 @@ There are lots of cool things to do with an array. You can rearrange the order o
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -700,7 +700,7 @@ ages = {"joey" =>12, "jill" =>14, "jack" =>11, "jane" =>12} puts "Joey is #{ages
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -727,7 +727,7 @@ In the second chunk of the example, we add a new value to the structure. Since t
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -766,7 +766,7 @@ Why do we have conditional statements? Most often its to control conditional ins
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -824,7 +824,7 @@ Another time we use conditional statements is when we want to repeat a set of in
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -857,7 +857,7 @@ I most often use @while@, but you can achieve the same results using @until@ as 
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
@@ -900,7 +900,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
 
 <table>
 <tr>
-<td>tag</td><td>script</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
