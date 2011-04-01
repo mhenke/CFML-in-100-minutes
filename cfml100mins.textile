@@ -760,7 +760,7 @@ Conditional statements evaluate to @true@ or @false@ only. The most common condi
 
 Some objects also have methods which return a @true@ or @false@, so they're used in conditional statements. For example every object has the method @.nil?@ which is @true@ only when the object is @nil@. Arrays have a method named @.include?@ which returns true if the array includes the specified element.
 
-h3. If, Else If, & Else
+h3. 9. 2. If, Else If, & Else
 
 Why do we have conditional statements? Most often its to control conditional instructions, especially @if@ / @else if@ / @else@ structures. Lets write an example by adding a method to our @PersonalChef@ class:
 
@@ -818,7 +818,7 @@ An @if@ block has
 
 Only _one_ section of the @if@ / @else if@ / @else@ structure can have its instructions run. If the @if@ is @true@, for instance, CFML will never look at the @else if@. Once one block executes, thats it.
 
-h3. Looping
+h3. 9. 2. Looping
 
 Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your @PersonalChef.cfc@ :
 
