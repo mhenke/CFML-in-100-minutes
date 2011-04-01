@@ -4,13 +4,13 @@ CFML in 100 minutes was modified from "Ruby in 100 Minutes":http://jumpstartlab.
 
 h2. License
 
-These works were originally created by Jeff Casimir (@jeff@jumpstartlab.com@) and "Jumpstart Lab":http://jumpstartlab.com. They are licensed "Attribution-Noncommercial-Share Alike 3.0":http://creativecommons.org/licenses/by-nc-sa/3.0/us/ . If they are useful to you please drop him an email!
+These works were originally created by Jeff Casimir (jeff@jumpstartlab.com) and "Jumpstart Lab":http://jumpstartlab.com. They are licensed "Attribution-Noncommercial-Share Alike 3.0":http://creativecommons.org/licenses/by-nc-sa/3.0/us/ . If they are useful to you please drop him an email!
 
 h2. Contributors 
 
 Please add yourself if you help:
 
-Mike Henke (@henke.mike@gmail.com@) - "https://github.com/mhenke/":https://github.com/mhenke/
+Mike Henke (henke.mike@gmail.com) - "https://github.com/mhenke/":https://github.com/mhenke/
 russplaysguitar - "https://github.com/russplaysguitar/":https://github.com/russplaysguitar/
 Daniel Short (@danshort on twitter) - "http://www.dansshorts.com":http://www.dansshorts.com
 
