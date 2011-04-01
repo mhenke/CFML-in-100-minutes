@@ -760,7 +760,7 @@ Conditional statements evaluate to @true@ or @false@ only. The most common condi
 
 Some objects also have methods which return a @true@ or @false@, so they're used in conditional statements. For example every object has the method @.nil?@ which is @true@ only when the object is @nil@. Arrays have a method named @.include?@ which returns true if the array includes the specified element.
 
-h3. 9. 2. If, Else If, & Else
+h3. 9. 1. If, Else If, & Else
 
 Why do we have conditional statements? Most often its to control conditional instructions, especially @if@ / @else if@ / @else@ structures. Lets write an example by adding a method to our @PersonalChef@ class:
 
