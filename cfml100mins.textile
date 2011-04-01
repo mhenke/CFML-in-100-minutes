@@ -11,8 +11,8 @@ ColdFusion Markup Language (CFML) is a great programming language for beginners 
 # Arrays
 # Structures
 # Conditionals
-## Conditional Decisions
-## Conditional Looping
+## If, Else If, and Else
+## Switch and Case
 # Nothingness & Null
 
 h2. CFML History
@@ -340,32 +340,6 @@ component {
 </tr>
 </table>
 
-h3. New Operator in ColdFusion 9
-
-In ColdFusion 9 you can also use the @New@ operator to create a new instance of an object and call its @init()@ method (if it exists). Any arguments supplied to the object using the @New@ operator will be passed as arguments to the @init()@ method of the component. The @init()@ method should return the object instance using @return this;@ in order to have the same expected behavior as the @CreateObject@ statement. If no @init()@ method exists, no errors will be thrown, and the object will be returned normally:
-
-<table>
-<tr>
-<td>tag</td><td>script</td>
-</tr>
-<tr>
-<td>
-<pre>
-<code>
- <cfset frank = New PersonalChef() />
-</code>
-</pre>
-</td>
-<td>
-<pre>
-<code>
- frank = New PersonalChef();
-</code>
-</pre>
-</td>
-</tr>
-</table>
-
 h2. 4. Strings
 
 In CFML a string is defined as a quote ( @"@ ) followed by zero or more letters, numbers, or symbols and followed by another quote ( @"@ ). Some simple strings would be @"hello"@ or @"This sentence is a string!"@. Strings can be anything from @""@, the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important instructions that we'll use.
@@ -601,6 +575,8 @@ In this example were using the @for@ method with a @do@ / @end@ block. When we c
 h2. 6. Queries
 
 TODO: More about Queries objects in CFML.
+
+A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object.
 
 h2. 7. Arrays
 
