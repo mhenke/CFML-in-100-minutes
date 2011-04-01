@@ -537,9 +537,7 @@ Basically interpolating means evaluate the code inside this @#@ wrapper and put 
 
 h2. 5. Numbers
 
-There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including @+@, @-@, @/@, and @*@. Integers have a bunch of functions to help you do math-related things, but the only one we might use controls a loop.
-
-The @times@ method can be used to repeat one or more instructions a certain number of times. Try out this example:
+There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including @+@, @-@, @/@, and @*@. The @++@ operator can be used to increment a number. It is also the only one we will use to controls a loop. We will talk more about Conditional Looping in section 9. Try out this example for the @++@ operator:
 
 <table>
 <tr>
@@ -549,23 +547,27 @@ The @times@ method can be used to repeat one or more instructions a certain numb
 <td>
 <pre>
 <code>
- 5.times do 
- 	puts "Hello, world!" 
- end
+ tag example here
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
- Script Example Here
+<cfscript>
+ for (loop = 0 ; loop < 5 ; loop++){
+  WriteOutput(
+   "#loop# Hello, world!<br>"
+  );
+ }
+</cfscript>
 </code>
 </pre>
 </td>
 </tr>
 </table>
 
-In this example were using the @times@ method with a @do@ / @end@ block. When we call the @times@ method we need to tell it what to do that number of times. CFML looks for the starting instruction @do@ and the ending instruction @end@. Each instruction between the @do@ and @end@ will be executed this number of @times@. Try this example with multiple instructions:
+In this example were using the @for@ method with a @do@ / @end@ block. When we call the @times@ method we need to tell it what to do that number of times. CFML looks for the starting instruction @do@ and the ending instruction @end@. Each instruction between the @do@ and @end@ will be executed this number of @times@. Try this example with multiple instructions:
 
 <table>
 <tr>
@@ -575,17 +577,21 @@ In this example were using the @times@ method with a @do@ / @end@ block. When we
 <td>
 <pre>
 <code>
- 5.times do 
-  puts "Good morning!" 
-  puts "...is it lunch time yet?" 
- end
+ tag example here
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
- Script Example Here
+<cfscript>
+ loop = 0; 
+ while (loop < 5) { 
+  WriteOutput("Good Morning!");
+  WriteOutput("...is it lunch time yet?<br>");
+  loop = ++loop;
+ }
+</cfscript>
 </code>
 </pre>
 </td>
@@ -790,25 +796,28 @@ Why do we have conditional statements? Most often its to control conditional ins
 <td>
 <pre>
 <code>
- def water_boiling?(minutes) 
-  if minutes<7 
-   puts "The water is not boiling yet." 
-  elsif minutes == 7 
-   puts "It's just barely boiling" 
-  elsif minutes == 8 
-   puts "It's boiling!" 
-  else 
-   puts "Hot! Hot! Hot!" 
- end 
- return self 
- end
+ tag example goes here
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
- Script Example Here
+ public component function water_boiling(numeric minutes){
+  if (arguments.minutes < 7) 
+   this.status = "The water is not boiling yet.";
+  
+  else if (arguments.minutes == 7) 
+   this.status = "It's just barely boiling.";
+  
+  else if (arguments.minutes == 8)
+   this.status = "It's boiling!";
+  
+  else 
+   this.status = "Hot! Hot! Hot!";
+  
+  return this;
+ }
 </code>
 </pre>
 </td>
@@ -828,10 +837,10 @@ Lastly, when total is 9, it goes:" Is it @true@ that 9 is less than 7? No. Next,
 An @if@ block has
 
 * One @if@ statement whose instructions are executed only if the statement is true
-* Zero or more @elsif@ statements whose instructions are executed only if the statement is true
-* Zero or one @else@ statement whose instructions are executed if no @if@ nor @elsif@ statements were true
+* Zero or more @else if@ statements whose instructions are executed only if the statement is true
+* Zero or one @else@ statement whose instructions are executed if no @if@ nor @else if@ statements were true
 
-Only _one_ section of the @if@ / @elsif@ / @else@ structure can have its instructions run. If the @if@ is @true@, for instance, CFML will never look at the @elsif@. Once one block executes, thats it.
+Only _one_ section of the @if@ / @elsif@ / @else@ structure can have its instructions run. If the @if@ is @true@, for instance, CFML will never look at the @else if@. Once one block executes, thats it.
 
 h3. Conditional Looping
 
