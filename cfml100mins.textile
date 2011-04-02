@@ -40,7 +40,7 @@ h3. Tag Syntax
 		<td>
 <pre>
 <code>
- <cfset s = CreateObject("component","Sample") />
+ <cfset s = New Sample() />
  <cfdump var="#s#" />
  <cfoutput>
   #s.hello()#
@@ -74,7 +74,7 @@ h3. Script Syntax
 <pre>
 <code>
 <cfscript>
- s = CreateObject("component","Sample");
+ s = New Sample();
  writeOutput( s.hello() );
 </cfscript>
 </code>
@@ -108,24 +108,25 @@ Go into a CFML file, enter in these example instructions, and observe the output
 <td>
 <pre>
 <code>
- <cfset a = 5 />
- <cfset b = 10 + 5 />
- <cfset c = 15 + a + b />
- <cfset b = c - a />
- <cfset d = "Hello, " />
- <cfset e = "World!" />
- <cfset f = d & e />
- <cfset g = d & a & e />
- <cfset b = "hi!" />
-
  <cfoutput>
-  a = #a#<br/>
-  b = #b#<br/>
-  c = #c#<br/>
-  d = #d#<br/>
-  e = #e#<br/>
-  f = #f#<br/>
-  g = #g#<br/>
+ <cfset a = 5 />
+ a = #a#<br/>
+ <cfset b = 10 + 5 />
+ b = #b#<br/>
+ <cfset c = 15 + a + b />
+ c = #c#<br/>
+ <cfset b = c - a />
+ b = #b#<br/>
+ <cfset d = "Hello, " />
+ d = #d#<br/>
+ <cfset e = "World!" />
+ e = #e#<br/>
+ <cfset f = d & e />
+ f = #f#<br/>
+ <cfset g = d & a & e />
+ g = #g#<br/>
+ <cfset b = "hi!" />
+ b = #b#<br/>
  </cfoutput>
 </code>
 </pre>
@@ -135,22 +136,23 @@ Go into a CFML file, enter in these example instructions, and observe the output
 <code>
  <cfscript>
   a = 5;
-  b = 10 + 5;
-  c = 15 + a + b;
-  b = c - a;
-  d = "Hello, ";
-  e = "World!";
-  f = d & e;
-  g = d & a & e;
-  b = "hi!";
-  
   writeOutput("a = #a#<br/>");
+  b = 10 + 5;
   writeOutput("b = #b#<br/>");
+  c = 15 + a + b;
   writeOutput("c = #c#<br/>");
+  b = c - a;
+  writeOutput("b = #b#<br/>");
+  d = "Hello, ";
   writeOutput("d = #d#<br/>");
+  e = "World!";
   writeOutput("e = #e#<br/>");
+  f = d & e;
   writeOutput("f = #f#"<br/>");
+  g = d & a & e;
   writeOutput("g = #g#<br/>");
+  b = "hi!";
+  writeOutput("b = #b#<br/>");  
  </cfscript>
 </code>
 </pre>
@@ -521,7 +523,14 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 <td>
 <pre>
 <code>
- tag example here
+<cfset loop = 0 />
+<cfoutput>
+ <cfloop  condition="loop LT 5" >
+  #loop# Hello, world!<br>
+  <cfset loop = ++loop>
+ </cfloop>
+I am here!<br>
+</cfoutput>
 </code>
 </pre>
 </td>
@@ -529,11 +538,9 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 <pre>
 <code>
 <cfscript>
- for (loop = 0 ; loop < 5 ; loop++){
-  WriteOutput(
-   "#loop# Hello, world!<br>"
-  );
- }
+ for (loop = 0 ; loop < 5 ; loop++)
+  WriteOutput("#loop# Hello, world!<br>");
+ WriteOutput("I am here<br>");
 </cfscript>
 </code>
 </pre>
@@ -541,7 +548,7 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 </tr>
 </table>
 
-In this example were using the @for@ method with a @do@ / @end@ block. When we call the @times@ method we need to tell it what to do that number of times. CFML looks for the starting instruction @do@ and the ending instruction @end@. Each instruction between the @do@ and @end@ will be executed this number of @times@. Try this example with multiple instructions:
+In this example were using the @while@ instruction with a multiple instructions inside the @while@. CFML looks for the starting @{@ and the ending @}@. Each instruction between the @{@ and @}@ will be executed if the condition is true. Try this example with multiple instructions:
 
 <table>
 <tr>
@@ -551,7 +558,14 @@ In this example were using the @for@ method with a @do@ / @end@ block. When we c
 <td>
 <pre>
 <code>
- tag example here
+<cfset loop = 0 />
+<cfoutput>
+<cfloop index = "loop" from = 0 to = 4>
+ #loop# Good Morning!  
+ ...is it lunch time yet?<br>
+ <cfset loop = ++loop />
+</cfloop>
+</cfoutput>
 </code>
 </pre>
 </td>
@@ -561,7 +575,7 @@ In this example were using the @for@ method with a @do@ / @end@ block. When we c
 <cfscript>
  loop = 0; 
  while (loop < 5) { 
-  WriteOutput("Good Morning!");
+  WriteOutput("#loop# Good Morning! ");
   WriteOutput("...is it lunch time yet?<br>");
   loop = ++loop;
  }
@@ -574,9 +588,45 @@ In this example were using the @for@ method with a @do@ / @end@ block. When we c
 
 h2. 6. Queries
 
-TODO: More about Queries objects in CFML.
+A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object. @cfquery@ passes SQL statements to the @datasource@. The @datasource@ is set in the ColdFusion administrator.
 
-A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object.
+<table>
+<tr>
+<td>*Tag*</td><td>*Script*</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+<cfquery name="GetBreakfastItems" datasource="pantry"> 
+ SELECT QUANTITY, ITEM 
+ FROM CUPBOARD 
+ ORDER BY ITEM 
+</cfquery> 
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+<cfscript>
+ queryService = new Query();
+
+ queryService.setName("GetBreakfastItems"); 
+ queryServ.setDatasource("pantry"); 
+ queryService.setSQL("
+ SELECT QUANTITY, ITEM 
+ FROM CUPBOARD 
+ ORDER BY ITEM
+ ");
+ 
+ GetBreakfastItems = queryService.execute().getResult(); 
+</cfscript>
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
 h2. 7. Arrays
 
