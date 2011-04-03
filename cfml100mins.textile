@@ -847,9 +847,9 @@ While that last part probably seemed complicated, its just to illustrate that al
 
 h2. 9. Conditionals
 
-Conditional statements evaluate to @true@ or @false@ only. The most common conditional operators are @==@ (equal), @>@ (greater than), @>=@ (greater than or equal to), @<@ (less than), and @<=@ (less than or equal to).
+Conditional statements evaluate to @true@ or @false@ only. The most common conditional operators are @==@ (equal), @!=@ (not equal), @>@ (greater than), @>=@ (greater than or equal to), @<@ (less than), and @<=@ (less than or equal to). You can also define the operators as strings are @EQ@, @NEQ@, @GT@, @GTE@, @LT@, and @LTE@.
 
-Some objects also have methods which return a @true@ or @false@, so they're used in conditional statements. For example every object has the method @.nil?@ which is @true@ only when the object is @nil@. Arrays have a method named @.include?@ which returns true if the array includes the specified element.
+Some instructions return a @true@ or @false@, so they're used in conditional statements. For example @IsArray@ which is @true@ only when the variable is an @array@. Structures have an instruction named @StructKeyExists@ which returns true if a key is present in a structure.
 
 h3. 9. 1. If, Else If, & Else
 
