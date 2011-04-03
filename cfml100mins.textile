@@ -666,7 +666,8 @@ An *array* is a number-indexed list. Picture a city block of houses. Together th
 </tr>
 </table>
 
-Keep going with these, but note that the first line below should give you some unusual output. Try and understand what CFML is telling you:
+Keep going with these, but try to understand what each instruction is doing before we explain them below:
+
 
 <table>
 <tr>
@@ -710,7 +711,7 @@ In order to get a specific element in the array you use the syntax @ArrayAppend(
 * What did the @ArraySort@ instuction do to the collection?
 * What does @ArrayLen@ instruction return?
 
-There are lots of cool things to do with an array. You can rearrange the order of the elements using the @ArraySort@ instruction. You can iterate through each element using the @cfloop@ instruction. You can find the address of a specific element by using the @index@ method. You can ask an array if an element is present with the @include?@ method. Try out this example that brings a bunch of things together:
+There are lots of cool things to do with an array. You can rearrange the order of the elements using the @ArraySort@ instruction. You can iterate through each element using the @cfloop@ instruction. You can find the address of a specific element by using the @index@ attribute in the instruction. You can ask an array if an element is present with the @ArrayIsDefined@ instruction. Try out this example that brings a bunch of things together:
 
 <table>
 <tr>
@@ -722,10 +723,11 @@ There are lots of cool things to do with an array. You can rearrange the order o
 <code>
  <cfoutput>
  <ul>
- <cfloop array="#favorite_colors#" index="i" >
-  <li>#i# is #len(i)# letters long.</li>
+ <cfloop array="#favorite_colors#" index="target" >
+  <li>#i# is #len(target)# letters long.</li>
  </cfloop>
  </ul>
+ <cfdump var="#ArrayIsDefined(favorite_colors,4)#">
 </cfoutput>
 </code>
 </pre>
@@ -740,15 +742,13 @@ There are lots of cool things to do with an array. You can rearrange the order o
 </tr>
 </table>
 
-The color #{target} is in position #{position}"We use arrays whenever we need a list where the elements are in a specific order.
+We use arrays whenever we need a list where the elements are in a specific order.
 
 h2. 8. Structures
 
 A structure is a collection of data where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read as look in the collection named @science@ and find the thing named @Joey@.
 
 A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name. Structures have a more complicated syntax that takes some getting used to:
-
-ages = {"joey" =>12, "jill" =>14, "jack" =>11, "jane" =>12} puts "Joey is #{ages['joey']} years old"Here we create a structure named @ages@. Structures are made up what are called key-value pairs.The *key* is used as the address and the *value* is the object at that address. In the @ages@ structure we have keys including @"joey"@ and @"jill"@ and values including @12@ and @14@. When creating a structure the key and value are linked by the @=>@ symbol which is called a _rocket_. So structures start with a curly bracket @{@, have zero or more entries made up of a _key_, a rocket, and a _value_ separated by commas, then end with a closing curly bracket @}@.
 
 <table>
 <tr>
@@ -758,10 +758,18 @@ ages = {"joey" =>12, "jill" =>14, "jack" =>11, "jane" =>12} puts "Joey is #{ages
 <td>
 <pre>
 <code>
- ages["jimmy"] = 14 
- ages["joey"] = 9 
- puts ages.keys 
- puts ages.values
+ <cfset ages = {jack = 11}>
+ <cfset ages.joey = 12 /> 
+ <cfset ages["jill"] = 14 /> 
+
+ <cfdump var="#ages#">
+
+ <cfset student = {firstName="joey", age=ages.joey, grades=[91, 78, 87]}>
+ <cfdump var="#student#">
+
+ <cfoutput>
+ Jill is #ages['jill']# years old.  And Joey is #student['age']#.
+ </cfoutput>
 </code>
 </pre>
 </td>
@@ -769,6 +777,37 @@ ages = {"joey" =>12, "jill" =>14, "jack" =>11, "jane" =>12} puts "Joey is #{ages
 <pre>
 <code>
  Script Example Here
+</code>
+</pre>
+</td>
+</tr>
+</table>
+
+
+Here we create two structure named @ages@ and @student@. Structures are made up what are called key-value pairs.The *key* is used as the address and the *value* is the object at that address. In the @ages@ structure we have keys including @"joey"@ and @"jill"@ and values including @12@ and @14@. When creating a structure using @{}@ the key and value are linked by the @=@ symbol. So to create a structure, the structures start with a curly bracket @{@, have zero or more entries made up of a _key_, @=@, and a _value_ separated by commas, then end with a closing curly bracket @}@.
+
+<table>
+<tr>
+<td>*Tag*</td><td>*Script*</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ <cfset ages["jimmy"] = 14 />
+ <cfset ages["joey"] = 9 />
+ <cfdump var="#ages# />
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ <cfscript>
+  ages["jimmy"] = 14;
+  ages["joey"] = 9;
+  writeDump(var=ages);
+ </cfscript>
 </code>
 </pre>
 </td>
