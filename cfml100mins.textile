@@ -999,7 +999,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
 <td>
 <pre>
 <code>
- tag example
+ TAG EXAMPLE
 </code>
 </pre>
 </td>
