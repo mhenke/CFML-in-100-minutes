@@ -629,6 +629,32 @@ A query is a request to a database. The query can ask for information from the d
 </tr>
 </table>
 
+*TODO: Explain and show CFOUTPUT Query*
+
+<table>
+<tr>
+<td>*Tag*</td><td>*Script*</td>
+</tr>
+<tr>
+<td>
+<pre>
+<code>
+ TAG EXAMPLE
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+ <cfscript>
+ SCRIPT EXAMPLE
+ </cfscript>
+</code>
+</pre>
+</td>
+</tr>
+</table>
+
 h2. 7. Arrays
 
 Often we need to organize a group and put them into a __collection__. There are two main types of collections: *arrays* and *structures*.
@@ -1061,7 +1087,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
   } else {
    this.makeEggs = "Making your #arguments.quantity# eggs!";
    this.yourEggs = ArrayNew(1);
-   while (ArrayLen(this.yourEggs) LT arguments.quantity)
+   while (ArrayLen(this.yourEggs) < arguments.quantity)
 	ArrayAppend(this.yourEggs, "Making an Egg.");
   }
   return this;
@@ -1072,4 +1098,6 @@ A large percentage of the errors you encounter while writing CFML code will invo
 </tr>
 </table>
 
-Reload the file, call @frank.make_eggs(3)@ then try @frank.make_eggs()@. TODO: More Explaination
+Reload the file, call @frank.make_eggs(3)@ then try @frank.make_eggs()@.
+
+*TODO: Conclusion*
