@@ -654,7 +654,7 @@ An *array* is a number-indexed list. Picture a city block of houses. Together th
 <pre>
 <code>
  <cfscript>
- set favorite_colors = ["red","blue","green","black","brown"];
+ favorite_colors = ["red","blue","green","black","brown"];
  writeDump(favorite_colors);
  writeOutput("<br>");
  writeDump(favorite_colors[2]);
@@ -691,7 +691,7 @@ Keep going with these, but try to understand what each instruction is doing befo
 <pre>
 <code>
  <cfscript>
- set = ArrayAppend(favorite_colors, "orange");
+ ArrayAppend(favorite_colors, "orange");
  favorite_colors[3] = "yellow";
  writeDump(favorite_colors);
  writeOutput("<br>");
@@ -723,20 +723,29 @@ There are lots of cool things to do with an array. You can rearrange the order o
 <pre>
 <code>
  <cfoutput>
- <ul>
- <cfloop array="#favorite_colors#" index="target" >
-  <li>#i# is #len(target)# letters long.</li>
- </cfloop>
- </ul>
- <cfdump var="#ArrayIsDefined(favorite_colors,4)#">
-</cfoutput>
+  <ul>
+  <cfloop array="#favorite_colors#" index="target" >
+   <li>#target# is #len(target)# letters long.</li>
+  </cfloop>
+  </ul>
+  <cfdump var="#ArrayIsDefined(favorite_colors,4)#">
+ </cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
- SCRIPT EXAMPLE
+ <cfscript>
+ writeOutput("<ul>");
+ index = favorite_colors.iterator();
+ while(index.hasNext()){
+  target = index.next();
+  writeOutput("<li>#target# is #len(target)# letters long.</li>");
+ }
+ writeOutput("</ul>"); 
+ writeDump(var=ArrayIsDefined(favorite_colors,4));
+ </cfscript>
 </code>
 </pre>
 </td>
@@ -766,7 +775,7 @@ A structure is an unordered collection, its just a bunch of data collected toget
  <cfdump var="#ages#">
 
  <cfoutput>
- Jill is #ages['jill']# years old.  And Joey is #student['age']# years old.
+ Joey is #ages['joey']# years old.
  </cfoutput>
 </code>
 </pre>
@@ -774,7 +783,14 @@ A structure is an unordered collection, its just a bunch of data collected toget
 <td>
 <pre>
 <code>
- SCRIPT EXAMPLE
+  <cfscript>
+ ages = {jack = 11};
+ ages.joey = 12;
+ ages["jill"] = 14;
+
+ writeDump(var=ages);
+ writeOutput("Joey is #ages['joey']# years old.");
+ </cfscript>
 </code>
 </pre>
 </td>
