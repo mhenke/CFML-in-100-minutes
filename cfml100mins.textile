@@ -73,21 +73,21 @@ h3. Script Syntax
 		<td>
 <pre>
 <code>
-<cfscript>
+ <cfscript>
  s = New Sample();
  writeOutput( s.hello() );
-</cfscript>
+ </cfscript>
 </code>
 </pre>
 		</td>
 		<td>
 <pre>
 <code>
-component {
- public string function hello(){
-  return( "Hello, World!" );
+ component {
+  public string function hello(){
+   return( "Hello, World!" );
+  }
  }
-}
 </code>
 </pre>
 		</td>
@@ -189,9 +189,9 @@ In CFML we define an object using the @cfcomponent@ instruction and save the fil
 <td>
 <pre>
 <code>
-component {
+ component {
 
-}
+ }
 </code>
 </pre>
 </td>
@@ -221,11 +221,11 @@ Inside the CFC we usually define one or more methods using the @cffunction@ inst
 <td>
 <pre>
 <code>
-component {
- public string function make_toast(){
-  makeToast = "Making your toast!";
+ component {
+  public string function make_toast(){
+   makeToast = "Making your toast!";
+  }
  }
-}
 </code>
 </pre>
 </td>
@@ -288,11 +288,11 @@ Sometimes methods take one or more _parameters_ telingl them *how* to do what th
 <td>
 <pre>
 <code>
-component {
- public string function make_toast(required String color){
-  makeToast = "Making your toast #arguments.color#!";
+ component {
+  public string function make_toast(required String color){
+   makeToast = "Making your toast #arguments.color#!";
+  }
  }
-}
 </code>
 </pre>
 </td>
@@ -330,12 +330,12 @@ For the purposes of our next section I'm going to return the chef instance itsel
 <td>
 <pre>
 <code>
-component {
- public component function make_toast(required String color){
-  this.makeToast = "Making your toast #arguments.color#!";
-  return this;
+ component {
+  public component function make_toast(required String color){
+   this.makeToast = "Making your toast #arguments.color#!";
+   return this;
+  }
  }
-}
 </code>
 </pre>
 </td>
@@ -386,7 +386,7 @@ Experiment with the following samples in a CFML file:
  t2 = "sample,data,from,a,CSV";
  t3 = Mid(t2,8,len(t2));
  writeOutput(t3 & "<br/>");
-</cfscript>
+ </cfscript>
 </code>
 </pre>
 </td>
@@ -462,11 +462,11 @@ In the first line we setup a variable to hold the day of the week. Then we'll pr
 <td>
 <pre>
 <code>
-<cfscript>
+ <cfscript>
  today = DayOfWeekAsString(DayOfWeek(Now()));
  message = "Happy " & today & "!";
  writeOutput(message);
-</cfscript>
+ </cfscript>
 </code>
 </pre>
 </td>
@@ -523,25 +523,25 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 <td>
 <pre>
 <code>
-<cfset loop = 0 />
-<cfoutput>
- <cfloop  condition="loop LT 5" >
-  #loop# Hello, world!<br>
-  <cfset loop = ++loop>
- </cfloop>
-I am here!<br>
-</cfoutput>
+ <cfset loop = 0 />
+ <cfoutput>
+  <cfloop  condition="loop LT 5" >
+   #loop# Hello, world!<br>
+   <cfset loop = ++loop>
+  </cfloop>
+  I am here!<br>
+ </cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre>
 <code>
-<cfscript>
+ <cfscript>
  for (loop = 0 ; loop < 5 ; loop++)
   WriteOutput("#loop# Hello, world!<br>");
  WriteOutput("I am here<br>");
-</cfscript>
+ </cfscript>
 </code>
 </pre>
 </td>
@@ -558,13 +558,13 @@ In this example were using the @while@ instruction with a multiple instructions 
 <td>
 <pre>
 <code>
-<cfset loop = 0 />
-<cfoutput>
-<cfloop index = "loop" from = 0 to = 4>
- #loop# Good Morning!  
- ...is it lunch time yet?<br>
- <cfset loop = ++loop />
-</cfloop>
+ <cfset loop = 0 />
+ <cfoutput>
+ <cfloop index = "loop" from = 0 to = 4>
+  #loop# Good Morning!  
+  ...is it lunch time yet?<br>
+  <cfset loop = ++loop />
+ </cfloop>
 </cfoutput>
 </code>
 </pre>
@@ -572,14 +572,14 @@ In this example were using the @while@ instruction with a multiple instructions 
 <td>
 <pre>
 <code>
-<cfscript>
+ <cfscript>
  loop = 0; 
  while (loop < 5) { 
   WriteOutput("#loop# Good Morning! ");
   WriteOutput("...is it lunch time yet?<br>");
   loop = ++loop;
  }
-</cfscript>
+ </cfscript>
 </code>
 </pre>
 </td>
@@ -598,7 +598,7 @@ A query is a request to a database. The query can ask for information from the d
 <td>
 <pre>
 <code>
-<cfquery name="GetBreakfastItems" datasource="pantry"> 
+ <cfquery name="GetBreakfastItems" datasource="pantry"> 
  SELECT QUANTITY, ITEM 
  FROM CUPBOARD 
  ORDER BY ITEM 
@@ -609,7 +609,7 @@ A query is a request to a database. The query can ask for information from the d
 <td>
 <pre>
 <code>
-<cfscript>
+ <cfscript>
  queryService = new Query();
 
  queryService.setName("GetBreakfastItems"); 
@@ -621,7 +621,7 @@ A query is a request to a database. The query can ask for information from the d
  ");
  
  GetBreakfastItems = queryService.execute().getResult(); 
-</cfscript>
+ </cfscript>
 </code>
 </pre>
 </td>
@@ -652,14 +652,14 @@ An *array* is a number-indexed list. Picture a city block of houses. Together th
 <td>
 <pre>
 <code>
-  <cfscript>
-  set favorite_colors = ["red","blue","green","black","brown"];
-  writeDump(favorite_colors);
-  writeOutput("<br>");
-  writeDump(favorite_colors[2]);
-  writeOutput("<br>");
-  writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
-  </cfscript>
+ <cfscript>
+ set favorite_colors = ["red","blue","green","black","brown"];
+ writeDump(favorite_colors);
+ writeOutput("<br>");
+ writeDump(favorite_colors[2]);
+ writeOutput("<br>");
+ writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
+ </cfscript>
 </code>
 </pre>
 </td>
@@ -677,8 +677,10 @@ Keep going with these, but note that the first line below should give you some u
 <pre>
 <code>
  <cfset ArrayAppend(favorite_colors, "orange") />
+ <cfset favorite_colors[7]="yellow" />
  <cfdump var="#favorite_colors#" /><br>
  <cfset ArraySort(favorite_colors,"text") />
+ <cfset ArrayDeleteAt(favorite_colors, 2)> 
  <cfdump var="#favorite_colors#" /><br>
 </code>
 </pre>
@@ -688,9 +690,11 @@ Keep going with these, but note that the first line below should give you some u
 <code>
  <cfscript>
  set = ArrayAppend(favorite_colors, "orange");
+ favorite_colors[7] = "yellow";
  writeDump(favorite_colors);
  writeOutput("<br>");
  set = ArraySort(favorite_colors,"text");
+ ArrayDeleteAt(favorite_colors, 2);
  writeDump(var=favorite_colors);
  writeOutput("<br>"); 
  </cfscript>
@@ -700,13 +704,13 @@ Keep going with these, but note that the first line below should give you some u
 </tr>
 </table>
 
-In order to get a specific element in the array you use the syntax @arrayname[index]@. So looking at the @favorite_colors@ array:
+In order to get a specific element in the array you use the syntax @ArrayAppend(array,"value")@ and @arrayname[index]@. The first example of adding an array element is *with an instruction*. The second is adding an array element is *by assignment*. So looking at the @favorite_colors@ array:
 
-* Whats the index of @"brown"@ ?
-* Why did the fifth line of the example give you @nil@ ? (For more discussion of @nil@, check out the very end of this document).
-* What did the @<<@ operator do to the collection?
+* What's the index of @"brown"@ ?
+* What did the @ArraySort@ instuction do to the collection?
+* What does @ArrayLen@ instruction return?
 
-There are lots of cool things to do with an array. You can rearrange the order of the elements using the @ArraySort@ instruction. You can iterate through each element using the @each@ method. You can mash them together into one string using the @join@ method. You can find the address of a specific element by using the @index@ method. You can ask an array if an element is present with the @include?@ method. Try out this example that brings a bunch of things together:
+There are lots of cool things to do with an array. You can rearrange the order of the elements using the @ArraySort@ instruction. You can iterate through each element using the @cfloop@ instruction. You can find the address of a specific element by using the @index@ method. You can ask an array if an element is present with the @include?@ method. Try out this example that brings a bunch of things together:
 
 <table>
 <tr>
@@ -716,15 +720,13 @@ There are lots of cool things to do with an array. You can rearrange the order o
 <td>
 <pre>
 <code>
- sorted_colors = favorite_colors.sort 
- sorted_colors.each do |color| 
-  puts "#{color} is #{color.length} letters long" 
- end 
- puts sorted_colors.join("&") 
- target = "green" 
- position = favorite_colors.index(target) 
- puts ""
- end
+ <cfoutput>
+ <ul>
+ <cfloop array="#favorite_colors#" index="i" >
+  <li>#i# is #len(i)# letters long.</li>
+ </cfloop>
+ </ul>
+</cfoutput>
 </code>
 </pre>
 </td>
@@ -925,6 +927,7 @@ I most often use @while@, but you can achieve the same results using @until@ as 
 <td>
 <pre>
 <code>
+ SCRIPT EXAMPLE HERE
 </code>
 </pre>
 </td>
@@ -938,7 +941,7 @@ The #1 mistake people encounter when writing conditional statements is the diffe
 
 You can also combine conditional statements using logical operators. The most common are known aslogical andandlogical or. In CFML you can write a logical and with either the work @and@ or with double ampersands like this: @&&@. You can write a logical or with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
 
-h2. 10. Nulls & Nothingness
+h2. 10. Nothingness & Null
 
 What is __nothingness__? Is there nothingness only in outer space? Really, when we think of __nothing__ isn't it just the absence of something? Ok, thats too much philosophy
 
