@@ -136,24 +136,24 @@ Go into a CFML file, enter in these example instructions, and observe the output
 <pre>
 <code>
  <cfscript>
-  a = 5;
-  writeOutput("a = #a#<br/>");
-  b = 10 + 5;
-  writeOutput("b = #b#<br/>");
-  c = 15 + a + b;
-  writeOutput("c = #c#<br/>");
-  b = c - a;
-  writeOutput("b = #b#<br/>");
-  d = "Hello, ";
-  writeOutput("d = #d#<br/>");
-  e = "World!";
-  writeOutput("e = #e#<br/>");
-  f = d & e;
-  writeOutput("f = #f#"<br/>");
-  g = d & a & e;
-  writeOutput("g = #g#<br/>");
-  b = "hi!";
-  writeOutput("b = #b#<br/>");  
+ a = 5;
+ writeOutput("a = #a#<br/>");
+ b = 10 + 5;
+ writeOutput("b = #b#<br/>");
+ c = 15 + a + b;
+ writeOutput("c = #c#<br/>");
+ b = c - a;
+ writeOutput("b = #b#<br/>");
+ d = "Hello, ";
+ writeOutput("d = #d#<br/>");
+ e = "World!";
+ writeOutput("e = #e#<br/>");
+ f = d & e;
+ writeOutput("f = #f#"<br/>");
+ g = d & a & e;
+ writeOutput("g = #g#<br/>");
+ b = "hi!";
+ writeOutput("b = #b#<br/>");  
  </cfscript>
 </code>
 </pre>
@@ -783,7 +783,7 @@ A structure is an unordered collection, its just a bunch of data collected toget
 <td>
 <pre>
 <code>
-  <cfscript>
+ <cfscript>
  ages = {jack = 11};
  ages.joey = 12;
  ages["jill"] = 14;
@@ -818,9 +818,9 @@ Here we create a structure named @ages@. Structures are made up what are called 
 <pre>
 <code>
  <cfscript>
-  ages["jimmy"] = 14;
-  ages["joey"] = 9;
-  writeDump(var=ages);
+ ages["jimmy"] = 14;
+ ages["joey"] = 9;
+ writeDump(var=ages);
  </cfscript>
 </code>
 </pre>
