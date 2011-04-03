@@ -880,7 +880,20 @@ Why do we have conditional statements? Most often its to control conditional ins
 <td>
 <pre>
 <code>
-TAG EXAMPLE
+ <cffunction name="water_boiling" returnType="component">
+  <cfargument name="minutes" type="numeric" required="yes">
+
+  <cfif (arguments.minutes LT 7)>
+   <cfset this.status = "The water is not boiling yet." />
+  <cfelseif (arguments.minutes EQ 7)> 
+   <cfset this.status = "It's just barely boiling." />
+  <cfelseif (arguments.minutes EQ 8)>
+   <cfset this.status = "It's boiling!" />
+  <cfelse>
+   <cfset this.status = "Hot! Hot! Hot!" /> 
+  </cfif>
+  <cfreturn this />
+ </cffunction>
 </code>
 </pre>
 </td>
@@ -938,7 +951,15 @@ Another time we use conditional statements is when we want to repeat a set of in
 <td>
 <pre>
 <code>
- TAG EXAMPLE
+ <cffunction name="countdown" returnType="component">
+  <cfargument name="counter" type="numeric">
+  <cfset this.timer = "" />
+  <cfloop condition="#arguments.counter# GT 0">
+   <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
+   <cfset arguments.counter = arguments.counter - 1 />
+  </cfloop>
+  <cfreturn this />
+ </cffunction>
 </code>
 </pre>
 </td>
@@ -949,7 +970,7 @@ Another time we use conditional statements is when we want to repeat a set of in
   this.timer = "";
   while (counter > 0) { 
    this.timer &= "The counter is #arguments.counter#.<br>";
-   counter = counter--;
+   arguments.counter = arguments.counter--;
   }
   return this;
  }
@@ -1015,7 +1036,19 @@ A large percentage of the errors you encounter while writing CFML code will invo
 <td>
 <pre>
 <code>
- TAG EXAMPLE
+ <cffunction name="make_eggs" returnType="component">
+  <cfargument name="quantity" type="numeric">
+  <cfif (IsNull(arguments.quantity))>
+   <cfset this.makeEggs = "How am I supposed to make nothingness number of eggs?" />
+  <cfelse>
+   <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
+   <cfset this.yourEggs = ArrayNew(1) />
+   <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#">
+    <cfset ArrayAppend(this.yourEggs, "Making an Egg.") />
+   </cfloop>
+  </cfif>
+  <cfreturn this />
+ </cffunction>
 </code>
 </pre>
 </td>
@@ -1029,7 +1062,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
    this.makeEggs = "Making your #arguments.quantity# eggs!";
    this.yourEggs = ArrayNew(1);
    while (ArrayLen(this.yourEggs) LT arguments.quantity)
-	{ ArrayAppend(this.yourEggs, "Making an Egg."); };
+	ArrayAppend(this.yourEggs, "Making an Egg.");
   }
   return this;
  }
