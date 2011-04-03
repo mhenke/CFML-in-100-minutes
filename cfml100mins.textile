@@ -736,7 +736,7 @@ There are lots of cool things to do with an array. You can rearrange the order o
 <td>
 <pre>
 <code>
- Script Example Here
+ SCRIPT EXAMPLE
 </code>
 </pre>
 </td>
@@ -774,7 +774,7 @@ A structure is an unordered collection, its just a bunch of data collected toget
 <td>
 <pre>
 <code>
- Script Example Here
+ SCRIPT EXAMPLE
 </code>
 </pre>
 </td>
@@ -835,7 +835,7 @@ In the second chunk of the example, we add a new value to the structure. Since t
 <td>
 <pre>
 <code>
- Script Example Here
+ SCRIPT EXAMPLE
 </code>
 </pre>
 </td>
@@ -864,7 +864,7 @@ Why do we have conditional statements? Most often its to control conditional ins
 <td>
 <pre>
 <code>
- tag example goes here
+TAG EXAMPLE
 </code>
 </pre>
 </td>
@@ -922,7 +922,7 @@ Another time we use conditional statements is when we want to repeat a set of in
 <td>
 <pre>
 <code>
- the tag example
+ TAG EXAMPLE
 </code>
 </pre>
 </td>
@@ -967,7 +967,7 @@ I most often use @for@, but you can achieve the same results using @while@ as we
 <td>
 <pre>
 <code>
- SCRIPT EXAMPLE HERE
+ SCRIPT EXAMPLE
 </code>
 </pre>
 </td>
