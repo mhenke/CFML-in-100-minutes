@@ -95,11 +95,20 @@ h3. Script Syntax
 	</tr>
 </table>
 
-h3 Ruby Syntax
+h3. Ruby Syntax
 
 <table>
-	<tr><td>my_program.rb</td></tr>
-	<tr><td>
+	<tr><td>my_program.rb - output 2</td>
+	<td>my_program.rb - object 1<td>
+</tr>
+<pre>
+<code>
+s = Sample.new
+s.hello
+</code>
+</pre>
+</td>
+<td>
 <pre>
 <code>
 class Sample
@@ -107,15 +116,13 @@ class Sample
     puts "Hello, World!"
   end
 end
-
-s = Sample.new
-s.hello
-
 </code>
 </pre>
 </td>
 	</tr>
 </table>
+
+For the Ruby script example, the class would be defined first in @my_program.rb@ then the class called.
 
 h2. 2. Variables
 
