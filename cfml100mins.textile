@@ -98,11 +98,8 @@ h3. Script Syntax
 h3 Ruby Syntax
 
 <table>
-	<tr>
-		<td>my_program.rb</td>
-	</tr>
-	<tr>
-		<td>
+	<tr><td>my_program.rb</td></tr>
+	<tr><td>
 <pre>
 <code>
 class Sample
@@ -113,6 +110,9 @@ end
 
 s = Sample.new
 s.hello
+
+</code>
+</pre>
 </td>
 	</tr>
 </table>
