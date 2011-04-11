@@ -70,10 +70,12 @@ h3. Script Syntax
 		<td>
 <pre>
 <code>
+<cfoutput>
  <cfscript>
  s = New Sample();
  s.hello() ;
  </cfscript>
+</cfoutput>
 </code>
 </pre>
 		</td>
