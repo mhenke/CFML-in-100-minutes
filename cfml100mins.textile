@@ -70,10 +70,8 @@ h3. Script Syntax
 		<td>
 <pre>
 <code>
- <cfscript>
  s = New Sample();
  s.hello() ;
- </cfscript>
 </code>
 </pre>
 		</td>
@@ -91,7 +89,7 @@ h3. Script Syntax
 	</tr>
 </table>
 
-For the script example, @myprogram.cfm@ would have beginning and closing @<cfoutput>@.
+For the script example, @myprogram.cfm@ would have beginning/closing @<cfoutput>@ and @ <cfscript>@ tags around instructions.
 
 h3. Ruby Syntax
 
