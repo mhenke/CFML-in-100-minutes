@@ -89,7 +89,7 @@ h3. Script Syntax
 	</tr>
 </table>
 
-For the script example, @myprogram.cfm@ would have beginning/closing @<cfoutput>@ and @ <cfscript>@ tags around instructions.
+For the script example, @myprogram.cfm@ would have beginning/closing @<cfoutput>@ and @<cfscript>@ tags around the instructions.
 
 h3. Ruby Syntax
 
