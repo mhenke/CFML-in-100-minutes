@@ -41,10 +41,7 @@ h3. Tag Syntax
 <pre>
 <code>
  <cfset s = New Sample() />
- <cfdump var="#s#" />
- <cfoutput>
-  #s.hello()#
- </cfoutput>
+ <cfset s.hello() />
 </code>
 </pre>
 		</td>
@@ -75,8 +72,7 @@ h3. Script Syntax
 <code>
  <cfscript>
  s = New Sample();
- writeDump(s);
- writeOutput( s.hello() );
+ s.hello() ;
  </cfscript>
 </code>
 </pre>
