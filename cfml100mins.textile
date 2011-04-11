@@ -98,9 +98,12 @@ h3. Script Syntax
 h3. Ruby Syntax
 
 <table>
-	<tr><td>my_program.rb - output 2</td>
-	<td>my_program.rb - object 1<td>
-</tr>
+	<tr>
+         <td>my_program.rb - output 2</td>
+	 <td>my_program.rb - object 1<td>
+        </tr>
+<tr>
+<td>
 <pre>
 <code>
 s = Sample.new
