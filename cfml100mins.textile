@@ -99,8 +99,8 @@ h3. Ruby Syntax
 
 <table>
 	<tr>
-         <td>my_program.rb - output 2</td>
-	 <td>my_program.rb - object 1<td>
+         <td>my_program.rb - part 2</td>
+	 <td>my_program.rb - part 1<td>
         </tr>
 <tr>
 <td>
@@ -125,7 +125,7 @@ end
 	</tr>
 </table>
 
-For the Ruby script example, the class would be defined first in @my_program.rb@ then the class called.
+For the Ruby script example, the part 1 would be first in @my_program.rb@ then the part 2.
 
 h2. 2. Variables
 
