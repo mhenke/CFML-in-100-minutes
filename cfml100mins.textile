@@ -95,6 +95,28 @@ h3. Script Syntax
 	</tr>
 </table>
 
+h3 Ruby Syntax
+
+<table>
+	<tr>
+		<td>my_program.rb</td>
+	</tr>
+	<tr>
+		<td>
+<pre>
+<code>
+class Sample
+  def hello
+    puts "Hello, World!"
+  end
+end
+
+s = Sample.new
+s.hello
+</td>
+	</tr>
+</table>
+
 h2. 2. Variables
 
 Everything needs a name so we can refer to it. A variable, like in math, is just a name for a piece of data. In CFML, variables are very flexible and can be changed at any time. Variables are assigned using a single equals sign ( = ) where the *right* side of the equals sign is evaluated first, then the value is assigned to the variable named on the *left* side of the equals. 
