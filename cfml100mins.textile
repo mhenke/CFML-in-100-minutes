@@ -71,7 +71,7 @@ h3. Script Syntax
 <pre>
 <code>
  s = New Sample();
- s.hello() ;
+ s.hello();
 </code>
 </pre>
 		</td>
