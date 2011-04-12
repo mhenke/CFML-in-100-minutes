@@ -754,7 +754,7 @@ There are lots of cool things to do with an array. You can rearrange the order o
    <li>#target# is #len(target)# letters long.</li>
   </cfloop>
   </ul>
-  <cfdump var="#ArrayIsDefined(favorite_colors,4)#">
+  <cfdump var="#ArrayIsDefined(favorite_colors,4)#" />
  </cfoutput>
 </code>
 </pre>
@@ -794,11 +794,11 @@ A structure is an unordered collection, its just a bunch of data collected toget
 <td>
 <pre>
 <code>
- <cfset ages = {jack = 11} />
+ <cfset ages = {jack = 11, brian = 12, tracy = 11} />
  <cfset ages.joey = 12 /> 
  <cfset ages["jill"] = 14 /> 
 
- <cfdump var="#ages#">
+ <cfdump var="#ages#" />
 
  <cfoutput>
  Joey is #ages['joey']# years old.
@@ -810,7 +810,7 @@ A structure is an unordered collection, its just a bunch of data collected toget
 <pre>
 <code>
  <cfscript>
- ages = {jack = 11};
+ ages = {jack = 11, brian = 12, tracy = 11};
  ages.joey = 12;
  ages["jill"] = 14;
 
@@ -870,7 +870,7 @@ In the second chunk of the example, we add a new value to the structure. Since t
  end
  
  <cfset student = {firstName="joey", age=ages.joey, grades=[91, 78, 87]} />
- <cfdump var="#student#">
+ <cfdump var="#student#" />
 </code>
 </pre>
 </td>
@@ -1069,7 +1069,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
   <cfelse>
    <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
    <cfset this.yourEggs = ArrayNew(1) />
-   <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#">
+   <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#" />
     <cfset ArrayAppend(this.yourEggs, "Making an Egg.") />
    </cfloop>
   </cfif>
