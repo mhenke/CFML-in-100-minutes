@@ -736,7 +736,7 @@ Keep going with these, but try to understand what each instruction is doing befo
  <cfset favorite_colors[3]="yellow" />
  <cfdump var="#favorite_colors#" /><br>
  <cfset ArraySort(favorite_colors,"text") />
- <cfset ArrayDeleteAt(favorite_colors, 2)> 
+ <cfset ArrayDeleteAt(favorite_colors, 2) /> 
  <cfdump var="#favorite_colors#" /><br>
 </code>
 </pre>
@@ -937,11 +937,11 @@ Why do we have conditional statements? Most often its to control conditional ins
  <cffunction name="water_boiling" returnType="component">
   <cfargument name="minutes" type="numeric" required="yes">
 
-  <cfif (arguments.minutes LT 7)>
+  <cfif (arguments.minutes LT 7) />
    <cfset this.status = "The water is not boiling yet." />
-  <cfelseif (arguments.minutes EQ 7)> 
+  <cfelseif (arguments.minutes EQ 7) /> 
    <cfset this.status = "It's just barely boiling." />
-  <cfelseif (arguments.minutes EQ 8)>
+  <cfelseif (arguments.minutes EQ 8) />
    <cfset this.status = "It's boiling!" />
   <cfelse>
    <cfset this.status = "Hot! Hot! Hot!" /> 
@@ -1092,7 +1092,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
 <code>
  <cffunction name="make_eggs" returnType="component">
   <cfargument name="quantity" type="numeric">
-  <cfif (IsNull(arguments.quantity))>
+  <cfif (IsNull(arguments.quantity)) />
    <cfset this.makeEggs = "How am I supposed to make nothingness number of eggs?" />
   <cfelse>
    <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
