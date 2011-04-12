@@ -41,10 +41,7 @@ h3. Tag Syntax
 <pre>
 <code>
  <cfset s = New Sample() />
- <cfdump var="#s#" />
- <cfoutput>
-  #s.hello()#
- </cfoutput>
+ <cfset s.hello() />
 </code>
 </pre>
 		</td>
@@ -73,11 +70,8 @@ h3. Script Syntax
 		<td>
 <pre>
 <code>
- <cfscript>
  s = New Sample();
- writeDump(s);
- writeOutput( s.hello() );
- </cfscript>
+ s.hello();
 </code>
 </pre>
 		</td>
@@ -94,6 +88,40 @@ h3. Script Syntax
 		</td>
 	</tr>
 </table>
+
+For the script example, @myprogram.cfm@ would have beginning/closing @<cfoutput>@ and @<cfscript>@ tags around the instructions.
+
+h3. Ruby Syntax
+
+<table>
+	<tr>
+         <td>my_program.rb - part 2</td>
+	 <td>my_program.rb - part 1<td>
+        </tr>
+<tr>
+<td>
+<pre>
+<code>
+s = Sample.new
+s.hello
+</code>
+</pre>
+</td>
+<td>
+<pre>
+<code>
+class Sample
+  def hello
+    puts "Hello, World!"
+  end
+end
+</code>
+</pre>
+</td>
+	</tr>
+</table>
+
+For the Ruby syntax example, the part 1 would be first then followed by part 2 in @my_program.rb@ .
 
 h2. 2. Variables
 
