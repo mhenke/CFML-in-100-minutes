@@ -1010,7 +1010,7 @@ Another time we use conditional statements is when we want to repeat a set of in
   <cfset this.timer = "" />
   <cfloop condition="#arguments.counter# GT 0">
    <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
-   <cfset arguments.counter = arguments.counter - 1 />
+   <cfset arguments.counter-- />
   </cfloop>
   <cfreturn this />
  </cffunction>
@@ -1022,9 +1022,9 @@ Another time we use conditional statements is when we want to repeat a set of in
 <code>
  public component function countdown(numeric counter){
   this.timer = "";
-  while (counter > 0) { 
+  while (counter GT 0) { 
    this.timer &= "The counter is #arguments.counter#.<br>";
-   arguments.counter = arguments.counter--;
+   arguments.counter--;
   }
   return this;
  }
@@ -1034,43 +1034,9 @@ Another time we use conditional statements is when we want to repeat a set of in
 </tr>
 </table>
 
-See how that works? The @counter@ starts out as whatever parameter we pass in. The @while@ instruction evaluates the conditional statement @counter>0@ and finds that yes, the counter is greater than zero. Since the condition is true, execute the instructions inside the loop. First print out @"The counter is #{counter}"@ then take the value of @counter@, subtract one from it, and store it back into @counter@. Then the loop goes back to the @while@ statement. Is it still true? If so, print the line and subtract one again. Keep repeating until the condition is false.
+See how that works? The @counter@ starts out as whatever parameter we pass in. The @while@ instruction evaluates the conditional statement @arguments.counter GT 0@ and finds that yes, the counter is greater than zero. Since the condition is true, execute the instructions inside the loop. First print out @"The counter is #Arguments.counter#"@ then take the value of @Arguments.counter@, subtract one from it, and store it back into @Arguments.counter@. Then the loop goes back to the @condition@/@while@ statement. Is it still true? If so, print the line and subtract one again. Keep repeating until the condition is false.
 
-I most often use @for@, but you can achieve the same results using @while@ as well. Try this
-
-<table>
-<tr>
-<td>*Tag*</td><td>*Script*</td>
-</tr>
-<tr>
-<td>
-<pre>
-<code>
- def countdown(counter) 
-  until counter == 0 
-   puts "The counter is #{counter}" counter = counter - 1 
-  end 
- return self 
- end
-</code>
-</pre>
-</td>
-<td>
-<pre>
-<code>
- SCRIPT EXAMPLE
-</code>
-</pre>
-</td>
-</tr>
-</table>
-
-The #1 mistake people encounter when writing conditional statements is the difference between @=@ and @==@.
-
-*  @=@ is an _assignment_. It meanstake whats on the right side and stick it into whatever is on the left sideits _telling_, not _asking_ 
-*  @==@ is a _question_. It meansis the thing on the right equal to the thing on the left?its _asking_, not _telling_ 
-
-You can also combine conditional statements using logical operators. The most common are known aslogical andandlogical or. In CFML you can write a logical and with either the work @and@ or with double ampersands like this: @&&@. You can write a logical or with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
+You can also combine conditional statements using logical operators. The most common are known as @logical and@ and @logical or@. In CFML you can write a logical and with either the word @and@ or with double ampersands like this: @&&@. You can write a logical or with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
 
 h2. 10. Nothingness & Null
 
