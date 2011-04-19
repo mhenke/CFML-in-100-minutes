@@ -39,14 +39,10 @@ h3. Tag Syntax
 	<tr>
 		<td>
 <pre>
-{% highlight ruby %}
-
 <code>
  <cfset s = New Sample() />
  <cfset s.hello() />
 </code>
-{% endhighlight %}
-
 </pre>
 		</td>
 		<td>
