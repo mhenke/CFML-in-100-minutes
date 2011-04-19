@@ -40,8 +40,10 @@ h3. Tag Syntax
 		<td>
 <pre>
 <code>
+``` ruby
  <cfset s = New Sample() />
  <cfset s.hello() />
+```
 </code>
 </pre>
 		</td>
