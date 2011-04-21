@@ -38,7 +38,7 @@ h3. Tag Syntax
 	</tr>
 	<tr>
 		<td>
-<pre lang="ruby">
+<pre lang="coldfusion">
 <code>
  <cfset s = New Sample() />
  <cfset s.hello() />
@@ -46,7 +46,7 @@ h3. Tag Syntax
 </pre>
 		</td>
 		<td>
-<pre>
+<pre lang="coldfusion">
 <code>
  <cfcomponent>
   <cffunction name="hello">
