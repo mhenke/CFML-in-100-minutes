@@ -38,7 +38,7 @@ h3. Tag Syntax
 	</tr>
 	<tr>
 		<td>
-<pre>
+<pre lang="ruby">
 <code>
  <cfset s = New Sample() />
  <cfset s.hello() />
