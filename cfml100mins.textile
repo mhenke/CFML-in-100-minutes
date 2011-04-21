@@ -39,7 +39,7 @@ h3. Tag Syntax
 	<tr>
 		<td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset s = New Sample() />
  <cfset s.hello() />
 </code>
@@ -47,7 +47,7 @@ h3. Tag Syntax
 		</td>
 		<td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfcomponent>
   <cffunction name="hello">
    <cfreturn "Hello, World!" />
@@ -69,7 +69,7 @@ h3. Script Syntax
 	<tr>
 		<td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  s = New Sample();
  s.hello();
 </code>
@@ -77,7 +77,7 @@ h3. Script Syntax
 		</td>
 		<td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  component {
   public string function hello(){
    return( "Hello, World!" );
@@ -101,7 +101,7 @@ h3. Ruby Syntax
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
 s = Sample.new
 s.hello
 </code>
@@ -109,7 +109,7 @@ s.hello
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
 class Sample
   def hello
     puts "Hello, World!"
@@ -136,7 +136,7 @@ Go into a CFML file, enter in these example instructions, and observe the output
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfoutput>
  <cfset a = 5 />
  a = #a#<br/>
@@ -162,7 +162,7 @@ Go into a CFML file, enter in these example instructions, and observe the output
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  a = 5;
  writeOutput("a = #a#<br/>");
@@ -208,7 +208,7 @@ In CFML we define an object using the @cfcomponent@ instruction and save the fil
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfcomponent>
 
  </cfcomponent>
@@ -217,7 +217,7 @@ In CFML we define an object using the @cfcomponent@ instruction and save the fil
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  component {
 
  }
@@ -238,7 +238,7 @@ Inside the CFC we usually define one or more methods using the @cffunction@ inst
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfcomponent>
   <cffunction name="make_toast">
    <cfset makeToast = "Making your toast!" />
@@ -249,7 +249,7 @@ Inside the CFC we usually define one or more methods using the @cffunction@ inst
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  component {
   public string function make_toast(){
    makeToast = "Making your toast!";
@@ -274,14 +274,14 @@ Once we define a class, we create an instance of that class like this:
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset frank = New PersonalChef() />
 </code>
 </pre>
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  frank = New PersonalChef();
 </code>
 </pre>
@@ -304,7 +304,7 @@ Sometimes methods take one or more _parameters_ telling them *how* to do what th
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfcomponent>
   <cffunction name="make_toast" returnType="string">
    <cfargument name="color" required="yes">
@@ -316,7 +316,7 @@ Sometimes methods take one or more _parameters_ telling them *how* to do what th
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  component {
   public string function make_toast(required String color){
    makeToast = "Making your toast #arguments.color#!";
@@ -345,7 +345,7 @@ For the purposes of our next section I'm going to return the chef instance itsel
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfcomponent>
   <cffunction name="make_toast" returnType="component">
    <cfargument name="color" required="yes">
@@ -358,7 +358,7 @@ For the purposes of our next section I'm going to return the chef instance itsel
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  component {
   public component function make_toast(required String color){
    this.makeToast = "Making your toast #arguments.color#!";
@@ -393,7 +393,7 @@ Experiment with the following samples in a CFML file:
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset tester = "Good Morning Everyone!" />
  <cfoutput>#len(tester)#<br></cfoutput>
  <cfoutput>#Replace(tester, "o", "e", "All")#<br></cfoutput>
@@ -406,7 +406,7 @@ Experiment with the following samples in a CFML file:
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  tester = "Good Morning Everyone!";
  writeOutput("#len(tester)#<br/>");
@@ -431,7 +431,7 @@ Often a string may store a list like the @t2@ variable in the last example. A st
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset t4 = ListToArray(t3) />
  <cfoutput>
   #t4[2]#
@@ -441,7 +441,7 @@ Often a string may store a list like the @t2@ variable in the last example. A st
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  t4 = ListToArray(t3);
  writeOutput(t4[2]);
@@ -479,7 +479,7 @@ In the first line we setup a variable to hold the day of the week. Then we'll pr
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
  <cfset message = "Happy " & today & "!" />
  <cfoutput>
@@ -490,7 +490,7 @@ In the first line we setup a variable to hold the day of the week. Then we'll pr
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  today = DayOfWeekAsString(DayOfWeek(Now()));
  message = "Happy " & today & "!";
@@ -513,7 +513,7 @@ Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
  <cfset message = "Happy #today#!" />
  <cfoutput>
@@ -524,7 +524,7 @@ Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  today = DayOfWeekAsString(DayOfWeek(Now()));
  message = "Happy #today#!";
@@ -551,7 +551,7 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset loop = 0 />
  <cfoutput>
   <cfloop  condition="loop LT 5" >
@@ -565,7 +565,7 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  for (loop = 0 ; loop < 5 ; loop++)
   WriteOutput("#loop# Hello, world!<br>");
@@ -586,7 +586,7 @@ In this next example we're using the @cfloop@ instruction with a multiple instru
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset loop = 0 />
  <cfoutput>
  <cfloop index = "loop" from = 0 to = 4>
@@ -600,7 +600,7 @@ In this next example we're using the @cfloop@ instruction with a multiple instru
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  loop = 0; 
  while (loop < 5) { 
@@ -626,7 +626,7 @@ A query is a request to a database. The query can ask for information from the d
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfquery name="GetBreakfastItems" datasource="pantry"> 
  SELECT QUANTITY, ITEM 
  FROM CUPBOARD 
@@ -637,7 +637,7 @@ A query is a request to a database. The query can ask for information from the d
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  queryService = new Query();
 
@@ -666,14 +666,14 @@ A query is a request to a database. The query can ask for information from the d
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  TAG EXAMPLE
 </code>
 </pre>
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  SCRIPT EXAMPLE
  </cfscript>
@@ -696,7 +696,7 @@ An *array* is a number-indexed list. Picture a city block of houses. Together th
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset favorite_colors = ["red","blue","green","black","brown"] />
  <cfdump var="#favorite_colors#" /><br>
  <cfdump var="#favorite_colors[2]#" /><br>
@@ -706,7 +706,7 @@ An *array* is a number-indexed list. Picture a city block of houses. Together th
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  favorite_colors = ["red","blue","green","black","brown"];
  writeDump(favorite_colors);
@@ -731,7 +731,7 @@ Keep going with these, but try to understand what each instruction is doing befo
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset ArrayAppend(favorite_colors, "orange") />
  <cfset favorite_colors[3]="yellow" />
  <cfdump var="#favorite_colors#" /><br>
@@ -743,7 +743,7 @@ Keep going with these, but try to understand what each instruction is doing befo
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  ArrayAppend(favorite_colors, "orange");
  favorite_colors[3] = "yellow";
@@ -775,7 +775,7 @@ There are lots of cool things to do with an array. You can rearrange the order o
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfoutput>
   <ul>
   <cfloop array="#favorite_colors#" index="target" >
@@ -789,7 +789,7 @@ There are lots of cool things to do with an array. You can rearrange the order o
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  writeOutput("<ul>");
  index = favorite_colors.iterator();
@@ -821,7 +821,7 @@ A structure is an unordered collection, its just a bunch of data collected toget
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset ages = {jack = 11, brian = 12, tracy = 11} />
  <cfset ages.joey = 12 /> 
  <cfset ages["jill"] = 14 /> 
@@ -836,7 +836,7 @@ A structure is an unordered collection, its just a bunch of data collected toget
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  ages = {jack = 11, brian = 12, tracy = 11};
  ages.joey = 12;
@@ -861,7 +861,7 @@ Here we create a structure named @ages@. Structures are made up what are called 
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfset ages["jimmy"] = 14 />
  <cfset ages["joey"] = 9 />
  <cfdump var="#ages# />
@@ -870,7 +870,7 @@ Here we create a structure named @ages@. Structures are made up what are called 
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cfscript>
  ages["jimmy"] = 14;
  ages["joey"] = 9;
@@ -891,7 +891,7 @@ In the second chunk of the example, we add a new value to the structure. Since t
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  students = ages.keys.sort 
  students.each do |student| 
  puts "#{student} is #{ages[student]} years old." 
@@ -904,7 +904,7 @@ In the second chunk of the example, we add a new value to the structure. Since t
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  SCRIPT EXAMPLE
 </code>
 </pre>
@@ -933,7 +933,7 @@ Why do we have conditional statements? Most often its to control conditional ins
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cffunction name="water_boiling" returnType="component">
   <cfargument name="minutes" type="numeric" required="yes">
 
@@ -953,7 +953,7 @@ Why do we have conditional statements? Most often its to control conditional ins
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  public component function water_boiling(numeric minutes){
   if (arguments.minutes < 7) 
    this.status = "The water is not boiling yet.";
@@ -1004,7 +1004,7 @@ Another time we use conditional statements is when we want to repeat a set of in
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cffunction name="countdown" returnType="component">
   <cfargument name="counter" type="numeric">
   <cfset this.timer = "" />
@@ -1019,7 +1019,7 @@ Another time we use conditional statements is when we want to repeat a set of in
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  public component function countdown(numeric counter){
   this.timer = "";
   while (counter GT 0) { 
@@ -1055,7 +1055,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
 <tr>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  <cffunction name="make_eggs" returnType="component">
   <cfargument name="quantity" type="numeric">
   <cfif (IsNull(arguments.quantity)) />
@@ -1074,7 +1074,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
 </td>
 <td>
 <pre>
-<code lang="coldfusion">
+<code lang="ruby">
  public component function make_eggs(numeric quantity){
   if(IsNull(arguments.quantity)) {
    this.makeEggs = "How am I supposed to make nothingness number of eggs?";
