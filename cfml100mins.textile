@@ -1038,6 +1038,11 @@ See how that works? The @counter@ starts out as whatever parameter we pass in. T
 
 You can also combine conditional statements using logical operators. The most common are known as @logical and@ and @logical or@. In CFML you can write a logical and with either the word @and@ or with double ampersands like this: @&&@. You can write a logical or with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
 
+The #1 mistake people encounter when writing conditional statements is the difference between @=@ and @==@.
+
+*  @=@ is an _assignment_. It meanstake whats on the right side and stick it into whatever is on the left side (or its __telling__ **not** __asking__ .)
+* @==@ is a _question_. It means the thing on the right equal to the thing on the left (or its __asking__ **not** __telling__ .)
+
 h2. 10. Nothingness & Null
 
 What is __nothingness__? Is there nothingness only in outer space? Really, when we think of __nothing__ isn't it just the absence of something? Ok, that's too much philosophy
