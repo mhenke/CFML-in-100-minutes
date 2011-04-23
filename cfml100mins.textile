@@ -320,7 +320,7 @@ Inside the CFC we usually define one or more methods using the @cffunction@ inst
 
 Inside the @cffunction@ instruction we'd put the code for how the chef should make the toast.
 
-A @class@ is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an @instance@. It is a _realization_  of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is _abstract_ . The class's weight, color, and size we can't determine them ahead of time.
+A @class@ is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an @instance@. It is a _realization_  of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is _abstract_. The class's weight, color, and size we can't determine them ahead of time.
 
 Once we define a class, we create an instance of that class like this:
 
@@ -584,9 +584,9 @@ In the first line we setup a variable to hold the day of the week. Then we'll pr
 </tr>
 </table>
 
-Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick. There is another string combination method called _string interpolation_.
+Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick. There is another string combination called _string interpolation_.
 
- *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#@ around the @variable@ where in a string the value should be inserted. Inside those hashes we can put any variable and output it in that spot. Our previous example could be rewritten like this:
+ *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#@ around the @variable@ where in a string the value should be inserted. Inside those hashes we can put any variable and output it in that spot. Our previous example @message@ could be rewritten like this:
 
 <table>
 <tr>
@@ -596,31 +596,23 @@ Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick
 <td>
 <pre lang="cfm">
 <code>
- <cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
- <cfset message = "Happy #today#!" />
- <cfoutput>
- #message#
- </cfoutput>
+<cfset message = "Happy #today#!" />
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- today = DayOfWeekAsString(DayOfWeek(Now()));
- message = "Happy #today#!";
- writeOutput(message);
- </cfscript>
+message = "Happy #today#!";
 </code>
 </pre>
 </td>
 </tr>
 </table>
 
-If you compare the output you'll see that this second example gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
+If you compare the output you'll see the second example gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
 
-Basically interpolating means evaluate the code inside this @#@ wrapper and put it into the string.
+Basically _interpolating_ means evaluate the code inside this @#@ wrapper and put it into the string.
 
 h2. 5. Numbers
 
@@ -659,7 +651,7 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 </tr>
 </table>
 
-In this next example we're using the @cfloop@ instruction with a multiple instructions inside the condition. CFML looks for the starting @{@ and the ending @}@. Each instruction between the beginning @{@ and ending @}@ will be executed if the condition is true. Try this example with multiple instructions:
+In this next example we're using the @cfloop@ instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting @{@ and the ending @}@. Each instruction between the beginning @{@ and ending @}@ will be executed if the condition is true. Try this example with multiple instructions:
 
 <table>
 <tr>
@@ -848,7 +840,7 @@ In order to get add an element in the array you use the syntax @ArrayAppend(arra
 * What did the @ArraySort@ instuction do to the collection?
 * What does @ArrayLen@ instruction return?
 
-There are lots of cool things to do with an array. You can rearrange the order of the elements using the @ArraySort@ instruction. You can iterate through each element using the @cfloop@ instruction. You can find the address of a specific element by using the @arrayName[index]@ instruction. You can ask an array if an element is present with the @ArrayIsDefined@ instruction. Try out this example that brings a bunch of things together:
+There are lots of cool things to do with an array. You can rearrange the order of the elements using the @ArraySort@ instruction like we did in the last example. You can iterate through each element using the @cfloop@ instruction. You can find the address of a specific element by using the @arrayName[index]@ instruction. You can ask an array if an element is present with the @ArrayIsDefined@ instruction. Try out this example that brings a bunch of things together:
 
 <table>
 <tr>
@@ -892,9 +884,9 @@ We use arrays whenever we need a list where the elements are in a specific order
 
 h2. 8. Structures
 
-A structure is a _collection of data_ where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read as look in the collection named @science@ and find the thing named @Joey@.
+A structure is a _collection of data_ where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read as "look in the collection named @science@ and find the thing named @Joey@".
 
-A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name. Structures have a more complicated syntax that takes some getting used to:
+A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:
 
 <table>
 <tr>
@@ -964,7 +956,7 @@ Here we create a structure named @ages@. Structures are made up what are called 
 </tr>
 </table>
 
-In the second chunk of the example, we add a new value to the structure. Since the @"jimmy"@ key wasn't in the original structure, it's added with the value of @14@. If the key @"jimmy"@ already existed then the value would be replaced by @14@. Every key in a structure must be unique! In the second line we reference the key @"joey"@ which already exists, so the value gets replaced with the @9@. Then, just to show you the state of the structure, we print out the list of keys and the list of values.
+In the second chunk of the example, we add a new key and value to the structure. Since the @"jimmy"@ key wasn't in the original structure, it's added with the value of @14@. If the key @"jimmy"@ already existed then the value would be replaced by @14@. Every key in a structure must be unique! In the second line we reference the key @"joey"@ which already exists, so the value gets replaced with the @9@. Then, just to show you the state of the structure, we dump out the list of keys and the list of values.
 
 <table>
 <tr>
@@ -1000,9 +992,9 @@ While that last part probably seemed complicated, its just to illustrate that al
 
 h2. 9. Conditionals
 
-Conditional statements evaluate to @true@ or @false@ only. The most common conditional operators are @==@ (equal), @!=@ (not equal), @>@ (greater than), @>=@ (greater than or equal to), @<@ (less than), and @<=@ (less than or equal to). You can also define the operators as words: @EQ@, @NEQ@, @GT@, @GTE@, @LT@, and @LTE@.
+Conditional statements evaluate to @true@ or @false@ only. The most common conditional operators are @==@ (equal), @!=@ (not equal), @>@ (greater than), @>=@ (greater than or equal to), @<@ (less than), and @<=@ (less than or equal to). You can also define the operators as abbreviations: @EQ@, @NEQ@, @GT@, @GTE@, @LT@, and @LTE@.
 
-Some instructions return a @true@ or @false@, so they're used in conditional statements. For example, @IsArray@ which is @true@ only when the variable is an @array@. Structures have an instruction named @StructKeyExists@ which returns true if a key is present in a structure.
+Some instructions return a @true@ or @false@, so they're used in conditional statements. For example, @IsArray@ which is @true@ only when the variable is an @array@. Structures have an instruction named @StructKeyExists@ which returns @true@ if a key is present in a structure.
 
 h3. 9. 1. If, Else If, & Else
 
@@ -1118,7 +1110,7 @@ Another time we use conditional statements is when we want to repeat a set of in
 
 See how that works? The @counter@ starts out as whatever parameter we pass in. The @while@ instruction evaluates the conditional statement @arguments.counter GT 0@ and finds that yes, the counter is greater than zero. Since the condition is true, execute the instructions inside the loop. First print out @"The counter is #Arguments.counter#"@ then take the value of @Arguments.counter@, subtract one from it, and store it back into @Arguments.counter@. Then the loop goes back to the @condition@/@while@ statement. Is it still true? If so, print the line and subtract one again. Keep repeating until the condition is false.
 
-You can also combine conditional statements using logical operators. The most common are known as @logical and@ and @logical or@. In CFML you can write a logical and with either the word @and@ or with double ampersands like this: @&&@. You can write a logical or with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
+You can also combine conditional statements using logical operators. The most common are known as @logical and@ and @logical or@. In CFML you can write a @logical and@ with either the word @and@ or with double ampersands like this: @&&@. You can write a @logical or@ with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
 
 The #1 mistake people encounter when writing conditional statements is the difference between @=@ and @==@.
 
@@ -1131,7 +1123,7 @@ What is _nothingness_? Is there nothingness only in outer space? Really, when we
 
 ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a @NULL@ value from an external source and maintain the @NULL@ value until you try to use it. ColdFusion will convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for @NULL@ values, ColdFusion allows you to pass in and return a @NULL@ value from a method. @IsNull()@ instruction will test for @NULL@ values and return @true@ or @false@.
 
-If you have three eggs, eat three eggs, then you might think you have _nothing_ , but in terms of eggs you have @0@. Zero is something, its a number, and its _not nothing_ .
+If you have three eggs, eat three eggs, then you might think you have _nothing_ , but in terms of eggs you have @0@. Zero is something, its a number, and its _not nothing_.
 
 A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our @makeeggs@ method to illustrate @NULL@ :
 
