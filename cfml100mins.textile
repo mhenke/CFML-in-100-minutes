@@ -17,15 +17,15 @@ ColdFusion Markup Language (CFML) is a great programming language for beginners 
 
 h2. CFML History
 
-CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. The term __ColdFusion__ is often used synonymously with __CFML__. ColdFusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
+CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. The term __ColdFusion__ is often used synonymously with __CFML__. "ColdFusion":http://www.adobe.com/coldfusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like "Railo":http://www.getrailo.com/ and "OpenBD":http://www.openbluedragon.org/ . ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
 
-When ColdFusion was originally released, it grew an audience quickly in the government and public sector. CFML tag syntax resembles HTML and the script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
+When ColdFusion was originally released, it grew an audience quickly in the government and private sector. CFML tag syntax resembles HTML and the CFML script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
 
 And you want to learn CFML so here goes!
 
 h2. 1. Syntax
 
-There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages.  You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are @CFSET@, @CFOUTPUT@, @CFDUMP@. @CFSET@ is used to create a variable and assign it a value. Also @CFSET@ is used to call functions. @CFCOUTPUT@ displays a variable's value. @CFDUMP@ is used display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
+There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages.  You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are @CFSET@, @CFOUTPUT@, and @CFDUMP@. @CFSET@ is used to create a variable and assign it a value. Also @CFSET@ is used to call methods. @CFOUTPUT@ displays a variable's value. @CFDUMP@ is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
 
 We might have a file named @myprogram.cfm@ and @Sample.cfc@ like this:
 
@@ -90,8 +90,39 @@ h3. Script Syntax
 </table>
 
 For the script example, @myprogram.cfm@ would have beginning/closing @<cfoutput>@ and @<cfscript>@ tags around the instructions.
+h4. PHP Syntax
 
-h3. Ruby Syntax
+TODO: Code PHP example
+
+<table>
+  <tr>
+         <td>my_program.rb - part 2</td>
+   <td>my_program.rb - part 1<td>
+        </tr>
+<tr>
+<td>
+<pre lang="cfm">
+<code>
+s = Sample.new
+s.hello
+</code>
+</pre>
+</td>
+<td>
+<pre lang="cfm">
+<code>
+class Sample
+  def hello
+    puts "Hello, World!"
+  end
+end
+</code>
+</pre>
+</td>
+  </tr>
+</table>
+
+h4. Ruby Syntax
 
 <table>
 	<tr>
@@ -121,7 +152,7 @@ end
 	</tr>
 </table>
 
-For the Ruby syntax example, the part 1 would be first then followed by part 2 in @my_program.rb@ .
+For the Ruby syntax, part 1 would be first then followed by part 2 in @my_program.rb@.
 
 h2. 2. Variables
 
@@ -148,14 +179,6 @@ Go into a CFML file, enter in these example instructions, and observe the output
  b = #b#<br/>
  <cfset d = "Hello, " />
  d = #d#<br/>
- <cfset e = "World!" />
- e = #e#<br/>
- <cfset f = d & e />
- f = #f#<br/>
- <cfset g = d & a & e />
- g = #g#<br/>
- <cfset b = "hi!" />
- b = #b#<br/>
  </cfoutput>
 </code>
 </pre>
@@ -173,6 +196,41 @@ Go into a CFML file, enter in these example instructions, and observe the output
  b = c - a;
  writeOutput("b = #b#<br/>");
  d = "Hello, ";
+ writeOutput("d = #d#<br/>"); 
+ </cfscript>
+</code>
+</pre>
+</td>
+</tr>
+</table>
+
+In this second example, we assume the first example is present.
+
+<table>
+<tr>
+<td>*Tag*</td><td>*Script*</td>
+</tr>
+<tr>
+<td>
+<pre lang="cfm">
+<code>
+ <cfoutput>
+ <cfset e = "World!" />
+ e = #e#<br/>
+ <cfset f = d & e />
+ f = #f#<br/>
+ <cfset g = d & a & e />
+ g = #g#<br/>
+ <cfset b = "hi!" />
+ b = #b#<br/>
+ </cfoutput>
+</code>
+</pre>
+</td>
+<td>
+<pre lang="cfm">
+<code>
+ <cfscript>
  writeOutput("d = #d#<br/>");
  e = "World!";
  writeOutput("e = #e#<br/>");
@@ -189,13 +247,13 @@ Go into a CFML file, enter in these example instructions, and observe the output
 </tr>
 </table>
 
-*The first few lines are simple if you've done any programming language before, but the last few get interesting when combining strings and numbers.
+*The first few lines are simple if you've done any programming language before, but the last few get interesting when combining strings and numbers. The code looks a little messy since after each instruction we output variable.
 
 h2. 3. Components, Methods, and Parameters
 
 h3. Components
 
-In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called attributes, and can do actions, called methods. In ColdFusion the @cffunction@ tag is used to define methods within a CFC.
+In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called @attributes@, and can do actions, called @methods@. In ColdFusion the @cffunction@ tag is used to define methods within a CFC.
 
 For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections we'll look at a few specific instructions in CFML.
 
