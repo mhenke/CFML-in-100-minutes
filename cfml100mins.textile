@@ -231,7 +231,6 @@ In this second example, we assume the first example is present.
 <pre lang="cfm">
 <code>
  <cfscript>
- writeOutput("d = #d#<br/>");
  e = "World!";
  writeOutput("e = #e#<br/>");
  f = d & e;
@@ -247,7 +246,7 @@ In this second example, we assume the first example is present.
 </tr>
 </table>
 
-*The first few lines are simple if you've done any programming language before, but the last few get interesting when combining strings and numbers. The code looks a little messy since after each instruction we output variable.
+*The first few lines in the first example are simple if you've done any programming language before, but the last few get interesting when combining strings and numbers. The code looks a little messy since after each instruction we output variable.
 
 h2. 3. Components, Methods, and Parameters
 
