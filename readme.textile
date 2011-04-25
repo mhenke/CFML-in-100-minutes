@@ -2,9 +2,13 @@ h1. readme
 
 CFML in 100 minutes was modified from "Ruby in 100 Minutes":http://jumpstartlab.com/resources/ruby-jumpstart/ruby/
 
+h2. Where is CFML in 100 minutes?
+
+CFML in 100 minutes is a simple textile file for easy editing and contributions called @cfml100mins.textile@. Textile is a lightweight markup language that converts its marked-up text input to valid, well-formed XHTML. You can click on the "cfml100mins.textile":https://github.com/mhenke/CFML-in-100-minutes/blob/master/cfml100mins.textile link to view the converted page.
+
 h2. License
 
-These works were originally created by Jeff Casimir (jeff@jumpstartlab.com) and "Jumpstart Lab":http://jumpstartlab.com. They are licensed "Attribution-Noncommercial-Share Alike 3.0":http://creativecommons.org/licenses/by-nc-sa/3.0/us/ . If they are useful to you please drop him an email!
+These works were originally created by Jeff Casimir (jeff@jumpstartlab.com) and "Jumpstart Lab":http://jumpstartlab.com. They are licensed "Creative Commons Attribution-Noncommercial-Share Alike 3.0":http://creativecommons.org/licenses/by-nc-sa/3.0/us/ . If they are useful to you please drop him an email!
 
 h2. Contributors 
 

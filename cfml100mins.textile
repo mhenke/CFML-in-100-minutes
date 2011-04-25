@@ -17,15 +17,15 @@ ColdFusion Markup Language (CFML) is a great programming language for beginners 
 
 h2. CFML History
 
-CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. The term __ColdFusion__ is often used synonymously with __CFML__. ColdFusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like Railo and OpenBD. ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
+CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. The term _ColdFusion_ is often used synonymously with _CFML_. "ColdFusion":http://www.adobe.com/coldfusion originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like "Railo":http://www.getrailo.com/ and "OpenBD":http://www.openbluedragon.org/ . ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development. 
 
-When ColdFusion was originally released, it grew an audience quickly in the government and public sector. CFML tag syntax resembles HTML and the script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
+When ColdFusion was originally released, it grew an audience quickly in the government and private sector. CFML tag syntax resembles HTML and the CFML script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
 
 And you want to learn CFML so here goes!
 
 h2. 1. Syntax
 
-There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages.  You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are @CFSET@, @CFOUTPUT@, @CFDUMP@. @CFSET@ is used to create a variable and assign it a value. Also @CFSET@ is used to call functions. @CFCOUTPUT@ displays a variable's value. @CFDUMP@ is used display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
+There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages.  You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are @CFSET@, @CFOUTPUT@, and @CFDUMP@. @CFSET@ is used to create a variable and assign it a value. Also @CFSET@ is used to call methods. @CFOUTPUT@ displays a variable's value. @CFDUMP@ is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
 
 We might have a file named @myprogram.cfm@ and @Sample.cfc@ like this:
 
@@ -91,7 +91,39 @@ h3. Script Syntax
 
 For the script example, @myprogram.cfm@ would have beginning/closing @<cfoutput>@ and @<cfscript>@ tags around the instructions.
 
-h3. Ruby Syntax
+h4. PHP Syntax
+
+TODO: Code PHP example
+
+<table>
+  <tr>
+         <td>my_program.rb - part 2</td>
+   <td>my_program.rb - part 1<td>
+        </tr>
+<tr>
+<td>
+<pre lang="cfm">
+<code>
+s = Sample.new
+s.hello
+</code>
+</pre>
+</td>
+<td>
+<pre lang="cfm">
+<code>
+class Sample
+  def hello
+    puts "Hello, World!"
+  end
+end
+</code>
+</pre>
+</td>
+  </tr>
+</table>
+
+h4. Ruby Syntax
 
 <table>
 	<tr>
@@ -121,7 +153,7 @@ end
 	</tr>
 </table>
 
-For the Ruby syntax example, the part 1 would be first then followed by part 2 in @my_program.rb@ .
+For the Ruby syntax, part 1 would be first then followed by part 2 in @my_program.rb@.
 
 h2. 2. Variables
 
@@ -148,14 +180,6 @@ Go into a CFML file, enter in these example instructions, and observe the output
  b = #b#<br/>
  <cfset d = "Hello, " />
  d = #d#<br/>
- <cfset e = "World!" />
- e = #e#<br/>
- <cfset f = d & e />
- f = #f#<br/>
- <cfset g = d & a & e />
- g = #g#<br/>
- <cfset b = "hi!" />
- b = #b#<br/>
  </cfoutput>
 </code>
 </pre>
@@ -173,7 +197,41 @@ Go into a CFML file, enter in these example instructions, and observe the output
  b = c - a;
  writeOutput("b = #b#<br/>");
  d = "Hello, ";
- writeOutput("d = #d#<br/>");
+ writeOutput("d = #d#<br/>"); 
+ </cfscript>
+</code>
+</pre>
+</td>
+</tr>
+</table>
+
+In this second example, we assume the first example is present.
+
+<table>
+<tr>
+<td>*Tag*</td><td>*Script*</td>
+</tr>
+<tr>
+<td>
+<pre lang="cfm">
+<code>
+ <cfoutput>
+ <cfset e = "World!" />
+ e = #e#<br/>
+ <cfset f = d & e />
+ f = #f#<br/>
+ <cfset g = d & a & e />
+ g = #g#<br/>
+ <cfset b = "hi!" />
+ b = #b#<br/>
+ </cfoutput>
+</code>
+</pre>
+</td>
+<td>
+<pre lang="cfm">
+<code>
+ <cfscript>
  e = "World!";
  writeOutput("e = #e#<br/>");
  f = d & e;
@@ -189,13 +247,13 @@ Go into a CFML file, enter in these example instructions, and observe the output
 </tr>
 </table>
 
-*The first few lines are simple if you've done any programming language before, but the last few get interesting when combining strings and numbers.
+*The first few lines in the first example are simple if you've done any programming language before, but the last few get interesting when combining strings and numbers. The code looks a little messy since after each instruction we output a variable.
 
 h2. 3. Components, Methods, and Parameters
 
 h3. Components
 
-In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called attributes, and can do actions, called methods. In ColdFusion the @cffunction@ tag is used to define methods within a CFC.
+In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called @attributes@, and can do actions, called @methods@. In ColdFusion the @cffunction@ tag is used to define methods within a CFC.
 
 For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections we'll look at a few specific instructions in CFML.
 
@@ -240,7 +298,7 @@ Inside the CFC we usually define one or more methods using the @cffunction@ inst
 <pre lang="cfm">
 <code>
  <cfcomponent>
-  <cffunction name="make_toast">
+  <cffunction name="makeToast">
    <cfset makeToast = "Making your toast!" />
   </cffunction>
  </cfcomponent>
@@ -251,7 +309,7 @@ Inside the CFC we usually define one or more methods using the @cffunction@ inst
 <pre lang="cfm">
 <code>
  component {
-  public string function make_toast(){
+  public string function makeToast(){
    makeToast = "Making your toast!";
   }
  }
@@ -263,7 +321,7 @@ Inside the CFC we usually define one or more methods using the @cffunction@ inst
 
 Inside the @cffunction@ instruction we'd put the code for how the chef should make the toast.
 
-A class is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an *instance*. It is a __realization__  of the idea chair. It has measurable attributes like height, color, weight. The *class* chair, on the other hand, is __abstract__ . The class's weight, color, and size we can't determine them ahead of time.
+A @class@ is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an @instance@. It is a _realization_  of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is _abstract_. The class's weight, color, and size we can't determine them ahead of time.
 
 Once we define a class, we create an instance of that class like this:
 
@@ -289,13 +347,13 @@ Once we define a class, we create an instance of that class like this:
 </tr>
 </table>
 
-We're calling the @New@ instruction on the class @PersonalChef@ and storing it into the variable named @frank@. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: @object.method_name()@. So if you have a person named @frank@ you would tell him to make toast by calling @frank.make_toast()@.
+We're calling the @New@ instruction on the class @PersonalChef@ and storing it into the variable named @frank@. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: @object.method_name()@. So if you have a person named @frank@ you would tell him to make toast by calling @frank.makeToast()@.
 
 The @New@ instruction creates a new instance of the object and calls it’s init() method (if existing). Any arguments supplied to the object will be passed to the init() method. The init() method should return the object instance using @<cfreturn this />@ in order to have the same expected behavior as the @CreateObject@ instruction. If no init() method exists, the object will be returned normally.
 
 h3. Method Parameters
 
-Sometimes methods take one or more _parameters_ telling them *how* to do what they're suppose to *do*. For instance, I might call @frank.make_toast('burned')@ for him to burn my toast. Or maybe he has another method where I call @frank.make_breakfast("toast","eggs")@ for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the @cfargument@ instruction, it'll look like this:
+Sometimes methods take one or more _parameters_ telling them *how* to do what they're suppose to *do*. For instance, I might call @frank.makeToast('burned')@ for him to burn my toast. Or maybe he has another method where I call @frank.makebreakfast("toast","eggs")@ for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the @cfargument@ instruction, it'll look like this:
 
 <table>
 <tr>
@@ -306,7 +364,7 @@ Sometimes methods take one or more _parameters_ telling them *how* to do what th
 <pre lang="cfm">
 <code>
  <cfcomponent>
-  <cffunction name="make_toast" returnType="string">
+  <cffunction name="makeToast" returnType="string">
    <cfargument name="color" required="yes">
     <cfset makeToast = "Making your toast #arguments.color#!" />
   </cffunction>
@@ -318,7 +376,7 @@ Sometimes methods take one or more _parameters_ telling them *how* to do what th
 <pre lang="cfm">
 <code>
  component {
-  public string function make_toast(required String color){
+  public string function makeToast(required String color){
    makeToast = "Making your toast #arguments.color#!";
   }
  }
@@ -328,13 +386,13 @@ Sometimes methods take one or more _parameters_ telling them *how* to do what th
 </tr>
 </table>
 
-The method is requiring us to pass in a @color@ telling it how to do the method @make_toast@.
+The method is requiring us to pass in a @color@ telling it how to do the method @makeToast@.
 
 h3. Return Value
 
-In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns __nothing__ . We'll talk about __nothing__ and @null@ in the last section of "CFML in 100 minutes". If you called @make_toast@ method above like @<cfset result = frank.make_toast('burned') />@ or @set result = frank.make_toast('burned');@, and tried to output @result@ you should have seen @Variable RESULT is undefined@.
+In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns _nothing_. We'll talk about _nothing_ and @null@ in the last section of "CFML in 100 minutes". If you called @makeToast@ method above like @<cfset result = frank.makeToast('burned') />@ or @set result = frank.makeToast('burned');@, and tried to output @result@ you should have seen @Variable RESULT is undefined@.
 
-To return data, we use @cfreturn@ to instruct the method to return a @value@. Since that wasn't the last instruction before the ending @cffunction@ in your @make_toast@ method, you received __nothing__ and tried to putting that into the @result@ variable.
+To return data, we use @cfreturn@ to instruct the method to return a @value@. Since that wasn't in the last instruction before the ending @cffunction@ in your @makeToast@ method, you received _nothing_ and tried to putting that into the @result@ variable.
 
 For the purposes of our next section I'm going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef @frank@. You say, "Frank, go make my toast", he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's *returning himself* to you. Here's how we implement it in code:
 
@@ -347,7 +405,7 @@ For the purposes of our next section I'm going to return the chef instance itsel
 <pre lang="cfm">
 <code>
  <cfcomponent>
-  <cffunction name="make_toast" returnType="component">
+  <cffunction name="makeToast" returnType="component">
    <cfargument name="color" required="yes">
     <cfset this.makeToast = "Making your toast #arguments.color#!" />
     <cfreturn this />
@@ -360,7 +418,7 @@ For the purposes of our next section I'm going to return the chef instance itsel
 <pre lang="cfm">
 <code>
  component {
-  public component function make_toast(required String color){
+  public component function makeToast(required String color){
    this.makeToast = "Making your toast #arguments.color#!";
    return this;
   }
@@ -378,7 +436,7 @@ In CFML a string is defined as a quote ( @"@ ) followed by zero or more letters,
 *  @Len@ 
 Call @Len@ on a string to get back the number of characters in the string. For instance @Len("Hello")@ would give you back @5@.
 *  @Replace@ 
-The @Replace@ instruction replaces occurrences of *substring1* in a string with *substring2*, in a specified scope. The search is case sensitive and the scope default is one. For instance, @Replace("Hello", "e", "")@ would give you back @"hllo"@ after replacing the __first__ occurrence of @"e"@, or @Replace("Good Morning!", "o", "e", "All")"@ would give you @"Geed Merning!"@ 
+The @Replace@ instruction replaces occurrences of *substring1* in a string with *substring2*, in a specified scope. The search is case sensitive and the scope default is one. For instance, @Replace("Hello", "e", "")@ would give you back @"hllo"@ after replacing the _first_ occurrence of @"e"@, or @Replace("Good Morning!", "o", "e", "All")"@ would give you @"Geed Merning!"@ 
 *  @RemoveChars@ 
 Call @RemoveChars@ to remove characters from a string. For instance, @RemoveChars("hello bob", 2, 5)@ would give you back @"hbob"@.  
 *  @Mid@ 
@@ -452,7 +510,7 @@ Often a string may store a list like the @t2@ variable in the last example. A st
 </tr>
 </table>
 
-The numbers inside the @[]@ brackets specify which item of the array you want pulled out. They're numbered starting with 1. So the first example pulls out the @2@ array item. This @t4@ array contains position @1@, the beginning of the list, up to position @4@, the ending of the list.
+The numbers inside the @[]@ brackets specify which item of the array you want pulled out. They're numbered starting with 1. So the first example pulls out the @2@ array item. This @t4@ array contains position @1@, the beginning of the list, up to position @4@, the ending of the array.
 
 h3. Combining Strings and Variables
 
@@ -464,9 +522,34 @@ When we put that into the CFML file, it just spits back the same string. If we w
 
 What we need to do is combine a variable with the string. There are two ways to do that. The first approach is called _string concatenation_ which is basically just adding strings together:
 
-@today =  "Saturday";@
+<table>
+<tr>
+<td>*Tag*</td><td>*Script*</td>
+</tr>
+<tr>
+<td>
+<pre lang="cfm">
+<code>
+<cfset today =  "Saturday" />
+<cfset message =  "Happy" & today />
+</code>
+</pre>
+</td>
+<td>
+<pre lang="cfm">
+<code>
+<cfscript>
+today =  "Saturday";
+message = "Happy" & today;
+</cfscript>
+</code>
+</pre>
+</td>
+</tr>
+</table>
 
-In the first line we setup a variable to hold the day of the week. Then we'll printed the string __Happy__ combined with the value of the variable @today@ and the string __!__. You might be thinking. What was the point of that since we still just wrote __Saturday__ in the first line? Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
+
+In the first line we setup a variable to hold the day of the week. Then we'll printed the string _Happy_ combined with the value of the variable @today@ and the string _!_.  You might be thinking. What was the point of that since we still just wrote _Saturday_ in the first line? Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
 
 @today = DayOfWeek(Now());@
 
@@ -502,9 +585,9 @@ In the first line we setup a variable to hold the day of the week. Then we'll pr
 </tr>
 </table>
 
-Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick. There is another string combination method called _string interpolation_.
+Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick. There is another string combination called _string interpolation_.
 
- *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#@ around the @variable@ where in a string the value should be inserted. Inside those hashes we can put any variable and output it in that spot. Our previous example could be rewritten like this:
+ *String interpolation* is the process of sticking data into the middle of strings. We use the symbols @#@ around the @variable@ where in a string the value should be inserted. Inside those hashes we can put any variable and output it in that spot. Our previous example @message@ could be rewritten like this:
 
 <table>
 <tr>
@@ -514,31 +597,23 @@ Great, no errors and our output looks correct. @DayOfWeekAsString@ did the trick
 <td>
 <pre lang="cfm">
 <code>
- <cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
- <cfset message = "Happy #today#!" />
- <cfoutput>
- #message#
- </cfoutput>
+<cfset message = "Happy #today#!" />
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- today = DayOfWeekAsString(DayOfWeek(Now()));
- message = "Happy #today#!";
- writeOutput(message);
- </cfscript>
+message = "Happy #today#!";
 </code>
 </pre>
 </td>
 </tr>
 </table>
 
-If you compare the output you'll see that this second example gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
+If you compare the output you'll see the second example gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
 
-Basically interpolating means evaluate the code inside this @#@ wrapper and put it into the string.
+Basically _interpolating_ means evaluate the code inside this @#@ wrapper and put it into the string.
 
 h2. 5. Numbers
 
@@ -577,7 +652,7 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 </tr>
 </table>
 
-In this next example we're using the @cfloop@ instruction with a multiple instructions inside the condition. CFML looks for the starting @{@ and the ending @}@. Each instruction between the beginning @{@ and ending @}@ will be executed if the condition is true. Try this example with multiple instructions:
+In this next example we're using the @cfloop@ instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting @{@ and the ending @}@. Each instruction between the beginning @{@ and ending @}@ will be executed if the condition is true. Try this example with multiple instructions:
 
 <table>
 <tr>
@@ -685,7 +760,7 @@ A query is a request to a database. The query can ask for information from the d
 
 h2. 7. Arrays
 
-Often we need to organize a group and put them into a __collection__. There are two main types of collections: *arrays* and *structures*.
+Often we need to organize a group and put them into a _collection_. There are two main types of collections: *arrays* and *structures*.
 
 An *array* is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the *indices*. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The *index* is the address of a specific element inside the array. In CFML the index always begins with @1@. An array is defined in CFML as an opening @[@ then zero or more elements, and a closing @]@. Try out this code:
 
@@ -766,7 +841,7 @@ In order to get add an element in the array you use the syntax @ArrayAppend(arra
 * What did the @ArraySort@ instuction do to the collection?
 * What does @ArrayLen@ instruction return?
 
-There are lots of cool things to do with an array. You can rearrange the order of the elements using the @ArraySort@ instruction. You can iterate through each element using the @cfloop@ instruction. You can find the address of a specific element by using the @arrayName[index]@ instruction. You can ask an array if an element is present with the @ArrayIsDefined@ instruction. Try out this example that brings a bunch of things together:
+There are lots of cool things to do with an array. You can rearrange the order of the elements using the @ArraySort@ instruction like we did in the last example. You can iterate through each element using the @cfloop@ instruction. You can find the address of a specific element by using the @arrayName[index]@ instruction. You can ask an array if an element is present with the @ArrayIsDefined@ instruction. Try out this example that brings a bunch of things together:
 
 <table>
 <tr>
@@ -810,9 +885,9 @@ We use arrays whenever we need a list where the elements are in a specific order
 
 h2. 8. Structures
 
-A structure is a _collection of data_ where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read as look in the collection named @science@ and find the thing named @Joey@.
+A structure is a _collection of data_ where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like @science["Joey"]@ which could be read as "look in the collection named @science@ and find the thing named @Joey@".
 
-A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name. Structures have a more complicated syntax that takes some getting used to:
+A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:
 
 <table>
 <tr>
@@ -882,7 +957,7 @@ Here we create a structure named @ages@. Structures are made up what are called 
 </tr>
 </table>
 
-In the second chunk of the example, we add a new value to the structure. Since the @"jimmy"@ key wasn't in the original structure, it's added with the value of @14@. If the key @"jimmy"@ already existed then the value would be replaced by @14@. Every key in a structure must be unique! In the second line we reference the key @"joey"@ which already exists, so the value gets replaced with the @9@. Then, just to show you the state of the structure, we print out the list of keys and the list of values.
+In the second chunk of the example, we add a new key and value to the structure. Since the @"jimmy"@ key wasn't in the original structure, it's added with the value of @14@. If the key @"jimmy"@ already existed then the value would be replaced by @14@. Every key in a structure must be unique! In the second line we reference the key @"joey"@ which already exists, so the value gets replaced with the @9@. Then, just to show you the state of the structure, we dump out the list of keys and the list of values.
 
 <table>
 <tr>
@@ -918,9 +993,9 @@ While that last part probably seemed complicated, its just to illustrate that al
 
 h2. 9. Conditionals
 
-Conditional statements evaluate to @true@ or @false@ only. The most common conditional operators are @==@ (equal), @!=@ (not equal), @>@ (greater than), @>=@ (greater than or equal to), @<@ (less than), and @<=@ (less than or equal to). You can also define the operators as words: @EQ@, @NEQ@, @GT@, @GTE@, @LT@, and @LTE@.
+Conditional statements evaluate to @true@ or @false@ only. The most common conditional operators are @==@ (equal), @!=@ (not equal), @>@ (greater than), @>=@ (greater than or equal to), @<@ (less than), and @<=@ (less than or equal to). You can also define the operators as abbreviations: @EQ@, @NEQ@, @GT@, @GTE@, @LT@, and @LTE@.
 
-Some instructions return a @true@ or @false@, so they're used in conditional statements. For example, @IsArray@ which is @true@ only when the variable is an @array@. Structures have an instruction named @StructKeyExists@ which returns true if a key is present in a structure.
+Some instructions return a @true@ or @false@, so they're used in conditional statements. For example, @IsArray@ which is @true@ only when the variable is an @array@. Structures have an instruction named @StructKeyExists@ which returns @true@ if a key is present in a structure.
 
 h3. 9. 1. If, Else If, & Else
 
@@ -1036,22 +1111,22 @@ Another time we use conditional statements is when we want to repeat a set of in
 
 See how that works? The @counter@ starts out as whatever parameter we pass in. The @while@ instruction evaluates the conditional statement @arguments.counter GT 0@ and finds that yes, the counter is greater than zero. Since the condition is true, execute the instructions inside the loop. First print out @"The counter is #Arguments.counter#"@ then take the value of @Arguments.counter@, subtract one from it, and store it back into @Arguments.counter@. Then the loop goes back to the @condition@/@while@ statement. Is it still true? If so, print the line and subtract one again. Keep repeating until the condition is false.
 
-You can also combine conditional statements using logical operators. The most common are known as @logical and@ and @logical or@. In CFML you can write a logical and with either the word @and@ or with double ampersands like this: @&&@. You can write a logical or with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
+You can also combine conditional statements using logical operators. The most common are known as @logical and@ and @logical or@. In CFML you can write a @logical and@ with either the word @and@ or with double ampersands like this: @&&@. You can write a @logical or@ with the word @or@ or with double pipes like this: @||@. For each operation, the symbolic representation ( @&&@ and @||@ ) is more common.
 
 The #1 mistake people encounter when writing conditional statements is the difference between @=@ and @==@.
 
-* @=@ is an _assignment_. It means "take what's on the right side and stick it into whatever is on the left side" (or its __telling__ not __asking__.)
-* @==@ is a _question_. It means "is the thing on the right equal to the thing on the left" (or its __asking__ not __telling__.)
+* @=@ is an _assignment_. It means "take what's on the right side and stick it into whatever is on the left side" (or its _telling_ not _asking_.)
+* @==@ is a _question_. It means "is the thing on the right equal to the thing on the left" (or its _asking_ not _telling_.)
 
 h2. 10. Nothingness & Null
 
-What is __nothingness__? Is there nothingness only in outer space? Really, when we think of __nothing__ isn't it just the absence of something? Ok, that's too much philosophy
+What is _nothingness_? Is there nothingness only in outer space? Really, when we think of _nothing_ isn't it just the absence of something? Ok, that's too much philosophy
 
 ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a @NULL@ value from an external source and maintain the @NULL@ value until you try to use it. ColdFusion will convert the @NULL@ into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for @NULL@ values, ColdFusion allows you to pass in and return a @NULL@ value from a method. @IsNull()@ instruction will test for @NULL@ values and return @true@ or @false@.
 
-If you have three eggs, eat three eggs, then you might think you have __nothing__ , but in terms of eggs you have @0@. Zero is something, its a number, and its __not nothing__ .
+If you have three eggs, eat three eggs, then you might think you have _nothing_ , but in terms of eggs you have @0@. Zero is something, its a number, and its _not nothing_.
 
-A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our @make_eggs@ method to illustrate @NULL@ :
+A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our @makeeggs@ method to illustrate @NULL@ :
 
 <table>
 <tr>
@@ -1061,7 +1136,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
 <td>
 <pre lang="cfm">
 <code>
- <cffunction name="make_eggs" returnType="component">
+ <cffunction name="makeeggs" returnType="component">
   <cfargument name="quantity" type="numeric">
   <cfif (IsNull(arguments.quantity)) />
    <cfset this.makeEggs = "How am I supposed to make nothingness number of eggs?" />
@@ -1080,7 +1155,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
 <td>
 <pre lang="cfm">
 <code>
- public component function make_eggs(numeric quantity){
+ public component function makeeggs(numeric quantity){
   if(IsNull(arguments.quantity)) {
    this.makeEggs = "How am I supposed to make nothingness number of eggs?";
   } else {
@@ -1097,6 +1172,6 @@ A large percentage of the errors you encounter while writing CFML code will invo
 </tr>
 </table>
 
-Reload the file, call @frank.make_eggs(3)@ then try @frank.make_eggs()@.
+Reload the file, call @frank.makeeggs(3)@ then try @frank.makeeggs()@.
 
 *TODO: Conclusion*
