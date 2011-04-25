@@ -772,7 +772,28 @@ A query is a request to a database. The query can ask for information from the d
 </tr>
 </table>
 
-*TODO: Explain and show CFOUTPUT Query*
+In order to display the data from our query, we need to loop through the rows, and display each row. This is usually done in a @<cfoutput>@ tag like so:
+
+<table>
+<tr>
+<td>*Tag*</td>
+</tr>
+<tr>
+<td>
+<pre lang="cfm">
+<code>
+<cfoutput query="GetBreakfastItems">
+	There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br />
+</cfoutput>
+</code>
+</pre>
+</td>
+</tr>
+</table>
+
+While it's not strictly necessary to prepend the recordset name before the column name inside the @<cfoutput>@, it's strongly recommended that you do in order to prevent referencing the wrong variable scope.
+
+You can also loop through a query using standard loop constructs, though they differ when using tags and script.
 
 <table>
 <tr>
@@ -782,13 +803,21 @@ A query is a request to a database. The query can ask for information from the d
 <td>
 <pre lang="cfm">
 <code>
- TAG EXAMPLE
+<cfloop query="GetBreakfastItems">
+	<cfoutput>There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /></cfoutput>
+</cfloop>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
+<cfscript> 
+for (x = 1; x <= GetBreakfastItems; x=x+1) { 
+	writeOutput("There are #GetBreakfastItems.Quantity[x]# #GetBreakfastItems.Item[x]# in the pantry<br />")
+} 
+</cfscript>
+
  <cfscript>
  SCRIPT EXAMPLE
  </cfscript>
@@ -797,6 +826,10 @@ A query is a request to a database. The query can ask for information from the d
 </td>
 </tr>
 </table>
+
+When looping through a query with @<cfloop>@, you need to make sure that you have a @<cfoutput>@ tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
+
+When looping through a query in @cfscript@, you'll need to reference the query just like you would a multidimensional array, using the counter set up in in your for statement to pick up the correct row from the recordset. So the syntax becomes @recordsetName.ColumnName[rowNumber]@.
 
 h2. 7. Arrays
 
