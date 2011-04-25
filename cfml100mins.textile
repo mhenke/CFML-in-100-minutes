@@ -90,6 +90,7 @@ h3. Script Syntax
 </table>
 
 For the script example, @myprogram.cfm@ would have beginning/closing @<cfoutput>@ and @<cfscript>@ tags around the instructions.
+
 h4. PHP Syntax
 
 TODO: Code PHP example
