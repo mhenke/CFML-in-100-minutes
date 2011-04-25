@@ -531,7 +531,7 @@ What we need to do is combine a variable with the string. There are two ways to 
 <pre lang="cfm">
 <code>
 <cfset today =  "Saturday" />
-<cfset message =  "Happy" & today />
+<cfset message =  "Happy " & today & "!" />
 </code>
 </pre>
 </td>
@@ -540,7 +540,7 @@ What we need to do is combine a variable with the string. There are two ways to 
 <code>
 <cfscript>
 today =  "Saturday";
-message = "Happy" & today;
+message = "Happy " & today & "!";
 </cfscript>
 </code>
 </pre>
@@ -617,7 +617,7 @@ Basically _interpolating_ means evaluate the code inside this @#@ wrapper and pu
 
 h2. 5. Numbers
 
-There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including @+@, @-@, @/@, and @*@. The @++@ operator can be used to increment a number. It is also the only one we will use to controls a loop. We will talk more about Conditional Looping in section 9. Try out this example for the @++@ operator:
+There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including @+@, @-@, @/@, and @*@. The @++@ operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the @++@ operator:
 
 <table>
 <tr>
@@ -627,11 +627,11 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 <td>
 <pre lang="cfm">
 <code>
- <cfset loop = 0 />
+<cfset loop = 0 />
  <cfoutput>
-  <cfloop  condition="loop LT 5" >
+  <cfloop condition="loop LT 5" >
    #loop# Hello, world!<br>
-   <cfset loop = ++loop>
+   <cfset loop++ />
   </cfloop>
   I am here!<br>
  </cfoutput>
@@ -652,7 +652,11 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 </tr>
 </table>
 
-In this next example we're using the @cfloop@ instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting @{@ and the ending @}@. Each instruction between the beginning @{@ and ending @}@ will be executed if the condition is true. Try this example with multiple instructions:
+In this next example we're using the @cfloop@ instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting @{@ and the ending @}@. Each instruction between the beginning @{@ and ending @}@ will be executed if the condition is true.
+
+In the tag example there's no need to manage the index inside the loop if you're simply stepping through one item at a time. You can use the @from@ and @to@ arguments, and ColdFusion will simply loop from the first value to the second, and automatically increment the variable in the @index@ argument.
+
+Try this example with multiple instructions:
 
 <table>
 <tr>
@@ -664,10 +668,9 @@ In this next example we're using the @cfloop@ instruction with a multiple instru
 <code>
  <cfset loop = 0 />
  <cfoutput>
- <cfloop index = "loop" from = 0 to = 4>
-  #loop# Good Morning!  
+ <cfloop index="loop" from="0" to="4">
+  #loop# Good Morning!
   ...is it lunch time yet?<br>
-  <cfset loop = ++loop />
  </cfloop>
 </cfoutput>
 </code>
@@ -681,7 +684,44 @@ In this next example we're using the @cfloop@ instruction with a multiple instru
  while (loop < 5) { 
   WriteOutput("#loop# Good Morning! ");
   WriteOutput("...is it lunch time yet?<br>");
-  loop = ++loop;
+  loop++;
+ }
+ </cfscript>
+</code>
+</pre>
+</td>
+</tr>
+</table>
+
+It's also possible to go through a loop and step over more than one value at a time. The following examples will step through the loop and increase the @loop@ index by two for each time through the loop.
+
+<table>
+<tr>
+<td>*Tag*</td><td>*Script*</td>
+</tr>
+<tr>
+<td>
+<pre lang="cfm">
+<code>
+ <cfset loop = 0 />
+ <cfoutput>
+ <cfloop index="loop" from="0" to="4" step="2">
+  #loop# Good Morning!
+  ...is it lunch time yet?<br>
+ </cfloop>
+</cfoutput>
+</code>
+</pre>
+</td>
+<td>
+<pre lang="cfm">
+<code>
+ <cfscript>
+ loop = 0;
+ while (loop < 5) {
+  WriteOutput("#loop# Good Morning! ");
+  WriteOutput("...is it lunch time yet?<br>");
+  loop = loop + 2;
  }
  </cfscript>
 </code>
