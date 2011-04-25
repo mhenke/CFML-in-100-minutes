@@ -4,7 +4,7 @@ CFML in 100 minutes was modified from "Ruby in 100 Minutes":http://jumpstartlab.
 
 h2. Where is CFML in 100 minutes?
 
-CFML in 100 minutes is a simple textile file for easy editing and contributions called @cfml100mins.textile@. Textile is a lightweight markup language that converts to its marked-up text input to valid, well-formed XHTM.
+CFML in 100 minutes is a simple textile file for easy editing and contributions called @cfml100mins.textile@. Textile is a lightweight markup language that converts its marked-up text input to valid, well-formed XHTML.
 
 h2. License
 
