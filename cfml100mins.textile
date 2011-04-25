@@ -549,7 +549,7 @@ message = "Happy " & today & "!";
 </table>
 
 
-In the first line we setup a variable to hold the day of the week. Then we'll printed the string _Happy_ combined with the value of the variable @today@ and the string _!_.  You might be thinking, "What was the point of that since we still just wrote _Saturday_ in the first line?" Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
+In the first line we setup a variable to hold the day of the week. Then we'll printed the string _Happy_ combined with the value of the variable @today@ and the string _!_.  You might be thinking, "What was the point of that since we still wrote _Saturday_ in the first line?" Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
 
 @today = DayOfWeek(Now());@
 
