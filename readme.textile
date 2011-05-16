@@ -21,3 +21,7 @@ Daniel Short (@danshort on twitter) - "http://www.dansshorts.com":http://www.dan
 h2. Git Workflow for Contributors
 
 This project uses the excellent "Git Workflow series":http://www.silverwareconsulting.com/index.cfm/Git-Workflow by "Bob Silverburg":https://github.com/bobsilverberg/ for contributions.
+
+h2. Dealing with line endings
+
+Before contributing, please read this "http://help.github.com/dealing-with-lineendings/":http://help.github.com/dealing-with-lineendings/
