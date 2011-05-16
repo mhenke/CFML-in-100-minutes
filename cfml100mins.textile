@@ -93,30 +93,34 @@ For the script example, @myprogram.cfm@ would have beginning/closing @<cfoutput>
 
 h4. PHP Syntax
 
-TODO: Code PHP example
-
 <table>
   <tr>
-         <td>my_program.rb - part 2</td>
-   <td>my_program.rb - part 1<td>
+         <td>myprogram.php</td>
+   <td>Sample.php<td>
         </tr>
 <tr>
 <td>
-<pre lang="cfm">
+<pre lang="php">
 <code>
-s = Sample.new
-s.hello
+<?php
+require("Sample.php");
+$s = new Sample();
+echo s->hello();
+?>
 </code>
 </pre>
 </td>
 <td>
-<pre lang="cfm">
+<pre lang="php">
 <code>
+<?php
 class Sample
-  def hello
-    puts "Hello, World!"
-  end
-end
+{
+    public function hello() {
+        return "Hello, World!";
+    }
+}
+?>
 </code>
 </pre>
 </td>
