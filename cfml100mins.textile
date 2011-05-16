@@ -102,21 +102,22 @@ TODO: Code PHP example
         </tr>
 <tr>
 <td>
-<pre lang="cfm">
+<pre lang="php">
 <code>
-s = Sample.new
-s.hello
+$s = new Sample();
+echo s->hello();
 </code>
 </pre>
 </td>
 <td>
-<pre lang="cfm">
+<pre lang="php">
 <code>
 class Sample
-  def hello
-    puts "Hello, World!"
-  end
-end
+{
+    public function hello() {
+        return "Hello, World!";
+    }
+}
 </code>
 </pre>
 </td>
