@@ -529,33 +529,6 @@ When we put that into the CFML file, it just spits back the same string. If we w
 
 What we need to do is combine a variable with the string. There are two ways to do that. The first approach is called _string concatenation_ which is basically just adding strings together:
 
-<table>
-<tr>
-<td>*Tag*</td><td>*Script*</td>
-</tr>
-<tr>
-<td>
-<pre lang="cfm">
-<code>
-<cfset today =  "Saturday" />
-<cfset message =  "Happy " & today & "!" />
-</code>
-</pre>
-</td>
-<td>
-<pre lang="cfm">
-<code>
-<cfscript>
-today =  "Saturday";
-message = "Happy " & today & "!";
-</cfscript>
-</code>
-</pre>
-</td>
-</tr>
-</table>
-
-
 In the first line we setup a variable to hold the day of the week. Then we'll printed the string _Happy_ combined with the value of the variable @today@ and the string _!_.  You might be thinking, "What was the point of that since we still wrote _Saturday_ in the first line?" Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
 
 @today = DayOfWeek(Now());@
@@ -873,7 +846,6 @@ writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
 </table>
 
 Keep going with these, but try to understand what each instruction is doing before we explain them:
-
 
 <table>
 <tr>
