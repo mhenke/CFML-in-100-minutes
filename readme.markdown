@@ -14,11 +14,11 @@ These works were originally created by Jeff Casimir ([jeff@jumpstartlab.com](mai
 
 Please add yourself if you help:
 
-Mike Henke ([henke.mike@gmail.com](mailto:henke.mike@gmail.com)) - [[https://github.com/mhenke/](https://github.com/mhenke/)](https://github.com/mhenke/)\
+Mike Henke ([henke.mike@gmail.com](mailto:henke.mike@gmail.com)) - [https://github.com/mhenke/](https://github.com/mhenke/)
 
-russplaysguitar - [https://github.com/russplaysguitar/](https://github.com/russplaysguitar/)(https://github.com/russplaysguitar/)\
+russplaysguitar - [https://github.com/russplaysguitar/](https://github.com/russplaysguitar/)
 
-Daniel Short (@danshort on twitter) - [http://www.dansshorts.com](http://www.dansshorts.com)(http://www.dansshorts.com)
+Daniel Short (@danshort on twitter) - [http://www.dansshorts.com](http://www.dansshorts.com)
 
 ## Git Workflow for Contributors
 
