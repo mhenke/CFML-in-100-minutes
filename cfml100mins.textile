@@ -41,7 +41,7 @@ h3. Tag Syntax
 <pre lang="cfm">
 <code>
  <cfset s = New Sample() />
- <cfset s.hello() />
+ <cfoutput>#s.hello()#</cfoutput>
 </code>
 </pre>
 		</td>
@@ -71,7 +71,7 @@ h3. Script Syntax
 <pre lang="cfm">
 <code>
  s = New Sample();
- s.hello();
+ writeOutput(s.hello());
 </code>
 </pre>
 		</td>
@@ -89,7 +89,7 @@ h3. Script Syntax
 	</tr>
 </table>
 
-For the script example, @myprogram.cfm@ would have beginning/closing @<cfoutput>@ and @<cfscript>@ tags around the instructions.
+For the script example, @myprogram.cfm@ and @Sample.cfc@ would have beginning/closing @<cfscript>@ tags around the instructions.
 
 h4. PHP Syntax
 
@@ -131,24 +131,25 @@ h4. Ruby Syntax
 
 <table>
 	<tr>
-         <td>my_program.rb - part 2</td>
-	 <td>my_program.rb - part 1<td>
+         <td>myprogram.rb</td>
+	 <td>Sample.rb<td>
         </tr>
 <tr>
 <td>
-<pre lang="cfm">
+<pre lang="ruby">
 <code>
+require 'Sample.rb'
 s = Sample.new
-s.hello
+puts s.hello
 </code>
 </pre>
 </td>
 <td>
-<pre lang="cfm">
+<pre lang="ruby">
 <code>
 class Sample
   def hello
-    puts "Hello, World!"
+    "Hello, World!"
   end
 end
 </code>
