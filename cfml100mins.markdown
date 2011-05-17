@@ -1,6 +1,6 @@
 # CFML in 100 minutes
 
-ColdFusion Markup Language (CFML) is a great programming language for beginners because it was written to make the programmerâ€™s job easy and not care if the computerâ€™s job is hard. In this brief introduction weâ€™ll look at key language features you need to get started.
+ColdFusion Markup Language (CFML) is a great programming language for beginners because it was written to make the programmer's job easy and not care if the computer's job is hard. In this brief introduction weâ€™ll look at key language features you need to get started.
 
 1.  Syntax
 2.  Variables
@@ -25,9 +25,9 @@ And you want to learn CFML so here goes!
 
 ## 1. Syntax
 
-There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages. You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are `CFSET`, `CFOUTPUT`, and `CFDUMP`. `CFSET` is used to create a variable and assign it a value. Also `CFSET` is used to call methods. `CFOUTPUT` displays a variableâ€™s value. `CFDUMP` is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
+There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages. You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are 'CFSET', 'CFOUTPUT', and 'CFDUMP'. 'CFSET' is used to create a variable and assign it a value. Also 'CFSET' is used to call methods. 'CFOUTPUT' displays a variableâ€™s value. 'CFDUMP' is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
 
-We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
+We might have a file named 'myprogram.cfm' and 'Sample.cfc' like this:
 
 ### Tag Syntax
 
@@ -105,7 +105,7 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
   </tbody>
 </table>
 
-For the script example, `myprogram.cfm` and `Sample.cfc` would have beginning/closing `<cfscript>` tags around the instructions.
+For the script example, 'myprogram.cfm' and 'Sample.cfc' would have beginning/closing '<cfscript>' tags around the instructions.
 
 #### PHP Syntax
 
@@ -194,7 +194,7 @@ For the script example, `myprogram.cfm` and `Sample.cfc` would have beginning/cl
   </tbody>
 </table>
 
-For the Ruby syntax, part 1 would be first then followed by part 2 in `my_program.rb`.
+For the Ruby syntax, part 1 would be first then followed by part 2 in 'my_program.rb'.
 
 ## 2. Variables
 
@@ -310,11 +310,11 @@ b = <span class="p">#</span><span class="nv">b</span><span class="p">#</span><sp
 
 ### Components
 
-In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called `attributes`, and can do actions, called `methods`. In ColdFusion the `cffunction` tag is used to define methods within a CFC.
+In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called 'attributes', and can do actions, called 'methods'. In ColdFusion the 'cffunction' tag is used to define methods within a CFC.
 
 For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections weâ€™ll look at a few specific instructions in CFML.
 
-In CFML we define an object using the `cfcomponent` instruction and save the file as `.cfc`. Hereâ€™s an example defining the object type `PersonalChef.cfc`:
+In CFML we define an object using the 'cfcomponent' instruction and save the file as '.cfc'. Hereâ€™s an example defining the object type 'PersonalChef.cfc':
 
 <table>
   <tbody>
@@ -352,7 +352,7 @@ In CFML we define an object using the `cfcomponent` instruction and save the fil
 
 ### Methods
 
-Inside the CFC we usually define one or more methods using the `cffunction` instruction like this:
+Inside the CFC we usually define one or more methods using the 'cffunction' instruction like this:
 
 <table>
   <tbody>
@@ -392,9 +392,9 @@ Inside the CFC we usually define one or more methods using the `cffunction` inst
   </tbody>
 </table>
 
-Inside the `cffunction` instruction weâ€™d put the code for how the chef should make the toast.
+Inside the 'cffunction' instruction weâ€™d put the code for how the chef should make the toast.
 
-A `class` is an abstract idea, it defines what all objects of that type can know and do. Think of the chair youâ€™re sitting in. Its not an abstract chair, it is an actual chair. Weâ€™d call this actual chair an `instance`. It is a *realization* of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is *abstract*. The classâ€™s weight, color, and size we canâ€™t determine them ahead of time.
+A 'class' is an abstract idea, it defines what all objects of that type can know and do. Think of the chair youâ€™re sitting in. Its not an abstract chair, it is an actual chair. Weâ€™d call this actual chair an 'instance'. It is a *realization* of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is *abstract*. The classâ€™s weight, color, and size we canâ€™t determine them ahead of time.
 
 Once we define a class, we create an instance of that class like this:
 
@@ -428,13 +428,13 @@ Once we define a class, we create an instance of that class like this:
   </tbody>
 </table>
 
-Weâ€™re calling the `New` instruction on the class `PersonalChef` and storing it into the variable named `frank`. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: `object.method_name()`. So if you have a person named `frank` you would tell him to make toast by calling `frank.makeToast()`.
+Weâ€™re calling the 'New' instruction on the class 'PersonalChef' and storing it into the variable named 'frank'. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: 'object.method_name()'. So if you have a person named 'frank' you would tell him to make toast by calling 'frank.makeToast()'.
 
-The `New` instruction creates a new instance of the object and calls itâ€™s init() method (if existing). Any arguments supplied to the object will be passed to the init() method. The init() method should return the object instance using `<cfreturn this />` in order to have the same expected behavior as the `CreateObject` instruction. If no init() method exists, the object will be returned normally.
+The 'New' instruction creates a new instance of the object and calls itâ€™s init() method (if existing). Any arguments supplied to the object will be passed to the init() method. The init() method should return the object instance using '<cfreturn this />' in order to have the same expected behavior as the 'CreateObject' instruction. If no init() method exists, the object will be returned normally.
 
 ### Method Parameters
 
-Sometimes methods take one or more *parameters* telling them **how** to do what theyâ€™re suppose to **do**. For instance, I might call `frank.makeToast('burned')` for him to burn my toast. Or maybe he has another method where I call `frank.makebreakfast("toast","eggs")` for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the `cfargument` instruction, itâ€™ll look like this:
+Sometimes methods take one or more *parameters* telling them **how** to do what theyâ€™re suppose to **do**. For instance, I might call 'frank.makeToast('burned')' for him to burn my toast. Or maybe he has another method where I call 'frank.makebreakfast("toast","eggs")' for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the 'cfargument' instruction, itâ€™ll look like this:
 
 <table>
   <tbody>
@@ -475,15 +475,15 @@ Sometimes methods take one or more *parameters* telling them **how** to do what 
   </tbody>
 </table>
 
-The method is requiring us to pass in a `color` telling it how to do the method `makeToast`.
+The method is requiring us to pass in a 'color' telling it how to do the method 'makeToast'.
 
 ### Return Value
 
-In CFML, every time you call a method you wonâ€™t necessarily get a value back. By default, a CFML method returns *nothing*. Weâ€™ll talk about *nothing* and `null` in the last section of â€œCFML in 100 minutesâ€. If you called `makeToast` method above like `<cfset result = frank.makeToast('burned') />` or `set result = frank.makeToast('burned');`, and tried to output `result` you should have seen `Variable RESULT is undefined`.
+In CFML, every time you call a method you wonâ€™t necessarily get a value back. By default, a CFML method returns *nothing*. Weâ€™ll talk about *nothing* and 'null' in the last section of â€œCFML in 100 minutesâ€. If you called 'makeToast' method above like '<cfset result = frank.makeToast('burned') />' or 'set result = frank.makeToast('burned');', and tried to output 'result' you should have seen 'Variable RESULT is undefined'.
 
-To return data, we use `cfreturn` to instruct the method to return a `value`. Since that wasnâ€™t in the last instruction before the ending `cffunction` in your `makeToast` method, you received *nothing* and tried to putting that into the `result` variable.
+To return data, we use 'cfreturn' to instruct the method to return a 'value'. Since that wasnâ€™t in the last instruction before the ending 'cffunction' in your 'makeToast' method, you received *nothing* and tried to putting that into the 'result' variable.
 
-For the purposes of our next section Iâ€™m going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef `frank`. You say, â€œFrank, go make my toastâ€, he tells you heâ€™s making the toast, goes to make it, then comes back to you to receive more instructions. Heâ€™s **returning himself** to you. Hereâ€™s how we implement it in code:
+For the purposes of our next section Iâ€™m going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef 'frank'. You say, â€œFrank, go make my toastâ€, he tells you heâ€™s making the toast, goes to make it, then comes back to you to receive more instructions. Heâ€™s **returning himself** to you. Hereâ€™s how we implement it in code:
 
 <table>
   <tbody>
@@ -528,16 +528,16 @@ For the purposes of our next section Iâ€™m going to return the chef instanc
 
 ## 4. Strings
 
-In CFML a string is defined as a quote ( `"` ) followed by zero or more letters, numbers, or symbols and followed by another quote ( `"` ). Some simple strings would be `"hello"` or `"This sentence is a string!"`. Strings can be anything from `""`, the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important instructions that weâ€™ll use.
+In CFML a string is defined as a quote ( '"' ) followed by zero or more letters, numbers, or symbols and followed by another quote ( '"' ). Some simple strings would be '"hello"' or '"This sentence is a string!"'. Strings can be anything from '""', the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important instructions that weâ€™ll use.
 
-*   `Len`   
-    Call `Len` on a string to get back the number of characters in the string. For instance `Len("Hello")` would give you back `5`.
-*   `Replace`   
-    The `Replace` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, `Replace("Hello", "e", "")` would give you back `"hllo"` after replacing the *first* occurrence of `"e"`, or `Replace("Good Morning!", "o", "e", "All")"` would give you `"Geed Merning!"` 
-*   `RemoveChars`   
-    Call `RemoveChars` to remove characters from a string. For instance, `RemoveChars("hello bob", 2, 5)` would give you back `"hbob"`.
-*   `Mid`   
-    The `mid` instruction extracts a substring from a string. For instance, I could call `Mid("Welcome to CFML Jumpstart",4,12)` and it would give you back: `come to CFML`.
+*   'Len'   
+    Call 'Len' on a string to get back the number of characters in the string. For instance 'Len("Hello")' would give you back '5'.
+*   'Replace'   
+    The 'Replace' instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, 'Replace("Hello", "e", "")' would give you back '"hllo"' after replacing the *first* occurrence of '"e"', or 'Replace("Good Morning!", "o", "e", "All")"' would give you '"Geed Merning!"' 
+*   'RemoveChars'   
+    Call 'RemoveChars' to remove characters from a string. For instance, 'RemoveChars("hello bob", 2, 5)' would give you back '"hbob"'.
+*   'Mid'   
+    The 'mid' instruction extracts a substring from a string. For instance, I could call 'Mid("Welcome to CFML Jumpstart",4,12)' and it would give you back: 'come to CFML'.
 
 Experiment with the following samples in a CFML file:
 
@@ -585,7 +585,7 @@ Experiment with the following samples in a CFML file:
   </tbody>
 </table>
 
-Often a string may store a list like the `t2` variable in the last example. A string for storing a list isnâ€™t the best for performance and usage. Using an array for a list is so much better. We can convert a list into an `array` using `ListToArray`. Weâ€™ll discuss arrays in an upcoming section. Try out these next examples in the CFML file assuming we have the code from the last example:
+Often a string may store a list like the 't2' variable in the last example. A string for storing a list isnâ€™t the best for performance and usage. Using an array for a list is so much better. We can convert a list into an 'array' using 'ListToArray'. Weâ€™ll discuss arrays in an upcoming section. Try out these next examples in the CFML file assuming we have the code from the last example:
 
 <table>
   <tbody>
@@ -623,15 +623,15 @@ Often a string may store a list like the `t2` variable in the last example. A st
   </tbody>
 </table>
 
-The numbers inside the `[]` brackets specify which item of the array you want pulled out. Theyâ€™re numbered starting with 1. So the first example pulls out the `2` array item. This `t4` array contains position `1`, the beginning of the list, up to position `4`, the ending of the array.
+The numbers inside the '[]' brackets specify which item of the array you want pulled out. Theyâ€™re numbered starting with 1. So the first example pulls out the '2' array item. This 't4' array contains position '1', the beginning of the list, up to position '4', the ending of the array.
 
 ### Combining Strings and Variables
 
 It is extremely common that we want to combine the value of a variable with other strings. For instance, lets start with this example string:
 
-`"Happy Saturday!"`
+'"Happy Saturday!"'
 
-When we put that into the CFML file, it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying `"Happy"` then the day of the week. So we canâ€™t just put a string like `"Happy Saturday!"` or itâ€™d be saying Saturday even on Tuesday.
+When we put that into the CFML file, it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying '"Happy"' then the day of the week. So we canâ€™t just put a string like '"Happy Saturday!"' or itâ€™d be saying Saturday even on Tuesday.
 
 What we need to do is combine a variable with the string. There are two ways to do that. The first approach is called *string concatenation* which is basically just adding strings together:
 
@@ -669,11 +669,11 @@ What we need to do is combine a variable with the string. There are two ways to 
   </tbody>
 </table>
 
-In the first line we setup a variable to hold the day of the week. Then weâ€™ll printed the string *Happy* combined with the value of the variable `today` and the string *!*. You might be thinking, â€œWhat was the point of that since we still wrote *Saturday* in the first line?â€ Ok, well, if you were writing a real program youâ€™d use CFMLs built-in date instructions like this:
+In the first line we setup a variable to hold the day of the week. Then weâ€™ll printed the string *Happy* combined with the value of the variable 'today' and the string *!*. You might be thinking, â€œWhat was the point of that since we still wrote *Saturday* in the first line?â€ Ok, well, if you were writing a real program youâ€™d use CFMLs built-in date instructions like this:
 
-`today = DayOfWeek(Now());`
+'today = DayOfWeek(Now());'
 
-`Now()` gets the current date and time of the computer running the ColdFusion server. `DayOfWeek` returns an integer in the range 1 (Sunday) to 7 (Saturday) for the day of the week. We still donâ€™t have the day of week as string. Try this:
+'Now()' gets the current date and time of the computer running the ColdFusion server. 'DayOfWeek' returns an integer in the range 1 (Sunday) to 7 (Saturday) for the day of the week. We still donâ€™t have the day of week as string. Try this:
 
 <table>
   <tbody>
@@ -713,9 +713,9 @@ In the first line we setup a variable to hold the day of the week. Then weâ€�
   </tbody>
 </table>
 
-Great, no errors and our output looks correct. `DayOfWeekAsString` did the trick. There is another string combination called *string interpolation*.
+Great, no errors and our output looks correct. 'DayOfWeekAsString' did the trick. There is another string combination called *string interpolation*.
 
-**String interpolation** is the process of sticking data into the middle of strings. We use the symbols `#` around the `variable` where in a string the value should be inserted. Inside those hashes we can put any variable and output it in that spot. Our previous example `message` could be rewritten like this: <table>
+**String interpolation** is the process of sticking data into the middle of strings. We use the symbols '#' around the 'variable' where in a string the value should be inserted. Inside those hashes we can put any variable and output it in that spot. Our previous example 'message' could be rewritten like this: <table>
   <tbody>
     <tr>
       <td>
@@ -747,11 +747,11 @@ Great, no errors and our output looks correct. `DayOfWeekAsString` did the trick
 
 If you compare the output youâ€™ll see the second example gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
 
-Basically *interpolating* means evaluate the code inside this `#` wrapper and put it into the string.
+Basically *interpolating* means evaluate the code inside this '#' wrapper and put it into the string.
 
 ## 5. Numbers
 
-There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, weâ€™ll only be dealing with integers. You can use normal math operations with integers including `+`, `-`, `/`, and `*`. The `++` operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the `++` operator:
+There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, weâ€™ll only be dealing with integers. You can use normal math operations with integers including '+', '-', '/', and '*'. The '++' operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the '++' operator:
 
 <table>
   <tbody>
@@ -794,9 +794,9 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
   </tbody>
 </table>
 
-In this next example weâ€™re using the `cfloop` instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting `{` and the ending `}`. Each instruction between the beginning `{` and ending `}` will be executed if the condition is true.
+In this next example weâ€™re using the 'cfloop' instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting '{' and the ending '}'. Each instruction between the beginning '{' and ending '}' will be executed if the condition is true.
 
-In the tag example thereâ€™s no need to manage the index inside the loop if youâ€™re simply stepping through one item at a time. You can use the `from` and `to` arguments, and ColdFusion will simply loop from the first value to the second, and automatically increment the variable in the `index` argument.
+In the tag example thereâ€™s no need to manage the index inside the loop if youâ€™re simply stepping through one item at a time. You can use the 'from' and 'to' arguments, and ColdFusion will simply loop from the first value to the second, and automatically increment the variable in the 'index' argument.
 
 Try this example with multiple instructions:
 
@@ -843,7 +843,7 @@ Try this example with multiple instructions:
   </tbody>
 </table>
 
-Itâ€™s also possible to go through a loop and step over more than one value at a time. The following examples will step through the loop and increase the `loop` index by two for each time through the loop.
+Itâ€™s also possible to go through a loop and step over more than one value at a time. The following examples will step through the loop and increase the 'loop' index by two for each time through the loop.
 
 <table>
   <tbody>
@@ -890,7 +890,7 @@ Itâ€™s also possible to go through a loop and step over more than one value
 
 ## 6. Queries
 
-A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object. `cfquery` passes SQL statements to the `datasource`. The `datasource` is set in the ColdFusion administrator.
+A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object. 'cfquery' passes SQL statements to the 'datasource'. The 'datasource' is set in the ColdFusion administrator.
 
 <table>
   <tbody>
@@ -938,7 +938,7 @@ A query is a request to a database. The query can ask for information from the d
   </tbody>
 </table>
 
-In order to display the data from our query, we need to loop through the rows, and display each row. This is usually done in a `<cfoutput>` tag like so:
+In order to display the data from our query, we need to loop through the rows, and display each row. This is usually done in a '<cfoutput>' tag like so:
 
 <table>
   <tbody>
@@ -961,7 +961,7 @@ In order to display the data from our query, we need to loop through the rows, a
   </tbody>
 </table>
 
-While itâ€™s not strictly necessary to prepend the recordset name before the column name inside the `<cfoutput>`, itâ€™s strongly recommended that you do in order to prevent referencing the wrong variable scope.
+While itâ€™s not strictly necessary to prepend the recordset name before the column name inside the '<cfoutput>', itâ€™s strongly recommended that you do in order to prevent referencing the wrong variable scope.
 
 You can also loop through a query using standard loop constructs, though they differ when using tags and script.
 
@@ -1001,15 +1001,15 @@ You can also loop through a query using standard loop constructs, though they di
   </tbody>
 </table>
 
-When looping through a query with `<cfloop>`, you need to make sure that you have a `<cfoutput>` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
+When looping through a query with '<cfloop>', you need to make sure that you have a '<cfoutput>' tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
 
-When looping through a query in `cfscript`, youâ€™ll need to reference the query just like you would a multidimensional array, using the counter set up in in your for statement to pick up the correct row from the recordset. So the syntax becomes `recordsetName.ColumnName[rowNumber]`.
+When looping through a query in 'cfscript', youâ€™ll need to reference the query just like you would a multidimensional array, using the counter set up in in your for statement to pick up the correct row from the recordset. So the syntax becomes 'recordsetName.ColumnName[rowNumber]'.
 
 ## 7. Arrays
 
 Often we need to organize a group and put them into a *collection*. There are two main types of collections: **arrays** and **structures**.
 
-An **array** is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the **indices**. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The **index** is the address of a specific element inside the array. In CFML the index always begins with `1`. An array is defined in CFML as an opening `[` then zero or more elements, and a closing `]`. Try out this code:
+An **array** is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the **indices**. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The **index** is the address of a specific element inside the array. In CFML the index always begins with '1'. An array is defined in CFML as an opening '[' then zero or more elements, and a closing ']'. Try out this code:
 
 <table>
   <tbody>
@@ -1097,13 +1097,13 @@ Keep going with these, but try to understand what each instruction is doing befo
   </tbody>
 </table>
 
-In order to get add an element in the array you use the syntax `ArrayAppend(array,"value")` or `arrayname[index] = "value"`. The first example of adding an array element is **with an instruction**. The second is updating an array element is **by assignment**. So looking at the final `favorite_colors` array:
+In order to get add an element in the array you use the syntax 'ArrayAppend(array,"value")' or 'arrayname[index] = "value"'. The first example of adding an array element is **with an instruction**. The second is updating an array element is **by assignment**. So looking at the final 'favorite_colors' array:
 
-*   Whatâ€™s the index of `"brown"` ?
-*   What did the `ArraySort` instuction do to the collection?
-*   What does `ArrayLen` instruction return?
+*   Whatâ€™s the index of '"brown"' ?
+*   What did the 'ArraySort' instuction do to the collection?
+*   What does 'ArrayLen' instruction return?
 
-There are lots of cool things to do with an array. You can rearrange the order of the elements using the `ArraySort` instruction like we did in the last example. You can iterate through each element using the `cfloop` instruction. You can find the address of a specific element by using the `arrayName[index]` instruction. You can ask an array if an element is present with the `ArrayIsDefined` instruction. Try out this example that brings a bunch of things together:
+There are lots of cool things to do with an array. You can rearrange the order of the elements using the 'ArraySort' instruction like we did in the last example. You can iterate through each element using the 'cfloop' instruction. You can find the address of a specific element by using the 'arrayName[index]' instruction. You can ask an array if an element is present with the 'ArrayIsDefined' instruction. Try out this example that brings a bunch of things together:
 
 <table>
   <tbody>
@@ -1155,7 +1155,7 @@ We use arrays whenever we need a list where the elements are in a specific order
 
 ## 8. Structures
 
-A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like `science["Joey"]` which could be read as â€œlook in the collection named `science` and find the thing named `Joey`â€.
+A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like 'science["Joey"]' which could be read as â€œlook in the collection named 'science' and find the thing named 'Joey'â€.
 
 A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:
 
@@ -1204,7 +1204,7 @@ Joey is <span class="p">#</span><span class="nv">ages</span><span class="p">[</s
   </tbody>
 </table>
 
-Here we create a structure named `ages`. Structures are made up what are called key-value pairs.The **key** is used as the address and the **value** is the object at that address. In the `ages` structure we have keys including `"joey"` and `"jill"` and values including `12` and `14`. When creating a structure using `{}` the key and value are linked by the `=` symbol. So to create a structure, the structures start with a curly bracket `{`, have zero or more entries made up of a *key*, `=`, and a *value* separated by commas, then end with a closing curly bracket `}`.
+Here we create a structure named 'ages'. Structures are made up what are called key-value pairs.The **key** is used as the address and the **value** is the object at that address. In the 'ages' structure we have keys including '"joey"' and '"jill"' and values including '12' and '14'. When creating a structure using '{}' the key and value are linked by the '=' symbol. So to create a structure, the structures start with a curly bracket '{', have zero or more entries made up of a *key*, '=', and a *value* separated by commas, then end with a closing curly bracket '}'.
 
 <table>
   <tbody>
@@ -1242,7 +1242,7 @@ Here we create a structure named `ages`. Structures are made up what are called 
   </tbody>
 </table>
 
-In the second chunk of the example, we add a new key and value to the structure. Since the `"jimmy"` key wasnâ€™t in the original structure, itâ€™s added with the value of `14`. If the key `"jimmy"` already existed then the value would be replaced by `14`. Every key in a structure must be unique! In the second line we reference the key `"joey"` which already exists, so the value gets replaced with the `9`. Then, just to show you the state of the structure, we dump out the list of keys and the list of values.
+In the second chunk of the example, we add a new key and value to the structure. Since the '"jimmy"' key wasnâ€™t in the original structure, itâ€™s added with the value of '14'. If the key '"jimmy"' already existed then the value would be replaced by '14'. Every key in a structure must be unique! In the second line we reference the key '"joey"' which already exists, so the value gets replaced with the '9'. Then, just to show you the state of the structure, we dump out the list of keys and the list of values.
 
 <table>
   <tbody>
@@ -1280,19 +1280,19 @@ end
   </tbody>
 </table>
 
-The last chunk of the example calls the `keys` method on the structure `ages`. `keys` gives back an array holding all the key values inside the structure. We then called `sort` on that array to put them in alphabetical order before storing the array into the variable `students`. We then iterated through the array `students` using the method `each`, gave each element of the list the name `student`, then printed out one line with that student name and the students age from `ages`.
+The last chunk of the example calls the 'keys' method on the structure 'ages'. 'keys' gives back an array holding all the key values inside the structure. We then called 'sort' on that array to put them in alphabetical order before storing the array into the variable 'students'. We then iterated through the array 'students' using the method 'each', gave each element of the list the name 'student', then printed out one line with that student name and the students age from 'ages'.
 
 While that last part probably seemed complicated, its just to illustrate that although structures are by nature unordered, you can still manipulate and output the data in ordered, meaningful ways.
 
 ## 9. Conditionals
 
-Conditional statements evaluate to `true` or `false` only. The most common conditional operators are `==` (equal), `!=` (not equal), `>` (greater than), `>=` (greater than or equal to), `<` (less than), and `<=` (less than or equal to). You can also define the operators as abbreviations: `EQ`, `NEQ`, `GT`, `GTE`, `LT`, and `LTE`.
+Conditional statements evaluate to 'true' or 'false' only. The most common conditional operators are '==' (equal), '!=' (not equal), '>' (greater than), '>=' (greater than or equal to), '<' (less than), and '<=' (less than or equal to). You can also define the operators as abbreviations: 'EQ', 'NEQ', 'GT', 'GTE', 'LT', and 'LTE'.
 
-Some instructions return a `true` or `false`, so theyâ€™re used in conditional statements. For example, `IsArray` which is `true` only when the variable is an `array`. Structures have an instruction named `StructKeyExists` which returns `true` if a key is present in a structure.
+Some instructions return a 'true' or 'false', so theyâ€™re used in conditional statements. For example, 'IsArray' which is 'true' only when the variable is an 'array'. Structures have an instruction named 'StructKeyExists' which returns 'true' if a key is present in a structure.
 
 ### 9. 1. If, Else If, & Else
 
-Why do we have conditional statements? Most often its to control conditional instructions, especially `if` / `else if` / `else` structures. Lets write an example by adding a method to our `PersonalChef` class:
+Why do we have conditional statements? Most often its to control conditional instructions, especially 'if' / 'else if' / 'else' structures. Lets write an example by adding a method to our 'PersonalChef' class:
 
 <table>
   <tbody>
@@ -1351,27 +1351,27 @@ Why do we have conditional statements? Most often its to control conditional ins
   </tbody>
 </table>
 
-Try this example using `5`, `7`, `8` and `9` for the values of `minutes`.
+Try this example using '5', '7', '8' and '9' for the values of 'minutes'.
 
-When the `minutes` is 5, here is how the execution goes: Is it `true` that 5 is less than 7? Yes, it is, so print out the line `The water is not boiling yet.`.
+When the 'minutes' is 5, here is how the execution goes: Is it 'true' that 5 is less than 7? Yes, it is, so print out the line 'The water is not boiling yet.'.
 
-When the `minutes` is 7, it goes like this: Is it `true` that 7 is less than 7? No. Next, is it `true` that 7 is equal to 7? Yes, it is, so print out the line `It's just barely boiling`.
+When the 'minutes' is 7, it goes like this: Is it 'true' that 7 is less than 7? No. Next, is it 'true' that 7 is equal to 7? Yes, it is, so print out the line 'It's just barely boiling'.
 
-When the `minutes` is 8, it goes like this: Is it `true` that 8 is less than 7? No. Next, is it `true` that 8 is equal to 7? No. Next, is it `true` that 8 is equal to 8? Yes, it is, so print out the line `It's boiling!`.
+When the 'minutes' is 8, it goes like this: Is it 'true' that 8 is less than 7? No. Next, is it 'true' that 8 is equal to 7? No. Next, is it 'true' that 8 is equal to 8? Yes, it is, so print out the line 'It's boiling!'.
 
-Lastly, when total is 9, it goes:" Is it `true` that 9 is less than 7? No. Next, is it `true` that 9 is equal to 7? No. Next, is it `true` that 9 is equal to 8? No. Since none of those are true, execute the `else` and print the line `Hot! Hot! Hot!`.
+Lastly, when total is 9, it goes:" Is it 'true' that 9 is less than 7? No. Next, is it 'true' that 9 is equal to 7? No. Next, is it 'true' that 9 is equal to 8? No. Since none of those are true, execute the 'else' and print the line 'Hot! Hot! Hot!'.
 
-An `if` block has
+An 'if' block has
 
-*   One `if` statement whose instructions are executed only if the statement is true
-*   Zero or more `else if` statements whose instructions are executed only if the statement is true
-*   Zero or one `else` statement whose instructions are executed if no `if` nor `else if` statements were true
+*   One 'if' statement whose instructions are executed only if the statement is true
+*   Zero or more 'else if' statements whose instructions are executed only if the statement is true
+*   Zero or one 'else' statement whose instructions are executed if no 'if' nor 'else if' statements were true
 
-Only *one* section of the `if` / `else if` / `else` structure can have its instructions run. If the `if` is `true`, for instance, CFML will never look at the `else if`. Once one block executes, thats it.
+Only *one* section of the 'if' / 'else if' / 'else' structure can have its instructions run. If the 'if' is 'true', for instance, CFML will never look at the 'else if'. Once one block executes, thats it.
 
 ### 9. 2. Looping
 
-Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your `PersonalChef.cfc` :
+Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your 'PersonalChef.cfc' :
 
 <table>
   <tbody>
@@ -1418,24 +1418,24 @@ Another time we use conditional statements is when we want to repeat a set of in
   </tbody>
 </table>
 
-See how that works? The `counter` starts out as whatever parameter we pass in. The `while` instruction evaluates the conditional statement `arguments.counter GT 0` and finds that yes, the counter is greater than zero. Since the condition is true, execute the instructions inside the loop. First print out `"The counter is #Arguments.counter#"` then take the value of `Arguments.counter`, subtract one from it, and store it back into `Arguments.counter`. Then the loop goes back to the `condition`/`while` statement. Is it still true? If so, print the line and subtract one again. Keep repeating until the condition is false.
+See how that works? The 'counter' starts out as whatever parameter we pass in. The 'while' instruction evaluates the conditional statement 'arguments.counter GT 0' and finds that yes, the counter is greater than zero. Since the condition is true, execute the instructions inside the loop. First print out '"The counter is #Arguments.counter#"' then take the value of 'Arguments.counter', subtract one from it, and store it back into 'Arguments.counter'. Then the loop goes back to the 'condition'/'while' statement. Is it still true? If so, print the line and subtract one again. Keep repeating until the condition is false.
 
-You can also combine conditional statements using logical operators. The most common are known as `logical and` and `logical or`. In CFML you can write a `logical and` with either the word `and` or with double ampersands like this: `&&`. You can write a `logical or` with the word `or` or with double pipes like this: `||`. For each operation, the symbolic representation ( `&&` and `||` ) is more common.
+You can also combine conditional statements using logical operators. The most common are known as 'logical and' and 'logical or'. In CFML you can write a 'logical and' with either the word 'and' or with double ampersands like this: '&&'. You can write a 'logical or' with the word 'or' or with double pipes like this: '||'. For each operation, the symbolic representation ( '&&' and '||' ) is more common.
 
-The #1 mistake people encounter when writing conditional statements is the difference between `=` and `==`.
+The #1 mistake people encounter when writing conditional statements is the difference between '=' and '=='.
 
-*   `=` is an *assignment*. It means â€œtake whatâ€™s on the right side and stick it into whatever is on the left sideâ€ (or its *telling* not *asking*.)
-*   `==` is a *question*. It means â€œis the thing on the right equal to the thing on the leftâ€ (or its *asking* not *telling*.)
+*   '=' is an *assignment*. It means â€œtake whatâ€™s on the right side and stick it into whatever is on the left sideâ€ (or its *telling* not *asking*.)
+*   '==' is a *question*. It means â€œis the thing on the right equal to the thing on the leftâ€ (or its *asking* not *telling*.)
 
 ## 10. Nothingness & Null
 
 What is *nothingness*? Is there nothingness only in outer space? Really, when we think of *nothing* isnâ€™t it just the absence of something? Ok, thatâ€™s too much philosophy
 
-ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a `NULL` value from an external source and maintain the `NULL` value until you try to use it. ColdFusion will convert the `NULL` into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for `NULL` values, ColdFusion allows you to pass in and return a `NULL` value from a method. `IsNull()` instruction will test for `NULL` values and return `true` or `false`.
+ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a 'NULL' value from an external source and maintain the 'NULL' value until you try to use it. ColdFusion will convert the 'NULL' into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for 'NULL' values, ColdFusion allows you to pass in and return a 'NULL' value from a method. 'IsNull()' instruction will test for 'NULL' values and return 'true' or 'false'.
 
-If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have ``. Zero is something, its a number, and its *not nothing*.
+If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have ''. Zero is something, its a number, and its *not nothing*.
 
-A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you canâ€™t do something to nothing so CFML creates an error. Lets rewrite our `makeeggs` method to illustrate `NULL` :
+A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you canâ€™t do something to nothing so CFML creates an error. Lets rewrite our 'makeeggs' method to illustrate 'NULL' :
 
 <table>
   <tbody>
@@ -1489,7 +1489,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
   </tbody>
 </table>
 
-Reload the file, call `frank.makeeggs(3)` then try `frank.makeeggs()`.
+Reload the file, call 'frank.makeeggs(3)' then try 'frank.makeeggs()'.
 
 **TODO: Conclusion**
 
