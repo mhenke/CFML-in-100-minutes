@@ -71,8 +71,10 @@ Please add yourself if you help:
 
 Mike Henke ([henke.mike@gmail.com](mailto:henke.mike@gmail.com)) -
 [[https://github.com/mhenke/](https://github.com/mhenke/)](https://github.com/mhenke/)  
+
 russplaysguitar -
 [[https://github.com/russplaysguitar/](https://github.com/russplaysguitar/)](https://github.com/russplaysguitar/)  
+
 Daniel Short (@danshort on twitter) -
 [[http://www.dansshorts.com](http://www.dansshorts.com)](http://www.dansshorts.com)
 
