@@ -40,19 +40,19 @@ h3. Tag Syntax
 		<td>
 <pre lang="cfm">
 <code>
- <cfset s = New Sample() />
- <cfoutput>#s.hello()#</cfoutput>
+<cfset s = New Sample() />
+<cfoutput>#s.hello()#</cfoutput>
 </code>
 </pre>
 		</td>
 		<td>
 <pre lang="cfm">
 <code>
- <cfcomponent>
-  <cffunction name="hello">
-   <cfreturn "Hello, World!" />
-  </cffunction>
- </cfcomponent>
+<cfcomponent>
+ <cffunction name="hello">
+  <cfreturn "Hello, World!" />
+ </cffunction>
+</cfcomponent>
 </code>
 </pre>
 		</td>
@@ -70,19 +70,21 @@ h3. Script Syntax
 		<td>
 <pre lang="cfm">
 <code>
- s = New Sample();
- writeOutput(s.hello());
+<cfscript>
+s = New Sample();
+writeOutput(s.hello());
+</cfscript>
 </code>
 </pre>
 		</td>
 		<td>
 <pre lang="cfm">
 <code>
- component {
-  public string function hello(){
-   return( "Hello, World!" );
-  }
+component {
+ public string function hello(){
+  return( "Hello, World!" );
  }
+}
 </code>
 </pre>
 		</td>
@@ -174,36 +176,36 @@ Go into a CFML file, enter in these example instructions, and observe the output
 <td>
 <pre lang="cfm">
 <code>
- <cfoutput>
- <cfset a = 5 />
- a = #a#<br/>
- <cfset b = 10 + 5 />
- b = #b#<br/>
- <cfset c = 15 + a + b />
- c = #c#<br/>
- <cfset b = c - a />
- b = #b#<br/>
- <cfset d = "Hello, " />
- d = #d#<br/>
- </cfoutput>
+<cfoutput>
+<cfset a = 5 />
+a = #a#<br/>
+<cfset b = 10 + 5 />
+b = #b#<br/>
+<cfset c = 15 + a + b />
+c = #c#<br/>
+<cfset b = c - a />
+b = #b#<br/>
+<cfset d = "Hello, " />
+d = #d#<br/>
+</cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- a = 5;
- writeOutput("a = #a#<br/>");
- b = 10 + 5;
- writeOutput("b = #b#<br/>");
- c = 15 + a + b;
- writeOutput("c = #c#<br/>");
- b = c - a;
- writeOutput("b = #b#<br/>");
- d = "Hello, ";
- writeOutput("d = #d#<br/>"); 
- </cfscript>
+<cfscript>
+a = 5;
+writeOutput("a = #a#<br/>");
+b = 10 + 5;
+writeOutput("b = #b#<br/>");
+c = 15 + a + b;
+writeOutput("c = #c#<br/>");
+b = c - a;
+writeOutput("b = #b#<br/>");
+d = "Hello, ";
+writeOutput("d = #d#<br/>"); 
+</cfscript>
 </code>
 </pre>
 </td>
@@ -220,32 +222,32 @@ In this second example, we assume the first example is present.
 <td>
 <pre lang="cfm">
 <code>
- <cfoutput>
- <cfset e = "World!" />
- e = #e#<br/>
- <cfset f = d & e />
- f = #f#<br/>
- <cfset g = d & a & e />
- g = #g#<br/>
- <cfset b = "hi!" />
- b = #b#<br/>
- </cfoutput>
+<cfoutput>
+<cfset e = "World!" />
+e = #e#<br/>
+<cfset f = d & e />
+f = #f#<br/>
+<cfset g = d & a & e />
+g = #g#<br/>
+<cfset b = "hi!" />
+b = #b#<br/>
+</cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- e = "World!";
- writeOutput("e = #e#<br/>");
- f = d & e;
- writeOutput("f = #f#"<br/>");
- g = d & a & e;
- writeOutput("g = #g#<br/>");
- b = "hi!";
- writeOutput("b = #b#<br/>");  
- </cfscript>
+<cfscript>
+e = "World!";
+writeOutput("e = #e#<br/>");
+f = d & e;
+writeOutput("f = #f#"<br/>");
+g = d & a & e;
+writeOutput("g = #g#<br/>");
+b = "hi!";
+writeOutput("b = #b#<br/>");  
+</cfscript>
 </code>
 </pre>
 </td>
@@ -272,18 +274,18 @@ In CFML we define an object using the @cfcomponent@ instruction and save the fil
 <td>
 <pre lang="cfm">
 <code>
- <cfcomponent>
+<cfcomponent>
 
- </cfcomponent>
+</cfcomponent>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- component {
+component {
 
- }
+}
 </code>
 </pre>
 </td>
@@ -302,22 +304,22 @@ Inside the CFC we usually define one or more methods using the @cffunction@ inst
 <td>
 <pre lang="cfm">
 <code>
- <cfcomponent>
-  <cffunction name="makeToast">
-   <cfset makeToast = "Making your toast!" />
-  </cffunction>
- </cfcomponent>
+<cfcomponent>
+ <cffunction name="makeToast">
+  <cfset makeToast = "Making your toast!" />
+ </cffunction>
+</cfcomponent>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- component {
-  public string function makeToast(){
-   makeToast = "Making your toast!";
-  }
+component {
+ public string function makeToast(){
+  makeToast = "Making your toast!";
  }
+}
 </code>
 </pre>
 </td>
@@ -338,14 +340,14 @@ Once we define a class, we create an instance of that class like this:
 <td>
 <pre lang="cfm">
 <code>
- <cfset frank = New PersonalChef() />
+<cfset frank = New PersonalChef() />
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- frank = New PersonalChef();
+frank = New PersonalChef();
 </code>
 </pre>
 </td>
@@ -368,23 +370,23 @@ Sometimes methods take one or more _parameters_ telling them *how* to do what th
 <td>
 <pre lang="cfm">
 <code>
- <cfcomponent>
-  <cffunction name="makeToast" returnType="string">
-   <cfargument name="color" required="yes">
-    <cfset makeToast = "Making your toast #arguments.color#!" />
-  </cffunction>
- </cfcomponent>
+<cfcomponent>
+ <cffunction name="makeToast" returnType="string">
+  <cfargument name="color" required="yes">
+   <cfset makeToast = "Making your toast #arguments.color#!" />
+ </cffunction>
+</cfcomponent>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- component {
-  public string function makeToast(required String color){
-   makeToast = "Making your toast #arguments.color#!";
-  }
+component {
+ public string function makeToast(required String color){
+  makeToast = "Making your toast #arguments.color#!";
  }
+}
 </code>
 </pre>
 </td>
@@ -409,25 +411,25 @@ For the purposes of our next section I'm going to return the chef instance itsel
 <td>
 <pre lang="cfm">
 <code>
- <cfcomponent>
-  <cffunction name="makeToast" returnType="component">
-   <cfargument name="color" required="yes">
-    <cfset this.makeToast = "Making your toast #arguments.color#!" />
-    <cfreturn this />
-  </cffunction>
- </cfcomponent>
+<cfcomponent>
+ <cffunction name="makeToast" returnType="component">
+  <cfargument name="color" required="yes">
+   <cfset this.makeToast = "Making your toast #arguments.color#!" />
+   <cfreturn this />
+ </cffunction>
+</cfcomponent>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- component {
-  public component function makeToast(required String color){
-   this.makeToast = "Making your toast #arguments.color#!";
-   return this;
-  }
+component {
+ public component function makeToast(required String color){
+  this.makeToast = "Making your toast #arguments.color#!";
+  return this;
  }
+}
 </code>
 </pre>
 </td>
@@ -457,28 +459,28 @@ Experiment with the following samples in a CFML file:
 <td>
 <pre lang="cfm">
 <code>
- <cfset tester = "Good Morning Everyone!" />
- <cfoutput>#len(tester)#<br></cfoutput>
- <cfoutput>#Replace(tester, "o", "e", "All")#<br></cfoutput>
- <cfoutput>#RemoveChars(tester, 2, 5)#<br></cfoutput>
- <cfset t2 = "sample,data,from,a,CSV" />
- <cfset t3 = Mid(t2,8,len(t2)) />
- <cfoutput>#t3#<br></cfoutput>
+<cfset tester = "Good Morning Everyone!" />
+<cfoutput>#len(tester)#<br></cfoutput>
+<cfoutput>#Replace(tester, "o", "e", "All")#<br></cfoutput>
+<cfoutput>#RemoveChars(tester, 2, 5)#<br></cfoutput>
+<cfset t2 = "sample,data,from,a,CSV" />
+<cfset t3 = Mid(t2,8,len(t2)) />
+<cfoutput>#t3#<br></cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- tester = "Good Morning Everyone!";
- writeOutput("#len(tester)#<br/>");
- writeOutput(Replace(tester, "o", "e", "All") & "<br/>");
- writeOutput(RemoveChars(tester, 2, 5) & "<br/>");
- t2 = "sample,data,from,a,CSV";
- t3 = Mid(t2,8,len(t2));
- writeOutput(t3 & "<br/>");
- </cfscript>
+<cfscript>
+tester = "Good Morning Everyone!";
+writeOutput("#len(tester)#<br/>");
+writeOutput(Replace(tester, "o", "e", "All") & "<br/>");
+writeOutput(RemoveChars(tester, 2, 5) & "<br/>");
+t2 = "sample,data,from,a,CSV";
+t3 = Mid(t2,8,len(t2));
+writeOutput(t3 & "<br/>");
+</cfscript>
 </code>
 </pre>
 </td>
@@ -495,20 +497,20 @@ Often a string may store a list like the @t2@ variable in the last example. A st
 <td>
 <pre lang="cfm">
 <code>
- <cfset t4 = ListToArray(t3) />
- <cfoutput>
-  #t4[2]#
- </cfoutput>
+<cfset t4 = ListToArray(t3) />
+<cfoutput>
+ #t4[2]#
+</cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- t4 = ListToArray(t3);
- writeOutput(t4[2]);
- </cfscript>
+<cfscript>
+t4 = ListToArray(t3);
+writeOutput(t4[2]);
+</cfscript>
 </code>
 </pre>
 </td>
@@ -568,22 +570,22 @@ In the first line we setup a variable to hold the day of the week. Then we'll pr
 <td>
 <pre lang="cfm">
 <code>
- <cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
- <cfset message = "Happy " & today & "!" />
- <cfoutput>
+<cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
+<cfset message = "Happy " & today & "!" />
+<cfoutput>
  #message#
- </cfoutput>
+</cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- today = DayOfWeekAsString(DayOfWeek(Now()));
- message = "Happy " & today & "!";
- writeOutput(message);
- </cfscript>
+<cfscript>
+today = DayOfWeekAsString(DayOfWeek(Now()));
+message = "Happy " & today & "!";
+writeOutput(message);
+</cfscript>
 </code>
 </pre>
 </td>
@@ -633,24 +635,24 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 <pre lang="cfm">
 <code>
 <cfset loop = 0 />
- <cfoutput>
-  <cfloop condition="loop LT 5" >
-   #loop# Hello, world!<br>
-   <cfset loop++ />
-  </cfloop>
-  I am here!<br>
- </cfoutput>
+<cfoutput>
+ <cfloop condition="loop LT 5" >
+  #loop# Hello, world!<br>
+  <cfset loop++ />
+ </cfloop>
+ I am here!<br>
+</cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- for (loop = 0 ; loop < 5 ; loop++)
-  WriteOutput("#loop# Hello, world!<br>");
- WriteOutput("I am here<br>");
- </cfscript>
+<cfscript>
+for (loop = 0 ; loop < 5 ; loop++)
+ WriteOutput("#loop# Hello, world!<br>");
+WriteOutput("I am here<br>");
+</cfscript>
 </code>
 </pre>
 </td>
@@ -671,12 +673,12 @@ Try this example with multiple instructions:
 <td>
 <pre lang="cfm">
 <code>
- <cfset loop = 0 />
- <cfoutput>
- <cfloop index="loop" from="0" to="4">
-  #loop# Good Morning!
-  ...is it lunch time yet?<br>
- </cfloop>
+<cfset loop = 0 />
+<cfoutput>
+<cfloop index="loop" from="0" to="4">
+ #loop# Good Morning!
+ ...is it lunch time yet?<br>
+</cfloop>
 </cfoutput>
 </code>
 </pre>
@@ -684,14 +686,14 @@ Try this example with multiple instructions:
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- loop = 0; 
- while (loop < 5) { 
-  WriteOutput("#loop# Good Morning! ");
-  WriteOutput("...is it lunch time yet?<br>");
-  loop++;
- }
- </cfscript>
+<cfscript>
+loop = 0; 
+while (loop < 5) { 
+ WriteOutput("#loop# Good Morning! ");
+ WriteOutput("...is it lunch time yet?<br>");
+ loop++;
+}
+</cfscript>
 </code>
 </pre>
 </td>
@@ -708,12 +710,12 @@ It's also possible to go through a loop and step over more than one value at a t
 <td>
 <pre lang="cfm">
 <code>
- <cfset loop = 0 />
- <cfoutput>
- <cfloop index="loop" from="0" to="4" step="2">
-  #loop# Good Morning!
-  ...is it lunch time yet?<br>
- </cfloop>
+<cfset loop = 0 />
+<cfoutput>
+<cfloop index="loop" from="0" to="4" step="2">
+ #loop# Good Morning!
+ ...is it lunch time yet?<br>
+</cfloop>
 </cfoutput>
 </code>
 </pre>
@@ -721,14 +723,14 @@ It's also possible to go through a loop and step over more than one value at a t
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- loop = 0;
- while (loop < 5) {
-  WriteOutput("#loop# Good Morning! ");
-  WriteOutput("...is it lunch time yet?<br>");
-  loop = loop + 2;
- }
- </cfscript>
+<cfscript>
+loop = 0;
+while (loop < 5) {
+ WriteOutput("#loop# Good Morning! ");
+ WriteOutput("...is it lunch time yet?<br>");
+ loop = loop + 2;
+}
+</cfscript>
 </code>
 </pre>
 </td>
@@ -747,7 +749,7 @@ A query is a request to a database. The query can ask for information from the d
 <td>
 <pre lang="cfm">
 <code>
- <cfquery name="GetBreakfastItems" datasource="pantry"> 
+<cfquery name="GetBreakfastItems" datasource="pantry"> 
  SELECT QUANTITY, ITEM 
  FROM CUPBOARD 
  ORDER BY ITEM 
@@ -758,19 +760,19 @@ A query is a request to a database. The query can ask for information from the d
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- queryService = new Query();
+<cfscript>
+queryService = new Query();
 
- queryService.setName("GetBreakfastItems"); 
- queryServ.setDatasource("pantry"); 
- queryService.setSQL("
- SELECT QUANTITY, ITEM 
- FROM CUPBOARD 
- ORDER BY ITEM
- ");
+queryService.setName("GetBreakfastItems"); 
+queryServ.setDatasource("pantry"); 
+queryService.setSQL("
+SELECT QUANTITY, ITEM 
+FROM CUPBOARD 
+ORDER BY ITEM
+");
  
- GetBreakfastItems = queryService.execute().getResult(); 
- </cfscript>
+GetBreakfastItems = queryService.execute().getResult(); 
+</cfscript>
 </code>
 </pre>
 </td>
@@ -788,7 +790,7 @@ In order to display the data from our query, we need to loop through the rows, a
 <pre lang="cfm">
 <code>
 <cfoutput query="GetBreakfastItems">
-	There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br />
+ There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br />
 </cfoutput>
 </code>
 </pre>
@@ -809,7 +811,7 @@ You can also loop through a query using standard loop constructs, though they di
 <pre lang="cfm">
 <code>
 <cfloop query="GetBreakfastItems">
-	<cfoutput>There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /></cfoutput>
+ <cfoutput>There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /></cfoutput>
 </cfloop>
 </code>
 </pre>
@@ -819,13 +821,9 @@ You can also loop through a query using standard loop constructs, though they di
 <code>
 <cfscript> 
 for (x = 1; x <= GetBreakfastItems; x=x+1) { 
-	writeOutput("There are #GetBreakfastItems.Quantity[x]# #GetBreakfastItems.Item[x]# in the pantry<br />")
+ writeOutput("There are #GetBreakfastItems.Quantity[x]# #GetBreakfastItems.Item[x]# in the pantry<br />")
 } 
 </cfscript>
-
- <cfscript>
- SCRIPT EXAMPLE
- </cfscript>
 </code>
 </pre>
 </td>
@@ -850,24 +848,24 @@ An *array* is a number-indexed list. Picture a city block of houses. Together th
 <td>
 <pre lang="cfm">
 <code>
- <cfset favorite_colors = ["red","blue","green","black","brown"] />
- <cfdump var="#favorite_colors#" /><br>
- <cfdump var="#favorite_colors[2]#" /><br>
- <cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" /><br>
+<cfset favorite_colors = ["red","blue","green","black","brown"] />
+<cfdump var="#favorite_colors#" /><br>
+<cfdump var="#favorite_colors[2]#" /><br>
+<cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" /><br>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- favorite_colors = ["red","blue","green","black","brown"];
- writeDump(favorite_colors);
- writeOutput("<br>");
- writeDump(favorite_colors[2]);
- writeOutput("<br>");
- writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
- </cfscript>
+<cfscript>
+favorite_colors = ["red","blue","green","black","brown"];
+writeDump(favorite_colors);
+writeOutput("<br>");
+writeDump(favorite_colors[2]);
+writeOutput("<br>");
+writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
+</cfscript>
 </code>
 </pre>
 </td>
@@ -885,28 +883,28 @@ Keep going with these, but try to understand what each instruction is doing befo
 <td>
 <pre lang="cfm">
 <code>
- <cfset ArrayAppend(favorite_colors, "orange") />
- <cfset favorite_colors[3]="yellow" />
- <cfdump var="#favorite_colors#" /><br>
- <cfset ArraySort(favorite_colors,"text") />
- <cfset ArrayDeleteAt(favorite_colors, 2) /> 
- <cfdump var="#favorite_colors#" /><br>
+<cfset ArrayAppend(favorite_colors, "orange") />
+<cfset favorite_colors[3]="yellow" />
+<cfdump var="#favorite_colors#" /><br>
+<cfset ArraySort(favorite_colors,"text") />
+<cfset ArrayDeleteAt(favorite_colors, 2) /> 
+<cfdump var="#favorite_colors#" /><br>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- ArrayAppend(favorite_colors, "orange");
- favorite_colors[3] = "yellow";
- writeDump(favorite_colors);
- writeOutput("<br>");
- set = ArraySort(favorite_colors,"text");
- ArrayDeleteAt(favorite_colors, 2);
- writeDump(var=favorite_colors);
- writeOutput("<br>"); 
- </cfscript>
+<cfscript>
+ArrayAppend(favorite_colors, "orange");
+favorite_colors[3] = "yellow";
+writeDump(favorite_colors);
+writeOutput("<br>");
+set = ArraySort(favorite_colors,"text");
+ArrayDeleteAt(favorite_colors, 2);
+writeDump(var=favorite_colors);
+writeOutput("<br>"); 
+</cfscript>
 </code>
 </pre>
 </td>
@@ -929,30 +927,30 @@ There are lots of cool things to do with an array. You can rearrange the order o
 <td>
 <pre lang="cfm">
 <code>
- <cfoutput>
-  <ul>
-  <cfloop array="#favorite_colors#" index="target" >
-   <li>#target# is #len(target)# letters long.</li>
-  </cfloop>
-  </ul>
-  <cfdump var="#ArrayIsDefined(favorite_colors,4)#" />
- </cfoutput>
+<cfoutput>
+ <ul>
+ <cfloop array="#favorite_colors#" index="target" >
+  <li>#target# is #len(target)# letters long.</li>
+ </cfloop>
+ </ul>
+ <cfdump var="#ArrayIsDefined(favorite_colors,4)#" />
+</cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- writeOutput("<ul>");
- index = favorite_colors.iterator();
- while(index.hasNext()){
-  target = index.next();
-  writeOutput("<li>#target# is #len(target)# letters long.</li>");
- }
- writeOutput("</ul>"); 
- writeDump(var=ArrayIsDefined(favorite_colors,4));
- </cfscript>
+<cfscript>
+writeOutput("<ul>");
+index = favorite_colors.iterator();
+while(index.hasNext()){
+ target = index.next();
+ writeOutput("<li>#target# is #len(target)# letters long.</li>");
+}
+writeOutput("</ul>"); 
+writeDump(var=ArrayIsDefined(favorite_colors,4));
+</cfscript>
 </code>
 </pre>
 </td>
@@ -975,35 +973,34 @@ A structure is an unordered collection, its just a bunch of data collected toget
 <td>
 <pre lang="cfm">
 <code>
- <cfset ages = {jack = 11, brian = 12, tracy = 11} />
- <cfset ages.joey = 12 /> 
- <cfset ages["jill"] = 14 /> 
+<cfset ages = {jack = 11, brian = 12, tracy = 11} />
+<cfset ages.joey = 12 /> 
+<cfset ages["jill"] = 14 /> 
 
- <cfdump var="#ages#" />
+<cfdump var="#ages#" />
 
- <cfoutput>
- Joey is #ages['joey']# years old.
- </cfoutput>
+<cfoutput>
+Joey is #ages['joey']# years old.
+</cfoutput>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- ages = {jack = 11, brian = 12, tracy = 11};
- ages.joey = 12;
- ages["jill"] = 14;
+<cfscript>
+ages = {jack = 11, brian = 12, tracy = 11};
+ages.joey = 12;
+ages["jill"] = 14;
 
- writeDump(var=ages);
- writeOutput("Joey is #ages['joey']# years old.");
- </cfscript>
+writeDump(var=ages);
+writeOutput("Joey is #ages['joey']# years old.");
+</cfscript>
 </code>
 </pre>
 </td>
 </tr>
 </table>
-
 
 Here we create a structure named @ages@. Structures are made up what are called key-value pairs.The *key* is used as the address and the *value* is the object at that address. In the @ages@ structure we have keys including @"joey"@ and @"jill"@ and values including @12@ and @14@. When creating a structure using @{}@ the key and value are linked by the @=@ symbol. So to create a structure, the structures start with a curly bracket @{@, have zero or more entries made up of a _key_, @=@, and a _value_ separated by commas, then end with a closing curly bracket @}@.
 
@@ -1015,20 +1012,20 @@ Here we create a structure named @ages@. Structures are made up what are called 
 <td>
 <pre lang="cfm">
 <code>
- <cfset ages["jimmy"] = 14 />
- <cfset ages["joey"] = 9 />
- <cfdump var="#ages# />
+<cfset ages["jimmy"] = 14 />
+<cfset ages["joey"] = 9 />
+<cfdump var="#ages# />
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- <cfscript>
- ages["jimmy"] = 14;
- ages["joey"] = 9;
- writeDump(var=ages);
- </cfscript>
+<cfscript>
+ages["jimmy"] = 14;
+ages["joey"] = 9;
+writeDump(var=ages);
+</cfscript>
 </code>
 </pre>
 </td>
@@ -1045,20 +1042,20 @@ In the second chunk of the example, we add a new key and value to the structure.
 <td>
 <pre lang="cfm">
 <code>
- students = ages.keys.sort 
- students.each do |student| 
- puts "#{student} is #{ages[student]} years old." 
- end
+students = ages.keys.sort 
+students.each do |student| 
+puts "#{student} is #{ages[student]} years old." 
+end
  
- <cfset student = {firstName="joey", age=ages.joey, grades=[91, 78, 87]} />
- <cfdump var="#student#" />
+<cfset student = {firstName="joey", age=ages.joey, grades=[91, 78, 87]} />
+<cfdump var="#student#" />
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- SCRIPT EXAMPLE
+SCRIPT EXAMPLE
 </code>
 </pre>
 </td>
@@ -1087,41 +1084,41 @@ Why do we have conditional statements? Most often its to control conditional ins
 <td>
 <pre lang="cfm">
 <code>
- <cffunction name="water_boiling" returnType="component">
-  <cfargument name="minutes" type="numeric" required="yes">
+<cffunction name="water_boiling" returnType="component">
+ <cfargument name="minutes" type="numeric" required="yes">
 
-  <cfif (arguments.minutes LT 7)>
-   <cfset this.status = "The water is not boiling yet." />
-  <cfelseif (arguments.minutes EQ 7)> 
-   <cfset this.status = "It's just barely boiling." />
-  <cfelseif (arguments.minutes EQ 8)>
-   <cfset this.status = "It's boiling!" />
-  <cfelse>
-   <cfset this.status = "Hot! Hot! Hot!" /> 
-  </cfif>
-  <cfreturn this />
- </cffunction>
+ <cfif (arguments.minutes LT 7)>
+  <cfset this.status = "The water is not boiling yet." />
+ <cfelseif (arguments.minutes EQ 7)> 
+  <cfset this.status = "It's just barely boiling." />
+ <cfelseif (arguments.minutes EQ 8)>
+  <cfset this.status = "It's boiling!" />
+ <cfelse>
+  <cfset this.status = "Hot! Hot! Hot!" /> 
+ </cfif>
+ <cfreturn this />
+</cffunction>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- public component function water_boiling(numeric minutes){
-  if (arguments.minutes < 7) 
-   this.status = "The water is not boiling yet.";
-  
-  else if (arguments.minutes == 7) 
-   this.status = "It's just barely boiling.";
-  
-  else if (arguments.minutes == 8)
-   this.status = "It's boiling!";
-  
-  else 
-   this.status = "Hot! Hot! Hot!";
-  
-  return this;
- }
+public component function water_boiling(numeric minutes){
+ if (arguments.minutes < 7) 
+  this.status = "The water is not boiling yet.";
+ 
+ else if (arguments.minutes == 7) 
+  this.status = "It's just barely boiling.";
+ 
+ else if (arguments.minutes == 8)
+  this.status = "It's boiling!";
+ 
+ else 
+  this.status = "Hot! Hot! Hot!";
+ 
+ return this;
+}
 </code>
 </pre>
 </td>
@@ -1158,29 +1155,29 @@ Another time we use conditional statements is when we want to repeat a set of in
 <td>
 <pre lang="cfm">
 <code>
- <cffunction name="countdown" returnType="component">
-  <cfargument name="counter" type="numeric">
-  <cfset this.timer = "" />
-  <cfloop condition="#arguments.counter# GT 0">
-   <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
-   <cfset arguments.counter-- />
-  </cfloop>
-  <cfreturn this />
- </cffunction>
+<cffunction name="countdown" returnType="component">
+ <cfargument name="counter" type="numeric">
+ <cfset this.timer = "" />
+ <cfloop condition="#arguments.counter# GT 0">
+  <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
+  <cfset arguments.counter-- />
+ </cfloop>
+ <cfreturn this />
+</cffunction>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- public component function countdown(numeric counter){
-  this.timer = "";
-  while (counter GT 0) { 
-   this.timer &= "The counter is #arguments.counter#.<br>";
-   arguments.counter--;
-  }
-  return this;
+public component function countdown(numeric counter){
+ this.timer = "";
+ while (counter GT 0) { 
+  this.timer &= "The counter is #arguments.counter#.<br>";
+  arguments.counter--;
  }
+ return this;
+}
 </code>
 </pre>
 </td>
@@ -1214,36 +1211,36 @@ A large percentage of the errors you encounter while writing CFML code will invo
 <td>
 <pre lang="cfm">
 <code>
- <cffunction name="makeeggs" returnType="component">
-  <cfargument name="quantity" type="numeric">
-  <cfif (IsNull(arguments.quantity)) />
-   <cfset this.makeEggs = "How am I supposed to make nothingness number of eggs?" />
-  <cfelse>
-   <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
-   <cfset this.yourEggs = ArrayNew(1) />
-   <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#" />
-    <cfset ArrayAppend(this.yourEggs, "Making an Egg.") />
-   </cfloop>
-  </cfif>
-  <cfreturn this />
- </cffunction>
+<cffunction name="makeeggs" returnType="component">
+ <cfargument name="quantity" type="numeric">
+ <cfif (IsNull(arguments.quantity)) />
+  <cfset this.makeEggs = "How am I supposed to make nothingness number of eggs?" />
+ <cfelse>
+  <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
+  <cfset this.yourEggs = ArrayNew(1) />
+  <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#" />
+   <cfset ArrayAppend(this.yourEggs, "Making an Egg.") />
+  </cfloop>
+ </cfif>
+ <cfreturn this />
+</cffunction>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
- public component function makeeggs(numeric quantity){
-  if(IsNull(arguments.quantity)) {
-   this.makeEggs = "How am I supposed to make nothingness number of eggs?";
-  } else {
-   this.makeEggs = "Making your #arguments.quantity# eggs!";
-   this.yourEggs = ArrayNew(1);
-   while (ArrayLen(this.yourEggs) < arguments.quantity)
-	ArrayAppend(this.yourEggs, "Making an Egg.");
+public component function makeeggs(numeric quantity){
+ if(IsNull(arguments.quantity)) {
+  this.makeEggs = "How am I supposed to make nothingness number of eggs?";
+ } else {
+  this.makeEggs = "Making your #arguments.quantity# eggs!";
+  this.yourEggs = ArrayNew(1);
+  while (ArrayLen(this.yourEggs) < arguments.quantity)
+   ArrayAppend(this.yourEggs, "Making an Egg.");
   }
-  return this;
- }
+ return this;
+}
 </code>
 </pre>
 </td>
