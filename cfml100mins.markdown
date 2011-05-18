@@ -42,28 +42,27 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 <tr>
 
 <td>
-``` cfm
+<pre lang="cfm">
+<code>  
 <cfset s = New Sample() />  
 <cfoutput>#s.hello()#</cfoutput>
-``` 
-</td>
-
+</code>  
+</pre>
+</td
 <td>
-``` cfm 
+<pre lang="cfm">
+<code>  
 <cfcomponent>  
  <cffunction name="hello">  
  <cfreturn "Hello, World!" />  
  </cffunction>  
 </cfcomponent>  
-```
-
+</code>  
+</pre>
 </td>
-
 </tr>
 </table>
 ### Script Syntax
-
-<table>
 
 <table>
 <tr>
@@ -72,51 +71,54 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 </tr>
 
 <tr>
-
 <td>
-``` cfml
+<pre lang="cfm">
+<code>  
 <cfscript>  
 s = New Sample ();  
 writeOutput (s.hello ());  
 </cfscript>  
-```
+</code>  
+</pre>
 </td>
-
 <td>
-``` cfml
+<pre lang="cfm">
+<code>  
 component {  
  public string function hello (){  
   return( "Hello, World!" );
  }  
 }  
-```
+</code>  
+</pre>
 </td>
-
 </tr>
 </table>
+
 For the script example, `myprogram.cfm` and `Sample.cfc` would have beginning/closing `<cfscript>` tags around the instructions.
 
 #### PHP Syntax
 
 <table>
-
-<table>
 <tr>
-         <td>myprogram.php</td>
+   <td>myprogram.php</td>
    <td>Sample.php<td>
 </tr>
 <tr>
 <td>
-``` php
+<pre lang="php">
+<code>  
 <?php
 require("Sample.php");
 $s = new Sample();
 echo s->hello ();  
 ?>
-```
+</code>  
+</pre>
 </td>
 <td>
-``` php  
+<pre lang="php">
+<code>  
 <?php
 class Sample
 {
@@ -125,27 +127,21 @@ class Sample
     }
 }
 ?>  
-```
+</code>  
+</pre>
 </td>
-
 </tr>
 </table>
 #### Ruby Syntax
 
 <table>
-
 <tr>
-
 <td>
 myprogram.rb
-
 </td>
-
 <td>
 Sample.rb
-
 <td>
-
 </tr>
 <tr>
 <td>
@@ -155,7 +151,6 @@ require ‘Sample.rb’
 s = Sample.new  
 puts s.hello  
 </code>  
-
 </pre>
 </td>
 <td>
@@ -167,10 +162,8 @@ class Sample
  end  
 end  
 </code>  
-
 </pre>
 </td>
-
 </tr>
 </table>
 
@@ -201,7 +194,6 @@ b = #b#<br/>
 d = #d#<br/>
 </cfoutput>  
 </code>  
-
 </pre>
 </td>
 <td>
@@ -220,7 +212,6 @@ d = "Hello, ";
 writeOutput("d = #d#<br/>"); 
 </cfscript>  
 </code>  
-
 </pre>
 </td>
 </tr>
@@ -246,7 +237,6 @@ g = #g#<br/>
 b = #b#<br/>
 </cfoutput>  
 </code>  
-
 </pre>
 </td>
 <td>
@@ -263,7 +253,6 @@ b = "hi!";
 writeOutput("b = #b#<br/>");  
 </cfscript>  
 </code>  
-
 </pre>
 </td>
 </tr>
@@ -292,7 +281,6 @@ In CFML we define an object using the `cfcomponent` instruction and save the fil
 
 </cfcomponent>  
 </code>  
-
 </pre>
 </td>
 <td>
@@ -302,7 +290,6 @@ component {
 
 }  
 </code>  
-
 </pre>
 </td>
 </tr>
@@ -325,7 +312,6 @@ Inside the CFC we usually define one or more methods using the `cffunction` inst
  </cffunction>  
 </cfcomponent>  
 </code>  
-
 </pre>
 </td>
 <td>
@@ -337,11 +323,11 @@ component {
  }  
 }  
 </code>  
-
 </pre>
 </td>
 </tr>
 </table>
+
 Inside the `cffunction` instruction we’d put the code for how the chef should make the toast.
 
 A `class` is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you’re sitting in. Its not an abstract chair, it is an actual chair. We’d call this actual chair an `instance`. It is a *realization* of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is *abstract*. The class’s weight, color, and size we can’t determine them ahead of time.
@@ -358,7 +344,6 @@ Once we define a class, we create an instance of that class like this:
 <code>  
 <cfset frank = New PersonalChef() />  
 </code>  
-
 </pre>
 </td>
 <td>
@@ -366,11 +351,11 @@ Once we define a class, we create an instance of that class like this:
 <code>  
 frank = New PersonalChef ();  
 </code>  
-
 </pre>
 </td>
 </tr>
 </table>
+
 We’re calling the `New` instruction on the class `PersonalChef` and storing it into the variable named `frank`. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: `object.method_name()`. So if you have a person named `frank` you would tell him to make toast by calling `frank.makeToast()`.
 
 The `New` instruction creates a new instance of the object and calls it’s init () method (if existing). Any arguments supplied to the object will be passed to the init () method. The init () method should return the object instance using `<cfreturn this />` in order to have the same expected behavior as the `CreateObject` instruction. If no init () method exists, the object will be returned normally.
@@ -383,11 +368,9 @@ Sometimes methods take one or more *parameters* telling them **how** to do what 
 <tr>
 <td>
 **Tag**
-
 </td>
 <td>
 **Script**
-
 </td>
 </tr>
 <tr>
@@ -401,7 +384,6 @@ Sometimes methods take one or more *parameters* telling them **how** to do what 
  </cffunction>  
 </cfcomponent>  
 </code>  
-
 </pre>
 </td>
 <td>
@@ -413,11 +395,11 @@ component {
  }  
 }  
 </code>  
-
 </pre>
 </td>
 </tr>
 </table>
+
 The method is requiring us to pass in a `color` telling it how to do the method `makeToast`.
 
 ### Return Value
