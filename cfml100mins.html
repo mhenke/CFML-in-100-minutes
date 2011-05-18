@@ -1,0 +1,1773 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+</head>
+<body>
+<h1 id="cfml-in-100-minutes"
+>CFML in 100 minutes</h1
+><p
+>ColdFusion Markup Language (CFML) is a great programming language for beginners because it was written to make the programmer’s job easy and not care if the computer’s job is hard. In this brief introduction we’ll look at key language features you need to get started.</p
+><ol
+><li
+  >Syntax</li
+  ><li
+  >Variables</li
+  ><li
+  >Components, Methods, and Parameters</li
+  ><li
+  >Strings</li
+  ><li
+  >Numbers</li
+  ><li
+  >Queries</li
+  ><li
+  >Arrays</li
+  ><li
+  >Structures</li
+  ><li
+  >Conditionals<ol
+    ><li
+      >If, Else If, &amp; Else</li
+      ><li
+      >Looping</li
+      ></ol
+    ></li
+  ><li
+  >Nothingness &amp; Null</li
+  ></ol
+><h2 id="cfml-history"
+>CFML History</h2
+><p
+>CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. The term <em
+  >ColdFusion</em
+  > is often used synonymously with <em
+  >CFML</em
+  >. <a href="http://www.adobe.com/coldfusion"
+  >ColdFusion</a
+  > originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like <a href="http://www.getrailo.com/"
+  >Railo</a
+  > and <a href="http://www.openbluedragon.org/"
+  >OpenBD</a
+  > . ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development.</p
+><p
+>When ColdFusion was originally released, it grew an audience quickly in the government and private sector. CFML tag syntax resembles HTML and the CFML script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.</p
+><p
+>And you want to learn CFML so here goes!</p
+><h2 id="syntax"
+>1. Syntax</h2
+><p
+>There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages. You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are <code
+  >CFSET</code
+  >, <code
+  >CFOUTPUT</code
+  >, and <code
+  >CFDUMP</code
+  >. <code
+  >CFSET</code
+  > is used to create a variable and assign it a value. Also <code
+  >CFSET</code
+  > is used to call methods. <code
+  >CFOUTPUT</code
+  > displays a variable’s value. <code
+  >CFDUMP</code
+  > is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.</p
+><p
+>We might have a file named <code
+  >myprogram.cfm</code
+  > and <code
+  >Sample.cfc</code
+  > like this:</p
+><h3 id="tag-syntax"
+>Tag Syntax</h3
+><table><p
+></p
+><tr><p
+></p
+><td><p
+>myprogram.cfm</p
+></td><p
+></p
+><td><p
+>Sample.cfc</p
+></td><p
+></p
+></tr><p
+></p
+><tr><p
+></p
+><td><pre lang="cfm"><p
+><code><br
+   /><cfset s = New Sample() /><br
+   /><cfoutput>#s.hello ()#</cfoutput><br
+   /></code><br
+   /></p
+></pre><p
+></p
+></td><p
+></p
+><td><pre lang="cfm"><p
+><code><br
+   /><cfcomponent><br
+   /> <cffunction name="hello"><br
+   /> <cfreturn "Hello, World!" /><br
+   /> </cffunction><br
+   /></cfcomponent><br
+   /></code><br
+   /></p
+></pre><p
+></p
+></td><p
+></p
+></tr></table><h3 id="script-syntax"
+>Script Syntax</h3
+><table><p
+></p
+><tr><p
+></p
+><td><p
+>myprogram.cfm</p
+></td><p
+></p
+><td><p
+>Sample.cfc</p
+></td><p
+></p
+></tr><p
+></p
+><tr><p
+></p
+><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />s = New Sample ();<br
+   />writeOutput (s.hello ());<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre><p
+></p
+></td><p
+></p
+><td><pre lang="cfm"><p
+><code><br
+   />component {<br
+   /> public string function hello (){<br
+   /> return ( “Hello, World!” );<br
+   /> }<br
+   />}<br
+   /></code><br
+   /></p
+></pre><p
+></p
+></td><p
+></p
+></tr></table><p
+>For the script example, <code
+  >myprogram.cfm</code
+  > and <code
+  >Sample.cfc</code
+  > would have beginning/closing <code
+  >&lt;cfscript&gt;</code
+  > tags around the instructions.</p
+><h4 id="php-syntax"
+>PHP Syntax</h4
+><table><p
+></p
+><tr><p
+></p
+><td><p
+>myprogram.php</p
+></td><p
+></p
+><td><p
+>Sample.php</p
+><td><p
+></p
+></tr><tr><td><pre lang="php"><p
+><code><br
+   /><?php
+require("Sample.php");
+$s = new Sample();
+echo s->hello ();<br
+   />?&gt;<br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="php"><p
+><code><br
+   /><?php
+class Sample
+{
+    public function hello() {
+        return "Hello, World!";
+    }
+}
+?><br
+   /></code><br
+   /></p
+></pre></td><p
+></p
+></tr></table><h4 id="ruby-syntax"
+>Ruby Syntax</h4
+><table><p
+></p
+><tr><p
+></p
+><td><p
+>myprogram.rb</p
+></td><p
+></p
+><td><p
+>Sample.rb</p
+><td><p
+></p
+></tr><tr><td><pre lang="ruby"><p
+><code><br
+   />require ‘Sample.rb’<br
+   />s = Sample.new<br
+   />puts s.hello<br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="ruby"><p
+><code><br
+   />class Sample<br
+   /> def hello<br
+   /> “Hello, World!”<br
+   /> end<br
+   />end<br
+   /></code><br
+   /></p
+></pre></td><p
+></p
+></tr></table><p
+>For the Ruby syntax, part 1 would be first then followed by part 2 in <code
+  >my_program.rb</code
+  >.</p
+><h2 id="variables"
+>2. Variables</h2
+><p
+>Everything needs a name so we can refer to it. A variable, like in math, is just a name for a piece of data. In CFML, variables are very flexible and can be changed at any time. Variables are assigned using a single equals sign ( = ) where the <strong
+  >right</strong
+  > side of the equals sign is evaluated first, then the value is assigned to the variable named on the <strong
+  >left</strong
+  > side of the equals.</p
+><p
+>Go into a CFML file, enter in these example instructions, and observe the output that CFML gives you back:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfoutput><br
+   /><cfset a = 5 /><br
+   />a = #a#<br/><br
+   /><cfset b = 10 + 5 /><br
+   />b = #b#<br/><br
+   /><cfset c = 15 + a + b /><br
+   />c = #c#<br/><br
+   /><cfset b = c - a /><br
+   />b = #b#<br/><br
+   /><cfset d = "Hello, " /><br
+   />d = #d#<br/><br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />a = 5;<br
+   />writeOutput (“a = #a#<br/>”);<br
+   />b = 10 + 5;<br
+   />writeOutput (“b = #b#<br/>”);<br
+   />c = 15 + a + b;<br
+   />writeOutput (“c = #c#<br/>”);<br
+   />b = c - a;<br
+   />writeOutput (“b = #b#<br/>”);<br
+   />d = “Hello,”;<br
+   />writeOutput (“d = #d#<br/>”); <br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>In this second example, we assume the first example is present.</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfoutput><br
+   /><cfset e = "World!" /><br
+   />e = #e#<br/><br
+   /><cfset f = d & e /><br
+   />f = #f#<br/><br
+   /><cfset g = d & a & e /><br
+   />g = #g#<br/><br
+   /><cfset b = "hi!" /><br
+   />b = #b#<br/><br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />e = “World!”;<br
+   />writeOutput (“e = #e#<br/>”);<br
+   />f = d &amp; e;<br
+   />writeOutput (“f = #f#”<br/>“);<br
+   />g = d &amp; a &amp; e;<br
+   />writeOutput (”g = #g#<br/>“);<br
+   />b =”hi!“;<br
+   />writeOutput (”b = #b#<br/>&quot;); <br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>*The first few lines in the first example are simple if you’ve done any programming language before, but the last few get interesting when combining strings and numbers. The code looks a little messy since after each instruction we output a variable.</p
+><h2 id="components-methods-and-parameters"
+>3. Components, Methods, and Parameters</h2
+><h3 id="components"
+>Components</h3
+><p
+>In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called <code
+  >attributes</code
+  >, and can do actions, called <code
+  >methods</code
+  >. In ColdFusion the <code
+  >cffunction</code
+  > tag is used to define methods within a CFC.</p
+><p
+>For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections we’ll look at a few specific instructions in CFML.</p
+><p
+>In CFML we define an object using the <code
+  >cfcomponent</code
+  > instruction and save the file as <code
+  >.cfc</code
+  >. Here’s an example defining the object type <code
+  >PersonalChef.cfc</code
+  >:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfcomponent></p
+><p
+></cfcomponent><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />component {</p
+><p
+>}<br
+   /></code><br
+   /></p
+></pre></td></tr></table><h3 id="methods"
+>Methods</h3
+><p
+>Inside the CFC we usually define one or more methods using the <code
+  >cffunction</code
+  > instruction like this:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfcomponent><br
+   /> <cffunction name="makeToast"><br
+   /> <cfset makeToast = "Making your toast!" /><br
+   /> </cffunction><br
+   /></cfcomponent><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />component {<br
+   /> public string function makeToast (){<br
+   /> makeToast = “Making your toast!”;<br
+   /> }<br
+   />}<br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>Inside the <code
+  >cffunction</code
+  > instruction we’d put the code for how the chef should make the toast.</p
+><p
+>A <code
+  >class</code
+  > is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you’re sitting in. Its not an abstract chair, it is an actual chair. We’d call this actual chair an <code
+  >instance</code
+  >. It is a <em
+  >realization</em
+  > of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is <em
+  >abstract</em
+  >. The class’s weight, color, and size we can’t determine them ahead of time.</p
+><p
+>Once we define a class, we create an instance of that class like this:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset frank = New PersonalChef() /><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />frank = New PersonalChef ();<br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>We’re calling the <code
+  >New</code
+  > instruction on the class <code
+  >PersonalChef</code
+  > and storing it into the variable named <code
+  >frank</code
+  >. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: <code
+  >object.method_name()</code
+  >. So if you have a person named <code
+  >frank</code
+  > you would tell him to make toast by calling <code
+  >frank.makeToast()</code
+  >.</p
+><p
+>The <code
+  >New</code
+  > instruction creates a new instance of the object and calls it’s init () method (if existing). Any arguments supplied to the object will be passed to the init () method. The init () method should return the object instance using <code
+  >&lt;cfreturn this /&gt;</code
+  > in order to have the same expected behavior as the <code
+  >CreateObject</code
+  > instruction. If no init () method exists, the object will be returned normally.</p
+><h3 id="method-parameters"
+>Method Parameters</h3
+><p
+>Sometimes methods take one or more <em
+  >parameters</em
+  > telling them <strong
+  >how</strong
+  > to do what they’re suppose to <strong
+  >do</strong
+  >. For instance, I might call <code
+  >frank.makeToast('burned')</code
+  > for him to burn my toast. Or maybe he has another method where I call <code
+  >frank.makebreakfast(&quot;toast&quot;,&quot;eggs&quot;)</code
+  > for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the <code
+  >cfargument</code
+  > instruction, it’ll look like this:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfcomponent><br
+   /> <cffunction name="makeToast" returnType="string"><br
+   /> <cfargument name="color" required="yes"><br
+   /> <cfset makeToast = "Making your toast #arguments.color#!" /><br
+   /> </cffunction><br
+   /></cfcomponent><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />component {<br
+   /> public string function makeToast (required String color){<br
+   /> makeToast = “Making your toast #arguments.color#!”;<br
+   /> }<br
+   />}<br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>The method is requiring us to pass in a <code
+  >color</code
+  > telling it how to do the method <code
+  >makeToast</code
+  >.</p
+><h3 id="return-value"
+>Return Value</h3
+><p
+>In CFML, every time you call a method you won’t necessarily get a value back. By default, a CFML method returns <em
+  >nothing</em
+  >. We’ll talk about <em
+  >nothing</em
+  > and <code
+  >null</code
+  > in the last section of “CFML in 100 minutes”. If you called <code
+  >makeToast</code
+  > method above like <code
+  >&lt;cfset result = frank.makeToast('burned') /&gt;</code
+  > or <code
+  >set result = frank.makeToast('burned');</code
+  >, and tried to output <code
+  >result</code
+  > you should have seen <code
+  >Variable RESULT is undefined</code
+  >.</p
+><p
+>To return data, we use <code
+  >cfreturn</code
+  > to instruct the method to return a <code
+  >value</code
+  >. Since that wasn’t in the last instruction before the ending <code
+  >cffunction</code
+  > in your <code
+  >makeToast</code
+  > method, you received <em
+  >nothing</em
+  > and tried to putting that into the <code
+  >result</code
+  > variable.</p
+><p
+>For the purposes of our next section I’m going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef <code
+  >frank</code
+  >. You say, “Frank, go make my toast”, he tells you he’s making the toast, goes to make it, then comes back to you to receive more instructions. He’s <strong
+  >returning himself</strong
+  > to you. Here’s how we implement it in code:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfcomponent><br
+   /> <cffunction name="makeToast" returnType="component"><br
+   /> <cfargument name="color" required="yes"><br
+   /> <cfset this.makeToast = "Making your toast #arguments.color#!" /><br
+   /> <cfreturn this /><br
+   /> </cffunction><br
+   /></cfcomponent><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />component {<br
+   /> public component function makeToast (required String color){<br
+   /> this.makeToast = “Making your toast #arguments.color#!”;<br
+   /> return this;<br
+   /> }<br
+   />}<br
+   /></code><br
+   /></p
+></pre></td></tr></table><h2 id="strings"
+>4. Strings</h2
+><p
+>In CFML a string is defined as a quote ( <code
+  >&quot;</code
+  > ) followed by zero or more letters, numbers, or symbols and followed by another quote ( <code
+  >&quot;</code
+  > ). Some simple strings would be <code
+  >&quot;hello&quot;</code
+  > or <code
+  >&quot;This sentence is a string!&quot;</code
+  >. Strings can be anything from <code
+  >&quot;&quot;</code
+  >, the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important instructions that we’ll use.</p
+><p
+>* <code
+  >Len</code
+  > <br
+   />Call <code
+  >Len</code
+  > on a string to get back the number of characters in the string. For instance <code
+  >Len(&quot;Hello&quot;)</code
+  > would give you back <code
+  >5</code
+  >.<br
+   />* <code
+  >Replace</code
+  > <br
+   />The <code
+  >Replace</code
+  > instruction replaces occurrences of <strong
+  >substring1</strong
+  > in a string with <strong
+  >substring2</strong
+  >, in a specified scope. The search is case sensitive and the scope default is one. For instance, <code
+  >Replace(&quot;Hello&quot;, &quot;e&quot;, &quot;&quot;)</code
+  > would give you back <code
+  >&quot;hllo&quot;</code
+  > after replacing the <em
+  >first</em
+  > occurrence of <code
+  >&quot;e&quot;</code
+  >, or <code
+  >Replace(&quot;Good Morning!&quot;, &quot;o&quot;, &quot;e&quot;, &quot;All&quot;)&quot;</code
+  > would give you <code
+  >&quot;Geed Merning!&quot;</code
+  > <br
+   />* <code
+  >RemoveChars</code
+  > <br
+   />Call <code
+  >RemoveChars</code
+  > to remove characters from a string. For instance, <code
+  >RemoveChars(&quot;hello bob&quot;, 2, 5)</code
+  > would give you back <code
+  >&quot;hbob&quot;</code
+  >. <br
+   />* <code
+  >Mid</code
+  > <br
+   />The <code
+  >mid</code
+  > instruction extracts a substring from a string. For instance, I could call <code
+  >Mid(&quot;Welcome to CFML Jumpstart&quot;,4,12)</code
+  > and it would give you back: <code
+  >come to CFML</code
+  >.</p
+><p
+>Experiment with the following samples in a CFML <a href="file:"
+  >file:</a
+  ></p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset tester = "Good Morning Everyone!" /><br
+   /><cfoutput>#len (tester)#<br></cfoutput><br
+   /><cfoutput>#Replace (tester, “o”, “e”, “All”)#<br></cfoutput><br
+   /><cfoutput>#RemoveChars (tester, 2, 5)#<br></cfoutput><br
+   /><cfset t2 = "sample,data,from,a,CSV" /><br
+   /><cfset t3 = Mid(t2,8,len(t2)) /><br
+   /><cfoutput>#t3#<br></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />tester = “Good Morning Everyone!”;<br
+   />writeOutput (“#len (tester)#<br/>”);<br
+   />writeOutput (Replace (tester, “o”, “e”, “All”) &amp; “<br/>”);<br
+   />writeOutput (RemoveChars (tester, 2, 5) &amp; “<br/>”);<br
+   />t2 = “sample,data,from,a,CSV”;<br
+   />t3 = Mid (t2,8,len (t2));<br
+   />writeOutput (t3 &amp; “<br/>”);<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>Often a string may store a list like the <code
+  >t2</code
+  > variable in the last example. A string for storing a list isn’t the best for performance and usage. Using an array for a list is so much better. We can convert a list into an <code
+  >array</code
+  > using <code
+  >ListToArray</code
+  >. We’ll discuss arrays in an upcoming section. Try out these next examples in the CFML file assuming we have the code from the last example:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset t4 = ListToArray(t3) /><br
+   /><cfoutput><br
+   /> #t4[2]#<br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />t4 = ListToArray (t3);<br
+   />writeOutput (t4[2]);<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>The numbers inside the <code
+  >[]</code
+  > brackets specify which item of the array you want pulled out. They’re numbered starting with 1. So the first example pulls out the <code
+  >2</code
+  > array item. This <code
+  >t4</code
+  > array contains position <code
+  >1</code
+  >, the beginning of the list, up to position <code
+  >4</code
+  >, the ending of the array.</p
+><h3 id="combining-strings-and-variables"
+>Combining Strings and Variables</h3
+><p
+>It is extremely common that we want to combine the value of a variable with other strings. For instance, lets start with this example string:</p
+><p
+><code
+  >&quot;Happy Saturday!&quot;</code
+  ></p
+><p
+>When we put that into the CFML file, it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying <code
+  >&quot;Happy&quot;</code
+  > then the day of the week. So we can’t just put a string like <code
+  >&quot;Happy Saturday!&quot;</code
+  > or it’d be saying Saturday even on Tuesday.</p
+><p
+>What we need to do is combine a variable with the string. There are two ways to do that. The first approach is called <em
+  >string concatenation</em
+  > which is basically just adding strings together:</p
+><p
+>In the first line we setup a variable to hold the day of the week. Then we’ll printed the string <em
+  >Happy</em
+  > combined with the value of the variable <code
+  >today</code
+  > and the string <em
+  >!</em
+  >. You might be thinking, “What was the point of that since we still wrote <em
+  >Saturday</em
+  > in the first line?” Ok, well, if you were writing a real program you’d use CFMLs built-in date instructions like this:</p
+><p
+><code
+  >today = DayOfWeek(Now());</code
+  ></p
+><p
+><code
+  >Now()</code
+  > gets the current date and time of the computer running the ColdFusion server. <code
+  >DayOfWeek</code
+  > returns an integer in the range 1 (Sunday) to 7 (Saturday) for the day of the week. We still don’t have the day of week as string. Try this:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset today = DayOfWeekAsString(DayOfWeek(Now())) /><br
+   /><cfset message = "Happy " & today & "!" /><br
+   /><cfoutput><br
+   /> #message#<br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />today = DayOfWeekAsString (DayOfWeek (Now ()));<br
+   />message = “Happy” &amp; today &amp; “!”;<br
+   />writeOutput (message);<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>Great, no errors and our output looks correct. <code
+  >DayOfWeekAsString</code
+  > did the trick. There is another string combination called <em
+  >string interpolation</em
+  >.</p
+><p
+><strong
+  >String interpolation</strong
+  > is the process of sticking data into the middle of strings. We use the symbols <code
+  >#</code
+  > around the <code
+  >variable</code
+  > where in a string the value should be inserted. Inside those hashes we can put any variable and output it in that spot. Our previous example <code
+  >message</code
+  > could be rewritten like this:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset message = "Happy #today#!" /><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />message = “Happy #today#!”;<br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>If you compare the output you’ll see the second example gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.</p
+><p
+>Basically <em
+  >interpolating</em
+  > means evaluate the code inside this <code
+  >#</code
+  > wrapper and put it into the string.</p
+><h2 id="numbers"
+>5. Numbers</h2
+><p
+>There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we’ll only be dealing with integers. You can use normal math operations with integers including <code
+  >+</code
+  >, <code
+  >-</code
+  >, <code
+  >/</code
+  >, and <code
+  >*</code
+  >. The <code
+  >++</code
+  > operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the <code
+  >++</code
+  > operator:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset loop = 0 /><br
+   /><cfoutput><br
+   /> <cfloop condition="loop LT 5" ><br
+   /> #loop# Hello, world<img src="&lt;br&gt;
+  &lt;cfset loop++ /&gt;
+ &lt;/cfloop&gt;
+ I am here" alt=""
+   /><br><br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />for (loop = 0 ; loop &lt; 5 ; loop++)<br
+   /> WriteOutput (“#loop# Hello, world!<br>”);<br
+   />WriteOutput (“I am here<br>”);<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>In this next example we’re using the <code
+  >cfloop</code
+  > instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting <code
+  >{</code
+  > and the ending <code
+  >}</code
+  >. Each instruction between the beginning <code
+  >{</code
+  > and ending <code
+  >}</code
+  > will be executed if the condition is true.</p
+><p
+>In the tag example there’s no need to manage the index inside the loop if you’re simply stepping through one item at a time. You can use the <code
+  >from</code
+  > and <code
+  >to</code
+  > arguments, and ColdFusion will simply loop from the first value to the second, and automatically increment the variable in the <code
+  >index</code
+  > argument.</p
+><p
+>Try this example with multiple instructions:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset loop = 0 /><br
+   /><cfoutput><br
+   /><cfloop index="loop" from="0" to="4"><br
+   /> #loop# Good Morning!<br
+   /> …is it lunch time yet?<br><br
+   /></cfloop><br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />loop = 0; <br
+   />while (loop &lt; 5) { <br
+   /> WriteOutput (“#loop# Good Morning!”);<br
+   /> WriteOutput (“…is it lunch time yet?<br>”);<br
+   /> loop++;<br
+   />}<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>It’s also possible to go through a loop and step over more than one value at a time. The following examples will step through the loop and increase the <code
+  >loop</code
+  > index by two for each time through the loop.</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset loop = 0 /><br
+   /><cfoutput><br
+   /><cfloop index="loop" from="0" to="4" step="2"><br
+   /> #loop# Good Morning!<br
+   /> …is it lunch time yet?<br><br
+   /></cfloop><br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />loop = 0;<br
+   />while (loop &lt; 5) {<br
+   /> WriteOutput (“#loop# Good Morning!”);<br
+   /> WriteOutput (“…is it lunch time yet?<br>”);<br
+   /> loop = loop + 2;<br
+   />}<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><h2 id="queries"
+>6. Queries</h2
+><p
+>A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object. <code
+  >cfquery</code
+  > passes SQL statements to the <code
+  >datasource</code
+  >. The <code
+  >datasource</code
+  > is set in the ColdFusion administrator.</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfquery name="GetBreakfastItems" datasource="pantry"> <br
+   /> SELECT QUANTITY, ITEM <br
+   /> FROM CUPBOARD <br
+   /> ORDER BY ITEM <br
+   /></cfquery> <br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />queryService = new Query ();</p
+><p
+>queryService.setName (“GetBreakfastItems”); <br
+   />queryServ.setDatasource (“pantry”); <br
+   />queryService.setSQL (&quot;<br
+   />SELECT QUANTITY, ITEM <br
+   />FROM CUPBOARD <br
+   />ORDER BY ITEM<br
+   />&quot;);</p
+><p
+>GetBreakfastItems = queryService.execute ().getResult (); <br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>In order to display the data from our query, we need to loop through the rows, and display each row. This is usually done in a <code
+  >&lt;cfoutput&gt;</code
+  > tag like so:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfoutput query="GetBreakfastItems"><br
+   /> There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /><br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>While it’s not strictly necessary to prepend the recordset name before the column name inside the <code
+  >&lt;cfoutput&gt;</code
+  >, it’s strongly recommended that you do in order to prevent referencing the wrong variable scope.</p
+><p
+>You can also loop through a query using standard loop constructs, though they differ when using tags and script.</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfloop query="GetBreakfastItems"><br
+   /> <cfoutput>There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /></cfoutput><br
+   /></cfloop><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript> <br
+   />for (x = 1; x &lt;= GetBreakfastItems; x=x+1) { <br
+   /> writeOutput (“There are #GetBreakfastItems.Quantity[x]# #GetBreakfastItems.Item[x]# in the pantry<br />”)<br
+   />} <br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>When looping through a query with <code
+  >&lt;cfloop&gt;</code
+  >, you need to make sure that you have a <code
+  >&lt;cfoutput&gt;</code
+  > tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.</p
+><p
+>When looping through a query in <code
+  >cfscript</code
+  >, you’ll need to reference the query just like you would a multidimensional array, using the counter set up in in your for statement to pick up the correct row from the recordset. So the syntax becomes <code
+  >recordsetName.ColumnName[rowNumber]</code
+  >.</p
+><h2 id="arrays"
+>7. Arrays</h2
+><p
+>Often we need to organize a group and put them into a <em
+  >collection</em
+  >. There are two main types of collections: <strong
+  >arrays</strong
+  > and <strong
+  >structures</strong
+  >.</p
+><p
+>An <strong
+  >array</strong
+  > is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the <strong
+  >indices</strong
+  >. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The <strong
+  >index</strong
+  > is the address of a specific element inside the array. In CFML the index always begins with <code
+  >1</code
+  >. An array is defined in CFML as an opening <code
+  >[</code
+  > then zero or more elements, and a closing <code
+  >]</code
+  >. Try out this code:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset favorite_colors = ["red","blue","green","black","brown"] /><br
+   /><cfdump var="#favorite_colors#" /><br><br
+   /><cfdump var="#favorite_colors[2]#" /><br><br
+   /><cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" /><br><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />favorite_colors = [“red”,“blue”,“green”,“black”,“brown”];<br
+   />writeDump (favorite_colors);<br
+   />writeOutput (“<br>”);<br
+   />writeDump (favorite_colors[2]);<br
+   />writeOutput (“<br>”);<br
+   />writeDump (var=favorite_colors[ArrayLen (favorite_colors)]);<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>Keep going with these, but try to understand what each instruction is doing before we explain them:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset ArrayAppend(favorite_colors, "orange") /><br
+   /><cfset favorite_colors[3]="yellow" /><br
+   /><cfdump var="#favorite_colors#" /><br><br
+   /><cfset ArraySort(favorite_colors,"text") /><br
+   /><cfset ArrayDeleteAt(favorite_colors, 2) /> <br
+   /><cfdump var="#favorite_colors#" /><br><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />ArrayAppend (favorite<em
+  >colors, “orange”);<br
+     />favorite</em
+  >colors[3] = “yellow”;<br
+   />writeDump (favorite_colors);<br
+   />writeOutput (“<br>”);<br
+   />set = ArraySort (favorite_colors,“text”);<br
+   />ArrayDeleteAt (favorite_colors, 2);<br
+   />writeDump (var=favorite_colors);<br
+   />writeOutput (“<br>”); <br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>In order to get add an element in the array you use the syntax <code
+  >ArrayAppend(array,&quot;value&quot;)</code
+  > or <code
+  >arrayname[index] = &quot;value&quot;</code
+  >. The first example of adding an array element is <strong
+  >with an instruction</strong
+  >. The second is updating an array element is <strong
+  >by assignment</strong
+  >. So looking at the final <code
+  >favorite_colors</code
+  > array:</p
+><ul
+><li
+  >What’s the index of <code
+    >&quot;brown&quot;</code
+    > ?</li
+  ><li
+  >What did the <code
+    >ArraySort</code
+    > instuction do to the collection?</li
+  ><li
+  >What does <code
+    >ArrayLen</code
+    > instruction return?</li
+  ></ul
+><p
+>There are lots of cool things to do with an array. You can rearrange the order of the elements using the <code
+  >ArraySort</code
+  > instruction like we did in the last example. You can iterate through each element using the <code
+  >cfloop</code
+  > instruction. You can find the address of a specific element by using the <code
+  >arrayName[index]</code
+  > instruction. You can ask an array if an element is present with the <code
+  >ArrayIsDefined</code
+  > instruction. Try out this example that brings a bunch of things together:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfoutput><br
+   /></p
+><ul><p
+><cfloop array="#favorite_colors#" index="target" ><br
+   /></p
+><li><p
+>#target# is #len (target)# letters long.</p
+></li><p
+></cfloop><br
+   /></p
+></ul><p
+><cfdump var="#ArrayIsDefined(favorite_colors,4)#" /><br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />writeOutput (“&lt;ul&gt;”);<br
+   />index = favorite_colors.iterator ();<br
+   />while (index.hasNext ()){<br
+   /> target = index.next ();<br
+   /> writeOutput (“&lt;li&gt;#target# is #len (target)# letters long.&lt;/li&gt;”);<br
+   />}<br
+   />writeOutput (“&lt;/ul&gt;”); <br
+   />writeDump (var=ArrayIsDefined (favorite_colors,4));<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>We use arrays whenever we need a list where the elements are in a specific order.</p
+><h2 id="structures"
+>8. Structures</h2
+><p
+>A structure is a <em
+  >collection of data</em
+  > where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like <code
+  >science[&quot;Joey&quot;]</code
+  > which could be read as “look in the collection named <code
+  >science</code
+  > and find the thing named <code
+  >Joey</code
+  >”.</p
+><p
+>A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset ages = {jack = 11, brian = 12, tracy = 11} /><br
+   /><cfset ages.joey = 12 /> <br
+   /><cfset ages["jill"] = 14 /></p
+><p
+><cfdump var="#ages#" /></p
+><p
+><cfoutput><br
+   />Joey is #ages[‘joey’]# years old.<br
+   /></cfoutput><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />ages = {jack = 11, brian = 12, tracy = 11};<br
+   />ages.joey = 12;<br
+   />ages[“jill”] = 14;</p
+><p
+>writeDump (var=ages);<br
+   />writeOutput (“Joey is #ages[‘joey’]# years old.”);<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>Here we create a structure named <code
+  >ages</code
+  >. Structures are made up what are called key-value pairs.The <strong
+  >key</strong
+  > is used as the address and the <strong
+  >value</strong
+  > is the object at that address. In the <code
+  >ages</code
+  > structure we have keys including <code
+  >&quot;joey&quot;</code
+  > and <code
+  >&quot;jill&quot;</code
+  > and values including <code
+  >12</code
+  > and <code
+  >14</code
+  >. When creating a structure using <code
+  >{}</code
+  > the key and value are linked by the <code
+  >=</code
+  > symbol. So to create a structure, the structures start with a curly bracket <code
+  >{</code
+  >, have zero or more entries made up of a <em
+  >key</em
+  >, <code
+  >=</code
+  >, and a <em
+  >value</em
+  > separated by commas, then end with a closing curly bracket <code
+  >}</code
+  >.</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cfset ages["jimmy"] = 14 /><br
+   /><cfset ages["joey"] = 9 /><br
+   /><cfdump var="#ages# /><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   /><cfscript><br
+   />ages[“jimmy”] = 14;<br
+   />ages[“joey”] = 9;<br
+   />writeDump (var=ages);<br
+   /></cfscript><br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>In the second chunk of the example, we add a new key and value to the structure. Since the <code
+  >&quot;jimmy&quot;</code
+  > key wasn’t in the original structure, it’s added with the value of <code
+  >14</code
+  >. If the key <code
+  >&quot;jimmy&quot;</code
+  > already existed then the value would be replaced by <code
+  >14</code
+  >. Every key in a structure must be unique! In the second line we reference the key <code
+  >&quot;joey&quot;</code
+  > which already exists, so the value gets replaced with the <code
+  >9</code
+  >. Then, just to show you the state of the structure, we dump out the list of keys and the list of values.</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   />students = ages.keys.sort <br
+   />students.each do |student| <br
+   />puts “#{student} is #{ages[student]} years old.” <br
+   />end</p
+><p
+><cfset student = {firstName="joey", age=ages.joey, grades=[91, 78, 87]} /><br
+   /><cfdump var="#student#" /><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />SCRIPT EXAMPLE<br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>The last chunk of the example calls the <code
+  >keys</code
+  > method on the structure <code
+  >ages</code
+  >. <code
+  >keys</code
+  > gives back an array holding all the key values inside the structure. We then called <code
+  >sort</code
+  > on that array to put them in alphabetical order before storing the array into the variable <code
+  >students</code
+  >. We then iterated through the array <code
+  >students</code
+  > using the method <code
+  >each</code
+  >, gave each element of the list the name <code
+  >student</code
+  >, then printed out one line with that student name and the students age from <code
+  >ages</code
+  >.</p
+><p
+>While that last part probably seemed complicated, its just to illustrate that although structures are by nature unordered, you can still manipulate and output the data in ordered, meaningful ways.</p
+><h2 id="conditionals"
+>9. Conditionals</h2
+><p
+>Conditional statements evaluate to <code
+  >true</code
+  > or <code
+  >false</code
+  > only. The most common conditional operators are <code
+  >==</code
+  > (equal), <code
+  >!=</code
+  > (not equal), <code
+  >&gt;</code
+  > (greater than), <code
+  >&gt;=</code
+  > (greater than or equal to), <code
+  >&lt;</code
+  > (less than), and <code
+  >&lt;=</code
+  > (less than or equal to). You can also define the operators as abbreviations: <code
+  >EQ</code
+  >, <code
+  >NEQ</code
+  >, <code
+  >GT</code
+  >, <code
+  >GTE</code
+  >, <code
+  >LT</code
+  >, and <code
+  >LTE</code
+  >.</p
+><p
+>Some instructions return a <code
+  >true</code
+  > or <code
+  >false</code
+  >, so they’re used in conditional statements. For example, <code
+  >IsArray</code
+  > which is <code
+  >true</code
+  > only when the variable is an <code
+  >array</code
+  >. Structures have an instruction named <code
+  >StructKeyExists</code
+  > which returns <code
+  >true</code
+  > if a key is present in a structure.</p
+><h3 id="if-else-if-else"
+>9. 1. If, Else If, &amp; Else</h3
+><p
+>Why do we have conditional statements? Most often its to control conditional instructions, especially <code
+  >if</code
+  > / <code
+  >else if</code
+  > / <code
+  >else</code
+  > structures. Lets write an example by adding a method to our <code
+  >PersonalChef</code
+  > class:</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cffunction name="water_boiling" returnType="component"><br
+   /> <cfargument name="minutes" type="numeric" required="yes"></p
+><p
+><cfif (arguments.minutes LT 7)><br
+   /> <cfset this.status = "The water is not boiling yet." /><br
+   /> <cfelseif (arguments.minutes EQ 7)> <br
+   /> <cfset this.status = "It's just barely boiling." /><br
+   /> <cfelseif (arguments.minutes EQ 8)><br
+   /> <cfset this.status = "It's boiling!" /><br
+   /> <cfelse><br
+   /> <cfset this.status = "Hot! Hot! Hot!" /> <br
+   /> </cfif><br
+   /> <cfreturn this /><br
+   /></cffunction><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />public component function water_boiling (numeric minutes){<br
+   /> if (arguments.minutes &lt; 7) <br
+   /> this.status = “The water is not boiling yet.”;</p
+><p
+>else if (arguments.minutes == 7) <br
+   /> this.status = “It’s just barely boiling.”;</p
+><p
+>else if (arguments.minutes == 8)<br
+   /> this.status = &quot;It’s boiling<img src="&quot;;
+
+ else 
+  this.status = &quot;Hot" alt=""
+   /> Hot! Hot<img src="&quot;;
+
+ return this;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+Try this example using @5@, @7@, @8@ and @9@ for the values of @minutes@.
+
+When the @minutes@ is 5, here is how the execution goes: Is it @true@ that 5 is less than 7? Yes, it is, so print out the line @The water is not boiling yet.@.
+
+When the @minutes@ is 7, it goes like this: Is it @true@ that 7 is less than 7? No. Next, is it @true@ that 7 is equal to 7? Yes, it is, so print out the line @It's just barely boiling@.
+
+When the @minutes@ is 8, it goes like this: Is it @true@ that 8 is less than 7? No. Next, is it @true@ that 8 is equal to 7? No. Next, is it @true@ that 8 is equal to 8? Yes, it is, so print out the line @It's boiling" alt=""
+   /><code
+  >.
+
+Lastly, when total is 9, it goes:&quot; Is it </code
+  >true@ that 9 is less than 7? No. Next, is it <code
+  >true</code
+  > that 9 is equal to 7? No. Next, is it <code
+  >true</code
+  > that 9 is equal to 8? No. Since none of those are true, execute the <code
+  >else</code
+  > and print the line <code
+  >Hot! Hot! Hot!</code
+  >.</p
+><p
+>An <code
+  >if</code
+  > block has</p
+><ul
+><li
+  >One <code
+    >if</code
+    > statement whose instructions are executed only if the statement is true</li
+  ><li
+  >Zero or more <code
+    >else if</code
+    > statements whose instructions are executed only if the statement is true</li
+  ><li
+  >Zero or one <code
+    >else</code
+    > statement whose instructions are executed if no <code
+    >if</code
+    > nor <code
+    >else if</code
+    > statements were true</li
+  ></ul
+><p
+>Only <em
+  >one</em
+  > section of the <code
+  >if</code
+  > / <code
+  >else if</code
+  > / <code
+  >else</code
+  > structure can have its instructions run. If the <code
+  >if</code
+  > is <code
+  >true</code
+  >, for instance, CFML will never look at the <code
+  >else if</code
+  >. Once one block executes, thats it.</p
+><h3 id="looping"
+>9. 2. Looping</h3
+><p
+>Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your <code
+  >PersonalChef.cfc</code
+  > :</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cffunction name="countdown" returnType="component"><br
+   /> <cfargument name="counter" type="numeric"><br
+   /> <cfset this.timer = "" /><br
+   /> <cfloop condition="#arguments.counter# GT 0"><br
+   /> <cfset this.timer &= "The counter is #arguments.counter#.<br>&quot; /&gt;<br
+   /> <cfset arguments.counter-- /><br
+   /> </cfloop><br
+   /> <cfreturn this /><br
+   /></cffunction><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />public component function countdown (numeric counter){<br
+   /> this.timer = “”;<br
+   /> while (counter GT 0) { <br
+   /> this.timer &amp;= “The counter is #arguments.counter#.<br>”;<br
+   /> arguments.counter—;<br
+   /> }<br
+   /> return this;<br
+   />}<br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>See how that works? The <code
+  >counter</code
+  > starts out as whatever parameter we pass in. The <code
+  >while</code
+  > instruction evaluates the conditional statement <code
+  >arguments.counter GT 0</code
+  > and finds that yes, the counter is greater than zero. Since the condition is true, execute the instructions inside the loop. First print out <code
+  >&quot;The counter is #Arguments.counter#&quot;</code
+  > then take the value of <code
+  >Arguments.counter</code
+  >, subtract one from it, and store it back into <code
+  >Arguments.counter</code
+  >. Then the loop goes back to the <code
+  >condition</code
+  >/<code
+  >while</code
+  > statement. Is it still true? If so, print the line and subtract one again. Keep repeating until the condition is false.</p
+><p
+>You can also combine conditional statements using logical operators. The most common are known as <code
+  >logical and</code
+  > and <code
+  >logical or</code
+  >. In CFML you can write a <code
+  >logical and</code
+  > with either the word <code
+  >and</code
+  > or with double ampersands like this: <code
+  >&amp;&amp;</code
+  >. You can write a <code
+  >logical or</code
+  > with the word <code
+  >or</code
+  > or with double pipes like this: <code
+  >||</code
+  >. For each operation, the symbolic representation ( <code
+  >&amp;&amp;</code
+  > and <code
+  >||</code
+  > ) is more common.</p
+><p
+>The #1 mistake people encounter when writing conditional statements is the difference between <code
+  >=</code
+  > and <code
+  >==</code
+  >.</p
+><ul
+><li
+  ><code
+    >=</code
+    > is an <em
+    >assignment</em
+    >. It means “take what’s on the right side and stick it into whatever is on the left side” (or its <em
+    >telling</em
+    > not <em
+    >asking</em
+    >.)</li
+  ><li
+  ><code
+    >==</code
+    > is a <em
+    >question</em
+    >. It means “is the thing on the right equal to the thing on the left” (or its <em
+    >asking</em
+    > not <em
+    >telling</em
+    >.)</li
+  ></ul
+><h2 id="nothingness-null"
+>10. Nothingness &amp; Null</h2
+><p
+>What is <em
+  >nothingness</em
+  >? Is there nothingness only in outer space? Really, when we think of <em
+  >nothing</em
+  > isn’t it just the absence of something? Ok, that’s too much philosophy</p
+><p
+>ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a <code
+  >NULL</code
+  > value from an external source and maintain the <code
+  >NULL</code
+  > value until you try to use it. ColdFusion will convert the <code
+  >NULL</code
+  > into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for <code
+  >NULL</code
+  > values, ColdFusion allows you to pass in and return a <code
+  >NULL</code
+  > value from a method. <code
+  >IsNull()</code
+  > instruction will test for <code
+  >NULL</code
+  > values and return <code
+  >true</code
+  > or <code
+  >false</code
+  >.</p
+><p
+>If you have three eggs, eat three eggs, then you might think you have <em
+  >nothing</em
+  > , but in terms of eggs you have <code
+  >0</code
+  >. Zero is something, its a number, and its <em
+  >not nothing</em
+  >.</p
+><p
+>A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can’t do something to nothing so CFML creates an error. Lets rewrite our <code
+  >makeeggs</code
+  > method to illustrate <code
+  >NULL</code
+  > :</p
+><table><tr><td><p
+><strong
+  >Tag</strong
+  ></p
+></td><td><p
+><strong
+  >Script</strong
+  ></p
+></td></tr><tr><td><pre lang="cfm"><p
+><code><br
+   /><cffunction name="makeeggs" returnType="component"><br
+   /> <cfargument name="quantity" type="numeric"><br
+   /> <cfif (IsNull(arguments.quantity)) /><br
+   /> <cfset this.makeEggs = "How am I supposed to make nothingness number of eggs?" /><br
+   /> <cfelse><br
+   /> <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" /><br
+   /> <cfset this.yourEggs = ArrayNew(1) /><br
+   /> <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#" /><br
+   /> <cfset ArrayAppend(this.yourEggs, "Making an Egg.") /><br
+   /> </cfloop><br
+   /> </cfif><br
+   /> <cfreturn this /><br
+   /></cffunction><br
+   /></code><br
+   /></p
+></pre></td><td><pre lang="cfm"><p
+><code><br
+   />public component function makeeggs (numeric quantity){<br
+   /> if (IsNull (arguments.quantity)) {<br
+   /> this.makeEggs = “How am I supposed to make nothingness number of eggs?”;<br
+   /> } else {<br
+   /> this.makeEggs = “Making your #arguments.quantity# eggs!”;<br
+   /> this.yourEggs = ArrayNew (1);<br
+   /> while (ArrayLen (this.yourEggs) &lt; arguments.quantity)<br
+   /> ArrayAppend (this.yourEggs, “Making an Egg.”);<br
+   /> }<br
+   /> return this;<br
+   />}<br
+   /></code><br
+   /></p
+></pre></td></tr></table><p
+>Reload the file, call <code
+  >frank.makeeggs(3)</code
+  > then try <code
+  >frank.makeeggs()</code
+  >.</p
+><p
+><strong
+  >TODO: Conclusion</strong
+  ></p
+>
+</body>
+</html>
