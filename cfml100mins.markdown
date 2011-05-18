@@ -74,7 +74,7 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 <tr>
 
 <td>
-``` cfm
+``` cfml
 <cfscript>  
 s = New Sample ();  
 writeOutput (s.hello ());  
@@ -83,17 +83,13 @@ writeOutput (s.hello ());
 </td>
 
 <td>
-<pre lang="cfm">
-<code>  
+``` cfml
 component {  
  public string function hello (){  
   return( "Hello, World!" );
  }  
 }  
-</code>  
-
-</pre>
-
+```
 </td>
 
 </tr>
@@ -111,20 +107,16 @@ For the script example, `myprogram.cfm` and `Sample.cfc` would have beginning/cl
 </tr>
 <tr>
 <td>
-<pre lang="php">
-<code>  
+``` php
 <?php
 require("Sample.php");
 $s = new Sample();
 echo s->hello ();  
 ?>
-</code>  
-
-</pre>
+```
 </td>
 <td>
-<pre lang="php">
-<code>  
+``` php  
 <?php
 class Sample
 {
@@ -133,9 +125,7 @@ class Sample
     }
 }
 ?>  
-</code>  
-
-</pre>
+```
 </td>
 
 </tr>
