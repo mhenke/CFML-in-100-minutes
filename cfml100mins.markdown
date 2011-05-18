@@ -42,27 +42,20 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 <tr>
 
 <td>
-<pre lang="cfm">
-<code>  
+``` cfm
 <cfset s = New Sample() />  
 <cfoutput>#s.hello()#</cfoutput>
-</code>  
-
-</pre>
-
+``` 
 </td>
 
 <td>
-<pre lang="cfm">
-<code>  
+``` cfm 
 <cfcomponent>  
  <cffunction name="hello">  
  <cfreturn "Hello, World!" />  
  </cffunction>  
 </cfcomponent>  
-</code>  
-
-</pre>
+```
 
 </td>
 
@@ -81,16 +74,12 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 <tr>
 
 <td>
-<pre lang="cfm">
-<code>  
+``` cfm
 <cfscript>  
 s = New Sample ();  
 writeOutput (s.hello ());  
 </cfscript>  
-</code>  
-
-</pre>
-
+```
 </td>
 
 <td>
