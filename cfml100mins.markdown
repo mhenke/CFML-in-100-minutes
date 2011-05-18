@@ -58,100 +58,66 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 
 ### Tag Syntax
 
-<table>
-
-<tr>
-
-<td>
-myprogram.cfm
-
-</td>
-
-<td>
-Sample.cfc
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
+<<table>
+	<tr>
+		<td>myprogram.cfm</td>
+		<td>Sample.cfc</td>
+	</tr>
+	<tr>
+		<td>
 <pre lang="cfm">
-<code>\
-<cfset s = New Sample() />\
-<cfoutput>\#s.hello ()\#</cfoutput>\
-</code>\
-
+<code>
+<cfset s = New Sample() />
+<cfoutput>#s.hello()#</cfoutput>
+</code>
 </pre>
-
-</td>
-
-<td>
+		</td>
+		<td>
 <pre lang="cfm">
-<code>\
-<cfcomponent>\
- <cffunction name="hello">\
- <cfreturn "Hello, World!" />\
- </cffunction>\
-</cfcomponent>\
-</code>\
-
+<code>
+<cfcomponent>
+ <cffunction name="hello">
+  <cfreturn "Hello, World!" />
+ </cffunction>
+</cfcomponent>
+</code>
 </pre>
-
-</td>
-
-</tr>
+		</td>
+	</tr>
 </table>
+
 ### Script Syntax
 
 <table>
-
-<tr>
-
-<td>
-myprogram.cfm
-
-</td>
-
-<td>
-Sample.cfc
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
+	<tr>
+		<td>myprogram.cfm</td>
+		<td>Sample.cfc</td>
+	</tr>
+	<tr>
+		<td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-s = New Sample ();\
-writeOutput (s.hello ());\
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+s = New Sample();
+writeOutput(s.hello());
+</cfscript>
+</code>
 </pre>
-
-</td>
-
-<td>
+		</td>
+		<td>
 <pre lang="cfm">
-<code>\
-component {\
- public string function hello (){\
- return ( “Hello, World!” );\
- }\
-}\
-</code>\
-
+<code>
+component {
+ public string function hello(){
+  return( "Hello, World!" );
+ }
+}
+</code>
 </pre>
-
-</td>
-
-</tr>
+		</td>
+	</tr>
 </table>
+
 For the script example, `myprogram.cfm` and `Sample.cfc` would have
 beginning/closing `<cfscript>` tags around the instructions.
 
