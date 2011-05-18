@@ -1014,29 +1014,32 @@ In the second chunk of the example, we add a new key and value to the structure.
 <td>
 <pre lang="cfm">
 <code>
-students = ages.keys.sort 
-students.each do |student| 
-puts "#{student} is #{ages[student]} years old." 
-end
+ <cfset students = StructSort(ages)>
  
-<cfset student = {firstName="joey", age=ages.joey, grades=[91, 78, 87]} />
-<cfdump var="#student#" />
+ <cfloop array="#students#" index="student">
+  <cfoutput>"#student# is #ages[student]# years old."<br /></cfoutput>
+ </cfloop>
 </code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
 <code>
-SCRIPT EXAMPLE
+ students = StructSort(ages);
+
+ for (i = 1; i LTE ArrayLen(students); i = i+1) {
+  student = students[i];
+  WriteOutput("#student# is #ages[student]# years old.<br />");
+ }
 </code>
 </pre>
 </td>
 </tr>
 </table>
 
-The last chunk of the example calls the @keys@ method on the structure @ages@. @keys@ gives back an array holding all the key values inside the structure. We then called @sort@ on that array to put them in alphabetical order before storing the array into the variable @students@. We then iterated through the array @students@ using the method @each@, gave each element of the list the name @student@, then printed out one line with that student name and the students age from @ages@.
+The last chunk of the example used StructSort to get the sorted array @students@ from @ages@. Then, it iterated through the @students@ array using a loop and gave each element of the array the name @student@. It then printed out one line with that student name and the students age from @ages@.
 
-While that last part probably seemed complicated, its just to illustrate that although structures are by nature unordered, you can still manipulate and output the data in ordered, meaningful ways.
+While that last part probably seemed complicated, it's just to illustrate that structures are unordered.
 
 h2. 9. Conditionals
 
