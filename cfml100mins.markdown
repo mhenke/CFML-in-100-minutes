@@ -58,10 +58,9 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 
 ### Tag Syntax
 
-`
-<cfset s = New Sample() />
-<cfoutput>#s.hello()#</cfoutput>
-`
+
+	<cfset s = New Sample() />
+	<cfoutput>#s.hello()#</cfoutput>
 
 <table>
 <tr>
