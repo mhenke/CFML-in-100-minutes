@@ -65,23 +65,19 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 </tr>
 <tr>
 <td>
-<pre lang="cfm">
-<code>
+`
 <cfset s = New Sample() />
 <cfoutput>#s.hello()#</cfoutput>
-</code>
-</pre>
+`
 </td>
 <td>
-<pre lang="cfm">
-<code>
+`
 <cfcomponent>
 <cffunction name="hello">
 <cfreturn "Hello, World!" />
 </cffunction>
 </cfcomponent>
-</code>
-</pre>
+`
 </td>
 </tr>
 </table>
