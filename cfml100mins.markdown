@@ -886,7 +886,7 @@ a slightly more complicated syntax:
 <cfdump var="#ages#" />
 
 <cfoutput>
-Joey is \#ages[‘joey']\# years old.\
+Joey is \#ages['joey']\# years old.\
 </cfoutput>
 ```
 
@@ -899,7 +899,7 @@ ages.joey = 12;\
 ages["jill"] = 14;
 
 writeDump (var=ages);\
-writeOutput ("Joey is \#ages[‘joey']\# years old.");\
+writeOutput ("Joey is \#ages['joey']\# years old.");\
 </cfscript>
 ```
 
