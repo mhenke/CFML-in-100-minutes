@@ -83,11 +83,11 @@ We might have a file named 'myprogram.cfm' and 'Sample.cfc' like this:
 
 #### Sample.cfc
 
-component {
-public string function hello(){
-return( "Hello, World!" );
-}
-}
+	component {
+	public string function hello(){
+	return( "Hello, World!" );
+	}
+	}
 
 For the script example, 'myprogram.cfm' and 'Sample.cfc' would have
 beginning/closing '<cfscript>' tags around the instructions.
