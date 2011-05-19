@@ -1013,20 +1013,30 @@ structures. Lets write an example by adding a method to our
 #### Syntax
 
 ```cfm
-public component function water\_boiling (numeric minutes){\
- if (arguments.minutes < 7) \
- this.status = "The water is not boiling yet.";
-
-else if (arguments.minutes == 7) \
- this.status = "It's just barely boiling.";
-
-else if (arguments.minutes == 8)\
- this.status = "It's
-boiling![image](%22;%0A%0A%20else%20%0A%20%20this.status%20=%20%22Hot)
-Hot!
-Hot![image](%22;%0A%0A%20return%20this;%0A%7D%0A%3C/code%3E%0A%3C/pre%3E%0A%3C/td%3E%0A%3C/tr%3E%0A%3C/table%3E%0A%0ATry%20this%20example%20using%20@5@,%20@7@,%20@8@%20and%20@9@%20for%20the%20values%20of%20@minutes@.%0A%0AWhen%20the%20@minutes@%20is%205,%20here%20is%20how%20the%20execution%20goes:%20Is%20it%20@true@%20that%205%20is%20less%20than%207?%20Yes,%20it%20is,%20so%20print%20out%20the%20line%20@The%20water%20is%20not%20boiling%20yet.@.%0A%0AWhen%20the%20@minutes@%20is%207,%20it%20goes%20like%20this:%20Is%20it%20@true@%20that%207%20is%20less%20than%207?%20No.%20Next,%20is%20it%20@true@%20that%207%20is%20equal%20to%207?%20Yes,%20it%20is,%20so%20print%20out%20the%20line%20@It's%20just%20barely%20boiling@.%0A%0AWhen%20the%20@minutes@%20is%208,%20it%20goes%20like%20this:%20Is%20it%20@true@%20that%208%20is%20less%20than%207?%20No.%20Next,%20is%20it%20@true@%20that%208%20is%20equal%20to%207?%20No.%20Next,%20is%20it%20@true@%20that%208%20is%20equal%20to%208?%20Yes,%20it%20is,%20so%20print%20out%20the%20line%20@It's%20boiling)'.
+public component function water_boiling(numeric minutes){
+ if (arguments.minutes < 7) 
+  this.status = "The water is not boiling yet.";
+ 
+ else if (arguments.minutes == 7) 
+  this.status = "It's just barely boiling.";
+ 
+ else if (arguments.minutes == 8)
+  this.status = "It's boiling!";
+ 
+ else 
+  this.status = "Hot! Hot! Hot!";
+ 
+ return this;
+}
 ```
 
+Try this example using @5@, @7@, @8@ and @9@ for the values of @minutes@.
+
+When the @minutes@ is 5, here is how the execution goes: Is it @true@ that 5 is less than 7? Yes, it is, so print out the line @The water is not boiling yet.@.
+
+When the @minutes@ is 7, it goes like this: Is it @true@ that 7 is less than 7? No. Next, is it @true@ that 7 is equal to 7? Yes, it is, so print out the line @It's just barely boiling@.
+
+When the @minutes@ is 8, it goes like this: Is it @true@ that 8 is less than 7? No. Next, is it @true@ that 8 is equal to 7? No. Next, is it @true@ that 8 is equal to 8? Yes, it is, so print out the line @It's boiling!@.
 Lastly, when total is 9, it goes:" Is it 'true@ that 9 is less than 7?
 No. Next, is it 'true' that 9 is equal to 7? No. Next, is it 'true' that
 9 is equal to 8? No. Since none of those are true, execute the 'else'
