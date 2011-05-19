@@ -59,63 +59,48 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 ### Tag Syntax
 
 <table>
-	<tr>
-		<td>myprogram.cfm</td>
-		<td>Sample.cfc</td>
-	</tr>
-	<tr>
-		<td>
-<pre lang="cfm">
-<code>
-<cfset s = New Sample() />
-<cfoutput>#s.hello()#</cfoutput>
-</code>
-</pre>
-		</td>
-		<td>
-<pre lang="cfm">
-<code>
-<cfcomponent>
- <cffunction name="hello">
-  <cfreturn "Hello, World!" />
- </cffunction>
-</cfcomponent>
-</code>
-</pre>
-		</td>
-	</tr>
+<tr>
+<td>myprogram.cfm</td>
+<td>Sample.cfc</td>
+</tr>
+<tr>
+<td>
+	<cfset s = New Sample() />
+	<cfoutput>#s.hello()#</cfoutput>
+</td>
+<td>
+	<cfcomponent>
+ 	 <cffunction name="hello">
+ 	  <cfreturn "Hello, World!" />
+	 </cffunction>
+	</cfcomponent>
+</td>
+</tr>
 </table>
 
 ### Script Syntax
 
 <table>
-	<tr>
-		<td>myprogram.cfm</td>
-		<td>Sample.cfc</td>
-	</tr>
-	<tr>
-		<td>
-<pre lang="cfm">
-<code>
-<cfscript>
-s = New Sample();
-writeOutput(s.hello());
-</cfscript>
+<tr>
+<td>myprogram.cfm</td>
+<td>Sample.cfc</td>
+</tr>
+<tr>
+	<cfscript>
+	s = New Sample();
+	writeOutput(s.hello());
+	</cfscript>
 </code>
 </pre>
-		</td>
-		<td>
-<pre lang="cfm">
-<code>
-component {
- public string function hello(){
-  return( "Hello, World!" );
- }
-}
-</code>
-</pre>
-		</td>
-	</tr>
+</td>
+<td>
+	component {
+	 public string function hello(){
+	 return( "Hello, World!" );
+	 }
+	}
+</td>
+</tr>
 </table>
 
 For the script example, `myprogram.cfm` and `Sample.cfc` would have
@@ -126,38 +111,31 @@ beginning/closing `<cfscript>` tags around the instructions.
 <table>
 
 <tr>
-         <td>myprogram.php</td>
-   <td>Sample.php<td>
+<td>myprogram.php</td>
+<td>Sample.php<td>
 </tr>
 <tr>
 <td>
-<pre lang="php">
-<code>
-<?php
-require("Sample.php");
-$s = new Sample();
-echo s->hello();
-?>
-</code>
-</pre>
+	<?php
+	require("Sample.php");
+	$s = new Sample();
+	echo s->hello();
+	?>
 </td>
 <td>
-<pre lang="php">
-<code>
-<?php
-class Sample
-{
-    public function hello() {
-        return "Hello, World!";
-    }
-}
-?>
-</code>
-</pre>
+	<?php
+	class Sample
+	{
+	 public function hello() {
+	 return "Hello, World!";
+	 }
+	}
+	?>
 </td>
 
 </tr>
 </table>
+
 #### Ruby Syntax
 
 <table>
