@@ -111,7 +111,7 @@ beginning/closing '<cfscript>' tags around the instructions.
 	?>
 ```
 
-#### Sample.cfm
+#### Sample.php
 
 ```php
 	<?php
