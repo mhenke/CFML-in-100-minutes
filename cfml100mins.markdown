@@ -455,7 +455,7 @@ writeOutput (t3 & "<br/>");
 </cfscript>
 ```
 
-Often a string may store a list like the @t2@ variable in the last example. A string for storing a list isn't the best for performance and usage. Using an array for a list is so much better. We can convert a list into an @array@ using @ListToArray@. We'll discuss arrays in an upcoming section. Try out these next examples in the CFML file assuming we have the code from the last example:
+Often a string may store a list like the *t2* variable in the last example. A string for storing a list isn't the best for performance and usage. Using an array for a list is so much better. We can convert a list into an *array* using *ListToArray*. We'll discuss arrays in an upcoming section. Try out these next examples in the CFML file assuming we have the code from the last example:
 
 #### Tag
 
@@ -1030,13 +1030,13 @@ public component function water_boiling(numeric minutes){
 }
 ```
 
-Try this example using @5@, @7@, @8@ and @9@ for the values of @minutes@.
+Try this example using *5*, *7*, *8* and *9* for the values of *minutes*.
 
-When the @minutes@ is 5, here is how the execution goes: Is it @true@ that 5 is less than 7? Yes, it is, so print out the line @The water is not boiling yet.@.
+When the *minutes* is 5, here is how the execution goes: Is it *true* that 5 is less than 7? Yes, it is, so print out the line *The water is not boiling yet.*.
 
-When the @minutes@ is 7, it goes like this: Is it @true@ that 7 is less than 7? No. Next, is it @true@ that 7 is equal to 7? Yes, it is, so print out the line @It's just barely boiling@.
+When the *minutes* is 7, it goes like this: Is it *true* that 7 is less than 7? No. Next, is it *true* that 7 is equal to 7? Yes, it is, so print out the line *It's just barely boiling*.
 
-When the @minutes@ is 8, it goes like this: Is it @true@ that 8 is less than 7? No. Next, is it @true@ that 8 is equal to 7? No. Next, is it @true@ that 8 is equal to 8? Yes, it is, so print out the line @It's boiling!@.
+When the *minutes* is 8, it goes like this: Is it *true* that 8 is less than 7? No. Next, is it *true* that 8 is equal to 7? No. Next, is it *true* that 8 is equal to 8? Yes, it is, so print out the line *It's boiling!*.
 Lastly, when total is 9, it goes:" Is it 'true' that 9 is less than 7?
 No. Next, is it 'true' that 9 is equal to 7? No. Next, is it 'true' that
 9 is equal to 8? No. Since none of those are true, execute the 'else'
