@@ -58,23 +58,12 @@ We might have a file named 'myprogram.cfm' and 'Sample.cfc' like this:
 
 ### Tag Syntax
 
+#### myprogram.cfm
 
 	<cfset s = New Sample() />
 	<cfoutput>#s.hello()#</cfoutput>
 
-<table>
-<tr>
-<td>myprogram.cfm</td>
-<td>Sample.cfc</td>
-</tr>
-<tr>
-<td>
-
-	<cfset s = New Sample() />
-	<cfoutput>#s.hello()#</cfoutput>
-
-</td>
-<td>
+#### Sample.cfc
 
 	<cfcomponent>
 	<cffunction name="hello">
@@ -82,114 +71,60 @@ We might have a file named 'myprogram.cfm' and 'Sample.cfc' like this:
 	</cffunction>
 	</cfcomponent>
 
-</td>
-</tr>
-</table>
 
 ### Script Syntax
 
-<table>
-<tr>
-<td>myprogram.cfm</td>
-<td>Sample.cfc</td>
-</tr>
-<tr>
-<td>
-<pre lang="cfm">
-<code>
-<cfscript>
-s = New Sample();
-writeOutput(s.hello());
-</cfscript>
-</code>
-</pre>
-</td>
-<td>
-<pre lang="cfm">
-<code>
+#### myprogram.cfm
+
+	<cfscript>
+	s = New Sample();
+	writeOutput(s.hello());
+	</cfscript>
+
+#### Sample.cfc
+
 component {
 public string function hello(){
 return( "Hello, World!" );
 }
 }
-</code>
-</pre>
-</td>
-</tr>
-</table>
 
 For the script example, 'myprogram.cfm' and 'Sample.cfc' would have
 beginning/closing '<cfscript>' tags around the instructions.
 
 #### PHP Syntax
 
-<table>
-<tr>
-<td>myprogram.php</td>
-<td>Sample.php<td>
-</tr>
-<tr>
-<td>
-<pre lang="php">
-<code>
-<?php
-require("Sample.php");
-$s = new Sample();
-echo s->hello();
-?>
-</code>
-</pre>
-</td>
-<td>
-<pre lang="php">
-<code>
-<?php
-class Sample
-{
-public function hello() {
-return "Hello, World!";
-}
-}
-?>
-</code>
-</pre>
-</td>
-</tr>
-</table>
+#### myprogram.php
+
+	<?php
+	require("Sample.php");
+	$s = new Sample();
+	echo s->hello();
+	?>
+
+#### Sample.cfm
+
+	<?php
+	class Sample
+	{
+	public function hello() {
+	return "Hello, World!";
+	}
+	}
+	?>
 
 #### Ruby Syntax
 
-<table>
-<tr>
-<td>myprogram.rb</td>
-<td>Sample.rb<td>
-</tr>
-<tr>
-<td>
-<pre lang="ruby">
-<code>
-require 'Sample.rb'
-s = Sample.new
-puts s.hello
-</code>
-</pre>
-</td>
-<td>
-<pre lang="ruby">
-<code>
-class Sample
-def hello
-"Hello, World!"
-end
-end
-</code>
-</pre>
-</td>
-</tr>
-</table>
+#### myprogram.rb
 
-For the Ruby syntax, part 1 would be first then followed by part 2 in
-'my_program.rb'.
+	class Sample
+	def hello
+	"Hello, World!"
+	end
+	
+	require 'Sample.rb'
+	s = Sample.new
+	puts s.hello
 
 ## 2. Variables
 
