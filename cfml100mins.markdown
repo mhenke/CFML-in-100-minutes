@@ -58,7 +58,7 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 
 ### Tag Syntax
 
-<<table>
+<table>
 	<tr>
 		<td>myprogram.cfm</td>
 		<td>Sample.cfc</td>
@@ -126,34 +126,24 @@ beginning/closing `<cfscript>` tags around the instructions.
 <table>
 
 <tr>
-
-<td>
-myprogram.php
-
-</td>
-
-<td>
-Sample.php
-
-<td>
-
+         <td>myprogram.php</td>
+   <td>Sample.php<td>
 </tr>
 <tr>
 <td>
 <pre lang="php">
-<code>\
+<code>
 <?php
 require("Sample.php");
 $s = new Sample();
-echo s->hello ();\
-?\>\
-</code>\
-
+echo s->hello();
+?>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="php">
-<code>\
+<code>
 <?php
 class Sample
 {
@@ -161,9 +151,8 @@ class Sample
         return "Hello, World!";
     }
 }
-?>\
-</code>\
-
+?>
+</code>
 </pre>
 </td>
 
@@ -173,45 +162,36 @@ class Sample
 
 <table>
 
+<table>
 <tr>
-
-<td>
-myprogram.rb
-
-</td>
-
-<td>
-Sample.rb
-
-<td>
-
+         <td>myprogram.rb</td>
+	 <td>Sample.rb<td>
 </tr>
 <tr>
 <td>
 <pre lang="ruby">
-<code>\
-require ‘Sample.rb’\
-s = Sample.new\
-puts s.hello\
-</code>\
-
+<code>
+require 'Sample.rb'
+s = Sample.new
+puts s.hello
+</code>
 </pre>
 </td>
 <td>
 <pre lang="ruby">
-<code>\
-class Sample\
- def hello\
- “Hello, World!”\
- end\
-end\
-</code>\
-
+<code>
+class Sample
+  def hello
+    "Hello, World!"
+  end
+end
+</code>
 </pre>
 </td>
 
 </tr>
 </table>
+
 For the Ruby syntax, part 1 would be first then followed by part 2 in
 `my_program.rb`.
 
@@ -229,52 +209,43 @@ the output that CFML gives you back:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfoutput>\
-<cfset a = 5 />\
-a = \#a\#<br/>\
-<cfset b = 10 + 5 />\
-b = \#b\#<br/>\
-<cfset c = 15 + a + b />\
-c = \#c\#<br/>\
-<cfset b = c - a />\
-b = \#b\#<br/>\
-<cfset d = "Hello, " />\
-d = \#d\#<br/>\
-</cfoutput>\
-</code>\
-
+<code>
+<cfoutput>
+<cfset a = 5 />
+a = #a#<br/>
+<cfset b = 10 + 5 />
+b = #b#<br/>
+<cfset c = 15 + a + b />
+c = #c#<br/>
+<cfset b = c - a />
+b = #b#<br/>
+<cfset d = "Hello, " />
+d = #d#<br/>
+</cfoutput>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-a = 5;\
-writeOutput (“a = \#a\#<br/>”);\
-b = 10 + 5;\
-writeOutput (“b = \#b\#<br/>”);\
-c = 15 + a + b;\
-writeOutput (“c = \#c\#<br/>”);\
-b = c - a;\
-writeOutput (“b = \#b\#<br/>”);\
-d = “Hello,”;\
-writeOutput (“d = \#d\#<br/>”); \
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+a = 5;
+writeOutput("a = #a#<br/>");
+b = 10 + 5;
+writeOutput("b = #b#<br/>");
+c = 15 + a + b;
+writeOutput("c = #c#<br/>");
+b = c - a;
+writeOutput("b = #b#<br/>");
+d = "Hello, ";
+writeOutput("d = #d#<br/>"); 
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
@@ -283,52 +254,44 @@ In this second example, we assume the first example is present.
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfoutput>\
-<cfset e = "World!" />\
-e = \#e\#<br/>\
-<cfset f = d & e />\
-f = \#f\#<br/>\
-<cfset g = d & a & e />\
-g = \#g\#<br/>\
-<cfset b = "hi!" />\
-b = \#b\#<br/>\
-</cfoutput>\
-</code>\
-
+<code>
+<cfoutput>
+<cfset e = "World!" />
+e = #e#<br/>
+<cfset f = d & e />
+f = #f#<br/>
+<cfset g = d & a & e />
+g = #g#<br/>
+<cfset b = "hi!" />
+b = #b#<br/>
+</cfoutput>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-e = “World!”;\
-writeOutput (“e = \#e\#<br/>”);\
-f = d & e;\
-writeOutput (“f = \#f\#”<br/>“);\
-g = d & a & e;\
-writeOutput (”g = \#g\#<br/>“);\
-b =”hi!“;\
-writeOutput (”b = \#b\#<br/>"); \
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+e = "World!";
+writeOutput("e = #e#<br/>");
+f = d & e;
+writeOutput("f = #f#"<br/>");
+g = d & a & e;
+writeOutput("g = #g#<br/>");
+b = "hi!";
+writeOutput("b = #b#<br/>");  
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
 </table>
+
 \*The first few lines in the first example are simple if you’ve done any
 programming language before, but the last few get interesting when
 combining strings and numbers. The code looks a little messy since after
@@ -355,33 +318,24 @@ the file as `.cfc`. Here’s an example defining the object type
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
+<code>
 <cfcomponent>
 
-</cfcomponent>\
-</code>\
-
+</cfcomponent>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
+<code>
 component {
-
-}\
-</code>\
+}
+</code>
 
 </pre>
 </td>
@@ -394,38 +348,29 @@ Inside the CFC we usually define one or more methods using the
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfcomponent>\
- <cffunction name="makeToast">\
- <cfset makeToast = "Making your toast!" />\
- </cffunction>\
-</cfcomponent>\
-</code>\
-
+<code>
+<cfcomponent>
+ <cffunction name="makeToast">
+  <cfset makeToast = "Making your toast!" />
+ </cffunction>
+</cfcomponent>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-component {\
- public string function makeToast (){\
- makeToast = “Making your toast!”;\
- }\
-}\
-</code>\
-
+<code>
+component {
+ public string function makeToast(){
+  makeToast = "Making your toast!";
+ }
+}
+</code>
 </pre>
 </td>
 </tr>
@@ -445,34 +390,26 @@ Once we define a class, we create an instance of that class like this:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfset frank = New PersonalChef() />\
-</code>\
-
+<code>
+<cfset frank = New PersonalChef() />
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-frank = New PersonalChef ();\
-</code>\
-
+<code>
+frank = New PersonalChef();
+</code>
 </pre>
 </td>
 </tr>
 </table>
+
 We’re calling the `New` instruction on the class `PersonalChef` and
 storing it into the variable named `frank`. Once we have the instance,
 we can set or get its attributes and call its methods. Methods are
@@ -498,39 +435,30 @@ any kind of object. When a method takes a parameter we use the
 `cfargument` instruction, it’ll look like this:
 
 <table>
-<tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
+<td>*Tag*</td><td>*Script*</td>
 </td>
 </tr>
 <tr>
 <td>
-<pre lang="cfm">
-<code>\
-<cfcomponent>\
- <cffunction name="makeToast" returnType="string">\
- <cfargument name="color" required="yes">\
- <cfset makeToast = "Making your toast #arguments.color#!" />\
- </cffunction>\
-</cfcomponent>\
-</code>\
+<code>
+<cfcomponent>
+ <cffunction name="makeToast" returnType="string">
+  <cfargument name="color" required="yes">
+   <cfset makeToast = "Making your toast #arguments.color#!" />
+ </cffunction>
+</cfcomponent>
+</code>
 
 </pre>
 </td>
 <td>
-<pre lang="cfm">
-<code>\
-component {\
- public string function makeToast (required String color){\
- makeToast = “Making your toast \#arguments.color\#!”;\
- }\
-}\
-</code>\
+<code>
+component {
+ public string function makeToast(required String color){
+  makeToast = "Making your toast #arguments.color#!";
+ }
+}
+</code>
 
 </pre>
 </td>
@@ -563,41 +491,32 @@ himself** to you. Here’s how we implement it in code:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfcomponent>\
- <cffunction name="makeToast" returnType="component">\
- <cfargument name="color" required="yes">\
- <cfset this.makeToast = "Making your toast #arguments.color#!" />\
- <cfreturn this />\
- </cffunction>\
-</cfcomponent>\
-</code>\
-
+<code>
+<cfcomponent>
+ <cffunction name="makeToast" returnType="component">
+  <cfargument name="color" required="yes">
+   <cfset this.makeToast = "Making your toast #arguments.color#!" />
+   <cfreturn this />
+ </cffunction>
+</cfcomponent>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-component {\
- public component function makeToast (required String color){\
- this.makeToast = “Making your toast \#arguments.color\#!”;\
- return this;\
- }\
-}\
-</code>\
-
+<code>
+component {
+ public component function makeToast(required String color){
+  this.makeToast = "Making your toast #arguments.color#!";
+  return this;
+ }
+}
+</code>
 </pre>
 </td>
 </tr>
@@ -676,45 +595,32 @@ writeOutput (t3 & “<br/>”);\
 </td>
 </tr>
 </table>
-Often a string may store a list like the `t2` variable in the last
-example. A string for storing a list isn’t the best for performance and
-usage. Using an array for a list is so much better. We can convert a
-list into an `array` using `ListToArray`. We’ll discuss arrays in an
-upcoming section. Try out these next examples in the CFML file assuming
-we have the code from the last example:
+
+Often a string may store a list like the @t2@ variable in the last example. A string for storing a list isn't the best for performance and usage. Using an array for a list is so much better. We can convert a list into an @array@ using @ListToArray@. We'll discuss arrays in an upcoming section. Try out these next examples in the CFML file assuming we have the code from the last example:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfset t4 = ListToArray(t3) />\
-<cfoutput>\
- \#t4[2]\#\
-</cfoutput>\
-</code>\
-
+<code>
+<cfset t4 = ListToArray(t3) />
+<cfoutput>
+ #t4[2]#
+</cfoutput>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-t4 = ListToArray (t3);\
-writeOutput (t4[2]);\
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+t4 = ListToArray(t3);
+writeOutput(t4[2]);
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
@@ -757,38 +663,29 @@ the day of week as string. Try this:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfset today = DayOfWeekAsString(DayOfWeek(Now())) />\
-<cfset message = "Happy " & today & "!" />\
-<cfoutput>\
- \#message\#\
-</cfoutput>\
-</code>\
-
+<code>
+<cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
+<cfset message = "Happy " & today & "!" />
+<cfoutput>
+ #message#
+</cfoutput>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-today = DayOfWeekAsString (DayOfWeek (Now ()));\
-message = “Happy” & today & “!”;\
-writeOutput (message);\
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+today = DayOfWeekAsString(DayOfWeek(Now()));
+message = "Happy " & today & "!";
+writeOutput(message);
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
@@ -805,30 +702,21 @@ could be rewritten like this:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfset message = "Happy #today#!" />\
-</code>\
-
+<code>
+<cfset message = "Happy #today#!" />
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-message = “Happy \#today\#!”;\
-</code>\
-
+<code>
+message = "Happy #today#!";
+</code>
 </pre>
 </td>
 </tr>
@@ -852,39 +740,32 @@ this example for the `++` operator:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfset loop = 0 />\
-<cfoutput>\
- <cfloop condition="loop LT 5" >\
- \#loop\# Hello,
-world![image](%3Cbr%3E%0A%20%20%3Ccfset%20loop++%20/%3E%0A%20%3C/cfloop%3E%0A%20I%20am%20here)<br>\
-</cfoutput>\
-</code>\
-
+<code>
+<cfset loop = 0 />
+<cfoutput>
+ <cfloop condition="loop LT 5" >
+  #loop# Hello, world!<br>
+  <cfset loop++ />
+ </cfloop>
+ I am here!<br>
+</cfoutput>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-for (loop = 0 ; loop < 5 ; loop++)\
- WriteOutput (“\#loop\# Hello, world!<br>”);\
-WriteOutput (“I am here<br>”);\
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+for (loop = 0 ; loop < 5 ; loop++)
+ WriteOutput("#loop# Hello, world!<br>");
+WriteOutput("I am here<br>");
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
@@ -904,43 +785,34 @@ Try this example with multiple instructions:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfset loop = 0 />\
-<cfoutput>\
-<cfloop index="loop" from="0" to="4">\
- \#loop\# Good Morning!\
- …is it lunch time yet?<br>\
-</cfloop>\
-</cfoutput>\
-</code>\
-
+<code>
+<cfset loop = 0 />
+<cfoutput>
+<cfloop index="loop" from="0" to="4">
+ #loop# Good Morning!
+ ...is it lunch time yet?<br>
+</cfloop>
+</cfoutput>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-loop = 0; \
-while (loop < 5) { \
- WriteOutput (“\#loop\# Good Morning!”);\
- WriteOutput (“…is it lunch time yet?<br>”);\
- loop++;\
-}\
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+loop = 0; 
+while (loop < 5) { 
+ WriteOutput("#loop# Good Morning! ");
+ WriteOutput("...is it lunch time yet?<br>");
+ loop++;
+}
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
@@ -951,43 +823,34 @@ increase the `loop` index by two for each time through the loop.
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfset loop = 0 />\
-<cfoutput>\
-<cfloop index="loop" from="0" to="4" step="2">\
- \#loop\# Good Morning!\
- …is it lunch time yet?<br>\
-</cfloop>\
-</cfoutput>\
-</code>\
-
+<code>
+<cfset loop = 0 />
+<cfoutput>
+<cfloop index="loop" from="0" to="4" step="2">
+ #loop# Good Morning!
+ ...is it lunch time yet?<br>
+</cfloop>
+</cfoutput>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-loop = 0;\
-while (loop < 5) {\
- WriteOutput (“\#loop\# Good Morning!”);\
- WriteOutput (“…is it lunch time yet?<br>”);\
- loop = loop + 2;\
-}\
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+loop = 0;
+while (loop < 5) {
+ WriteOutput("#loop# Good Morning! ");
+ WriteOutput("...is it lunch time yet?<br>");
+ loop = loop + 2;
+}
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
@@ -1004,46 +867,37 @@ set in the ColdFusion administrator.
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfquery name="GetBreakfastItems" datasource="pantry"> \
- SELECT QUANTITY, ITEM \
- FROM CUPBOARD \
- ORDER BY ITEM \
-</cfquery> \
-</code>\
-
+<code>
+<cfquery name="GetBreakfastItems" datasource="pantry"> 
+ SELECT QUANTITY, ITEM 
+ FROM CUPBOARD 
+ ORDER BY ITEM 
+</cfquery> 
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
+<code>
+<cfscript>
 queryService = new Query ();
 
-queryService.setName (“GetBreakfastItems”); \
-queryServ.setDatasource (“pantry”); \
-queryService.setSQL ("\
-SELECT QUANTITY, ITEM \
-FROM CUPBOARD \
-ORDER BY ITEM\
+queryService.setName("GetBreakfastItems"); 
+queryServ.setDatasource("pantry"); 
+queryService.setSQL("
+SELECT QUANTITY, ITEM 
+FROM CUPBOARD 
+ORDER BY ITEM
 ");
 
-GetBreakfastItems = queryService.execute ().getResult (); \
-</cfscript>\
-</code>\
-
+GetBreakfastItems = queryService.execute().getResult(); 
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
@@ -1054,21 +908,16 @@ like so:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
+<td>*Tag*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfoutput query="GetBreakfastItems">\
- There are \#GetBreakfastItems.Quantity\# \#GetBreakfastItems.Item\# in
-the pantry<br />\
-</cfoutput>\
-</code>\
-
+<code>
+<cfoutput query="GetBreakfastItems">
+ There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br />
+</cfoutput>
+</code>
 </pre>
 </td>
 </tr>
@@ -1082,38 +931,27 @@ they differ when using tags and script.
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfloop query="GetBreakfastItems">\
- <cfoutput>There are \#GetBreakfastItems.Quantity\#
-\#GetBreakfastItems.Item\# in the pantry<br /></cfoutput>\
-</cfloop>\
-</code>\
-
+<code>
+<cfloop query="GetBreakfastItems">
+ <cfoutput>There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /></cfoutput>
+</cfloop>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript> \
-for (x = 1; x <= GetBreakfastItems; x=x+1) { \
- writeOutput (“There are \#GetBreakfastItems.Quantity[x]\#
-\#GetBreakfastItems.Item[x]\# in the pantry<br />”)\
-} \
-</cfscript>\
-</code>\
-
+<code>
+<cfscript> 
+for (x = 1; x <= GetBreakfastItems; x=x+1) { 
+ writeOutput("There are #GetBreakfastItems.Quantity[x]# #GetBreakfastItems.Item[x]# in the pantry<br />")
+} 
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
@@ -1142,40 +980,31 @@ then zero or more elements, and a closing `]`. Try out this code:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfset favorite_colors = ["red","blue","green","black","brown"] />\
-<cfdump var="#favorite_colors#" /><br>\
-<cfdump var="#favorite_colors[2]#" /><br>\
-<cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" /><br>\
-</code>\
-
+<code>
+<cfset favorite_colors = ["red","blue","green","black","brown"] />
+<cfdump var="#favorite_colors#" /><br>
+<cfdump var="#favorite_colors[2]#" /><br>
+<cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" /><br>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-favorite\_colors = [“red”,“blue”,“green”,“black”,“brown”];\
-writeDump (favorite\_colors);\
-writeOutput (“<br>”);\
-writeDump (favorite\_colors[2]);\
-writeOutput (“<br>”);\
-writeDump (var=favorite\_colors[ArrayLen (favorite\_colors)]);\
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+favorite_colors = ["red","blue","green","black","brown"];
+writeDump(favorite_colors);
+writeOutput("<br>");
+writeDump(favorite_colors[2]);
+writeOutput("<br>");
+writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
@@ -1185,44 +1014,35 @@ doing before we explain them:
 
 <table>
 <tr>
-<td>
-**Tag**
-
-</td>
-<td>
-**Script**
-
-</td>
+<td>*Tag*</td><td>*Script*</td>
 </tr>
 <tr>
 <td>
 <pre lang="cfm">
-<code>\
-<cfset ArrayAppend(favorite_colors, "orange") />\
-<cfset favorite_colors[3]="yellow" />\
-<cfdump var="#favorite_colors#" /><br>\
-<cfset ArraySort(favorite_colors,"text") />\
-<cfset ArrayDeleteAt(favorite_colors, 2) /> \
-<cfdump var="#favorite_colors#" /><br>\
-</code>\
-
+<code>
+<cfset ArrayAppend(favorite_colors, "orange") />
+<cfset favorite_colors[3]="yellow" />
+<cfdump var="#favorite_colors#" /><br>
+<cfset ArraySort(favorite_colors,"text") />
+<cfset ArrayDeleteAt(favorite_colors, 2) /> 
+<cfdump var="#favorite_colors#" /><br>
+</code>
 </pre>
 </td>
 <td>
 <pre lang="cfm">
-<code>\
-<cfscript>\
-ArrayAppend (favorite*colors, “orange”);\
-favorite*colors[3] = “yellow”;\
-writeDump (favorite\_colors);\
-writeOutput (“<br>”);\
-set = ArraySort (favorite\_colors,“text”);\
-ArrayDeleteAt (favorite\_colors, 2);\
-writeDump (var=favorite\_colors);\
-writeOutput (“<br>”); \
-</cfscript>\
-</code>\
-
+<code>
+<cfscript>
+ArrayAppend(favorite_colors, "orange");
+favorite_colors[3] = "yellow";
+writeDump(favorite_colors);
+writeOutput("<br>");
+set = ArraySort(favorite_colors,"text");
+ArrayDeleteAt(favorite_colors, 2);
+writeDump(var=favorite_colors);
+writeOutput("<br>"); 
+</cfscript>
+</code>
 </pre>
 </td>
 </tr>
