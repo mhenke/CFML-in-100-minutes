@@ -217,7 +217,7 @@ writeOutput("b = #b#<br/>");
 </cfscript>
 ```
 
-\*The first few lines in the first example are simple if you've done any
+*The first few lines in the first example are simple if you've done any
 programming language before, but the last few get interesting when
 combining strings and numbers. The code looks a little messy since after
 each instruction we output a variable.
@@ -401,28 +401,28 @@ component {
 
 ## 4. Strings
 
-In CFML a string is defined as a quote ( '"' ) followed by zero or more
-letters, numbers, or symbols and followed by another quote ( '"' ). Some
-simple strings would be '"hello"' or '"This sentence is a string!"'.
-Strings can be anything from '""', the empty string, to really long sets
+In CFML a string is defined as a quote ( "'" ) followed by zero or more
+letters, numbers, or symbols and followed by another quote ( "'"  ). Some
+simple strings would be **hello** or **This sentence is a string!**.
+Strings can be anything from '', the empty string, to really long sets
 of text. This whole tutorial, for instance, is stored in a string.
 Strings have a few important instructions that we'll use.
 
-\* 'Len' \
+* 'Len' 
 Call 'Len' on a string to get back the number of characters in the
-string. For instance 'Len("Hello")' would give you back '5'.\
-\* 'Replace' \
+string. For instance 'Len("Hello")' would give you back '5'.
+* 'Replace' 
 The 'Replace' instruction replaces occurrences of **substring1** in a
 string with **substring2**, in a specified scope. The search is case
 sensitive and the scope default is one. For instance,
-'Replace("Hello", "e", "")' would give you back '"hllo"' after replacing
-the *first* occurrence of '"e"', or
-'Replace("Good Morning!", "o", "e", "All")"' would give you
-'"Geed Merning!"' \
-\* 'RemoveChars' \
+'Replace("Hello", "e", "")' would give you back **hllo** after replacing
+the *first* occurrence of **e**, or
+'Replace("Good Morning!", "o", "e", "All")** would give you
+**Geed Merning!** 
+* 'RemoveChars' 
 Call 'RemoveChars' to remove characters from a string. For instance,
-'RemoveChars("hello bob", 2, 5)' would give you back '"hbob"'. \
-\* 'Mid' \
+'RemoveChars("hello bob", 2, 5)' would give you back **hbob**. 
+* 'Mid' 
 The 'mid' instruction extracts a substring from a string. For instance,
 I could call 'Mid("Welcome to CFML Jumpstart",4,12)' and it would give
 you back: 'come to CFML'.
@@ -433,25 +433,25 @@ Experiment with the following samples in a CFML [file:](file:)
 
 ```cfm
 <cfset tester = "Good Morning Everyone!" />
-<cfoutput>#len (tester)\#<br></cfoutput>
-<cfoutput>#Replace (tester, "o", "e", "All")\#<br></cfoutput>
-<cfoutput>#RemoveChars (tester, 2, 5)\#<br></cfoutput>
+<cfoutput>#len (tester)#<br></cfoutput>
+<cfoutput>#Replace (tester, "o", "e", "All")#<br></cfoutput>
+<cfoutput>#RemoveChars (tester, 2, 5)#<br></cfoutput>
 <cfset t2 = "sample,data,from,a,CSV" />
 <cfset t3 = Mid(t2,8,len(t2)) />
-<cfoutput>#t3\#<br></cfoutput>
+<cfoutput>#t3#<br></cfoutput>
 ```
 
 #### Syntax
 
 ```cfm
 <cfscript>
-tester = "Good Morning Everyone!";\
-writeOutput ("\#len (tester)\#<br/>");\
-writeOutput (Replace (tester, "o", "e", "All") & "<br/>");\
-writeOutput (RemoveChars (tester, 2, 5) & "<br/>");\
-t2 = "sample,data,from,a,CSV";\
-t3 = Mid (t2,8,len (t2));\
-writeOutput (t3 & "<br/>");\
+tester = "Good Morning Everyone!";
+writeOutput ("#len (tester)#<br/>");
+writeOutput (Replace (tester, "o", "e", "All") & "<br/>");
+writeOutput (RemoveChars (tester, 2, 5) & "<br/>");
+t2 = "sample,data,from,a,CSV";
+t3 = Mid (t2,8,len (t2));
+writeOutput (t3 & "<br/>");
 </cfscript>
 ```
 
@@ -485,12 +485,12 @@ beginning of the list, up to position '4', the ending of the array.
 It is extremely common that we want to combine the value of a variable
 with other strings. For instance, lets start with this example string:
 
-'"Happy Saturday!"'
+**Happy Saturday!**
 
 When we put that into the CFML file, it just spits back the same string.
 If we were writing a proper program we might want it to greet the user
-when they start the program by saying '"Happy"' then the day of the
-week. So we can't just put a string like '"Happy Saturday!"' or it'd be
+when they start the program by saying **Happy** then the day of the
+week. So we can't just put a string like **Happy Saturday!** or it'd be
 saying Saturday even on Tuesday.
 
 What we need to do is combine a variable with the string. There are two
@@ -807,12 +807,12 @@ writeOutput("<br>");
 ```
 
 In order to get add an element in the array you use the syntax
-'ArrayAppend(array,"value")' or 'arrayname[index] = "value"'. The first
+'ArrayAppend(array,"value")' or 'arrayname[index] = "value**. The first
 example of adding an array element is **with an instruction**. The
 second is updating an array element is **by assignment**. So looking at
 the final 'favorite_colors' array:
 
--   What's the index of '"brown"' ?
+-   What's the index of **brown** ?
 -   What did the 'ArraySort' instuction do to the collection?
 -   What does 'ArrayLen' instruction return?
 
@@ -833,7 +833,7 @@ example that brings a bunch of things together:
 <cfloop array="#favorite_colors#" index="target" >
 
 <li>
-\#target\# is \#len (target)\# letters long.
+#target# is #len (target)# letters long.
 
 </li>
 </cfloop>
@@ -847,15 +847,15 @@ example that brings a bunch of things together:
 
 ```cfm
 <cfscript>
-writeOutput ("<ul\>");\
-index = favorite\_colors.iterator ();\
-while (index.hasNext ()){\
- target = index.next ();\
- writeOutput ("<li\>#target\# is \#len (target)\# letters
-long.</li\>");\
-}\
-writeOutput ("</ul\>"); \
-writeDump (var=ArrayIsDefined (favorite\_colors,4));\
+writeOutput ("<ul>");
+index = favorite_colors.iterator ();
+while (index.hasNext ()){
+ target = index.next ();
+ writeOutput ("<li>#target# is #len (target)# letters
+long.</li>");
+}
+writeOutput ("</ul>"); 
+writeDump (var=ArrayIsDefined (favorite_colors,4));
 </cfscript>
 ```
 
@@ -870,7 +870,7 @@ Under ideal circumstances, each student has a name and can be found by
 using that name. We might look in a science classroom for a child named
 Joey and that would result in finding an actual student. We could write
 this like 'science["Joey"]' which could be read as "look in the
-collection named 'science' and find the thing named 'Joey'".
+collection named 'science' and find the thing named 'Joey**.
 
 A structure is an unordered collection, its just a bunch of data
 collected together where each one has a unique name/key. Structures have
@@ -880,13 +880,13 @@ a slightly more complicated syntax:
 
 ```cfm
 <cfset ages = {jack = 11, brian = 12, tracy = 11} />
-<cfset ages.joey = 12 /> \
+<cfset ages.joey = 12 /> 
 <cfset ages["jill"] = 14 />
 
 <cfdump var="#ages#" />
 
 <cfoutput>
-Joey is \#ages['joey']\# years old.\
+Joey is #ages['joey']# years old.
 </cfoutput>
 ```
 
@@ -894,19 +894,19 @@ Joey is \#ages['joey']\# years old.\
 
 ```cfm
 <cfscript>
-ages = {jack = 11, brian = 12, tracy = 11};\
-ages.joey = 12;\
+ages = {jack = 11, brian = 12, tracy = 11};
+ages.joey = 12;
 ages["jill"] = 14;
 
-writeDump (var=ages);\
-writeOutput ("Joey is \#ages['joey']\# years old.");\
+writeDump (var=ages);
+writeOutput ("Joey is #ages['joey']# years old.");
 </cfscript>
 ```
 
 Here we create a structure named 'ages'. Structures are made up what are
 called key-value pairs.The **key** is used as the address and the
 **value** is the object at that address. In the 'ages' structure we have
-keys including '"joey"' and '"jill"' and values including '12' and '14'.
+keys including **joey** and **jill** and values including '12' and '14'.
 When creating a structure using '{}' the key and value are linked by the
 '=' symbol. So to create a structure, the structures start with a curly
 bracket '{', have zero or more entries made up of a *key*, '=', and a
@@ -924,17 +924,17 @@ bracket '{', have zero or more entries made up of a *key*, '=', and a
 
 ```cfm
 <cfscript>
-ages["jimmy"] = 14;\
-ages["joey"] = 9;\
-writeDump (var=ages);\
+ages["jimmy"] = 14;
+ages["joey"] = 9;
+writeDump (var=ages);
 </cfscript>
 ```
 
 In the second chunk of the example, we add a new key and value to the
-structure. Since the '"jimmy"' key wasn't in the original structure,
-it's added with the value of '14'. If the key '"jimmy"' already existed
+structure. Since the **jimmy** key wasn't in the original structure,
+it's added with the value of '14'. If the key **jimmy** already existed
 then the value would be replaced by '14'. Every key in a structure must
-be unique! In the second line we reference the key '"joey"' which
+be unique! In the second line we reference the key **joey** which
 already exists, so the value gets replaced with the '9'. Then, just to
 show you the state of the structure, we dump out the list of keys and
 the list of values.
@@ -945,7 +945,7 @@ the list of values.
  <cfset students = StructSort(ages)>
 
 <cfloop array="#students#" index="student">
- <cfoutput>"\#student\# is \#ages[student]\# years
+ <cfoutput>"#student# is #ages[student]# years
 old."<br /></cfoutput>
  </cfloop>
 ```
@@ -955,10 +955,10 @@ old."<br /></cfoutput>
 ```cfm
  students = StructSort (ages);
 
-for (i = 1; i LTE ArrayLen (students); i = i+1) {\
- student = students[i];\
- WriteOutput ("\#student\# is \#ages[student]\# years old.<br />");\
- }\
+for (i = 1; i LTE ArrayLen (students); i = i+1) {
+ student = students[i];
+ WriteOutput ("#student# is #ages[student]# years old.<br />");
+ }
 ```
 
 The last chunk of the example used StructSort to get the sorted array
@@ -999,12 +999,12 @@ structures. Lets write an example by adding a method to our
 
 <cfif (arguments.minutes LT 7)>
  <cfset this.status = "The water is not boiling yet." />
- <cfelseif (arguments.minutes EQ 7)> \
+ <cfelseif (arguments.minutes EQ 7)> 
  <cfset this.status = "It's just barely boiling." />
  <cfelseif (arguments.minutes EQ 8)>
  <cfset this.status = "It's boiling!" />
  <cfelse>
- <cfset this.status = "Hot! Hot! Hot!" /> \
+ <cfset this.status = "Hot! Hot! Hot!" /> 
  </cfif>
  <cfreturn this />
 </cffunction>
@@ -1068,7 +1068,7 @@ set of instructions. Try out this simple example by adding it to your
  <cfargument name="counter" type="numeric">
  <cfset this.timer = "" />
  <cfloop condition="#arguments.counter# GT 0">
- <cfset this.timer &= "The counter is #arguments.counter#.<br>" /\>
+ <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
  <cfset arguments.counter-- />
  </cfloop>
  <cfreturn this />
@@ -1078,21 +1078,21 @@ set of instructions. Try out this simple example by adding it to your
 #### Syntax
 
 ```cfm
-public component function countdown (numeric counter){\
- this.timer = "";\
- while (counter GT 0) { \
- this.timer &= "The counter is \#arguments.counter\#.<br>";\
- arguments.counter—;\
- }\
- return this;\
-}\
+public component function countdown (numeric counter){
+ this.timer = "";
+ while (counter GT 0) { 
+ this.timer &= "The counter is #arguments.counter#.<br>";
+ arguments.counter—;
+ }
+ return this;
+}
 ```
 
 See how that works? The 'counter' starts out as whatever parameter we
 pass in. The 'while' instruction evaluates the conditional statement
 'arguments.counter GT 0' and finds that yes, the counter is greater than
 zero. Since the condition is true, execute the instructions inside the
-loop. First print out '"The counter is #Arguments.counter#"' then take
+loop. First print out **The counter is #Arguments.counter#** then take
 the value of 'Arguments.counter', subtract one from it, and store it
 back into 'Arguments.counter'. Then the loop goes back to the
 'condition'/'while' statement. Is it still true? If so, print the line
@@ -1105,7 +1105,7 @@ ampersands like this: '&&'. You can write a 'logical or' with the word
 'or' or with double pipes like this: '||'. For each operation, the
 symbolic representation ( '&&' and '||' ) is more common.
 
-The \#1 mistake people encounter when writing conditional statements is
+The #1 mistake people encounter when writing conditional statements is
 the difference between '=' and '=='.
 
 -   '=' is an *assignment*. It means "take what's on the right side and
@@ -1162,18 +1162,18 @@ illustrate 'NULL' :
 #### Syntax
 
 ```cfm
-public component function makeeggs (numeric quantity){\
- if (IsNull (arguments.quantity)) {\
+public component function makeeggs (numeric quantity){
+ if (IsNull (arguments.quantity)) {
  this.makeEggs = "How am I supposed to make nothingness number of
-eggs?";\
- } else {\
- this.makeEggs = "Making your \#arguments.quantity\# eggs!";\
- this.yourEggs = ArrayNew (1);\
- while (ArrayLen (this.yourEggs) < arguments.quantity)\
- ArrayAppend (this.yourEggs, "Making an Egg.");\
- }\
- return this;\
-}\
+eggs?";
+ } else {
+ this.makeEggs = "Making your #arguments.quantity# eggs!";
+ this.yourEggs = ArrayNew (1);
+ while (ArrayLen (this.yourEggs) < arguments.quantity)
+ ArrayAppend (this.yourEggs, "Making an Egg.");
+ }
+ return this;
+}
 ```
 
 Reload the file, call 'frank.makeeggs(3)' then try 'frank.makeeggs()'.
