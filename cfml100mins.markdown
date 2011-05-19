@@ -151,7 +151,7 @@ evaluated first, then the value is assigned to the variable named on the
 Go into a CFML file, enter in these example instructions, and observe
 the output that CFML gives you back:
 
-####  Tag
+#### Tag
 
 ```cfm
 <cfoutput>
@@ -168,7 +168,7 @@ d = #d#<br/>
 </cfoutput>
 ```
 
-###  Syntax
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -376,6 +376,8 @@ my toast", he tells you he's making the toast, goes to make it, then
 comes back to you to receive more instructions. He's **returning
 himself** to you. Here's how we implement it in code:
 
+#### Tag
+
 ```cfm
 <cfcomponent>
  <cffunction name="makeToast" returnType="component">
@@ -385,6 +387,8 @@ himself** to you. Here's how we implement it in code:
  </cffunction>
 </cfcomponent>
 ```
+
+#### Syntax
 
 ```cfm
 component {
@@ -425,6 +429,8 @@ you back: 'come to CFML'.
 
 Experiment with the following samples in a CFML [file:](file:)
 
+#### Tag
+
 ```cfm
 <cfset tester = "Good Morning Everyone!" />
 <cfoutput>#len (tester)\#<br></cfoutput>
@@ -434,6 +440,8 @@ Experiment with the following samples in a CFML [file:](file:)
 <cfset t3 = Mid(t2,8,len(t2)) />
 <cfoutput>#t3\#<br></cfoutput>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -449,12 +457,16 @@ writeOutput (t3 & "<br/>");\
 
 Often a string may store a list like the @t2@ variable in the last example. A string for storing a list isn't the best for performance and usage. Using an array for a list is so much better. We can convert a list into an @array@ using @ListToArray@. We'll discuss arrays in an upcoming section. Try out these next examples in the CFML file assuming we have the code from the last example:
 
+#### Tag
+
 ```cfm
 <cfset t4 = ListToArray(t3) />
 <cfoutput>
  #t4[2]#
 </cfoutput>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -499,6 +511,8 @@ ColdFusion server. 'DayOfWeek' returns an integer in the range 1
 (Sunday) to 7 (Saturday) for the day of the week. We still don't have
 the day of week as string. Try this:
 
+#### Tag
+
 ```cfm
 <cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
 <cfset message = "Happy " & today & "!" />
@@ -506,6 +520,8 @@ the day of week as string. Try this:
  #message#
 </cfoutput>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -525,9 +541,13 @@ string the value should be inserted. Inside those hashes we can put any
 variable and output it in that spot. Our previous example 'message'
 could be rewritten like this:
 
+#### Tag
+
 ```cfm
 <cfset message = "Happy #today#!" />
 ```
+
+#### Syntax
 
 ```cfm
 message = "Happy #today#!";
@@ -550,6 +570,8 @@ increment a number. It is also the only one we will use to control a
 loop. We will talk more about Conditional Looping in section 9. Try out
 this example for the '++' operator:
 
+#### Tag
+
 ```cfm
 <cfset loop = 0 />
 <cfoutput>
@@ -560,6 +582,8 @@ this example for the '++' operator:
  I am here!<br>
 </cfoutput>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -582,6 +606,8 @@ the 'index' argument.
 
 Try this example with multiple instructions:
 
+#### Tag
+
 ```cfm
 <cfset loop = 0 />
 <cfoutput>
@@ -591,6 +617,8 @@ Try this example with multiple instructions:
 </cfloop>
 </cfoutput>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -607,6 +635,8 @@ It's also possible to go through a loop and step over more than one
 value at a time. The following examples will step through the loop and
 increase the 'loop' index by two for each time through the loop.
 
+#### Tag
+
 ```cfm
 <cfset loop = 0 />
 <cfoutput>
@@ -616,6 +646,8 @@ increase the 'loop' index by two for each time through the loop.
 </cfloop>
 </cfoutput>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -638,6 +670,8 @@ and the query variables; together they make up the query object.
 'cfquery' passes SQL statements to the 'datasource'. The 'datasource' is
 set in the ColdFusion administrator.
 
+#### Tag
+
 ```cfm
 <cfquery name="GetBreakfastItems" datasource="pantry"> 
  SELECT QUANTITY, ITEM 
@@ -645,6 +679,8 @@ set in the ColdFusion administrator.
  ORDER BY ITEM 
 </cfquery> 
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -679,11 +715,15 @@ you do in order to prevent referencing the wrong variable scope.
 You can also loop through a query using standard loop constructs, though
 they differ when using tags and script.
 
+#### Tag
+
 ```cfm
 <cfloop query="GetBreakfastItems">
  <cfoutput>There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /></cfoutput>
 </cfloop>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript> 
@@ -715,12 +755,16 @@ is the address of a specific element inside the array. In CFML the index
 always begins with '1'. An array is defined in CFML as an opening '['
 then zero or more elements, and a closing ']'. Try out this code:
 
+#### Tag
+
 ```cfm
 <cfset favorite_colors = ["red","blue","green","black","brown"] />
 <cfdump var="#favorite_colors#" /><br>
 <cfdump var="#favorite_colors[2]#" /><br>
 <cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" /><br>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -736,6 +780,8 @@ writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
 Keep going with these, but try to understand what each instruction is
 doing before we explain them:
 
+#### Tag
+
 ```cfm
 <cfset ArrayAppend(favorite_colors, "orange") />
 <cfset favorite_colors[3]="yellow" />
@@ -744,6 +790,8 @@ doing before we explain them:
 <cfset ArrayDeleteAt(favorite_colors, 2) /> 
 <cfdump var="#favorite_colors#" /><br>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -776,6 +824,8 @@ using the 'arrayName[index]' instruction. You can ask an array if an
 element is present with the 'ArrayIsDefined' instruction. Try out this
 example that brings a bunch of things together:
 
+#### Tag
+
 ```cfm
 <cfoutput>
 
@@ -792,6 +842,8 @@ example that brings a bunch of things together:
 <cfdump var="#ArrayIsDefined(favorite_colors,4)#" />
 </cfoutput>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -824,6 +876,8 @@ A structure is an unordered collection, its just a bunch of data
 collected together where each one has a unique name/key. Structures have
 a slightly more complicated syntax:
 
+#### Tag
+
 ```cfm
 <cfset ages = {jack = 11, brian = 12, tracy = 11} />
 <cfset ages.joey = 12 /> \
@@ -835,6 +889,8 @@ a slightly more complicated syntax:
 Joey is \#ages[‘joey']\# years old.\
 </cfoutput>
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -856,11 +912,15 @@ When creating a structure using '{}' the key and value are linked by the
 bracket '{', have zero or more entries made up of a *key*, '=', and a
 *value* separated by commas, then end with a closing curly bracket '}'.
 
+#### Tag
+
 ```cfm
 <cfset ages["jimmy"] = 14 />
 <cfset ages["joey"] = 9 />
-<cfdump var="#ages# />
+<cfdump var="#ages#" />
 ```
+
+#### Syntax
 
 ```cfm
 <cfscript>
@@ -879,6 +939,8 @@ already exists, so the value gets replaced with the '9'. Then, just to
 show you the state of the structure, we dump out the list of keys and
 the list of values.
 
+#### Tag
+
 ```cfm
  <cfset students = StructSort(ages)>
 
@@ -887,6 +949,8 @@ the list of values.
 old."<br /></cfoutput>
  </cfloop>
 ```
+
+#### Syntax
 
 ```cfm
  students = StructSort (ages);
@@ -927,6 +991,8 @@ conditional instructions, especially 'if' / 'else if' / 'else'
 structures. Lets write an example by adding a method to our
 'PersonalChef' class:
 
+#### Tag
+
 ```cfm
 <cffunction name="water_boiling" returnType="component">
  <cfargument name="minutes" type="numeric" required="yes">
@@ -943,6 +1009,8 @@ structures. Lets write an example by adding a method to our
  <cfreturn this />
 </cffunction>
 ```
+
+#### Syntax
 
 ```cfm
 public component function water\_boiling (numeric minutes){\
@@ -983,6 +1051,8 @@ Another time we use conditional statements is when we want to repeat a
 set of instructions. Try out this simple example by adding it to your
 'PersonalChef.cfc' :
 
+#### Tag
+
 ```cfm
 <cffunction name="countdown" returnType="component">
  <cfargument name="counter" type="numeric">
@@ -994,6 +1064,8 @@ set of instructions. Try out this simple example by adding it to your
  <cfreturn this />
 </cffunction>
 ```
+
+#### Syntax
 
 ```cfm
 public component function countdown (numeric counter){\
@@ -1057,6 +1129,8 @@ you tried to do something to it, and you can't do something to nothing
 so CFML creates an error. Lets rewrite our 'makeeggs' method to
 illustrate 'NULL' :
 
+#### Tag
+
 ```cfm
 <cffunction name="makeeggs" returnType="component">
  <cfargument name="quantity" type="numeric">
@@ -1074,6 +1148,8 @@ illustrate 'NULL' :
  <cfreturn this />
 </cffunction>
 ```
+
+#### Syntax
 
 ```cfm
 public component function makeeggs (numeric quantity){\
