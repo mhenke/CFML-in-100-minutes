@@ -61,18 +61,18 @@ We might have a file named 'myprogram.cfm' and 'Sample.cfc' like this:
 #### myprogram.cfm
 
 ```cfm
-	<cfset s = New Sample() />
-	<cfoutput>#s.hello()#</cfoutput>
+<cfset s = New Sample() />
+<cfoutput>#s.hello()#</cfoutput>
 ```
 
 #### Sample.cfc
 
 ```cfm
-	<cfcomponent>
-	<cffunction name="hello">
-	<cfreturn "Hello, World!" />
-	</cffunction>
-	</cfcomponent>
+<cfcomponent>
+ <cffunction name="hello">
+  <cfreturn "Hello, World!" />
+ </cffunction>
+</cfcomponent>
 ```
 
 ### Script Syntax
@@ -80,20 +80,20 @@ We might have a file named 'myprogram.cfm' and 'Sample.cfc' like this:
 #### myprogram.cfm
 
 ```cfm
-	<cfscript>
-	s = New Sample();
-	writeOutput(s.hello());
-	</cfscript>
+<cfscript>
+s = New Sample();
+writeOutput(s.hello());
+</cfscript>
 ```
 
 #### Sample.cfc
 
 ```cfm
-	component {
-	public string function hello(){
-	return( "Hello, World!" );
-	}
-	}
+component {
+ public string function hello(){
+  return( "Hello, World!" );
+ }
+}
 ```
 
 For the script example, 'myprogram.cfm' and 'Sample.cfc' would have
@@ -104,24 +104,24 @@ beginning/closing '<cfscript>' tags around the instructions.
 #### myprogram.php
 
 ```php
-	<?php
-	require("Sample.php");
-	$s = new Sample();
-	echo s->hello();
-	?>
+<?php
+ require("Sample.php");
+ $s = new Sample();
+ echo s->hello();
+?>
 ```
 
 #### Sample.php
 
 ```php
-	<?php
-	class Sample
-	{
-	public function hello() {
-	return "Hello, World!";
-	}
-	}
-	?>
+<?php
+ class Sample
+ {
+  public function hello() {
+  return "Hello, World!";
+  }
+ }
+?>
 ```
 
 ### Ruby Syntax
@@ -129,14 +129,13 @@ beginning/closing '<cfscript>' tags around the instructions.
 #### myprogram.rb
 
 ```rb
-	class Sample
-	def hello
-	"Hello, World!"
-	end
-	
-	require 'Sample.rb'
-	s = Sample.new
-	puts s.hello
+class Sample
+ def hello
+ "Hello, World!"
+end
+
+s = Sample.new
+puts s.hello
 ```
 
 ## 2. Variables
@@ -265,9 +264,9 @@ Inside the CFC we usually define one or more methods using the
 
 ```cfm
 <cfcomponent>
-<cffunction name="makeToast">
-<cfset makeToast = "Making your toast!" />
-</cffunction>
+ <cffunction name="makeToast">
+  <cfset makeToast = "Making your toast!" />
+ </cffunction>
 </cfcomponent>
 ```
 
@@ -275,9 +274,9 @@ Inside the CFC we usually define one or more methods using the
 
 ```cfm
 component {
-public string function makeToast(){
-makeToast = "Making your toast!";
-}
+ public string function makeToast(){
+  makeToast = "Making your toast!";
+ }
 }
 ```
 
@@ -334,10 +333,10 @@ any kind of object. When a method takes a parameter we use the
 
 ```cfm
 <cfcomponent>
-<cffunction name="makeToast" returnType="string">
-<cfargument name="color" required="yes">
-<cfset makeToast = "Making your toast #arguments.color#!" />
-</cffunction>
+ <cffunction name="makeToast" returnType="string">
+  <cfargument name="color" required="yes">
+  <cfset makeToast = "Making your toast #arguments.color#!" />
+ </cffunction>
 </cfcomponent>
 ```
 
@@ -345,9 +344,9 @@ any kind of object. When a method takes a parameter we use the
 
 ```cfm
 component {
-public string function makeToast(required String color){
-makeToast = "Making your toast #arguments.color#!";
-}
+ public string function makeToast(required String color){
+  makeToast = "Making your toast #arguments.color#!";
+ }
 }
 ```
 
@@ -462,7 +461,7 @@ Often a string may store a list like the *t2* variable in the last example. A st
 ```cfm
 <cfset t4 = ListToArray(t3) />
 <cfoutput>
- #t4[2]#
+#t4[2]#
 </cfoutput>
 ```
 
@@ -517,7 +516,7 @@ the day of week as string. Try this:
 <cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
 <cfset message = "Happy " & today & "!" />
 <cfoutput>
- #message#
+#message#
 </cfoutput>
 ```
 
@@ -704,7 +703,7 @@ like so:
 
 ```cfm
 <cfoutput query="GetBreakfastItems">
- There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br />
+There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br />
 </cfoutput>
 ```
 
@@ -828,16 +827,12 @@ example that brings a bunch of things together:
 
 ```cfm
 <cfoutput>
-
 <ul>
-<cfloop array="#favorite_colors#" index="target" >
-
-<li>
-#target# is #len (target)# letters long.
-
-</li>
-</cfloop>
-
+ <cfloop array="#favorite_colors#" index="target" >
+ <li>
+ #target# is #len (target)# letters long.
+ </li>
+ </cfloop>
 </ul>
 <cfdump var="#ArrayIsDefined(favorite_colors,4)#" />
 </cfoutput>
@@ -942,12 +937,12 @@ the list of values.
 #### Tag
 
 ```cfm
- <cfset students = StructSort(ages)>
+<cfset students = StructSort(ages)>
 
 <cfloop array="#students#" index="student">
- <cfoutput>"#student# is #ages[student]# years
-old."<br /></cfoutput>
- </cfloop>
+ <cfoutput>"#student# is #ages[student]# years old."<br />
+ </cfoutput>
+</cfloop>
 ```
 
 #### Syntax
@@ -997,14 +992,14 @@ structures. Lets write an example by adding a method to our
 <cffunction name="water_boiling" returnType="component">
  <cfargument name="minutes" type="numeric" required="yes">
 
-<cfif (arguments.minutes LT 7)>
- <cfset this.status = "The water is not boiling yet." />
- <cfelseif (arguments.minutes EQ 7)> 
- <cfset this.status = "It's just barely boiling." />
+ <cfif (arguments.minutes LT 7)>
+  <cfset this.status = "The water is not boiling yet." />
+  <cfelseif (arguments.minutes EQ 7)> 
+  <cfset this.status = "It's just barely boiling." />
  <cfelseif (arguments.minutes EQ 8)>
- <cfset this.status = "It's boiling!" />
+  <cfset this.status = "It's boiling!" />
  <cfelse>
- <cfset this.status = "Hot! Hot! Hot!" /> 
+  <cfset this.status = "Hot! Hot! Hot!" /> 
  </cfif>
  <cfreturn this />
 </cffunction>
@@ -1068,8 +1063,8 @@ set of instructions. Try out this simple example by adding it to your
  <cfargument name="counter" type="numeric">
  <cfset this.timer = "" />
  <cfloop condition="#arguments.counter# GT 0">
- <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
- <cfset arguments.counter-- />
+  <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
+  <cfset arguments.counter-- />
  </cfloop>
  <cfreturn this />
 </cffunction>
@@ -1081,8 +1076,8 @@ set of instructions. Try out this simple example by adding it to your
 public component function countdown (numeric counter){
  this.timer = "";
  while (counter GT 0) { 
- this.timer &= "The counter is #arguments.counter#.<br>";
- arguments.counter—;
+  this.timer &= "The counter is #arguments.counter#.<br>";
+  arguments.counter—;
  }
  return this;
 }
@@ -1145,15 +1140,14 @@ illustrate 'NULL' :
 <cffunction name="makeeggs" returnType="component">
  <cfargument name="quantity" type="numeric">
  <cfif (IsNull(arguments.quantity)) />
-
-<cfset this.makeEggs = "How am I supposed to make nothingness number of eggs?" />
+  <cfset this.makeEggs = "How am I supposed to make nothingness number of eggs?" />
  <cfelse>
- <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
- <cfset this.yourEggs = ArrayNew(1) />
+  <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
+  <cfset this.yourEggs = ArrayNew(1) />
 
-<cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#" />
- <cfset ArrayAppend(this.yourEggs, "Making an Egg.") />
- </cfloop>
+  <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#" />
+   <cfset ArrayAppend(this.yourEggs, "Making an Egg.") />
+  </cfloop>
  </cfif>
  <cfreturn this />
 </cffunction>
@@ -1167,10 +1161,10 @@ public component function makeeggs (numeric quantity){
  this.makeEggs = "How am I supposed to make nothingness number of
 eggs?";
  } else {
- this.makeEggs = "Making your #arguments.quantity# eggs!";
- this.yourEggs = ArrayNew (1);
- while (ArrayLen (this.yourEggs) < arguments.quantity)
- ArrayAppend (this.yourEggs, "Making an Egg.");
+  this.makeEggs = "Making your #arguments.quantity# eggs!";
+  this.yourEggs = ArrayNew (1);
+  while (ArrayLen (this.yourEggs) < arguments.quantity)
+   ArrayAppend (this.yourEggs, "Making an Egg.");
  }
  return this;
 }
