@@ -1037,7 +1037,7 @@ When the @minutes@ is 5, here is how the execution goes: Is it @true@ that 5 is 
 When the @minutes@ is 7, it goes like this: Is it @true@ that 7 is less than 7? No. Next, is it @true@ that 7 is equal to 7? Yes, it is, so print out the line @It's just barely boiling@.
 
 When the @minutes@ is 8, it goes like this: Is it @true@ that 8 is less than 7? No. Next, is it @true@ that 8 is equal to 7? No. Next, is it @true@ that 8 is equal to 8? Yes, it is, so print out the line @It's boiling!@.
-Lastly, when total is 9, it goes:" Is it 'true@ that 9 is less than 7?
+Lastly, when total is 9, it goes:" Is it 'true' that 9 is less than 7?
 No. Next, is it 'true' that 9 is equal to 7? No. Next, is it 'true' that
 9 is equal to 8? No. Since none of those are true, execute the 'else'
 and print the line 'Hot! Hot! Hot!'.
