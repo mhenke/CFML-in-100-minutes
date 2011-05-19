@@ -65,15 +65,23 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 </tr>
 <tr>
 <td>
-    <cfset s = New Sample() />
-    <cfoutput>#s.hello()#</cfoutput>
+<pre lang="cfm">
+<code>
+<cfset s = New Sample() />
+<cfoutput>#s.hello()#</cfoutput>
+</code>
+</pre>
 </td>
 <td>
-    <cfcomponent>
-     <cffunction name="hello">
-      <cfreturn "Hello, World!" />
-     </cffunction>
-    </cfcomponent>
+<pre lang="cfm">
+<code>
+<cfcomponent>
+<cffunction name="hello">
+<cfreturn "Hello, World!" />
+</cffunction>
+</cfcomponent>
+</code>
+</pre>
 </td>
 </tr>
 </table>
@@ -86,19 +94,26 @@ We might have a file named `myprogram.cfm` and `Sample.cfc` like this:
 <td>Sample.cfc</td>
 </tr>
 <tr>
-	<cfscript>
-	s = New Sample();
-	writeOutput(s.hello());
-	</cfscript>
+<td>
+<pre lang="cfm">
+<code>
+<cfscript>
+s = New Sample();
+writeOutput(s.hello());
+</cfscript>
 </code>
 </pre>
 </td>
 <td>
-	component {
-	 public string function hello(){
-	 return( "Hello, World!" );
-	 }
-	}
+<pre lang="cfm">
+<code>
+component {
+public string function hello(){
+return( "Hello, World!" );
+}
+}
+</code>
+</pre>
 </td>
 </tr>
 </table>
@@ -109,41 +124,45 @@ beginning/closing `<cfscript>` tags around the instructions.
 #### PHP Syntax
 
 <table>
-
 <tr>
 <td>myprogram.php</td>
 <td>Sample.php<td>
 </tr>
 <tr>
 <td>
-	<?php
-	require("Sample.php");
-	$s = new Sample();
-	echo s->hello();
-	?>
+<pre lang="php">
+<code>
+<?php
+require("Sample.php");
+$s = new Sample();
+echo s->hello();
+?>
+</code>
+</pre>
 </td>
 <td>
-	<?php
-	class Sample
-	{
-	 public function hello() {
-	 return "Hello, World!";
-	 }
-	}
-	?>
+<pre lang="php">
+<code>
+<?php
+class Sample
+{
+public function hello() {
+return "Hello, World!";
+}
+}
+?>
+</code>
+</pre>
 </td>
-
 </tr>
 </table>
 
 #### Ruby Syntax
 
 <table>
-
-<table>
 <tr>
-         <td>myprogram.rb</td>
-	 <td>Sample.rb<td>
+<td>myprogram.rb</td>
+<td>Sample.rb<td>
 </tr>
 <tr>
 <td>
@@ -159,14 +178,13 @@ puts s.hello
 <pre lang="ruby">
 <code>
 class Sample
-  def hello
-    "Hello, World!"
-  end
+def hello
+"Hello, World!"
+end
 end
 </code>
 </pre>
 </td>
-
 </tr>
 </table>
 
@@ -314,11 +332,11 @@ the file as `.cfc`. Here’s an example defining the object type
 component {
 }
 </code>
-
 </pre>
 </td>
 </tr>
 </table>
+
 ### Methods
 
 Inside the CFC we usually define one or more methods using the
@@ -333,9 +351,9 @@ Inside the CFC we usually define one or more methods using the
 <pre lang="cfm">
 <code>
 <cfcomponent>
- <cffunction name="makeToast">
-  <cfset makeToast = "Making your toast!" />
- </cffunction>
+<cffunction name="makeToast">
+<cfset makeToast = "Making your toast!" />
+</cffunction>
 </cfcomponent>
 </code>
 </pre>
@@ -344,15 +362,16 @@ Inside the CFC we usually define one or more methods using the
 <pre lang="cfm">
 <code>
 component {
- public string function makeToast(){
-  makeToast = "Making your toast!";
- }
+public string function makeToast(){
+makeToast = "Making your toast!";
+}
 }
 </code>
 </pre>
 </td>
 </tr>
 </table>
+
 Inside the `cffunction` instruction we’d put the code for how the chef
 should make the toast.
 
@@ -413,35 +432,37 @@ any kind of object. When a method takes a parameter we use the
 `cfargument` instruction, it’ll look like this:
 
 <table>
+<tr>
 <td>*Tag*</td><td>*Script*</td>
-</td>
 </tr>
 <tr>
 <td>
+<pre lang="cfm">
 <code>
 <cfcomponent>
- <cffunction name="makeToast" returnType="string">
-  <cfargument name="color" required="yes">
-   <cfset makeToast = "Making your toast #arguments.color#!" />
- </cffunction>
+<cffunction name="makeToast" returnType="string">
+<cfargument name="color" required="yes">
+<cfset makeToast = "Making your toast #arguments.color#!" />
+</cffunction>
 </cfcomponent>
 </code>
 
 </pre>
 </td>
 <td>
+<pre lang="cfm">
 <code>
 component {
- public string function makeToast(required String color){
-  makeToast = "Making your toast #arguments.color#!";
- }
+public string function makeToast(required String color){
+makeToast = "Making your toast #arguments.color#!";
+}
 }
 </code>
-
 </pre>
 </td>
 </tr>
 </table>
+
 The method is requiring us to pass in a `color` telling it how to do the
 method `makeToast`.
 
