@@ -138,14 +138,7 @@ evaluated first, then the value is assigned to the variable named on the
 Go into a CFML file, enter in these example instructions, and observe
 the output that CFML gives you back:
 
-<table>
-<tr>
-<td>*Tag*</td><td>*Script*</td>
-</tr>
-<tr>
-<td>
-<pre lang="cfm">
-<code>
+```cfm
 <cfoutput>
 <cfset a = 5 />
 a = #a#<br/>
@@ -158,12 +151,9 @@ b = #b#<br/>
 <cfset d = "Hello, " />
 d = #d#<br/>
 </cfoutput>
-</code>
-</pre>
-</td>
-<td>
-<pre lang="cfm">
-<code>
+```
+
+```ruby
 <cfscript>
 a = 5;
 writeOutput("a = #a#<br/>");
@@ -176,11 +166,8 @@ writeOutput("b = #b#<br/>");
 d = "Hello, ";
 writeOutput("d = #d#<br/>"); 
 </cfscript>
-</code>
-</pre>
-</td>
-</tr>
-</table>
+```
+
 In this second example, we assume the first example is present.
 
 <table>
