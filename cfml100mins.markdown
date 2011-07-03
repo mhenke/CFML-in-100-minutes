@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CFML in 100 minutes
 
 ColdFusion Markup Language (CFML) is a great programming language for beginners because it was written to make the programmer's job easy and not care if the computer's job is hard. In this brief introduction we'll look at key language features you need to get started.
