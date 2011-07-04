@@ -890,12 +890,12 @@ ampersands like this: "&&". You can write a "logical or" with the word
 symbolic representation ( "&&" and "||" ) is more common.
 
 The #1 mistake people encounter when writing conditional statements is
-the difference between ```=``` and "==".
+the difference between ```=``` and ```==```.
 
 *   ```=``` is an *assignment*. It means "take what's on the right side and
     stick it into whatever is on the left side" (or its *telling* not
     *asking*.)
-*   "==" is a *question*. It means "is the thing on the right equal to
+*   ```==``` is a *question*. It means "is the thing on the right equal to
     the thing on the left" (or its *asking* not *telling*.)
 
 ## 10. Nothingness & Null
