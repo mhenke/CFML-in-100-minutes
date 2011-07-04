@@ -286,9 +286,9 @@ The method is requiring us to pass in a "color" telling it how to do the method 
 
 ### Return Value
 
-In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns *nothing*. We'll talk about *nothing* and null" in the last section of "CFML in 100 minutes". If you called "makeToast" method above like ```<cfset result = frank.makeToast("burned") />``` or ```set result = frank.makeToast("burned");```, and tried to output "result" you should have seen "Variable RESULT is undefined".
+In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns *nothing*. We'll talk about *nothing* and null" in the last section of "CFML in 100 minutes". If you called ```makeToast``` method above like ```<cfset result = frank.makeToast("burned") />``` or ```set result = frank.makeToast("burned");```, and tried to output "result" you should have seen "Variable RESULT is undefined".
 
-To return data, we use ```cfreturn``` to instruct the method to return a "value". Since that wasn't in the last instruction before the ending ```cffunction``` in your "makeToast" method, you received *nothing* and tried to putting that into the "result" variable.
+To return data, we use ```cfreturn``` to instruct the method to return a "value". Since that wasn't in the last instruction before the ending ```cffunction``` in your ```makeToast``` method, you received *nothing* and tried to putting that into the "result" variable.
 
 For the purposes of our next section I"m going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef "frank". You say, "Frank, go make my toast", he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's **returning himself** to you. Here's how we implement it in code:
 
@@ -906,7 +906,7 @@ ColdFusion did not have a way of referring to nothingness until version 9. ColdF
 
 If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, its a number, and its *not nothing*.
 
-A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our "makeeggs" method to  illustrate "NULL" :
+A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our ```makeeggs``` method to  illustrate "NULL" :
 
 #### Tag
 
