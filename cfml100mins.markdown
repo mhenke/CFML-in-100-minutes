@@ -467,7 +467,7 @@ WriteOutput("I am here<br>");
 </cfscript>
 ```
 
-In this next example we're using the ```cfloop``` instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting "{" and the ending "}". Each instruction between the beginning "{" and ending "}" will be executed if the condition is true.
+In this next example we're using the ```cfloop``` instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting ```{``` and the ending ```}```. Each instruction between the beginning ```{```and ending ```}``` will be executed if the condition is true.
 
 In the tag example there's no need to manage the index inside the loop if you're simply stepping through one item at a time. You can use the "from" and "to" arguments, and ColdFusion will simply loop from the first value to the second, and automatically increment the variable in the "index" argument.
 
@@ -721,7 +721,7 @@ writeOutput ("Joey is #ages["joey"]# years old.");
 </cfscript>
 ```
 
-Here we create a structure named "ages". Structures are made up what are called key-value pairs.The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the "=" symbol. So to create a structure, the structures start with a curly bracket "{", have zero or more entries made up of a *key*, "=", and a *value* separated by commas, then end with a closing curly bracket "}".
+Here we create a structure named "ages". Structures are made up what are called key-value pairs.The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the "=" symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, "=", and a *value* separated by commas, then end with a closing curly bracket ```}```.
 
 #### Tag
 
