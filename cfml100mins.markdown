@@ -323,7 +323,7 @@ In CFML a string is defined as a quote ( **'** ) followed by zero or more letter
 * Call ```Len``` on a string to get back the number of characters in the string. For instance ```Len("Hello")``` would give you back **5**.
 
 ### Replace
-* The ```Replace``` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, ```Replace("Hello", "e", "")``` would give you back **hllo** after replacing the *first* occurrence of **e**, or **Replace("Good Morning!", "o", "e", "All")** would give you **Geed Merning!** 
+* The ```Replace``` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, ```Replace("Hello", "e", "")``` would give you back **hllo** after replacing the _first occurrence of e_, or ```Replace("Good Morning!", "o", "e", "All")``` would give you **Geed Merning!** 
 
 ### RemoveChars 
 * Call ```RemoveChars``` to remove characters from a string. For instance, ```RemoveChars("hello bob", 2, 5)``` would give you back **hbob**. 
