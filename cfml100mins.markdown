@@ -26,7 +26,7 @@ And you want to learn CFML so here goes!
 
 ## 1. Syntax
 
-There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages. You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are "CFSET", "CFOUTPUT", and "CFDUMP". "CFSET" is used to create a variable and assign it a value. Also "CFSET" is used to call methods. "CFOUTPUT" displays a variable's value. "CFDUMP" is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
+There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages. You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are ```CFSET```, ```CFOUTPUT```, and ```CFDUMP```. ```CFSET``` is used to create a variable and assign it a value. Also ```CFSET``` is used to call methods. ```CFOUTPUT``` displays a variable's value. ```CFDUMP``` is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
 
 We might have a file named _myprogram.cfm_ and _Sample.cfc_ like this:
 
@@ -189,11 +189,11 @@ writeOutput("b = #b#<br/>");
 
 ### Components
 
-In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called "attributes", and can do actions, called "methods". In ColdFusion the "cffunction" tag is used to define methods within a CFC.
+In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called "attributes", and can do actions, called "methods". In ColdFusion the ```cffunction``` tag is used to define methods within a CFC.
 
 For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections we'll look at a few specific instructions in CFML.
 
-In CFML we define an object using the "cfcomponent" instruction and save the file as _.cfc_. Here's an example defining the object type _PersonalChef.cfc_:
+In CFML we define an object using the ```cfcomponent``` instruction and save the file as _.cfc_. Here's an example defining the object type _PersonalChef.cfc_:
 
 #### Tag
 
@@ -213,7 +213,7 @@ component {
 
 ### Methods
 
-Inside the CFC we usually define one or more methods using the "cffunction" instruction like this:
+Inside the CFC we usually define one or more methods using the ```cffunction``` instruction like this:
 
 #### Tag
 
@@ -235,7 +235,7 @@ component {
 }
 ```
 
-Inside the "cffunction" instruction we'd put the code for how the chef should make the toast.
+Inside the ```cffunction``` instruction we'd put the code for how the chef should make the toast.
 
 A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an "instance". It is a *realization* of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is *abstract*. The class's weight, color, and size we can't determine them ahead of time.
 
@@ -288,7 +288,7 @@ The method is requiring us to pass in a "color" telling it how to do the method 
 
 In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns *nothing*. We'll talk about *nothing* and null" in the last section of "CFML in 100 minutes". If you called "makeToast" method above like ```<cfset result = frank.makeToast("burned") />``` or ```set result = frank.makeToast("burned");```, and tried to output "result" you should have seen "Variable RESULT is undefined".
 
-To return data, we use "cfreturn" to instruct the method to return a "value". Since that wasn't in the last instruction before the ending "cffunction" in your "makeToast" method, you received *nothing* and tried to putting that into the "result" variable.
+To return data, we use ```cfreturn``` to instruct the method to return a "value". Since that wasn't in the last instruction before the ending ```cffunction``` in your "makeToast" method, you received *nothing* and tried to putting that into the "result" variable.
 
 For the purposes of our next section I"m going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef "frank". You say, "Frank, go make my toast", he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's **returning himself** to you. Here's how we implement it in code:
 
@@ -394,9 +394,11 @@ What we need to do is combine a variable with the string. There are two ways to 
 
 In the first line we setup a variable to hold the day of the week. Then we'll printed the string *Happy* combined with the value of the variable "today" and the string *!*. You might be thinking, "What was the point of that since we still wrote *Saturday* in the first line?" Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
 
-"today = DayOfWeek(Now());"
+```cfm
+today = DayOfWeek(Now());
+```
 
-"Now()" gets the current date and time of the computer running the ColdFusion server. "DayOfWeek" returns an integer in the range 1 (Sunday) to 7 (Saturday) for the day of the week. We still don't have the day of week as string. Try this:
+```Now()``` gets the current date and time of the computer running the ColdFusion server. "DayOfWeek" returns an integer in the range 1 (Sunday) to 7 (Saturday) for the day of the week. We still don't have the day of week as string. Try this:
 
 #### Tag
 
@@ -465,7 +467,7 @@ WriteOutput("I am here<br>");
 </cfscript>
 ```
 
-In this next example we're using the "cfloop" instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting "{" and the ending "}". Each instruction between the beginning "{" and ending "}" will be executed if the condition is true.
+In this next example we're using the ```cfloop``` instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting "{" and the ending "}". Each instruction between the beginning "{" and ending "}" will be executed if the condition is true.
 
 In the tag example there's no need to manage the index inside the loop if you're simply stepping through one item at a time. You can use the "from" and "to" arguments, and ColdFusion will simply loop from the first value to the second, and automatically increment the variable in the "index" argument.
 
@@ -525,7 +527,7 @@ while (loop < 5) {
 
 ## 6. Queries
 
-A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object. "cfquery" passes SQL statements to the "datasource". The "datasource" is set in the ColdFusion administrator.
+A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object. ```cfquery``` passes SQL statements to the "datasource". The "datasource" is set in the ColdFusion administrator.
 
 #### Tag
 
@@ -587,7 +589,7 @@ for (x = 1; x <= GetBreakfastItems; x=x+1) {
 
 When looping through a query with ```<cfloop>```, you need to make sure you have a ```<cfoutput>"``` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
 
-When looping through a query in "cfscript", you'll need to reference the query just like you would a multidimensional array, using the counter set up in in your for statement to pick up the correct row from the recordset. So the syntax becomes "recordsetName.ColumnName[rowNumber]".
+When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in in your for statement to pick up the correct row from the recordset. So the syntax becomes "recordsetName.ColumnName[rowNumber]".
 
 ## 7. Arrays
 
@@ -651,7 +653,7 @@ In order to get add an element in the array you use the syntax "ArrayAppend(arra
 * What did the "ArraySort" instuction do to the collection?
 * What does "ArrayLen" instruction return?
 
-There are lots of cool things to do with an array. You can rearrange the order of the elements using the "ArraySort" instruction like we did in the last example. You can iterate through each element using the "cfloop" instruction. You can find the address of a specific element by using the "arrayName[index]" instruction. You can ask an array if an element is present with the "ArrayIsDefined" instruction. Try out this example that brings a bunch of things together: 
+There are lots of cool things to do with an array. You can rearrange the order of the elements using the ```ArraySort``` instruction like we did in the last example. You can iterate through each element using the ```cfloop``` instruction. You can find the address of a specific element by using the "arrayName[index]" instruction. You can ask an array if an element is present with the "ArrayIsDefined" instruction. Try out this example that brings a bunch of things together: 
 
 #### Tag
 
