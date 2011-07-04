@@ -147,7 +147,7 @@ writeOutput("c = #c#<br/>");
 b = c * a;
 writeOutput("b = #b#<br/>");
 d = "Hello, ";
-writeOutput('d = #d#<br/>"); 
+writeOutput("d = #d#<br/>"); 
 </cfscript>
 ```
 
@@ -317,7 +317,7 @@ component {
 
 ## 4. Strings
 
-In CFML a string is defined as a quote ( """ ) followed by zero or more letters, numbers, or symbols and followed by another quote ( """  ). Some simple strings would be **hello** or **This sentence is a string!**. Strings can be anything from "", the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important instructions that we'll use.
+In CFML a string is defined as a quote ( **'** ) followed by zero or more letters, numbers, or symbols and followed by another quote ( **'**  ). Some simple strings would be **hello** or **This sentence is a string!**. Strings can be anything from "", the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important instructions that we'll use.
 
 ### Len
 * Call "Len" on a string to get back the number of characters in the string. For instance "Len("Hello")" would give you back "5".
