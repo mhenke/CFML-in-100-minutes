@@ -253,9 +253,9 @@ Once we define a class, we create an instance of that class like this:
 frank = New PersonalChef();
 ```
 
-We're calling the **New** instruction on the class **PersonalChef** and storing it into the variable named _frank_. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: "object.method_name()". So if you have a person named "frank" you would tell him to make toast by calling ```frank.makeToast()```.
+We're calling the ```New``` instruction on the class ```PersonalChef``` and storing it into the variable named _frank_. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: ```object.method_name()```. So if you have a person named "frank" you would tell him to make toast by calling ```frank.makeToast()```.
 
-The **New** instruction creates a new instance of the object and calls it's ```init()``` method (if existing). Any arguments supplied to the object will be passed to the ```init()``` method. The ```init()``` method should return the object instance using ```<cfreturn this />``` in order to have the same expected behavior as the **CreateObject** instruction. If no init () method exists, the object will be returned normally.
+The ```New``` instruction creates a new instance of the object and calls it's ```init()``` method (if existing). Any arguments supplied to the object will be passed to the ```init()``` method. The ```init()``` method should return the object instance using ```<cfreturn this />``` in order to have the same expected behavior as the ```CreateObject``` instruction. If no ```init()``` method exists, the object will be returned normally.
 
 ### Method Parameters
 
@@ -320,17 +320,17 @@ component {
 In CFML a string is defined as a quote ( **'** ) followed by zero or more letters, numbers, or symbols and followed by another quote ( **'**  ). Some simple strings would be **hello** or **This sentence is a string!**. Strings can be anything from "", the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important instructions that we'll use.
 
 ### Len
-* Call "Len" on a string to get back the number of characters in the string. For instance "Len("Hello")" would give you back "5".
+* Call ```Len``` on a string to get back the number of characters in the string. For instance ```Len("Hello")``` would give you back **5**.
 
 ### Replace
-* The "Replace" instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, **Replace("Hello", "e", "")** would give you back **hllo** after replacing the *first* occurrence of **e**, or **Replace("Good Morning!", "o", "e", "All")** would give you **Geed Merning!** 
+* The ```Replace``` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, **Replace("Hello", "e", "")** would give you back **hllo** after replacing the *first* occurrence of **e**, or **Replace("Good Morning!", "o", "e", "All")** would give you **Geed Merning!** 
 
 ### RemoveChars 
-* Call "RemoveChars" to remove characters from a string. For instance, "RemoveChars("hello bob", 2, 5)" would give you back **hbob**. 
+* Call ```RemoveChars``` to remove characters from a string. For instance, ```RemoveChars("hello bob", 2, 5)``` would give you back **hbob**. 
 
 ### Mid
  
-* The "mid" instruction extracts a substring from a string. For instance, I could call "Mid("Welcome to CFML Jumpstart",4,12)" and it would give you back: "come to CFML".
+* The ```mid``` instruction extracts a substring from a string. For instance, I could call ```Mid("Welcome to CFML Jumpstart",4,12)``` and it would give you back: **come to CFML**.
 
 Experiment with the following samples in a CFML file.
 
@@ -647,7 +647,7 @@ writeOutput("<br>");
 </cfscript>
 ```
 
-In order to get add an element in the array you use the syntax "ArrayAppend(array,"value")" or "arrayname[index] = "value**. The first example of adding an array element is **with an instruction**. The second is updating an array element is **by assignment**. So looking at the final "favorite_colors" array:
+In order to get add an element in the array you use the syntax ```ArrayAppend(array,"value")``` or ```arrayname[index] = "value"```. The first example of adding an array element is **with an instruction**. The second is updating an array element is **by assignment**. So looking at the final "favorite_colors" array:
 
 * What's the index of **brown** ?
 * What did the "ArraySort" instuction do to the collection?
@@ -902,7 +902,7 @@ the difference between "=" and "==".
 
 What is *nothingness*? Is there nothingness only in outer space? Really, when we think of *nothing* isn't it just the absence of something? Ok, that's too much philosophy
 
-ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a "NULL" value from an external source and maintain the "NULL" value until you try to use it. ColdFusion will convert the "NULL" into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a "NULL" value from a method. "IsNull()" instruction will test for "NULL" values and return "true" or "false".
+ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a "NULL" value from an external source and maintain the "NULL" value until you try to use it. ColdFusion will convert the "NULL" into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a "NULL" value from a method. ```IsNull()``` instruction will test for "NULL" values and return "true" or "false".
 
 If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, its a number, and its *not nothing*.
 
@@ -944,6 +944,6 @@ eggs?";
 }
 ```
 
-Reload the file, call "frank.makeeggs(3)" then try "frank.makeeggs()".
+Reload the file, call ```frank.makeeggs(3)``` then try ```frank.makeeggs()```.
 
 **TODO: Conclusion**
