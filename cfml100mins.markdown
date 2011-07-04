@@ -70,7 +70,7 @@ component {
 }
 ```
 
-For the script example, ```myprogram.cfm``` and ```Sample.cfc``` would have beginning/closing ```<cfscript>``` tags around the instructions.
+For the script example, _myprogram.cfm_ and _Sample.cfc_ would have beginning/closing ```<cfscript>``` tags around the instructions.
 
 ### PHP Syntax
 
