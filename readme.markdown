@@ -4,7 +4,7 @@ CFML in 100 minutes was modified from [Ruby in 100 Minutes](http://jumpstartlab.
 
 ## Where is CFML in 100 minutes?
 
-CFML in 100 minutes is a simple textile file for easy editing and contributions called 'cfml100mins.textile'. Textile is a lightweight markup language that converts its marked-up text input to valid, well-formed XHTML. You can click on the [cfml100mins.textile](https://github.com/mhenke/CFML-in-100-minutes/blob/master/cfml100mins.textile) link to view the converted page.
+CFML in 100 minutes is a simple textile file for easy editing and contributions called "cfml100mins.textile". Textile is a lightweight markup language that converts its marked-up text input to valid, well-formed XHTML. You can click on the [cfml100mins.textile](https://github.com/mhenke/CFML-in-100-minutes/blob/master/cfml100mins.textile) link to view the converted page.
 
 ## License
 
@@ -14,11 +14,11 @@ These works were originally created by Jeff Casimir ([jeff@jumpstartlab.com](mai
 
 Please add yourself if you help:
 
-Mike Henke ([henke.mike@gmail.com](mailto:henke.mike@gmail.com)) - [https://github.com/mhenke/](https://github.com/mhenke/)
+Mike Henke ([henke.mike@gmail.com](mailto:henke.mike@gmail.com)) * [https://github.com/mhenke/](https://github.com/mhenke/)
 
-russplaysguitar - [https://github.com/russplaysguitar/](https://github.com/russplaysguitar/)
+russplaysguitar * [https://github.com/russplaysguitar/](https://github.com/russplaysguitar/)
 
-Daniel Short (@danshort on twitter) - [http://www.dansshorts.com](http://www.dansshorts.com)
+Daniel Short (@danshort on twitter) * [http://www.dansshorts.com](http://www.dansshorts.com)
 
 ## Git Workflow for Contributors
 
