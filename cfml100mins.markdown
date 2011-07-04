@@ -721,7 +721,7 @@ writeOutput ("Joey is #ages["joey"]# years old.");
 </cfscript>
 ```
 
-Here we create a structure named "ages". Structures are made up what are called key-value pairs.The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the "=" symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, "=", and a *value* separated by commas, then end with a closing curly bracket ```}```.
+Here we create a structure named "ages". Structures are made up what are called key-value pairs.The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```.
 
 #### Tag
 
@@ -890,9 +890,9 @@ ampersands like this: "&&". You can write a "logical or" with the word
 symbolic representation ( "&&" and "||" ) is more common.
 
 The #1 mistake people encounter when writing conditional statements is
-the difference between "=" and "==".
+the difference between ```=``` and "==".
 
-*   "=" is an *assignment*. It means "take what's on the right side and
+*   ```=``` is an *assignment*. It means "take what's on the right side and
     stick it into whatever is on the left side" (or its *telling* not
     *asking*.)
 *   "==" is a *question*. It means "is the thing on the right equal to
