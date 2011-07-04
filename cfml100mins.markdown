@@ -469,7 +469,7 @@ WriteOutput("I am here<br>");
 
 In this next example we're using the ```cfloop``` instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting ```{``` and the ending ```}```. Each instruction between the beginning ```{```and ending ```}``` will be executed if the condition is true.
 
-In the tag example there's no need to manage the index inside the loop if you're simply stepping through one item at a time. You can use the "from" and "to" arguments, and ColdFusion will simply loop from the first value to the second, and automatically increment the variable in the "index" argument.
+In the tag example there's no need to manage the index inside the loop if you're simply stepping through one item at a time. You can use the ```from``` and ```to``` arguments, and ColdFusion will simply loop from the first value to the second, and automatically increment the variable in the ```index``` argument.
 
 Try this example with multiple instructions:
 
