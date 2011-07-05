@@ -696,7 +696,7 @@ We use arrays whenever we need a list where the elements are in a specific order
 
 ## 8. Structures
 
-A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like "science["Joey"]" which could be read as "look in the collection named "science" and find the thing named "Joey**.
+A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this as _science["Joey"]_ which reads _look in the collection named "science" and find the thing named "Joey"_.
 
 A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:
 
