@@ -1,6 +1,6 @@
 # CFML in 100 minutes
 
-ColdFusion Markup Language (CFML) is a great programming language for beginners because it was written to make the programmer's job easy and not care if the computer's job is hard. In this brief introduction we'll look at key language features you need to get started.
+ColdFusion Markup Language (CFML) is a web programming language, which is especially suited for new developers as it was written to make a programmer's job easy and not care if the computer's job is hard. In this brief introduction we'll look at key language features you need to get started.
 
 1.  Syntax
 2.  Variables
@@ -18,15 +18,19 @@ ColdFusion Markup Language (CFML) is a great programming language for beginners 
 
 ## CFML History
 
-CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. The term *ColdFusion* is often used synonymously with *CFML*. [ColdFusion](http://www.adobe.com/coldfusion) originated as proprietary technology, however, it is becoming less closed through the availability of competing open source products like [Railo](http://www.getrailo.com/) and [OpenBD](http://www.openbluedragon.org/) . ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their idea for ColdFusion was originally designed to make it easier to connect simple HTML pages to a database, but ColdFusion now includes advanced features for enterprise integration and application development.
+CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. The term *ColdFusion* is often used synonymously with *CFML*. [ColdFusion](http://www.adobe.com/coldfusion) originated as proprietary technology, however, the availability of competing open source products like [Railo](http://www.getrailo.com/) and [OpenBD](http://www.openbluedragon.org/) has made CFML more widely available. 
 
-When ColdFusion was originally released, it grew an audience quickly in the government and private sector. CFML tag syntax resembles HTML and the CFML script syntax resembles JavaScript. You may want to focus on either the tag or script based examples depending on your comfort level.
+ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their original idea for ColdFusion was to make it easier to connect simple HTML pages to a database. ColdFusion now includes advanced features for enterprise integration and application development. When ColdFusion was originally released, it was adopted in both the government and private sector. 
+
+CFML tag syntax resembles HTML and the CFML script syntax, CFScript, resembles ECMAScript (JavaScript). You may want to focus on either the tag or script based examples depending on your comfort level.
 
 And you want to learn CFML so here goes!
 
 ## 1. Syntax
 
-There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. CFML includes a set of instructions you use in pages. You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are ```CFSET```, ```CFOUTPUT```, and ```CFDUMP```. ```CFSET``` is used to create a variable and assign it a value. Also ```CFSET``` is used to call methods. ```CFOUTPUT``` displays a variable's value. ```CFDUMP``` is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
+There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. 
+
+CFML includes a set of instructions you use in pages. You will write one or more instructions in a file then run the file through a CFML engine. Three CFML instructions we will use in this tutorial are ```CFSET```, ```CFOUTPUT```, and ```CFDUMP```. ```CFSET``` is used to create a variable and assign it a value. Also ```CFSET``` is used to call methods. ```CFOUTPUT``` displays a variable's value. ```CFDUMP``` is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.
 
 We might have a file named _myprogram.cfm_ and _Sample.cfc_ like this:
 
@@ -70,7 +74,7 @@ component {
 }
 ```
 
-For the script example, _myprogram.cfm_ and _Sample.cfc_ would have beginning/closing ```<cfscript>``` tags around the instructions.
+For the script example, _myprogram.cfm_ would have beginning/closing ```<cfscript>``` tags around the instructions, however, the script-based _Sample.cfc_ does not require ```<cfscript>``` tags around the instructions.
 
 ### PHP Syntax
 
@@ -187,13 +191,13 @@ writeOutput("b = #b#<br/>");
 
 ## 3. Components, Methods, and Parameters
 
-### Components
+### Components (aka Objects or Classes)
 
-In CFML, a ColdFusion component (CFC) file contains data and methods. Components are a building blocks for objects. Objects know information, called "attributes", and can do actions, called "methods". In ColdFusion the ```cffunction``` tag is used to define methods within a CFC.
+In CFML, a ColdFusion component (CFC) is a file that contains data and methods. Components are the building blocks for objects in CFML. Objects know information, called "attributes", and can do actions, called "methods". In ColdFusion the ```cffunction``` tag is used to define methods within a tag-based CFC. In a script-based CFC, you use the ```function``` keyword to define a method.
 
 For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections we'll look at a few specific instructions in CFML.
 
-In CFML we define an object using the ```cfcomponent``` instruction and save the file as _.cfc_. Here's an example defining the object type _PersonalChef.cfc_:
+In CFML we define an object using the ```cfcomponent``` instruction (```component``` in script-based CFCs) and save the file as _.cfc_. Here's an example defining the object type _PersonalChef.cfc_:
 
 #### Tag
 
@@ -213,7 +217,7 @@ component {
 
 ### Methods
 
-Inside the CFC we usually define one or more methods using the ```cffunction``` instruction like this:
+Inside the CFC we usually define one or more methods using the ```cffunction``` or ```function``` instruction like this:
 
 #### Tag
 
@@ -235,9 +239,11 @@ component {
 }
 ```
 
-Inside the ```cffunction``` instruction we'd put the code for how the chef should make the toast.
+Inside the ```cffunction```/```function``` instruction we would put the code for how the chef should make the toast.
 
-A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an "instance". It is a *realization* of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is *abstract*. The class's weight, color, and size we can't determine them ahead of time.
+### Classes
+
+A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. While a "Chair" class would represent a chair in the abstract sense, we would call the actual chair an "instance" of the "Chair" class. It is a *realization* of the idea of the Chair. It has measurable attributes like height, color, weight. The class Chair, on the other hand, is *abstract*. It is abstract in the sense that the class's attributes, such as weight, color, and size, cannot be determined ahead of time.
 
 Once we define a class, we create an instance of that class like this:
 
