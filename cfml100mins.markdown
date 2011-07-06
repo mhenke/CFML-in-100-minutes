@@ -193,7 +193,7 @@ In CFML, a ColdFusion component (CFC) file contains data and methods. Components
 
 For an example of an object, think about you as a human being. You have attributes like height, weight, and eye color. You have methods like walk, run, wash dishes, and daydream. Different kinds of objects have different attributes and methods. In the next sections we'll look at a few specific instructions in CFML.
 
-In CFML we define an object using the ```cfcomponent``` instruction and save the file as _.cfc_. Here's an example defining the object type _PersonalChef.cfc_:
+In CFML, we define an object using the ```cfcomponent``` instruction and save the file as _.cfc_. Here's an example defining the object type _PersonalChef.cfc_:
 
 #### Tag
 
@@ -235,7 +235,7 @@ component {
 }
 ```
 
-Inside the ```cffunction``` instruction we'd put the code for how the chef should make the toast.
+Inside the ```cffunction``` instruction we would add the code for how the chef should make the toast.
 
 A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. We'd call this actual chair an "instance". It is a *realization* of the idea chair. It has measurable attributes like height, color, weight. The class chair, on the other hand, is *abstract*. The class's weight, color, and size we can't determine them ahead of time.
 
@@ -259,7 +259,9 @@ The ```New``` instruction creates a new instance of the object and calls it's ``
 
 ### Method Parameters
 
-Sometimes methods take one or more *parameters* telling them **how** to do what they're suppose to **do**. For instance, I might call ```frank.makeToast("burned")``` for him to burn my toast. Or maybe he has another method where I call ```frank.makebreakfast("toast","eggs")``` for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the ```cfargument``` instruction, it'll look like this:
+Often, methods take one or more *parameters* that tell them **how** to do what they're supposed to **do**. For instance, I might call ```frank.makeToast("burned")``` for him to burn my toast. Or maybe he has another method where I call ```frank.makeBreakfast("toast","eggs")``` for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. 
+
+Method parameters look significantly different between a tag-based component (CFC) and a script-based component. In tag-based components, when a method takes a parameter we use the ```cfargument``` instruction. It looks like this:
 
 #### Tag
 
@@ -272,7 +274,9 @@ Sometimes methods take one or more *parameters* telling them **how** to do what 
 </cfcomponent>
 ```
 
-#### Syntax
+In script-based components, when a method takes a parameter we specify the parameters inside the parentheses that immediately follow the method's name. It looks like this:
+
+#### Script
 
 ```cfm
 component {
@@ -282,15 +286,19 @@ component {
 }
 ```
 
-The method is requiring us to pass in a "color" telling it how to do the method "makeToast".
+The method above requires us to pass in a "color", which tells the method "makeToast" how dark (or light) to make the toast.
 
 ### Return Value
 
-In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns *nothing*. We'll talk about *nothing* and null" in the last section of "CFML in 100 minutes". If you called ```makeToast``` method above like ```<cfset result = frank.makeToast("burned") />``` or ```set result = frank.makeToast("burned");```, and tried to output "result" you should have seen "Variable RESULT is undefined".
+Your methods will not always return data. In fact, a CFML method returns *nothing* by default. In CFML, *nothing* and "null" are somewhat special, and we'll detail them in the last section of "CFML in 100 minutes". 
 
-To return data, we use ```cfreturn``` to instruct the method to return a "value". Since that wasn't in the last instruction before the ending ```cffunction``` in your ```makeToast``` method, you received *nothing* and tried to putting that into the "result" variable.
+If you called the ```makeToast``` method above with ```<cfset result = frank.makeToast("burned") />``` or ```result = frank.makeToast("burned");``` and then tried to output the variable "result" you should have seen "Variable RESULT is undefined". But why?
 
-For the purposes of our next section I"m going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef "frank". You say, "Frank, go make my toast", he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's **returning himself** to you. Here's how we implement it in code:
+To return data, we use ```cfreturn``` (tag-based components) or ```return``` (script-based components) to instruct the method to return a "value". Since we did not include the ```cfreturn``` or ```return``` instruction before the ending ```cffunction``` (tag-based components) or the closing ```}``` (script-based components) in the ```makeToast``` method, *nothing* was sent back from the method and CFML tried to put that *nothing* into the "result" variable.
+
+For the purposes of our next section I'm going to return the instance of our chef class from the method. If you wanted to picture the metaphor, imagine you are looking at your chef "frank". You say, "Frank, go make my toast", he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's **returning himself** to you. The current instance of the chef class (i.e., "frank") is referenced in your method and component with the ```this``` keyword. Think of it as you're returning "this" instance of the chef class. 
+
+Here's how we implement it in code:
 
 #### Tag
 
@@ -317,20 +325,22 @@ component {
 
 ## 4. Strings
 
-In CFML a string is defined as a quote ( **'** ) followed by zero or more letters, numbers, or symbols and followed by another quote ( **'**  ). Some simple strings would be **hello** or **This sentence is a string!**. Strings can be anything from "", the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important instructions that we'll use.
+In CFML a string is defined as a quoted ( **'** **'** ) group of characters that may include zero or more letters, numbers, or symbols (e.g., "Hello world!", "I am a #1 string!" or 'Am I the second string?'). Note that you may surround a string with either single (**'**) or double (**"**) quotes. Strings can be anything from "", the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. 
+
+Strings have a few important instructions (i.e., methods) that we'll use.
 
 ### Len
 * Call ```Len``` on a string to get back the number of characters in the string. For instance ```Len("Hello")``` would give you back **5**.
 
 ### Replace
-* The ```Replace``` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, ```Replace("Hello", "e", "")``` would give you back **hllo** after replacing the _first occurrence of e_, or ```Replace("Good Morning!", "o", "e", "All")``` would give you **Geed Merning!** 
+* The ```Replace``` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, ```Replace("Hello", "e", "")``` would give you back **hllo** after replacing the _first occurrence of e_, or ```Replace("Good Morning!", "o", "e", "All")``` would give you **Geed Merning!** as ```Replace``` is instructed to replace all occurrences of _o_ with _e_. 
 
 ### RemoveChars 
-* Call ```RemoveChars``` to remove characters from a string. For instance, ```RemoveChars("hello bob", 2, 5)``` would give you back **hbob**. 
+* Call ```RemoveChars``` to remove characters from a string. For instance, ```RemoveChars("hello bob", 2, 5)``` would give you back **hbob** as this method is being told to remove the 2nd, 3rd, 4th, and 5th characters in the string. 
 
 ### Mid
  
-* The ```mid``` instruction extracts a substring from a string. For instance, I could call ```Mid("Welcome to CFML Jumpstart",4,12)``` and it would give you back: **come to CFML**.
+* The ```mid``` instruction extracts a substring from a string. For instance, I could call ```Mid("Welcome to CFML Jumpstart",4,12)``` and it would give you back: **come to CFML** where the numbers 4 and 12 indicate which section of the string to extract.
 
 Experiment with the following samples in a CFML file.
 
@@ -351,7 +361,7 @@ Experiment with the following samples in a CFML file.
 ```cfm
 <cfscript>
 tester = "Good Morning Everyone!";
-writeOutput ("#len (tester)#<br/>");
+writeOutput ("#len(tester)#<br/>");
 writeOutput (Replace (tester, "o", "e", "All") & "<br/>");
 writeOutput (RemoveChars (tester, 2, 5) & "<br/>");
 t2 = "sample,data,from,a,CSV";
@@ -360,7 +370,15 @@ writeOutput (t3 & "<br/>");
 </cfscript>
 ```
 
-Often a string may store a list like the *t2* variable in the last example. A string for storing a list isn't the best for performance and usage. Using an array for a list is so much better. We can convert a list into an *array* using *ListToArray*. We'll discuss arrays in an upcoming section. Try out these next examples in the CFML file assuming we have the code from the last example:
+Strings are sometimes used to hold more than what we've previously defined as a string. Often a string is used to store a list of items. Check out the *t2* variable statements in the last example. Note that this expression stores a few words/strings, each separated by a comma. In such a case, t2 could be used in two ways: (1) a normal string, as we've already seen and (2) as a special type of string called a ```list```. 
+
+Lists are strings that employ a delimiter to separate sections of string. A delimiter could be any character, really. It could be a semi-colon (**;**), a space (** **), a colon (**:**), or anything! Typically, however, the delimiter is usually a comma (**,**). As programmers, we can use several built-in CFML methods to manipulate or act on such lists, however, using a string for storing a list isn't the best for performance and usage. 
+
+Using an array, which a datatype specifically designed to hold one or more pieces of data, for a list of items or set of data is much better. In brief, arrays hold a series of items that are indexed by numbers (**1, 2, 3, etc.**) or strings (**'first', 'second','another', etc.**). We use these indexes to access and act on specific parts of the array. Because arrays index their elements, they are far more efficient (and easier) to use than a string-based list. 
+
+One area where CFML really helps us developers is its many built-in utility methods. One such helpful method is called *ListToArray*. It does just what the name implies ... it allows us to convert a *list* to an *array*. While we get into arrays in greater detail below, let's get our feet wet by trying out the following *ListToArray* examples. 
+
+In the same CFML file you created from the above examples add the following:
 
 #### Tag
 
@@ -380,25 +398,27 @@ writeOutput(t4[2]);
 </cfscript>
 ```
 
-The numbers inside the "[]" brackets specify which item of the array you want pulled out. They're numbered starting with 1. So the first example pulls out the "2" array item. This "t4" array contains position "1", the beginning of the list, up to position "4", the ending of the array.
+The numbers inside the "[]" brackets specify which item (read: index) of the array you want pulled out. They're numbered starting with 1*. So the first example pulls out the "2" array item. This "t4" array contains position "1", the beginning of the list, up to position "4", the ending of the array.
+
+*This is an important distinction for CFML. Many other programming languages start their arrays with "0". CFML, however, starts with "1". 
 
 ### Combining Strings and Variables
 
-It is extremely common that we want to combine the value of a variable with other strings. For instance, lets start with this example string:
+It is extremely common that we want to combine the value of a variable with other strings, a process that is also known as concatenation. For instance, lets start with this example string:
 
 **Happy Saturday!**
 
 When we put that into the CFML file, it just spits back the same string. If we were writing a proper program we might want it to greet the user when they start the program by saying **Happy** then the day of the week. So we can't just put a string like **Happy Saturday!** or it'd be saying Saturday even on Tuesday.
 
-What we need to do is combine a variable with the string. There are two ways to do that. The first approach is called *string concatenation* which is basically just adding strings together:
+What we need to do is combine one string with another string. There are two ways to do that. The first approach is called *string concatenation* which is basically just adding strings together:
 
-In the first line we setup a variable to hold the day of the week. Then we'll printed the string *Happy* combined with the value of the variable "today" and the string *!*. You might be thinking, "What was the point of that since we still wrote *Saturday* in the first line?" Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
+In the first line of our sample code (below) we setup a variable to hold the day of the week. Then we'll printed the string *Happy* combined with the value of the variable "today" and the string *!*. You might be thinking, "What was the point of that since we still wrote *Saturday* in the first line?" Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
 
 ```cfm
 today = DayOfWeek(Now());
 ```
 
-```Now()``` gets the current date and time of the computer running the ColdFusion server. "DayOfWeek" returns an integer in the range 1 (Sunday) to 7 (Saturday) for the day of the week. We still don't have the day of week as string. Try this:
+```Now()``` gets the current date and time of the computer running the CFML server. ```DayOfWeek``` returns an integer in the range of 1 (Sunday) to 7 (Saturday) for the day of the week. We still don't have the day of week as string. Try this:
 
 #### Tag
 
@@ -420,9 +440,11 @@ writeOutput(message);
 </cfscript>
 ```
 
-Great, no errors and our output looks correct. "DayOfWeekAsString" did the trick. There is another string combination called *string interpolation*.
+Great, no errors and our output looks correct. "DayOfWeekAsString" did the trick. Note that we use an ampersand (**&**) to instruct our CFML engine to concatenate the string. 
 
-**String interpolation** is the process of sticking data into the middle of strings. We use the symbols ```#``` around the "variable" where in a string the value should be inserted. Inside those hashes we can put any variable and output it in that spot. Our previous example "message" could be rewritten like this:
+There is another string combination options, which is called *string interpolation*.
+
+**String interpolation** is the process of sticking data (i.e., variables) into the middle of strings. We use the hash symbol (```#```) around the "variable" where the value should be inserted in the string. Inside those hashes we can put any variable and output it in that spot. Our previous example "message" could be rewritten like this:
 
 #### Tag
 
@@ -436,9 +458,9 @@ Great, no errors and our output looks correct. "DayOfWeekAsString" did the trick
 message = "Happy #today#!";
 ```
 
-If you compare the output you'll see the second example gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
+If you compare the output you'll see the second example gives the exact same results. The code itself is a little more compact and, personally, many programmers find this approach much easier to read.
 
-Basically *interpolating* means evaluate the code inside this ```#``` wrapper and put it into the string.
+Basically *interpolating* means evaluate the code inside this ```#``` wrapper and output it directly into the string.
 
 ## 5. Numbers
 
