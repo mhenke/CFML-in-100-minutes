@@ -464,7 +464,9 @@ Basically *interpolating* means evaluate the code inside this ```#``` wrapper an
 
 ## 5. Numbers
 
-There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including "+", "-", "/", and "*". The "++" operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the "++" operator:
+There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including "+", "-", "/", and "*". The "++" operator can be used to increment a number while "--" can be used to decrement a number. 
+
+The "++" operator is also the one we will use to control a loop. We will talk more about Conditional Looping in section 9, however, take a moment and try out the following example for the "++" operator:
 
 #### Tag
 
@@ -483,13 +485,14 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 
 ```cfm
 <cfscript>
-for (loop = 0 ; loop < 5 ; loop++)
+for (loop = 0 ; loop < 5 ; loop++){
  WriteOutput("#loop# Hello, world!<br>");
+}
 WriteOutput("I am here<br>");
 </cfscript>
 ```
 
-In this next example we're using the ```cfloop``` instruction with a multiple instructions inside the condition. The CFML script syntax looks for the starting ```{``` and the ending ```}```. Each instruction between the beginning ```{```and ending ```}``` will be executed if the condition is true.
+In this next example we're using the ```cfloop``` instruction with multiple instructions inside the condition. The CFML script syntax looks for the starting ```{``` and the ending ```}```. Each instruction between the beginning ```{```and ending ```}``` will be executed if the condition is true.
 
 In the tag example there's no need to manage the index inside the loop if you're simply stepping through one item at a time. You can use the ```from``` and ```to``` arguments, and ColdFusion will simply loop from the first value to the second, and automatically increment the variable in the ```index``` argument.
 
@@ -549,7 +552,7 @@ while (loop < 5) {
 
 ## 6. Queries
 
-A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object. ```cfquery``` passes SQL statements to the "datasource". The "datasource" is set in the ColdFusion administrator.
+A query is a request sent to a database. A query can be used to ask a database for information, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (also known as the recordset) and the query variables; together they make up the query object. In tag-based CFML the ```cfquery``` instruction passes SQL statements to the "datasource", which is set in the ColdFusion administrator. In script-based CFML, which is quite different from our tag-based implementation, we use the ```query``` instruction. 
 
 #### Tag
 
@@ -587,9 +590,9 @@ There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br
 </cfoutput>
 ```
 
-While it's not strictly necessary to prepend the recordset name before the column name inside the ```<cfoutput>```, it's strongly recommended that you do in order to prevent referencing the wrong variable scope.
+While it's not required to prepend the recordset name before the column name inside the ```<cfoutput>```, it's strongly recommended that you do in order to prevent referencing the wrong variable scope.
 
-You can also loop through a query using standard loop constructs, though they differ when using tags and script.
+You can also loop through a query using standard loop constructs, though they differ markedly when using tags versus scripts.
 
 #### Tag
 
@@ -617,7 +620,7 @@ When looping through a query in ```cfscript```, you'll need to reference the que
 
 Often we need to organize a group and put them into a *collection*. There are two main types of collections: **arrays** and **structures**.
 
-An **array** is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the **indices**. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The **index** is the address of a specific element inside the array. In CFML the index always begins with "1". An array is defined in CFML as an opening "[" then zero or more elements, and a closing "]". Try out this code:
+An **array** is a number-indexed list. Picture a city block of houses. Together the houses form an array and their addresses are the **indices**. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The **index** is the address of a specific element inside the array. In CFML the index always begins with "1". An array is defined in CFML in one of two ways. Most commonly, CFML developers use an opening "[" then zero or more elements, and a closing "]". Try out this code:
 
 #### Tag
 
@@ -641,7 +644,41 @@ writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
 </cfscript>
 ```
 
-Keep going with these, but try to understand what each instruction is doing before we explain them:
+While the above example is certainly the preferred approach as it is easy to type and read, you may also use the built-in ```arrayNew``` method to create a new array. In the example below, note that we pass in an integer to arrayNew (i.e., arrayNew(1)), which tells the CFML engine to create an array with "x" dimensions. We can then add elements explicitly to the array at a specific index. 
+
+#### Tag
+
+```cfm
+<cfset favorite_colors = arrayNew(1) />
+<cfset favorite_colors[1] = "red" />
+<cfset favorite_colors[2] = "blue" />
+<cfset favorite_colors[3] = "green" />
+<cfset favorite_colors[4] = "black" />
+<cfset favorite_colors[5] = "brown" />
+<cfdump var="#favorite_colors#" /><br>
+<cfdump var="#favorite_colors[2]#" /><br>
+<cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" /><br>
+```
+
+#### Syntax
+
+```cfm
+<cfscript>
+favorite_colors = arrayNew(1) />
+favorite_colors[1] = "red";
+favorite_colors[2] = "blue";
+favorite_colors[3] = "green";
+favorite_colors[4] = "black";
+favorite_colors[5] = "brown";
+writeDump(favorite_colors);
+writeOutput("<br>");
+writeDump(favorite_colors[2]);
+writeOutput("<br>");
+writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
+</cfscript>
+```
+
+Keep going with these, but try to understand what each instruction is doing before we explain them. Check out the difference between how we added elements to an array at a specific index versus the methods used below to manipulate an array:
 
 #### Tag
 
@@ -669,13 +706,21 @@ writeOutput("<br>");
 </cfscript>
 ```
 
-In order to get add an element in the array you use the syntax ```ArrayAppend(array,"value")``` or ```arrayname[index] = "value"```. The first example of adding an array element is **with an instruction**. The second is updating an array element is **by assignment**. So looking at the final "favorite_colors" array:
+In order to add an element to the array, you use the syntax ```ArrayAppend(array,"value")``` or ```arrayName[index] = "value"```. The first example of adding an array element is **with an instruction** (ArrayAppend). The second is updating an array element is **by assignment** (favorite_colors[3]="yellow"). So looking at the final "favorite_colors" array, see if you can answer the following:
 
 * What's the index of **brown** ?
 * What did the "ArraySort" instuction do to the collection?
 * What does "ArrayLen" instruction return?
 
-There are lots of cool things to do with an array. You can rearrange the order of the elements using the ```ArraySort``` instruction like we did in the last example. You can iterate through each element using the ```cfloop``` instruction. You can find the address of a specific element by using the "arrayName[index]" instruction. You can ask an array if an element is present with the "ArrayIsDefined" instruction. Try out this example that brings a bunch of things together: 
+There are lots of cool things to do with an array. 
+
+* You can rearrange the order of the elements using the ```ArraySort``` instruction as we did in the last example. 
+* You can iterate through each element using the ```cfloop``` instruction. 
+* You can find the address of a specific element by using the "arrayName[index]" instruction. 
+* You can ask an array if an element is present with the ```ArrayIsDefined``` instruction. 
+* And a whole lot more!
+
+Try out this example that brings a bunch of things together: 
 
 #### Tag
 
@@ -708,13 +753,15 @@ writeDump (var=ArrayIsDefined (favorite_colors,4));
 </cfscript>
 ```
 
-We use arrays whenever we need a list where the elements are in a specific order.
+We use arrays whenever we need a collection of data where the elements in said collection are in a specific order.
 
 ## 8. Structures
 
-A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like "science["Joey"]" which could be read as "look in the collection named "science" and find the thing named "Joey**.
+A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like "science["Joey"]" which could be read as "look in the collection named "science" and find the thing named "Joey".
 
-A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:
+A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name (also referred to as a key). Structures are made up what are called key-value pairs. The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we will create below there are keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```.
+
+Following we create a structure named "ages" and populate a couple of keys with data. 
 
 #### Tag
 
@@ -743,7 +790,7 @@ writeOutput ("Joey is #ages["joey"]# years old.");
 </cfscript>
 ```
 
-Here we create a structure named "ages". Structures are made up what are called key-value pairs.The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```.
+In the second chunk of the example, we add a new key and value to the structure. Since the **jimmy** key wasn't in the original structure, it's added with the value of "14". If the key **jimmy** already existed then the value would be replaced by "14". Every key in a structure must be unique! In the second line we reference the key **joey** which already exists, so the value gets replaced with the "9". Then, just to show you the state of the structure, we dump out the list of keys and the list of values.
 
 #### Tag
 
@@ -763,7 +810,9 @@ writeDump (var=ages);
 </cfscript>
 ```
 
-In the second chunk of the example, we add a new key and value to the structure. Since the **jimmy** key wasn't in the original structure, it's added with the value of "14". If the key **jimmy** already existed then the value would be replaced by "14". Every key in a structure must be unique! In the second line we reference the key **joey** which already exists, so the value gets replaced with the "9". Then, just to show you the state of the structure, we dump out the list of keys and the list of values.
+The last chunk of the example (below) uses the built-in method ```StructSort``` to get the sorted array "students" from "ages". Then, we iterate (loop) through the "students" array using a loop and give each element of the array the name "student". Next, we print out one line with that student name and the student's age from the "ages" structure.
+
+While this last part probably seems complicated, it's provided to illustrate that structures are unordered.
 
 #### Tag
 
@@ -787,15 +836,11 @@ for (i = 1; i LTE ArrayLen (students); i = i+1) {
  }
 ```
 
-The last chunk of the example used StructSort to get the sorted array "students" from "ages". Then, it iterated through the "students" array using a loop and gave each element of the array the name "student". It then printed out one line with that student name and the students age from "ages".
-
-While that last part probably seemed complicated, it's just to illustrate that structures are unordered.
-
 ## 9. Conditionals
 
-Conditional statements evaluate to "true" or "false" only. The most common conditional operators are ```==``` (equal), ```!=``` (not equal), ```>``` (greater than), ```>=``` (greater than or equal to), ```<``` (less than), and ```<=``` (less than or equal to). You can also define the operators as abbreviations: ```EQ```, ```NEQ```, ```GT```, ```GTE```, ```LT```, and ```LTE```.
+Conditional statements evaluate to "true" or "false" only. The most common conditional operators are ```==``` (equal to), ```!=``` (not equal to), ```>``` (greater than), ```>=``` (greater than or equal to), ```<``` (less than), and ```<=``` (less than or equal to). You can also define the operators as abbreviations: ```EQ```, ```NEQ```, ```GT```, ```GTE```, ```LT```, and ```LTE```.
 
-Some instructions return a "true" or "false", so they're used in conditional statements. For example, "IsArray" which is "true" only when the variable is an "array". Structures have an instruction named ```StructKeyExists``` which returns "true" if a key is present in a structure.
+Some built-in CFML instructions return a "true" or "false", so they're used in conditional statements, such as the built-in instruction ```IsArray(variable)```, which evaluates to "true" only when the variable provided is an "array". Structures have an instruction named ```StructKeyExists``` which returns "true" if a key is present in a structure.
 
 ### 9. 1. If, Else If, & Else
 
