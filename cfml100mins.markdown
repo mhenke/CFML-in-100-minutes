@@ -84,7 +84,7 @@ For the script example, _myprogram.cfm_ would have beginning/closing ```<cfscrip
 <?php
  require("Sample.php");
  $s = new Sample();
- echo s->hello();
+ echo $s->hello();
 ?>
 ```
 
@@ -243,7 +243,7 @@ Inside the ```cffunction```/```function``` instruction we would put the code for
 
 ### Classes
 
-A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. It’s not an abstract chair, it is an actual chair. While a "Chair" class would represent a chair in the abstract sense, we would call the actual chair an "instance" of the "Chair" class. It is a *realization* of the idea of the Chair. It has measurable attributes like height, color, weight. The class Chair, on the other hand, is *abstract*. It is abstract in the sense that the class's attributes, such as weight, color, and size, cannot be determined ahead of time.
+A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. It’s not an abstract chair, it is an actual chair. While a "Chair" class would represent a chair in the abstract sense, we would call the actual chair an "instance" of the "Chair" class. It is a *realization* of the idea of the Chair. It has measurable attributes like height, color, and weight. The class Chair, on the other hand, is *abstract*. It is abstract in the sense that the class's attributes, such as height, color, and weight, cannot be determined ahead of time.
 
 Once we define a class, we create an instance of that class like this:
 
