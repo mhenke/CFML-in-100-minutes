@@ -243,7 +243,7 @@ Inside the ```cffunction```/```function``` instruction we would put the code for
 
 ### Classes
 
-A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. Its not an abstract chair, it is an actual chair. While a "Chair" class would represent a chair in the abstract sense, we would call the actual chair an "instance" of the "Chair" class. It is a *realization* of the idea of the Chair. It has measurable attributes like height, color, weight. The class Chair, on the other hand, is *abstract*. It is abstract in the sense that the class's attributes, such as weight, color, and size, cannot be determined ahead of time.
+A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. It’s not an abstract chair, it is an actual chair. While a "Chair" class would represent a chair in the abstract sense, we would call the actual chair an "instance" of the "Chair" class. It is a *realization* of the idea of the Chair. It has measurable attributes like height, color, weight. The class Chair, on the other hand, is *abstract*. It is abstract in the sense that the class's attributes, such as weight, color, and size, cannot be determined ahead of time.
 
 Once we define a class, we create an instance of that class like this:
 
@@ -261,11 +261,11 @@ frank = New PersonalChef();
 
 We're calling the ```New``` instruction on the class ```PersonalChef``` and storing it into the variable named _frank_. Once we have the instance, we can set or get its attributes and call its methods. Methods are called by using this syntax: ```object.method_name()```. So if you have a person named "frank" you would tell him to make toast by calling ```frank.makeToast()```.
 
-The ```New``` instruction creates a new instance of the object and calls it's ```init()``` method (if existing). Any arguments supplied to the object will be passed to the ```init()``` method. The ```init()``` method should return the object instance using ```<cfreturn this />``` in order to have the same expected behavior as the ```CreateObject``` instruction. If no ```init()``` method exists, the object will be returned normally.
+The ```New``` instruction creates a new instance of the object and calls its ```init()``` method (if existing). Any arguments supplied to the object will be passed to the ```init()``` method. The ```init()``` method should return the object instance using ```<cfreturn this />``` in order to have the same expected behavior as the ```CreateObject``` instruction. If no ```init()``` method exists, the object will be returned normally.
 
 ### Method Parameters
 
-Sometimes methods take one or more *parameters* telling them **how** to do what they're suppose to **do**. For instance, I might call ```frank.makeToast("burned")``` for him to burn my toast. Or maybe he has another method where I call ```frank.makebreakfast("toast","eggs")``` for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the ```cfargument``` instruction, it'll look like this:
+Sometimes methods take one or more *parameters* telling them **how** to do what they're supposed to **do**. For instance, I might call ```frank.makeToast("burned")``` for him to burn my toast. Or maybe he has another method where I call ```frank.makebreakfast("toast","eggs")``` for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the ```cfargument``` instruction, it'll look like this:
 
 #### Tag
 
@@ -296,7 +296,7 @@ In CFML, every time you call a method you won't necessarily get a value back. By
 
 To return data, we use ```cfreturn``` to instruct the method to return a "value". Since that wasn't in the last instruction before the ending ```cffunction``` in your ```makeToast``` method, you received *nothing* and tried to putting that into the "result" variable.
 
-For the purposes of our next section I"m going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef "frank". You say, "Frank, go make my toast", he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's **returning himself** to you. Here's how we implement it in code:
+For the purposes of our next section I’m going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef "frank". You say, "Frank, go make my toast", he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's **returning himself** to you. Here's how we implement it in code:
 
 #### Tag
 
