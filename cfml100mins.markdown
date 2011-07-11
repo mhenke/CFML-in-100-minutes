@@ -910,7 +910,7 @@ What is *nothingness*? Is there nothingness only in outer space? Really, when we
 
 ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a "NULL" value from an external source and maintain the "NULL" value until you try to use it. ColdFusion will convert the "NULL" into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a "NULL" value from a method. ```IsNull()``` instruction will test for "NULL" values and return "true" or "false".
 
-If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, its a number, and its *not nothing*.
+If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, it's a number, and it's *not nothing*.
 
 A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our ```makeeggs``` method to  illustrate "NULL" :
 
@@ -925,7 +925,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
   <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
   <cfset this.yourEggs = ArrayNew(1) />
 
-  <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#" />
+  <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#">
    <cfset ArrayAppend(this.yourEggs, "Making an Egg.") />
   </cfloop>
  </cfif>
