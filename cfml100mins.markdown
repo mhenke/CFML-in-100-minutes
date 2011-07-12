@@ -84,7 +84,7 @@ For the script example, _myprogram.cfm_ would have beginning/closing ```<cfscrip
 <?php
  require("Sample.php");
  $s = new Sample();
- echo s->hello();
+ echo $s->hello();
 ?>
 ```
 
@@ -243,7 +243,7 @@ Inside the ```cffunction```/```function``` instruction we would put the code for
 
 ### Classes
 
-A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. It’s not an abstract chair, it is an actual chair. While a "Chair" class would represent a chair in the abstract sense, we would call the actual chair an "instance" of the "Chair" class. It is a *realization* of the idea of the Chair. It has measurable attributes like height, color, weight. The class Chair, on the other hand, is *abstract*. It is abstract in the sense that the class's attributes, such as weight, color, and size, cannot be determined ahead of time.
+A "class" is an abstract idea, it defines what all objects of that type can know and do. Think of the chair you're sitting in. It’s not an abstract chair, it is an actual chair. While a "Chair" class would represent a chair in the abstract sense, we would call the actual chair an "instance" of the "Chair" class. It is a *realization* of the idea of the Chair. It has measurable attributes like height, color, and weight. The class Chair, on the other hand, is *abstract*. It is abstract in the sense that the class's attributes, such as height, color, and weight, cannot be determined ahead of time.
 
 Once we define a class, we create an instance of that class like this:
 
@@ -908,7 +908,7 @@ What is *nothingness*? Is there nothingness only in outer space? Really, when we
 
 ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a "NULL" value from an external source and maintain the "NULL" value until you try to use it. ColdFusion will convert the "NULL" into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a "NULL" value from a method. ```IsNull()``` instruction will test for "NULL" values and return "true" or "false".
 
-If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, its a number, and its *not nothing*.
+If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, it's a number, and it's *not nothing*.
 
 A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our ```makeeggs``` method to  illustrate "NULL" :
 
@@ -923,7 +923,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
   <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
   <cfset this.yourEggs = ArrayNew(1) />
 
-  <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#" />
+  <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#">
    <cfset ArrayAppend(this.yourEggs, "Making an Egg.") />
   </cfloop>
  </cfif>
