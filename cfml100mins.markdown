@@ -18,9 +18,9 @@ ColdFusion Markup Language (CFML) is a web programming language, which is especi
 
 ## CFML History
 
-CFML is thought of by many as an old programming language, but ColdFusion actually has been continuously improved by Allaire, Macromedia, and now Adobe. The term *ColdFusion* is often used synonymously with *CFML*. [ColdFusion](http://www.adobe.com/coldfusion) originated as proprietary technology, however, the availability of competing open source products like [Railo](http://www.getrailo.com/) and [OpenBD](http://www.openbluedragon.org/) has made CFML more widely available. 
+Although many people think of ColdFusion, or CFML, as an old programming language, Allaire, Macromedia, and Adobe have all devoted resources to its continued improvement. [ColdFusion](http://www.adobe.com/coldfusion) originated as proprietary technology, however, the availability of competing open source products like [Railo](http://www.getrailo.com/) and [OpenBD](http://www.openbluedragon.org/) has made CFML more widely available. 
 
-ColdFusion was invented by Jeremy and JJ Allaire in 1995. Their original idea for ColdFusion was to make it easier to connect simple HTML pages to a database. ColdFusion now includes advanced features for enterprise integration and application development. When ColdFusion was originally released, it was adopted in both the government and private sector. 
+In 1995 Jeremy and JJ Allaire invented ColdFusion to make it easier to connect simple HTML pages to a database. ColdFusion now includes advanced features for enterprise integration and application development. When ColdFusion was originally released, it was adopted in both the government and private sector. 
 
 CFML tag syntax resembles HTML and the CFML script syntax, CFScript, resembles ECMAScript (JavaScript). You may want to focus on either the tag or script based examples depending on your comfort level.
 
@@ -595,7 +595,7 @@ for (x = 1; x <= GetBreakfastItems.RecordCount; x++) {
 
 When looping through a query with ```<cfloop>```, you need to make sure you have a ```<cfoutput>``` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
 
-When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in in your for statement to pick up the correct row from the recordset. So the syntax becomes "recordsetName.ColumnName[rowNumber]".
+When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in your for statement to pick up the correct row from the recordset. So the syntax becomes "recordsetName.ColumnName[rowNumber]".
 
 ## 7. Arrays
 
@@ -656,7 +656,7 @@ writeOutput("<br>");
 In order to get add an element in the array you use the syntax ```ArrayAppend(array,"value")``` or ```arrayname[index] = "value"```. The first example of adding an array element is **with an instruction**. The second is updating an array element is **by assignment**. So looking at the final "favorite_colors" array:
 
 * What's the index of **brown** ?
-* What did the "ArraySort" instuction do to the collection?
+* What did the "ArraySort" instruction do to the collection?
 * What does "ArrayLen" instruction return?
 
 There are lots of cool things to do with an array. You can rearrange the order of the elements using the ```ArraySort``` instruction like we did in the last example. You can iterate through each element using the ```cfloop``` instruction. You can find the address of a specific element by using the "arrayName[index]" instruction. You can ask an array if an element is present with the "ArrayIsDefined" instruction. Try out this example that brings a bunch of things together: 
@@ -698,7 +698,7 @@ We use arrays whenever we need a list where the elements are in a specific order
 
 A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like "science["Joey"]" which could be read as "look in the collection named "science" and find the thing named "Joey**.
 
-A structure is an unordered collection, its just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:
+A structure is an unordered collection, it’s just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:
 
 #### Tag
 
@@ -727,7 +727,7 @@ writeOutput ("Joey is #ages["joey"]# years old.");
 </cfscript>
 ```
 
-Here we create a structure named "ages". Structures are made up what are called key-value pairs.The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```.
+Here we create a structure named "ages". Structures are made up what are called key-value pairs. The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```.
 
 #### Tag
 
@@ -769,7 +769,7 @@ for(student in students) {
 }
 ```
 
-The last chunk of the example used StructSort to get the sorted array "students" from "ages". Then, it iterated through the "students" array using a loop and gave each element of the array the name "student". It then printed out one line with that student name and the students age from "ages".
+The last chunk of the example used StructSort to get the sorted array "students" from "ages". Then, it iterated through the "students" array using a loop and gave each element of the array the name "student". It then printed out one line with that student’s name and age from "ages".
 
 While that last part probably seemed complicated, it's just to illustrate that structures are unordered.
 
@@ -777,7 +777,7 @@ While that last part probably seemed complicated, it's just to illustrate that s
 
 Conditional statements evaluate to "true" or "false" only. The most common conditional operators are ```==``` (equal), ```!=``` (not equal), ```>``` (greater than), ```>=``` (greater than or equal to), ```<``` (less than), and ```<=``` (less than or equal to). You can also define the operators as abbreviations: ```EQ```, ```NEQ```, ```GT```, ```GTE```, ```LT```, and ```LTE```.
 
-Some instructions return a "true" or "false", so they're used in conditional statements. For example, "IsArray" which is "true" only when the variable is an "array". Structures have an instruction named ```StructKeyExists``` which returns "true" if a key is present in a structure.
+Some instructions return a "true" or "false", so they're used in conditional statements, for example, "IsArray" which is "true" only when the variable is an "array". Structures have an instruction named ```StructKeyExists``` which returns "true" if a key is present in a structure.
 
 ### 9. 1. If, Else If, & Else
 
@@ -843,7 +843,7 @@ An "if" block has:
 *   Zero or one "else" statement whose instructions are executed if no
     "if" nor "else if" statements were true
 
-Only *one* section of the "if" / "else if" / "else" structure can have its instructions run. If the "if" is "true", for instance, CFML will never look at the "else if". Once one block executes, thats it.
+Only *one* section of the "if" / "else if" / "else" structure can have its instructions run. If the "if" is "true", for instance, CFML will never look at the "else if". Once one block executes, that’s it.
 
 ### 9. 2. Looping
 
@@ -881,8 +881,7 @@ pass in. The "while" instruction evaluates the conditional statement
 "arguments.counter GT 0" and finds that yes, the counter is greater than
 zero. Since the condition is true, execute the instructions inside the
 loop. First print out **The counter is #Arguments.counter#** then take
-the value of "Arguments.counter", subtract one from it, and store it
-back into "Arguments.counter". Then the loop goes back to the
+the value of "Arguments.counter" and subtract one from it. Next, we overwrite the previous value of "Arguments.counter" with the new value. Then the loop goes back to the
 "condition" / "while" statement. Is it still true? If so, print the line
 and subtract one again. Keep repeating until the condition is false.
 
@@ -906,7 +905,7 @@ the difference between ```=``` and ```==```.
 
 What is *nothingness*? Is there nothingness only in outer space? Really, when we think of *nothing* isn't it just the absence of something? Ok, that's too much philosophy
 
-ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can recieve a "NULL" value from an external source and maintain the "NULL" value until you try to use it. ColdFusion will convert the "NULL" into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a "NULL" value from a method. ```IsNull()``` instruction will test for "NULL" values and return "true" or "false".
+ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can receive a "NULL" value from an external source and maintain the "NULL" value until you try to use it. ColdFusion will convert the "NULL" into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a "NULL" value from a method. ```IsNull()``` instruction will test for "NULL" values and return "true" or "false".
 
 If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, it's a number, and it's *not nothing*.
 
