@@ -526,7 +526,7 @@ loop = 0;
 while (loop < 5) {
  WriteOutput("#loop# Good Morning! ");
  WriteOutput("...is it lunch time yet?<br>");
- loop = loop + 2;
+ loop++;
 }
 </cfscript>
 ```
@@ -587,13 +587,13 @@ You can also loop through a query using standard loop constructs, though they di
 
 ```cfm
 <cfscript> 
-for (x = 1; x <= GetBreakfastItems; x=x+1) { 
+for (x = 1; x <= GetBreakfastItems.RecordCount; x++) { 
  writeOutput("There are #GetBreakfastItems.Quantity[x]# #GetBreakfastItems.Item[x]# in the pantry<br />")
 } 
 </cfscript>
 ```
 
-When looping through a query with ```<cfloop>```, you need to make sure you have a ```<cfoutput>"``` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
+When looping through a query with ```<cfloop>```, you need to make sure you have a ```<cfoutput>``` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
 
 When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in in your for statement to pick up the correct row from the recordset. So the syntax becomes "recordsetName.ColumnName[rowNumber]".
 
@@ -609,7 +609,7 @@ An **array** is a number-indexed list. Picture a city block of houses. Together 
 <cfset favorite_colors = ["red","blue","green","black","brown"] />
 <cfdump var="#favorite_colors#" /><br>
 <cfdump var="#favorite_colors[2]#" /><br>
-<cfdump var="#favorite_colors[ArrayLen(favorite_colors)]#" /><br>
+<cfdump var="#ArrayLen(favorite_colors)#" /><br>
 ```
 
 #### Syntax
@@ -621,7 +621,7 @@ writeDump(favorite_colors);
 writeOutput("<br>");
 writeDump(favorite_colors[2]);
 writeOutput("<br>");
-writeDump(var=favorite_colors[ArrayLen(favorite_colors)]);
+writeDump(var=ArrayLen(favorite_colors));
 </cfscript>
 ```
 
@@ -646,7 +646,7 @@ ArrayAppend(favorite_colors, "orange");
 favorite_colors[3] = "yellow";
 writeDump(favorite_colors);
 writeOutput("<br>");
-set = ArraySort(favorite_colors,"text");
+ArraySort(favorite_colors,"text");
 ArrayDeleteAt(favorite_colors, 2);
 writeDump(var=favorite_colors);
 writeOutput("<br>"); 
@@ -668,7 +668,7 @@ There are lots of cool things to do with an array. You can rearrange the order o
 <ul>
  <cfloop array="#favorite_colors#" index="target" >
  <li>
- #target# is #len (target)# letters long.
+ #target# is #len(target)# letters long.
  </li>
  </cfloop>
 </ul>
@@ -754,7 +754,7 @@ In the second chunk of the example, we add a new key and value to the structure.
 ```cfm
 <cfset students = StructSort(ages)>
 
-<cfloop array="#students#" index="student">
+<cfloop collection="#students#" item="student">
  <cfoutput>"#student# is #ages[student]# years old."<br />
  </cfoutput>
 </cfloop>
@@ -764,11 +764,9 @@ In the second chunk of the example, we add a new key and value to the structure.
 
 ```cfm
  students = StructSort (ages);
-
-for (i = 1; i LTE ArrayLen (students); i = i+1) {
- student = students[i];
+for(student in students) {
  WriteOutput ("#student# is #ages[student]# years old.<br />");
- }
+}
 ```
 
 The last chunk of the example used StructSort to get the sorted array "students" from "ages". Then, it iterated through the "students" array using a loop and gave each element of the array the name "student". It then printed out one line with that student name and the students age from "ages".
