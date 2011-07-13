@@ -909,44 +909,44 @@ ColdFusion did not have a way of referring to nothingness until version 9. ColdF
 
 If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, it's a number, and it's *not nothing*.
 
-A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our ```makeeggs``` method to  illustrate "NULL" :
+A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our ```makeEggs``` method to  illustrate "NULL" :
 
 #### Tag
 
 ```cfm
-<cffunction name="makeeggs" returnType="component">
+<cffunction name="makeEggs" returnType="component">
  <cfargument name="quantity" type="numeric">
  <cfif (IsNull(arguments.quantity)) />
-  <cfset this.makeEggs = "How am I supposed to make nothingness number of eggs?" />
+  <cfset local.makeEggs = "How am I supposed to make nothingness number of eggs?" />
  <cfelse>
-  <cfset this.makeEggs = "Making your #arguments.quantity# eggs!" />
-  <cfset this.yourEggs = ArrayNew(1) />
+  <cfset local.makeEggs = "Making your #arguments.quantity# eggs!" />
+  <cfset local.yourEggs = ArrayNew(1) />
 
-  <cfloop condition="#ArrayLen(this.yourEggs)# LT #arguments.quantity#">
-   <cfset ArrayAppend(this.yourEggs, "Making an Egg.") />
+  <cfloop condition="#ArrayLen(local.yourEggs)# LT #arguments.quantity#">
+   <cfset ArrayAppend(local.yourEggs, "Making an Egg.") />
   </cfloop>
  </cfif>
- <cfreturn this />
+ <cfreturn local />
 </cffunction>
 ```
 
 #### Syntax
 
 ```cfm
-public component function makeeggs (numeric quantity){
+public component function makeEggs (numeric quantity){
  if (IsNull (arguments.quantity)) {
- this.makeEggs = "How am I supposed to make nothingness number of
+ local.makeEggs = "How am I supposed to make nothingness number of
 eggs?";
  } else {
-  this.makeEggs = "Making your #arguments.quantity# eggs!";
-  this.yourEggs = ArrayNew (1);
-  while (ArrayLen (this.yourEggs) < arguments.quantity)
-   ArrayAppend (this.yourEggs, "Making an Egg.");
+  local.makeEggs = "Making your #arguments.quantity# eggs!";
+  local.yourEggs = ArrayNew (1);
+  while (ArrayLen (local.yourEggs) < arguments.quantity)
+   ArrayAppend (local.yourEggs, "Making an Egg.");
  }
- return this;
+ return local;
 }
 ```
 
-Reload the file, call ```frank.makeeggs(3)``` then try ```frank.makeeggs()```.
+Reload the file, call ```frank.makeEggs(3)``` then try ```frank.makeEggs()```.
 
 **TODO: Conclusion**
