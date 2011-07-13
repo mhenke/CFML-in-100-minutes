@@ -22,6 +22,8 @@ Daniel Short (@danshort on twitter) * [http://www.dansshorts.com](http://www.dan
 
 Craig Kaminsky (@craigkaminsky on twitter) * [http://craigkaminsky.me](http://craigkaminsky.me)
 
+Daniel Sellers (@daniel_sellers on twitter) * [http://designfrontier.net](http://designfrontier.net)
+
 ## Git Workflow for Contributors
 
 This project uses the excellent [Git Workflow series](http://www.silverwareconsulting.com/index.cfm/Git-Workflow) by [Bob Silverburg](https://github.com/bobsilverberg/) for contributions.
