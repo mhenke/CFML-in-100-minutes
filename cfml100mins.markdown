@@ -926,7 +926,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
    <cfset ArrayAppend(local.yourEggs, "Making an Egg.") />
   </cfloop>
  </cfif>
- <cfreturn this />
+ <cfreturn local />
 </cffunction>
 ```
 
