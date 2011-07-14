@@ -588,7 +588,7 @@ You can also loop through a query using standard loop constructs, though they di
 ```cfm
 <cfscript> 
 for (x = 1; x <= GetBreakfastItems.RecordCount; x++) { 
- writeOutput("There are #GetBreakfastItems.Quantity[x]# #GetBreakfastItems.Item[x]# in the pantry<br />")
+ writeOutput("There are #GetBreakfastItems.Quantity[x]# #GetBreakfastItems.Item[x]# in the pantry<br />");
 } 
 </cfscript>
 ```
@@ -752,9 +752,9 @@ In the second chunk of the example, we add a new key and value to the structure.
 #### Tag
 
 ```cfm
-<cfset students = StructSort(ages)>
+<cfset StructSort(ages)>
 
-<cfloop collection="#students#" item="student">
+<cfloop collection="#ages#" item="student">
  <cfoutput>"#student# is #ages[student]# years old."<br />
  </cfoutput>
 </cfloop>
@@ -763,10 +763,12 @@ In the second chunk of the example, we add a new key and value to the structure.
 #### Syntax
 
 ```cfm
- students = StructSort (ages);
-for(student in students) {
+<cfscript>
+StructSort(ages);
+for(student in ages) {
  WriteOutput ("#student# is #ages[student]# years old.<br />");
 }
+</cfscript>
 ```
 
 The last chunk of the example used StructSort to get the sorted array "students" from "ages". Then, it iterated through the "students" array using a loop and gave each element of the array the name "student". It then printed out one line with that student’s name and age from "ages".
