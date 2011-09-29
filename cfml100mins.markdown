@@ -222,7 +222,7 @@ Inside the CFC we usually define one or more methods using the ```cffunction``` 
 #### Tag
 
 ```cfm
-<cfcomponent>
+<cfcomponent name="PersonalChef">
  <cffunction name="makeToast">
   <cfset makeToast = "Making your toast!" />
  </cffunction>
@@ -232,7 +232,7 @@ Inside the CFC we usually define one or more methods using the ```cffunction``` 
 #### Syntax
 
 ```cfm
-component {
+component name="PersonalChef" {
  public string function makeToast(){
   makeToast = "Making your toast!";
  }
@@ -270,7 +270,7 @@ Sometimes methods take one or more *parameters* telling them **how** to do what 
 #### Tag
 
 ```cfm
-<cfcomponent>
+<cfcomponent name="PersonalChef">
  <cffunction name="makeToast" returnType="string">
   <cfargument name="color" required="yes">
   <cfset makeToast = "Making your toast #arguments.color#!" />
@@ -281,7 +281,7 @@ Sometimes methods take one or more *parameters* telling them **how** to do what 
 #### Syntax
 
 ```cfm
-component {
+component name="PersonalChef" {
  public string function makeToast(required String color){
   makeToast = "Making your toast #arguments.color#!";
  }
@@ -301,7 +301,7 @@ For the purposes of our next section I’m going to return the chef instance its
 #### Tag
 
 ```cfm
-<cfcomponent>
+<cfcomponent name="PersonalChef">
  <cffunction name="makeToast" returnType="component">
   <cfargument name="color" required="yes">
    <cfset this.makeToast = "Making your toast #arguments.color#!" />
@@ -313,7 +313,7 @@ For the purposes of our next section I’m going to return the chef instance its
 #### Syntax
 
 ```cfm
-component {
+component name="PersonalChef" {
  public component function makeToast(required String color){
   this.makeToast = "Making your toast #arguments.color#!";
   return this;
