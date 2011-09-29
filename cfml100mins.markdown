@@ -292,7 +292,7 @@ The method is requiring us to pass in a "color" telling it how to do the method 
 
 ### Return Value
 
-In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns *nothing*. We'll talk about *nothing* and null" in the last section of "CFML in 100 minutes". If you called ```makeToast``` method above like ```<cfset result = frank.makeToast("burned") />``` or ```set result = frank.makeToast("burned");```, and tried to output "result" you should have seen "Variable RESULT is undefined".
+In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns *nothing*. We'll talk about *nothing* and "null" in the last section of "CFML in 100 minutes". If you called ```makeToast``` method above like ```<cfset result = frank.makeToast("burned") />``` or ```set result = frank.makeToast("burned");```, and tried to output "result" you should have seen "Variable RESULT is undefined".
 
 To return data, we use ```cfreturn``` to instruct the method to return a "value". Since that wasn't in the last instruction before the ending ```cffunction``` in your ```makeToast``` method, you received *nothing* and tried to putting that into the "result" variable.
 
