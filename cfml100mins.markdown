@@ -398,6 +398,26 @@ When we put that into the CFML file, it just spits back the same string. If we w
 
 What we need to do is combine a variable with the string. There are two ways to do that. The first approach is called *string concatenation* which is basically just adding strings together:
 
+#### Tag
+
+```cfm
+<cfset today = "Saturday" />
+<cfset message = "Happy " & today & "!" />
+<cfoutput>
+#message#
+</cfoutput>
+```
+
+#### Syntax
+
+```cfm
+<cfscript>
+today = "Saturday";
+message = "Happy " & today & "!";
+writeOutput(message);
+</cfscript>
+```
+
 In the first line we setup a variable to hold the day of the week. Then we'll printed the string *Happy* combined with the value of the variable "today" and the string *!*. You might be thinking, "What was the point of that since we still wrote *Saturday* in the first line?" Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
 
 ```cfm
