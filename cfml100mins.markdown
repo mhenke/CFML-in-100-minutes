@@ -942,7 +942,7 @@ eggs?";
  } else {
   local.makeEggs = "Making your #arguments.quantity# eggs!";
   local.yourEggs = ArrayNew (1);
-  while (Arraylen(local.yourEggs) < arguments.quantity)
+  while (ArrayLen(local.yourEggs) < arguments.quantity)
    ArrayAppend (local.yourEggs, "Making an Egg.");
  }
  return local;
