@@ -344,7 +344,7 @@ Experiment with the following samples in a CFML file.
 
 ```cfm
 <cfset tester = "Good Morning Everyone!" />
-<cfoutput>#len (tester)#<br></cfoutput>
+<cfoutput>#len(tester)#<br></cfoutput>
 <cfoutput>#Replace (tester, "o", "e", "All")#<br></cfoutput>
 <cfoutput>#RemoveChars (tester, 2, 5)#<br></cfoutput>
 <cfset t2 = "sample,data,from,a,CSV" />
@@ -357,11 +357,11 @@ Experiment with the following samples in a CFML file.
 ```cfm
 <cfscript>
 tester = "Good Morning Everyone!";
-writeOutput ("#len (tester)#<br/>");
+writeOutput ("#len(tester)#<br/>");
 writeOutput (Replace (tester, "o", "e", "All") & "<br/>");
 writeOutput (RemoveChars (tester, 2, 5) & "<br/>");
 t2 = "sample,data,from,a,CSV";
-t3 = Mid (t2,8,len (t2));
+t3 = Mid (t2,8,len(t2));
 writeOutput (t3 & "<br/>");
 </cfscript>
 ```
@@ -684,7 +684,7 @@ writeOutput ("<ul>");
 index = favorite_colors.iterator ();
 while (index.hasNext ()){
  target = index.next ();
- writeOutput ("<li>#target# is #len (target)# letters
+ writeOutput ("<li>#target# is #len(target)# letters
 long.</li>");
 }
 writeOutput ("</ul>"); 
@@ -942,7 +942,7 @@ eggs?";
  } else {
   local.makeEggs = "Making your #arguments.quantity# eggs!";
   local.yourEggs = ArrayNew (1);
-  while (ArrayLen (local.yourEggs) < arguments.quantity)
+  while (ArrayLen(local.yourEggs) < arguments.quantity)
    ArrayAppend (local.yourEggs, "Making an Egg.");
  }
  return local;
