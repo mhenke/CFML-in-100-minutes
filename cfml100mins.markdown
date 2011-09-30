@@ -813,13 +813,18 @@ Why do we have conditional statements? Most often its to control conditional ins
 
  <cfif (arguments.minutes LT 7)>
   <cfset this.status = "The water is not boiling yet." />
-  <cfelseif (arguments.minutes EQ 7)> 
+ 
+ <cfelseif (arguments.minutes EQ 7)> 
   <cfset this.status = "It's just barely boiling." />
+ 
  <cfelseif (arguments.minutes EQ 8)>
   <cfset this.status = "It's boiling!" />
+ 
  <cfelse>
   <cfset this.status = "Hot! Hot! Hot!" /> 
+ 
  </cfif>
+ 
  <cfreturn this />
 </cffunction>
 ```
