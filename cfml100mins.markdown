@@ -961,12 +961,12 @@ A large percentage of the errors you encounter while writing CFML code will invo
 
 ```cfm
 public component function makeEggs (numeric quantity){
- if (IsNull (arguments.quantity)) {
+ if (IsNull(arguments.quantity)) {
  local.makeEggs = "How am I supposed to make nothingness number of
 eggs?";
  } else {
   local.makeEggs = "Making your #arguments.quantity# eggs!";
-  local.yourEggs = ArrayNew (1);
+  local.yourEggs = ArrayNew(1);
   while (ArrayLen(local.yourEggs) < arguments.quantity)
    ArrayAppend (local.yourEggs, "Making an Egg.");
  }
