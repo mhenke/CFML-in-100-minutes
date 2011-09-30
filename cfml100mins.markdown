@@ -487,9 +487,12 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 
 ```cfm
 <cfscript>
-for (loop = 0 ; loop < 5 ; loop++)
- WriteOutput("#loop# Hello, world!<br>");
-WriteOutput("I am here<br>");
+loop = 0; 
+while (loop < 5) { 
+ WriteOutput("#loop# Good Morning! ");
+ WriteOutput("...is it lunch time yet?<br>");
+ loop++;
+}
 </cfscript>
 ```
 
@@ -515,12 +518,9 @@ Try this example with multiple instructions:
 
 ```cfm
 <cfscript>
-loop = 0; 
-while (loop < 5) { 
- WriteOutput("#loop# Good Morning! ");
- WriteOutput("...is it lunch time yet?<br>");
- loop++;
-}
+for (loop = 0 ; loop < 5 ; loop++)
+ WriteOutput("#loop# Hello, world!<br>");
+WriteOutput("I am here<br>");
 </cfscript>
 ```
 
