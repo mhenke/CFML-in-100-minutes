@@ -857,7 +857,7 @@ Another time we use conditional statements is when we want to repeat a set of in
  <cfset this.timer = "" />
  <cfloop condition="#arguments.counter# GT 0">
   <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
-  <cfset arguments.counter-* />
+  <cfset arguments.counter-- />
  </cfloop>
  <cfreturn this />
 </cffunction>
@@ -870,7 +870,7 @@ public component function countdown (numeric counter){
  this.timer = "";
  while (counter GT 0) { 
   this.timer &= "The counter is #arguments.counter#.<br>";
-  arguments.counter-;
+  arguments.counter--;
  }
  return this;
 }
