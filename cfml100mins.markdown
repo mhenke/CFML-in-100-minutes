@@ -329,7 +329,7 @@ In CFML a string is defined as a quote ( **'** or **"** ) followed by zero or mo
 * Call ```Len``` on a string to get back the number of characters in the string. For instance ```Len("Hello")``` would give you back **5**.
 
 ### Replace
-* The ```Replace``` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, ```Replace("Hello", "e", "")``` would give you back **hllo** after replacing the _first occurrence of e_, or ```Replace("Good Morning!", "o", "e", "All")``` would give you **Geed Merning!** 
+* The ```Replace``` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case sensitive and the scope default is one. For instance, ```Replace("Hello", "e", "")``` would give you back **Hllo** after replacing the _first occurrence of e_, or ```Replace("Good Morning!", "o", "e", "All")``` would give you **Geed Merning!** 
 
 ### RemoveChars 
 * Call ```RemoveChars``` to remove characters from a string. For instance, ```RemoveChars("hello bob", 2, 5)``` would give you back **hbob**. 
@@ -418,7 +418,7 @@ writeOutput(message);
 </cfscript>
 ```
 
-In the first line we setup a variable to hold the day of the week. Then we'll printed the string *Happy* combined with the value of the variable "today" and the string *!*. You might be thinking, "What was the point of that since we still wrote *Saturday* in the first line?" Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
+In the first line we setup a variable to hold the day of the week. Then we printed the string *Happy* combined with the value of the variable "today" and the string *!*. You might be thinking, "What was the point of that since we still wrote *Saturday* in the first line?" Ok, well, if you were writing a real program you'd use CFMLs built-in date instructions like this:
 
 ```cfm
 today = DayOfWeek(Now());
@@ -468,7 +468,7 @@ Basically *interpolating* means evaluate the code inside this ```#``` wrapper an
 
 ## 5. Numbers
 
-There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including "+", "-", "/", and "*". The "++" operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the "++" operator:
+There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including "+", "-", "/" and "*". The "++" operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the "++" operator:
 
 #### Tag
 
