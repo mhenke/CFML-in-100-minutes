@@ -595,6 +595,8 @@ While it's not strictly necessary to prepend the recordset name before the colum
 
 You can also loop through a query using standard loop constructs, though they differ when using tags and script.
 
+When looping through a query with ```<cfloop>```, you need to make sure you have a ```<cfoutput>``` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
+
 #### Tag
 
 ```cfm
@@ -602,6 +604,8 @@ You can also loop through a query using standard loop constructs, though they di
  <cfoutput>There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /></cfoutput>
 </cfloop>
 ```
+
+When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in your for statement to pick up the correct row from the recordset. So the syntax becomes "recordsetName.ColumnName[rowNumber]".
 
 #### Syntax
 
@@ -612,10 +616,6 @@ for (x = 1; x <= GetBreakfastItems.RecordCount; x++) {
 } 
 </cfscript>
 ```
-
-When looping through a query with ```<cfloop>```, you need to make sure you have a ```<cfoutput>``` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
-
-When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in your for statement to pick up the correct row from the recordset. So the syntax becomes "recordsetName.ColumnName[rowNumber]".
 
 ## 7. Arrays
 
