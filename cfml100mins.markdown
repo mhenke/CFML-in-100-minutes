@@ -572,7 +572,7 @@ A query is a request to a database. The query can ask for information from the d
 queryService = new Query ();
 
 queryService.setName("GetBreakfastItems"); 
-queryServ.setDatasource("pantry"); 
+queryService.setDatasource("pantry"); 
 queryService.setSQL("
 SELECT QUANTITY, ITEM 
 FROM CUPBOARD 
