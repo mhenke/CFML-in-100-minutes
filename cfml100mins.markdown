@@ -743,7 +743,7 @@ ages.joey = 12;
 ages["jill"] = 14;
 
 writeDump (var=ages);
-writeOutput ("Joey is #ages["joey"]# years old.");
+writeOutput ("Joey is #ages[""joey""]# years old.");
 </cfscript>
 ```
 
@@ -797,7 +797,7 @@ While that last part probably seemed complicated, it's just to illustrate that s
 
 ## 9. Conditionals
 
-Conditional statements evaluate to "true" or "false" only. The most common conditional operators are ```==``` (equal), ```!=``` (not equal), ```>``` (greater than), ```>=``` (greater than or equal to), ```<``` (less than), and ```<=``` (less than or equal to). You can also define the operators as abbreviations: ```EQ```, ```NEQ```, ```GT```, ```GTE```, ```LT```, and ```LTE```.
+Conditional statements evaluate to "true" or "false" only. The most common conditional operators are ```==``` (equal), ```!=``` (not equal), ```>``` (greater than), ```>=``` (greater than or equal to), ```<``` (less than), and ```<=``` (less than or equal to). You can also define the operators as abbreviations: ```EQ```, ```NEQ```, ```GT```, ```GTE```, ```LT```, and ```LTE```. You can **only** use the abbreviations when using tags.
 
 Some instructions return a "true" or "false", so they're used in conditional statements, for example, "IsArray" which is "true" only when the variable is an "array". Structures have an instruction named ```StructKeyExists``` which returns "true" if a key is present in a structure.
 
