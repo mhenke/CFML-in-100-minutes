@@ -516,7 +516,7 @@ Try this example with multiple instructions:
 ```cfm
 <cfscript>
 loop = 0; 
-while (loop < 5) { 
+while (loop <= 4) { 
  WriteOutput("#loop# Good Morning! ");
  WriteOutput("...is it lunch time yet?<br>");
  loop++;
@@ -543,10 +543,10 @@ It's also possible to go through a loop and step over more than one value at a t
 ```cfm
 <cfscript>
 loop = 0;
-while (loop < 5) {
+while (loop <= 4) {
  WriteOutput("#loop# Good Morning! ");
  WriteOutput("...is it lunch time yet?<br>");
- loop++;
+ loop += 2;
 }
 </cfscript>
 ```
