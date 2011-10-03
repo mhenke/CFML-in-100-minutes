@@ -593,6 +593,106 @@ There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br
 
 While it's not strictly necessary to prepend the recordset name before the column name inside the ```<cfoutput>```, it's strongly recommended that you do in order to prevent referencing the wrong variable scope.
 
+#### Query Parameters
+In ColdFuison it is easy to make your queries dynamic by passing in variables, however a ColdFusion developer must make their sure their queries are not vulenrable to malicious code.  This type of code, known as SQL Injection, allows a hacker to run queries on your database by passing code to your query through a url or form value.  It is imperitive that queries are protected using a tag called cfqueryparam. **It is never a good idea to leave query variables unprotected**
+
+For a single value the cfqueryparam tag is used like so:
+
+#### Tag
+```cfm
+<cfquery name="GetBreakfastItem" datasource="pantry"> 
+ SELECT 
+      QUANTITY, ITEM 
+ FROM 
+      CUPBOARD 
+ WHERE 
+      ITEM_ID = <cfqueryparam cfsqltype="CF_SQL_INTEGER" value="#itemID#">
+</cfquery> 
+```
+
+#### Script Using 
+```cfm
+<cfscript>
+queryService = new Query ();
+
+queryService.setName("GetBreakfastItem"); 
+queryService.setDatasource("pantry"); 
+queryService.setSQL("
+  SELECT 
+       QUANTITY, ITEM 
+  FROM 
+       CUPBOARD 
+  WHERE 
+       ITEM_ID = :itemID
+");
+
+queryService.addParam(name="itemID",cfsqltype="CF_SQL_INTEGER",value=itemID);
+
+GetBreakfastItem = queryService.execute().getResult(); 
+</cfscript> 
+```
+When passing in a list of information the cfqueryparam tag can also be used like so:
+#### Tag
+```cfm
+<cfquery name="GetBreakfastItems" datasource="pantry"> 
+ SELECT 
+      QUANTITY, ITEM 
+ FROM 
+      CUPBOARD 
+ WHERE 
+      ITEM_ID IN(<cfqueryparam list="true" cfsqltype="CF_SQL_VARCHAR" value="#itemID#">)
+</cfquery> 
+```
+#### Script Using 
+```cfm
+<cfscript>
+queryService = new Query ();
+
+queryService.setName("GetBreakfastItem"); 
+queryService.setDatasource("pantry"); 
+queryService.setSQL("
+  SELECT 
+       QUANTITY, ITEM 
+  FROM 
+       CUPBOARD 
+  WHERE 
+       ITEM_ID = :itemID
+");
+
+queryService.addParam(name="itemID",cfsqltype="CF_SQL_VARCHAR",value=itemID,list=true);
+
+GetBreakfastItem = queryService.execute().getResult(); 
+</cfscript> 
+```
+The valid values for the cfsqltype in the cfqueryparam attribute are:
+
+* CF_SQL_BIGINT
+* CF_SQL_BIT
+* CF_SQL_CHAR
+* CF_SQL_BLOB
+* CF_SQL_CLOB
+* CF_SQL_DATE
+* CF_SQL_DECIMAL
+* CF_SQL_DOUBLE
+* CF_SQL_FLOAT
+* CF_SQL_IDSTAMP
+* CF_SQL_INTEGER
+* CF_SQL_LONGVARCHAR
+* CF_SQL_MONEY
+* CF_SQL_MONEY4
+* CF_SQL_NUMERIC
+* CF_SQL_REAL
+* CF_SQL_REFCURSOR
+* CF_SQL_SMALLINT
+* CF_SQL_TIME
+* CF_SQL_TIMESTAMP
+* CF_SQL_TINYINT
+* CF_SQL_VARCHAR
+
+For full documentation on the cfqueryparam tag, see the [Adobe LiveDocs](http://help.adobe.com/en_US/ColdFusion/9.0/CFMLRef/WSc3ff6d0ea77859461172e0811cbec22c24-7f6f.html)
+
+###Looping Through Results
+
 You can also loop through a query using standard loop constructs, though they differ when using tags and script.
 
 When looping through a query with ```<cfloop>```, you need to make sure you have a ```<cfoutput>``` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
