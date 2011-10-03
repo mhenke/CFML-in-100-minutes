@@ -608,6 +608,7 @@ For a single value the cfqueryparam tag is used like so:
  WHERE 
       ITEM_ID = <cfqueryparam cfsqltype="CF_SQL_INTEGER" value="#itemID#">
 </cfquery> 
+```
 
 #### Script Using 
 ```cfm
@@ -629,9 +630,8 @@ queryService.addParam(name="itemID",cfsqltype="CF_SQL_INTEGER",value=itemID);
 
 GetBreakfastItem = queryService.execute().getResult(); 
 </cfscript> 
-
+```
 When passing in a list of information the cfqueryparam tag can also be used like so:
-
 #### Tag
 ```cfm
 <cfquery name="GetBreakfastItems" datasource="pantry"> 
@@ -642,7 +642,7 @@ When passing in a list of information the cfqueryparam tag can also be used like
  WHERE 
       ITEM_ID IN(<cfqueryparam list="true" cfsqltype="CF_SQL_VARCHAR" value="#itemID#">)
 </cfquery> 
-
+```
 #### Script Using 
 ```cfm
 <cfscript>
@@ -663,7 +663,7 @@ queryService.addParam(name="itemID",cfsqltype="CF_SQL_VARCHAR",value=itemID,list
 
 GetBreakfastItem = queryService.execute().getResult(); 
 </cfscript> 
-
+```
 The valid values for the cfsqltype in the cfqueryparam attribute are:
 
 * CF_SQL_BIGINT
