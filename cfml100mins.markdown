@@ -7,7 +7,8 @@ ColdFusion Markup Language (CFML) is a web programming language, which is especi
 3.  Components, Methods, and Parameters
 4.  Strings
 5.  Numbers
-6.  Queries
+6.  Recordsets
+    1. Prevent SQL Injection
 7.  Arrays
 8.  Structures
 9.  Conditionals
@@ -551,9 +552,9 @@ while (loop < 5) {
 </cfscript>
 ```
 
-## 6. Queries
+## 6. Recordset
 
-A query is a request to a database. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. Each time you query a database with CFML, you get the data (the recordset) and the query variables; together they make up the query object. ```cfquery``` passes SQL statements to the "datasource". The "datasource" is set in the ColdFusion administrator.
+A query is a request to a database. It returns ```query object```. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. The ```query object``` contains a recordset and other information up the query object. ```cfquery``` passes SQL statements to the ```datasource```. The ```datasource``` is set in the ColdFusion administrator.
 
 #### Tag
 
@@ -583,7 +584,7 @@ GetBreakfastItems = queryService.execute().getResult();
 </cfscript>
 ```
 
-In order to display the data from our query, we need to loop through the rows, and display each row. This is usually done in a ```<cfoutput>``` tag like so:
+In order to display the data from our query object, we need to loop through the rows, and display each row. This is usually done in a ```<cfoutput>``` tag like so:
 
 ```cfm
 <cfoutput query="GetBreakfastItems">
@@ -593,20 +594,17 @@ There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br
 
 While it's not strictly necessary to prepend the recordset name before the column name inside the ```<cfoutput>```, it's strongly recommended that you do in order to prevent referencing the wrong variable scope.
 
-#### Query Parameters
-In ColdFuison it is easy to make your queries dynamic by passing in variables, however a ColdFusion developer must make their sure their queries are not vulenrable to malicious code.  This type of code, known as SQL Injection, allows a hacker to run queries on your database by passing code to your query through a url or form value.  It is imperitive that queries are protected using a tag called cfqueryparam. **It is never a good idea to leave query variables unprotected**
+#### Prevent SQL Injection
+In ColdFuison it is easy to make your queries to the database dynamic by passing in variables, however a ColdFusion developer must make their sure their queries are not vulenrable to malicious code.  This type of code, known as SQL Injection, allows a hacker to run queries on your database by passing code to your query through a url or form value.  It is imperitive that queries are protected using a tag called cfqueryparam. **It is never a good idea to leave query variables unprotected**
 
 For a single value the cfqueryparam tag is used like so:
 
 #### Tag
 ```cfm
 <cfquery name="GetBreakfastItem" datasource="pantry"> 
- SELECT 
-      QUANTITY, ITEM 
- FROM 
-      CUPBOARD 
- WHERE 
-      ITEM_ID = <cfqueryparam cfsqltype="CF_SQL_INTEGER" value="#itemID#">
+ SELECT QUANTITY, ITEM 
+ FROM CUPBOARD 
+ WHERE ITEM_ID = <cfqueryparam cfsqltype="CF_SQL_INTEGER" value="#itemID#">
 </cfquery> 
 ```
 
@@ -618,12 +616,9 @@ queryService = new Query ();
 queryService.setName("GetBreakfastItem"); 
 queryService.setDatasource("pantry"); 
 queryService.setSQL("
-  SELECT 
-       QUANTITY, ITEM 
-  FROM 
-       CUPBOARD 
-  WHERE 
-       ITEM_ID = :itemID
+  SELECT QUANTITY, ITEM 
+  FROM CUPBOARD 
+  WHERE ITEM_ID = :itemID
 ");
 
 queryService.addParam(name="itemID",cfsqltype="CF_SQL_INTEGER",value=itemID);
@@ -635,12 +630,9 @@ When passing in a list of information the cfqueryparam tag can also be used like
 #### Tag
 ```cfm
 <cfquery name="GetBreakfastItems" datasource="pantry"> 
- SELECT 
-      QUANTITY, ITEM 
- FROM 
-      CUPBOARD 
- WHERE 
-      ITEM_ID IN(<cfqueryparam list="true" cfsqltype="CF_SQL_VARCHAR" value="#itemID#">)
+ SELECT QUANTITY, ITEM 
+ FROM CUPBOARD 
+ WHERE ITEM_ID IN(<cfqueryparam list="true" cfsqltype="CF_SQL_VARCHAR" value="#itemID#">)
 </cfquery> 
 ```
 #### Script Using 
@@ -651,12 +643,9 @@ queryService = new Query ();
 queryService.setName("GetBreakfastItem"); 
 queryService.setDatasource("pantry"); 
 queryService.setSQL("
-  SELECT 
-       QUANTITY, ITEM 
-  FROM 
-       CUPBOARD 
-  WHERE 
-       ITEM_ID = :itemID
+  SELECT QUANTITY, ITEM 
+  FROM CUPBOARD 
+  WHERE ITEM_ID = :itemID
 ");
 
 queryService.addParam(name="itemID",cfsqltype="CF_SQL_VARCHAR",value=itemID,list=true);
@@ -664,31 +653,6 @@ queryService.addParam(name="itemID",cfsqltype="CF_SQL_VARCHAR",value=itemID,list
 GetBreakfastItem = queryService.execute().getResult(); 
 </cfscript> 
 ```
-The valid values for the cfsqltype in the cfqueryparam attribute are:
-
-* CF_SQL_BIGINT
-* CF_SQL_BIT
-* CF_SQL_CHAR
-* CF_SQL_BLOB
-* CF_SQL_CLOB
-* CF_SQL_DATE
-* CF_SQL_DECIMAL
-* CF_SQL_DOUBLE
-* CF_SQL_FLOAT
-* CF_SQL_IDSTAMP
-* CF_SQL_INTEGER
-* CF_SQL_LONGVARCHAR
-* CF_SQL_MONEY
-* CF_SQL_MONEY4
-* CF_SQL_NUMERIC
-* CF_SQL_REAL
-* CF_SQL_REFCURSOR
-* CF_SQL_SMALLINT
-* CF_SQL_TIME
-* CF_SQL_TIMESTAMP
-* CF_SQL_TINYINT
-* CF_SQL_VARCHAR
-
 For full documentation on the cfqueryparam tag, see the [Adobe LiveDocs](http://help.adobe.com/en_US/ColdFusion/9.0/CFMLRef/WSc3ff6d0ea77859461172e0811cbec22c24-7f6f.html)
 
 ###Looping Through Results
@@ -1032,7 +996,7 @@ the difference between ```=``` and ```==```.
 
 What is *nothingness*? Is there nothingness only in outer space? Really, when we think of *nothing* isn't it just the absence of something? Ok, that's too much philosophy
 
-ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can receive a "NULL" value from an external source and maintain the "NULL" value until you try to use it. ColdFusion will convert the "NULL" into an empty string (in the case of queries) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a "NULL" value from a method. ```IsNull()``` instruction will test for "NULL" values and return "true" or "false".
+ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can receive a "NULL" value from an external source and maintain the "NULL" value until you try to use it. ColdFusion will convert the "NULL" into an empty string (in the case of recordset) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a "NULL" value from a method. ```IsNull()``` instruction will test for "NULL" values and return "true" or "false".
 
 If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, it's a number, and it's *not nothing*.
 
