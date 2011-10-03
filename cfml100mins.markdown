@@ -554,7 +554,7 @@ while (loop < 5) {
 
 ## 6. Recordset
 
-A query is a request to a database. It returns ```query object```. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. The ```query object``` contains a recordset and other information up the query object. ```cfquery``` passes SQL statements to the ```datasource```. The ```datasource``` is set in the ColdFusion administrator.
+A query is a request to a database. It returns ```query object```. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. The ```query object``` contains a recordset and other information. ```cfquery``` passes SQL statements to the ```datasource```. The ```datasource``` is set in the ColdFusion administrator.
 
 #### Tag
 
