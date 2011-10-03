@@ -546,7 +546,7 @@ loop = 0;
 while (loop < 5) {
  WriteOutput("#loop# Good Morning! ");
  WriteOutput("...is it lunch time yet?<br>");
- loop++;
+ loop = loop + 2; 
 }
 </cfscript>
 ```
