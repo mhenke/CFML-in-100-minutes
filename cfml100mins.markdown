@@ -811,7 +811,7 @@ writeOutput ("Joey is #ages["joey"]# years old.");
 </cfscript>
 ```
 
-Here we create a structure named "ages". Structures are made up what are called key-value pairs. The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```.
+Here we create a structure named "ages". Structures are made up what are called key-value pairs. The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```. It is worth noting that when adding a key that is quoted, as is the case with "jill", the case sensitivity of the key will be preserved. Otherwise all keys will be uppercase. 
 
 #### Tag
 
