@@ -972,7 +972,7 @@ pass in. The "while" instruction evaluates the conditional statement
 "arguments.counter GT 0" and finds that yes, the counter is greater than
 zero. Since the condition is true, execute the instructions inside the
 loop. First print out **The counter is #arguments.counter#** then take
-the value of "Arguments.counter" and subtract one from it. Next, we overwrite the previous value of "Arguments.counter" with the new value. Then the loop goes back to the
+the value of "arguments.counter" and subtract one from it. Next, we overwrite the previous value of "arguments.counter" with the new value. Then the loop goes back to the
 "condition" / "while" statement. Is it still true? If so, print the line
 and subtract one again. Keep repeating until the condition is false.
 
