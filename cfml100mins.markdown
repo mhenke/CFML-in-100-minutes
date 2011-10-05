@@ -345,12 +345,12 @@ Experiment with the following samples in a CFML file.
 
 ```cfm
 <cfset tester = "Good Morning Everyone!" />
-<cfoutput>#len(tester)#<br></cfoutput>
-<cfoutput>#Replace (tester, "o", "e", "All")#<br></cfoutput>
-<cfoutput>#RemoveChars (tester, 2, 5)#<br></cfoutput>
+<cfoutput>#len(tester)#<br /></cfoutput>
+<cfoutput>#Replace (tester, "o", "e", "All")#<br /></cfoutput>
+<cfoutput>#RemoveChars (tester, 2, 5)#<br /></cfoutput>
 <cfset t2 = "sample,data,from,a,CSV" />
 <cfset t3 = Mid(t2,8,len(t2)) />
-<cfoutput>#t3#<br></cfoutput>
+<cfoutput>#t3#<br /></cfoutput>
 ```
 
 #### Script Syntax
@@ -477,10 +477,10 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 <cfset loop = 0 />
 <cfoutput>
  <cfloop condition="loop LT 5" >
-  #loop# Hello, world!<br>
+  #loop# Hello, world!<br />
   <cfset loop++ />
  </cfloop>
- I am here!<br>
+ I am here!<br />
 </cfoutput>
 ```
 
@@ -491,7 +491,7 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 loop = 0; 
 while (loop < 5) { 
  WriteOutput("#loop# Good Morning! ");
- WriteOutput("...is it lunch time yet?<br>");
+ WriteOutput("...is it lunch time yet?<br />");
  loop++;
 }
 </cfscript>
@@ -510,7 +510,7 @@ Try this example with multiple instructions:
 <cfoutput>
 <cfloop index="loop" from="0" to="4">
  #loop# Good Morning!
- ...is it lunch time yet?<br>
+ ...is it lunch time yet?<br />
 </cfloop>
 </cfoutput>
 ```
@@ -520,8 +520,8 @@ Try this example with multiple instructions:
 ```cfm
 <cfscript>
 for (loop = 0 ; loop < 5 ; loop++)
- WriteOutput("#loop# Hello, world!<br>");
-WriteOutput("I am here<br>");
+ WriteOutput("#loop# Hello, world!<br />");
+WriteOutput("I am here<br />");
 </cfscript>
 ```
 
@@ -534,7 +534,7 @@ It's also possible to go through a loop and step over more than one value at a t
 <cfoutput>
 <cfloop index="loop" from="0" to="4" step="2">
  #loop# Good Morning!
- ...is it lunch time yet?<br>
+ ...is it lunch time yet?<br />
 </cfloop>
 </cfoutput>
 ```
@@ -546,7 +546,7 @@ It's also possible to go through a loop and step over more than one value at a t
 loop = 0;
 while (loop < 5) {
  WriteOutput("#loop# Good Morning! ");
- WriteOutput("...is it lunch time yet?<br>");
+ WriteOutput("...is it lunch time yet?<br />");
  loop++;
 }
 </cfscript>
@@ -691,9 +691,9 @@ An **array** is a number-indexed list. Picture a city block of houses. Together 
 
 ```cfm
 <cfset favorite_colors = ["red","blue","green","black","brown"] />
-<cfdump var="#favorite_colors#" /><br>
-<cfdump var="#favorite_colors[2]#" /><br>
-<cfdump var="#ArrayLen(favorite_colors)#" /><br>
+<cfdump var="#favorite_colors#" /><br />
+<cfdump var="#favorite_colors[2]#" /><br />
+<cfdump var="#ArrayLen(favorite_colors)#" /><br />
 ```
 
 #### Script Syntax
@@ -702,9 +702,9 @@ An **array** is a number-indexed list. Picture a city block of houses. Together 
 <cfscript>
 favorite_colors = ["red","blue","green","black","brown"];
 writeDump(favorite_colors);
-writeOutput("<br>");
+writeOutput("<br />");
 writeDump(favorite_colors[2]);
-writeOutput("<br>");
+writeOutput("<br />");
 writeDump(var=ArrayLen(favorite_colors));
 </cfscript>
 ```
@@ -716,10 +716,10 @@ Keep going with these, but try to understand what each instruction is doing befo
 ```cfm
 <cfset ArrayAppend(favorite_colors, "orange") />
 <cfset favorite_colors[3]="yellow" />
-<cfdump var="#favorite_colors#" /><br>
+<cfdump var="#favorite_colors#" /><br />
 <cfset ArraySort(favorite_colors,"text") />
 <cfset ArrayDeleteAt(favorite_colors, 2) /> 
-<cfdump var="#favorite_colors#" /><br>
+<cfdump var="#favorite_colors#" /><br />
 ```
 
 #### Script Syntax
@@ -729,11 +729,11 @@ Keep going with these, but try to understand what each instruction is doing befo
 ArrayAppend(favorite_colors, "orange");
 favorite_colors[3] = "yellow";
 writeDump(favorite_colors);
-writeOutput("<br>");
+writeOutput("<br />");
 ArraySort(favorite_colors,"text");
 ArrayDeleteAt(favorite_colors, 2);
 writeDump(var=favorite_colors);
-writeOutput("<br>"); 
+writeOutput("<br />"); 
 </cfscript>
 ```
 
@@ -947,7 +947,7 @@ Another time we use conditional statements is when we want to repeat a set of in
  <cfargument name="counter" type="numeric">
  <cfset this.timer = "" />
  <cfloop condition="#arguments.counter# GT 0">
-  <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
+  <cfset this.timer &= "The counter is #arguments.counter#.<br />" />
   <cfset arguments.counter-- />
  </cfloop>
  <cfreturn this />
@@ -960,7 +960,7 @@ Another time we use conditional statements is when we want to repeat a set of in
 public component function countdown (numeric counter){
  this.timer = "";
  while (arguments.counter GT 0) { 
-  this.timer &= "The counter is #arguments.counter#.<br>";
+  this.timer &= "The counter is #arguments.counter#.<br />";
   arguments.counter--;
  }
  return this;
@@ -971,7 +971,7 @@ See how that works? The "counter" starts out as whatever parameter we
 pass in. The "while" instruction evaluates the conditional statement
 "arguments.counter GT 0" and finds that yes, the counter is greater than
 zero. Since the condition is true, execute the instructions inside the
-loop. First print out **The counter is #Arguments.counter#** then take
+loop. First print out **The counter is #arguments.counter#** then take
 the value of "Arguments.counter" and subtract one from it. Next, we overwrite the previous value of "Arguments.counter" with the new value. Then the loop goes back to the
 "condition" / "while" statement. Is it still true? If so, print the line
 and subtract one again. Keep repeating until the condition is false.
