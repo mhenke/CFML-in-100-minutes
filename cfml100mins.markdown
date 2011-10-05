@@ -21,7 +21,7 @@ ColdFusion Markup Language (CFML) is a web programming language, which is especi
 
 Although many people think of ColdFusion, or CFML, as an old programming language, Allaire, Macromedia, and Adobe have all devoted resources to its continued improvement. [ColdFusion](http://www.adobe.com/coldfusion) originated as proprietary technology, however, the availability of competing open source products like [Railo](http://www.getrailo.com/) and [OpenBD](http://www.openbluedragon.org/) has made CFML more widely available. 
 
-In 1995 Jeremy and JJ Allaire invented ColdFusion to make it easier to connect simple HTML pages to a database. ColdFusion now includes advanced features for enterprise integration and application development. When ColdFusion was originally released, it was adopted in both the government and private sector. 
+In 1995 [Jeremy](http://en.wikipedia.org/wiki/Jeremy_Allaire) and [JJ Allaire](http://en.wikipedia.org/wiki/Joseph_J._Allaire) invented ColdFusion to make it easier to connect simple HTML pages to a database. ColdFusion now includes advanced features for enterprise integration and application development. When ColdFusion was originally released, it was adopted in both the government and private sector. 
 
 CFML tag syntax resembles HTML and the CFML script syntax, CFScript, resembles ECMAScript (JavaScript). You may want to focus on either the tag or script based examples depending on your comfort level.
 
@@ -48,7 +48,7 @@ We might have a file named _myprogram.cfm_ and _Sample.cfc_ like this:
 
 ```cfm
 <cfcomponent>
- <cffunction name="hello">
+ <cffunction name = "hello">
   <cfreturn "Hello, World!" />
  </cffunction>
 </cfcomponent>
@@ -223,8 +223,8 @@ Inside the CFC we usually define one or more methods using the ```cffunction``` 
 #### Tag Syntax
 
 ```cfm
-<cfcomponent name="PersonalChef">
- <cffunction name="makeToast">
+<cfcomponent name = "PersonalChef">
+ <cffunction name = "makeToast">
   <cfset makeToast = "Making your toast!" />
  </cffunction>
 </cfcomponent>
@@ -233,7 +233,7 @@ Inside the CFC we usually define one or more methods using the ```cffunction``` 
 #### Script Syntax
 
 ```cfm
-component name="PersonalChef" {
+component name = "PersonalChef" {
  public string function makeToast(){
   makeToast = "Making your toast!";
  }
@@ -271,9 +271,9 @@ Sometimes methods take one or more *parameters* telling them **how** to do what 
 #### Tag Syntax
 
 ```cfm
-<cfcomponent name="PersonalChef">
- <cffunction name="makeToast" returnType="string">
-  <cfargument name="color" required="yes">
+<cfcomponent name = "PersonalChef">
+ <cffunction name = "makeToast" returnType = "string">
+  <cfargument name = "color" required = "yes">
   <cfset makeToast = "Making your toast #arguments.color#!" />
  </cffunction>
 </cfcomponent>
@@ -282,7 +282,7 @@ Sometimes methods take one or more *parameters* telling them **how** to do what 
 #### Script Syntax
 
 ```cfm
-component name="PersonalChef" {
+component name = "PersonalChef" {
  public string function makeToast(required String color){
   makeToast = "Making your toast #arguments.color#!";
  }
@@ -302,9 +302,9 @@ For the purposes of our next section I’m going to return the chef instance its
 #### Tag Syntax
 
 ```cfm
-<cfcomponent name="PersonalChef">
- <cffunction name="makeToast" returnType="component">
-  <cfargument name="color" required="yes">
+<cfcomponent name = "PersonalChef">
+ <cffunction name = "makeToast" returnType = "component">
+  <cfargument name = "color" required="yes">
    <cfset this.makeToast = "Making your toast #arguments.color#!" />
    <cfreturn this />
  </cffunction>
@@ -314,7 +314,7 @@ For the purposes of our next section I’m going to return the chef instance its
 #### Script Syntax
 
 ```cfm
-component name="PersonalChef" {
+component name = "PersonalChef" {
  public component function makeToast(required String color){
   this.makeToast = "Making your toast #arguments.color#!";
   return this;
@@ -345,12 +345,12 @@ Experiment with the following samples in a CFML file.
 
 ```cfm
 <cfset tester = "Good Morning Everyone!" />
-<cfoutput>#len(tester)#<br></cfoutput>
-<cfoutput>#Replace (tester, "o", "e", "All")#<br></cfoutput>
-<cfoutput>#RemoveChars (tester, 2, 5)#<br></cfoutput>
+<cfoutput>#len(tester)#<br /></cfoutput>
+<cfoutput>#Replace (tester, "o", "e", "All")#<br /></cfoutput>
+<cfoutput>#RemoveChars (tester, 2, 5)#<br /></cfoutput>
 <cfset t2 = "sample,data,from,a,CSV" />
 <cfset t3 = Mid(t2,8,len(t2)) />
-<cfoutput>#t3#<br></cfoutput>
+<cfoutput>#t3#<br /></cfoutput>
 ```
 
 #### Script Syntax
@@ -477,10 +477,10 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 <cfset loop = 0 />
 <cfoutput>
  <cfloop condition="loop LT 5" >
-  #loop# Hello, world!<br>
+  #loop# Hello, world!<br />
   <cfset loop++ />
  </cfloop>
- I am here!<br>
+ I am here!<br />
 </cfoutput>
 ```
 
@@ -491,7 +491,7 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 loop = 0; 
 while (loop < 5) { 
  WriteOutput("#loop# Good Morning! ");
- WriteOutput("...is it lunch time yet?<br>");
+ WriteOutput("...is it lunch time yet?<br />");
  loop++;
 }
 </cfscript>
@@ -508,9 +508,9 @@ Try this example with multiple instructions:
 ```cfm
 <cfset loop = 0 />
 <cfoutput>
-<cfloop index="loop" from="0" to="4">
+<cfloop index="loop" from = "0" to = "4">
  #loop# Good Morning!
- ...is it lunch time yet?<br>
+ ...is it lunch time yet?<br />
 </cfloop>
 </cfoutput>
 ```
@@ -520,8 +520,8 @@ Try this example with multiple instructions:
 ```cfm
 <cfscript>
 for (loop = 0 ; loop < 5 ; loop++)
- WriteOutput("#loop# Hello, world!<br>");
-WriteOutput("I am here<br>");
+ WriteOutput("#loop# Hello, world!<br />");
+WriteOutput("I am here<br />");
 </cfscript>
 ```
 
@@ -534,7 +534,7 @@ It's also possible to go through a loop and step over more than one value at a t
 <cfoutput>
 <cfloop index="loop" from="0" to="4" step="2">
  #loop# Good Morning!
- ...is it lunch time yet?<br>
+ ...is it lunch time yet?<br />
 </cfloop>
 </cfoutput>
 ```
@@ -546,7 +546,7 @@ It's also possible to go through a loop and step over more than one value at a t
 loop = 0;
 while (loop < 5) {
  WriteOutput("#loop# Good Morning! ");
- WriteOutput("...is it lunch time yet?<br>");
+ WriteOutput("...is it lunch time yet?<br />");
  loop++;
 }
 </cfscript>
@@ -559,7 +559,7 @@ A query is a request to a database. It returns ```query object``` containing a *
 #### Tag Syntax
 
 ```cfm
-<cfquery name="GetBreakfastItems" datasource="pantry"> 
+<cfquery name = "GetBreakfastItems" datasource="pantry"> 
  SELECT QUANTITY, ITEM 
  FROM CUPBOARD 
  ORDER BY ITEM 
@@ -587,7 +587,7 @@ GetBreakfastItems = queryService.execute().getResult();
 In order to display the data from our query object, we need to loop through the rows, and display each row. This is usually done in a ```<cfoutput>``` tag like so:
 
 ```cfm
-<cfoutput query="GetBreakfastItems">
+<cfoutput query = "GetBreakfastItems">
 There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br />
 </cfoutput>
 ```
@@ -601,10 +601,10 @@ For a single value the cfqueryparam tag is used like so:
 
 #### Tag Syntax
 ```cfm
-<cfquery name="GetBreakfastItem" datasource="pantry"> 
+<cfquery name = "GetBreakfastItem" datasource = "pantry"> 
  SELECT QUANTITY, ITEM 
  FROM CUPBOARD 
- WHERE ITEM_ID = <cfqueryparam cfsqltype="CF_SQL_INTEGER" value="#itemID#">
+ WHERE ITEM_ID = <cfqueryparam cfsqltype="CF_SQL_INTEGER" value = "#itemID#">
 </cfquery> 
 ```
 
@@ -621,7 +621,7 @@ queryService.setSQL("
   WHERE ITEM_ID = :itemID
 ");
 
-queryService.addParam(name="itemID",cfsqltype="CF_SQL_INTEGER",value=itemID);
+queryService.addParam(name = "itemID",cfsqltype="CF_SQL_INTEGER",value = itemID);
 
 GetBreakfastItem = queryService.execute().getResult(); 
 </cfscript> 
@@ -629,10 +629,10 @@ GetBreakfastItem = queryService.execute().getResult();
 When passing in a list of information the cfqueryparam tag can also be used like so:
 #### Tag Syntax
 ```cfm
-<cfquery name="GetBreakfastItems" datasource="pantry"> 
+<cfquery name = "GetBreakfastItems" datasource="pantry"> 
  SELECT QUANTITY, ITEM 
  FROM CUPBOARD 
- WHERE ITEM_ID IN(<cfqueryparam list="true" cfsqltype="CF_SQL_VARCHAR" value="#itemID#">)
+ WHERE ITEM_ID IN(<cfqueryparam list="true" cfsqltype = "CF_SQL_VARCHAR" value = "#itemID#">)
 </cfquery> 
 ```
 #### Script Using 
@@ -648,7 +648,7 @@ queryService.setSQL("
   WHERE ITEM_ID = :itemID
 ");
 
-queryService.addParam(name="itemID",cfsqltype="CF_SQL_VARCHAR",value=itemID,list=true);
+queryService.addParam(name = "itemID",cfsqltype = "CF_SQL_VARCHAR",value = itemID,list = true);
 
 GetBreakfastItem = queryService.execute().getResult(); 
 </cfscript> 
@@ -664,7 +664,7 @@ When looping through a query with ```<cfloop>```, you need to make sure you have
 #### Tag Syntax
 
 ```cfm
-<cfloop query="GetBreakfastItems">
+<cfloop query = "GetBreakfastItems">
  <cfoutput>There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /></cfoutput>
 </cfloop>
 ```
@@ -691,9 +691,9 @@ An **array** is a number-indexed list. Picture a city block of houses. Together 
 
 ```cfm
 <cfset favorite_colors = ["red","blue","green","black","brown"] />
-<cfdump var="#favorite_colors#" /><br>
-<cfdump var="#favorite_colors[2]#" /><br>
-<cfdump var="#ArrayLen(favorite_colors)#" /><br>
+<cfdump var = "#favorite_colors#" /><br />
+<cfdump var = "#favorite_colors[2]#" /><br />
+<cfdump var = "#ArrayLen(favorite_colors)#" /><br />
 ```
 
 #### Script Syntax
@@ -702,10 +702,10 @@ An **array** is a number-indexed list. Picture a city block of houses. Together 
 <cfscript>
 favorite_colors = ["red","blue","green","black","brown"];
 writeDump(favorite_colors);
-writeOutput("<br>");
+writeOutput("<br />");
 writeDump(favorite_colors[2]);
-writeOutput("<br>");
-writeDump(var=ArrayLen(favorite_colors));
+writeOutput("<br />");
+writeDump(var = ArrayLen(favorite_colors));
 </cfscript>
 ```
 
@@ -715,11 +715,11 @@ Keep going with these, but try to understand what each instruction is doing befo
 
 ```cfm
 <cfset ArrayAppend(favorite_colors, "orange") />
-<cfset favorite_colors[3]="yellow" />
-<cfdump var="#favorite_colors#" /><br>
+<cfset favorite_colors[3] = "yellow" />
+<cfdump var = "#favorite_colors#" /><br />
 <cfset ArraySort(favorite_colors,"text") />
 <cfset ArrayDeleteAt(favorite_colors, 2) /> 
-<cfdump var="#favorite_colors#" /><br>
+<cfdump var = "#favorite_colors#" /><br />
 ```
 
 #### Script Syntax
@@ -729,11 +729,11 @@ Keep going with these, but try to understand what each instruction is doing befo
 ArrayAppend(favorite_colors, "orange");
 favorite_colors[3] = "yellow";
 writeDump(favorite_colors);
-writeOutput("<br>");
+writeOutput("<br />");
 ArraySort(favorite_colors,"text");
 ArrayDeleteAt(favorite_colors, 2);
-writeDump(var=favorite_colors);
-writeOutput("<br>"); 
+writeDump(var = favorite_colors);
+writeOutput("<br />"); 
 </cfscript>
 ```
 
@@ -750,13 +750,13 @@ There are lots of cool things to do with an array. You can rearrange the order o
 ```cfm
 <cfoutput>
 <ul>
- <cfloop array="#favorite_colors#" index="target" >
+ <cfloop array = "#favorite_colors#" index = "target" >
  <li>
  #target# is #len(target)# letters long.
  </li>
  </cfloop>
 </ul>
-<cfdump var="#ArrayIsDefined(favorite_colors,4)#" />
+<cfdump var = "#ArrayIsDefined(favorite_colors,4)#" />
 </cfoutput>
 ```
 
@@ -772,7 +772,7 @@ while (index.hasNext ()){
 long.</li>");
 }
 writeOutput ("</ul>"); 
-writeDump (var=ArrayIsDefined (favorite_colors,4));
+writeDump (var = ArrayIsDefined (favorite_colors,4));
 </cfscript>
 ```
 
@@ -791,7 +791,7 @@ A structure is an unordered collection, it’s just a bunch of data collected to
 <cfset ages.joey = 12 /> 
 <cfset ages["jill"] = 14 />
 
-<cfdump var="#ages#" />
+<cfdump var = "#ages#" />
 
 <cfoutput>
 Joey is #ages["joey"]# years old.
@@ -806,7 +806,7 @@ ages = {jack = 11, brian = 12, tracy = 11};
 ages.joey = 12;
 ages["jill"] = 14;
 
-writeDump (var=ages);
+writeDump (var = ages);
 writeOutput ("Joey is #ages["joey"]# years old.");
 </cfscript>
 ```
@@ -818,7 +818,7 @@ Here we create a structure named "ages". Structures are made up what are called 
 ```cfm
 <cfset ages["jimmy"] = 14 />
 <cfset ages["joey"] = 9 />
-<cfdump var="#ages#" />
+<cfdump var = "#ages#" />
 ```
 
 #### Script Syntax
@@ -827,7 +827,7 @@ Here we create a structure named "ages". Structures are made up what are called 
 <cfscript>
 ages["jimmy"] = 14;
 ages["joey"] = 9;
-writeDump (var=ages);
+writeDump (var = ages);
 </cfscript>
 ```
 
@@ -838,7 +838,7 @@ In the second chunk of the example, we add a new key and value to the structure.
 ```cfm
 <cfset StructSort(ages)>
 
-<cfloop collection="#ages#" item="student">
+<cfloop collection = "#ages#" item = "student">
  <cfoutput>"#student# is #ages[student]# years old."<br />
  </cfoutput>
 </cfloop>
@@ -872,8 +872,8 @@ Why do we have conditional statements? Most often its to control conditional ins
 #### Tag Syntax
 
 ```cfm
-<cffunction name="water_boiling" returnType="component">
- <cfargument name="minutes" type="numeric" required="yes">
+<cffunction name = "water_boiling" returnType = "component">
+ <cfargument name = "minutes" type = "numeric" required = "yes">
 
  <cfif (arguments.minutes LT 7)>
   <cfset this.status = "The water is not boiling yet." />
@@ -943,11 +943,11 @@ Another time we use conditional statements is when we want to repeat a set of in
 #### Tag Syntax
 
 ```cfm
-<cffunction name="countdown" returnType="component">
- <cfargument name="counter" type="numeric">
+<cffunction name = "countdown" returnType = "component">
+ <cfargument name = "counter" type = "numeric">
  <cfset this.timer = "" />
- <cfloop condition="#arguments.counter# GT 0">
-  <cfset this.timer &= "The counter is #arguments.counter#.<br>" />
+ <cfloop condition = "#arguments.counter# GT 0">
+  <cfset this.timer &= "The counter is #arguments.counter#.<br />" />
   <cfset arguments.counter-- />
  </cfloop>
  <cfreturn this />
@@ -960,7 +960,7 @@ Another time we use conditional statements is when we want to repeat a set of in
 public component function countdown (numeric counter){
  this.timer = "";
  while (arguments.counter GT 0) { 
-  this.timer &= "The counter is #arguments.counter#.<br>";
+  this.timer &= "The counter is #arguments.counter#.<br />";
   arguments.counter--;
  }
  return this;
@@ -971,8 +971,8 @@ See how that works? The "counter" starts out as whatever parameter we
 pass in. The "while" instruction evaluates the conditional statement
 "arguments.counter GT 0" and finds that yes, the counter is greater than
 zero. Since the condition is true, execute the instructions inside the
-loop. First print out **The counter is #Arguments.counter#** then take
-the value of "Arguments.counter" and subtract one from it. Next, we overwrite the previous value of "Arguments.counter" with the new value. Then the loop goes back to the
+loop. First print out **The counter is #arguments.counter#** then take
+the value of "arguments.counter" and subtract one from it. Next, we overwrite the previous value of "arguments.counter" with the new value. Then the loop goes back to the
 "condition" / "while" statement. Is it still true? If so, print the line
 and subtract one again. Keep repeating until the condition is false.
 
@@ -1005,15 +1005,15 @@ A large percentage of the errors you encounter while writing CFML code will invo
 #### Tag Syntax
 
 ```cfm
-<cffunction name="makeEggs" returnType="component">
- <cfargument name="quantity" type="numeric">
+<cffunction name = "makeEggs" returnType = "component">
+ <cfargument name = "quantity" type="numeric">
  <cfif (IsNull(arguments.quantity)) />
   <cfset local.makeEggs = "How am I supposed to make nothingness number of eggs?" />
  <cfelse>
   <cfset local.makeEggs = "Making your #arguments.quantity# eggs!" />
   <cfset local.yourEggs = ArrayNew(1) />
 
-  <cfloop condition="#ArrayLen(local.yourEggs)# LT #arguments.quantity#">
+  <cfloop condition = "#ArrayLen(local.yourEggs)# LT #arguments.quantity#">
    <cfset ArrayAppend(local.yourEggs, "Making an Egg.") />
   </cfloop>
  </cfif>
