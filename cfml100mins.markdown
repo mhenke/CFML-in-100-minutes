@@ -122,7 +122,7 @@ Everything needs a name so we can refer to it. A variable, like in math, is just
 
 Go into a CFML file, enter in these example instructions, and observe the output that CFML gives you back:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfoutput>
@@ -139,7 +139,7 @@ d = #d#<br/>
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -158,7 +158,7 @@ writeOutput("d = #d#<br/>");
 
 In this second example, we assume the first example is present.
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfoutput>
@@ -173,7 +173,7 @@ b = #b#<br/>
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -200,7 +200,7 @@ For an example of an object, think about you as a human being. You have attribut
 
 In CFML we define an object using the ```cfcomponent``` instruction (```component``` in script-based CFCs) and save the file as _.cfc_. Here's an example defining the object type _PersonalChef.cfc_:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfcomponent>
@@ -208,7 +208,7 @@ In CFML we define an object using the ```cfcomponent``` instruction (```componen
 </cfcomponent>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 component {
@@ -220,7 +220,7 @@ component {
 
 Inside the CFC we usually define one or more methods using the ```cffunction``` or ```function``` instruction like this:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfcomponent name="PersonalChef">
@@ -230,7 +230,7 @@ Inside the CFC we usually define one or more methods using the ```cffunction``` 
 </cfcomponent>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 component name="PersonalChef" {
@@ -248,13 +248,13 @@ A "class" is an abstract idea, it defines what all objects of that type can know
 
 Once we define a class, we create an instance of that class like this:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset frank = New PersonalChef() />
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 frank = New PersonalChef();
@@ -268,7 +268,7 @@ The ```New``` instruction creates a new instance of the object and calls its ```
 
 Sometimes methods take one or more *parameters* telling them **how** to do what they're supposed to **do**. For instance, I might call ```frank.makeToast("burned")``` for him to burn my toast. Or maybe he has another method where I call ```frank.makebreakfast("toast","eggs")``` for him to make both toast and eggs. Parameters can be numbers, strings, or any kind of object. When a method takes a parameter we use the ```cfargument``` instruction, it'll look like this:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfcomponent name="PersonalChef">
@@ -279,7 +279,7 @@ Sometimes methods take one or more *parameters* telling them **how** to do what 
 </cfcomponent>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 component name="PersonalChef" {
@@ -299,7 +299,7 @@ To return data, we use ```cfreturn``` to instruct the method to return a "value"
 
 For the purposes of our next section I’m going to return the chef instance itself from the method. If you wanted to picture the metaphor, imagine you are looking at your chef "frank". You say, "Frank, go make my toast", he tells you he's making the toast, goes to make it, then comes back to you to receive more instructions. He's **returning himself** to you. Here's how we implement it in code:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfcomponent name="PersonalChef">
@@ -311,7 +311,7 @@ For the purposes of our next section I’m going to return the chef instance its
 </cfcomponent>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 component name="PersonalChef" {
@@ -341,7 +341,7 @@ In CFML a string is defined as a quote ( **'** or **"** ) followed by zero or mo
 
 Experiment with the following samples in a CFML file.
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset tester = "Good Morning Everyone!" />
@@ -353,7 +353,7 @@ Experiment with the following samples in a CFML file.
 <cfoutput>#t3#<br></cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -369,7 +369,7 @@ writeOutput (t3 & "<br/>");
 
 Often a string may store a list like the *t2* variable in the last example. A string for storing a list isn't the best for performance and usage. Using an array for a list is so much better. We can convert a list into an *array* using *ListToArray*. We'll discuss arrays in an upcoming section. Try out these next examples in the CFML file assuming we have the code from the last example:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset t4 = ListToArray(t3) />
@@ -378,7 +378,7 @@ Often a string may store a list like the *t2* variable in the last example. A st
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -399,7 +399,7 @@ When we put that into the CFML file, it just spits back the same string. If we w
 
 What we need to do is combine a variable with the string. There are two ways to do that. The first approach is called *string concatenation* which is basically just adding strings together:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset today = "Saturday" />
@@ -409,7 +409,7 @@ What we need to do is combine a variable with the string. There are two ways to 
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -427,7 +427,7 @@ today = DayOfWeek(Now());
 
 ```Now()``` gets the current date and time of the computer running the ColdFusion server. "DayOfWeek" returns an integer in the range 1 (Sunday) to 7 (Saturday) for the day of the week. We still don't have the day of week as string. Try this:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset today = DayOfWeekAsString(DayOfWeek(Now())) />
@@ -437,7 +437,7 @@ today = DayOfWeek(Now());
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -451,13 +451,13 @@ Great, no errors and our output looks correct. "DayOfWeekAsString" did the trick
 
 **String interpolation** is the process of sticking data into the middle of strings. We use the symbols ```#``` around the "variable" where in a string the value should be inserted. Inside those hashes we can put any variable and output it in that spot. Our previous example "message" could be rewritten like this:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset message = "Happy #today#!" />
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 message = "Happy #today#!";
@@ -471,7 +471,7 @@ Basically *interpolating* means evaluate the code inside this ```#``` wrapper an
 
 There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including "+", "-", "/" and "*". The "++" operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the "++" operator:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset loop = 0 />
@@ -484,7 +484,7 @@ There are two basic kinds of numbers in CFML: integers (whole numbers) and real 
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -503,7 +503,7 @@ In the tag example there's no need to manage the index inside the loop if you're
 
 Try this example with multiple instructions:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset loop = 0 />
@@ -515,7 +515,7 @@ Try this example with multiple instructions:
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -527,7 +527,7 @@ WriteOutput("I am here<br>");
 
 It's also possible to go through a loop and step over more than one value at a time. The following examples will step through the loop and increase the "loop" index by two for each time through the loop.
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset loop = 0 />
@@ -539,7 +539,7 @@ It's also possible to go through a loop and step over more than one value at a t
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -556,7 +556,7 @@ while (loop < 5) {
 
 A query is a request to a database. It returns ```query object``` containing a **recordset** and other information. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. ```cfquery``` passes SQL statements to the ```datasource```. The ```datasource``` is set in the ColdFusion administrator.
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfquery name="GetBreakfastItems" datasource="pantry"> 
@@ -566,7 +566,7 @@ A query is a request to a database. It returns ```query object``` containing a *
 </cfquery> 
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -599,7 +599,7 @@ In ColdFuison it is easy to make your queries to the database dynamic by passing
 
 For a single value the cfqueryparam tag is used like so:
 
-#### Tag
+#### Tag Syntax
 ```cfm
 <cfquery name="GetBreakfastItem" datasource="pantry"> 
  SELECT QUANTITY, ITEM 
@@ -627,7 +627,7 @@ GetBreakfastItem = queryService.execute().getResult();
 </cfscript> 
 ```
 When passing in a list of information the cfqueryparam tag can also be used like so:
-#### Tag
+#### Tag Syntax
 ```cfm
 <cfquery name="GetBreakfastItems" datasource="pantry"> 
  SELECT QUANTITY, ITEM 
@@ -661,7 +661,7 @@ You can also loop through a query using standard loop constructs, though they di
 
 When looping through a query with ```<cfloop>```, you need to make sure you have a ```<cfoutput>``` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfloop query="GetBreakfastItems">
@@ -671,7 +671,7 @@ When looping through a query with ```<cfloop>```, you need to make sure you have
 
 When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in your for statement to pick up the correct row from the recordset. So the syntax becomes "recordsetName.ColumnName[rowNumber]".
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript> 
@@ -687,7 +687,7 @@ Often we need to organize a group and put them into a *collection*. There are tw
 
 An **array** is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the **indices**. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The **index** is the address of a specific element inside the array. In CFML the index always begins with "1". An array is defined in CFML as an opening "[" then zero or more elements, and a closing "]". Try out this code:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset favorite_colors = ["red","blue","green","black","brown"] />
@@ -696,7 +696,7 @@ An **array** is a number-indexed list. Picture a city block of houses. Together 
 <cfdump var="#ArrayLen(favorite_colors)#" /><br>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -711,7 +711,7 @@ writeDump(var=ArrayLen(favorite_colors));
 
 Keep going with these, but try to understand what each instruction is doing before we explain them:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset ArrayAppend(favorite_colors, "orange") />
@@ -722,7 +722,7 @@ Keep going with these, but try to understand what each instruction is doing befo
 <cfdump var="#favorite_colors#" /><br>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -745,7 +745,7 @@ In order to get an element in the array you use the syntax ```ArrayAppend(array,
 
 There are lots of cool things to do with an array. You can rearrange the order of the elements using the ```ArraySort``` instruction like we did in the last example. You can iterate through each element using the ```cfloop``` instruction. You can find the address of a specific element by using the "arrayName[index]" instruction. You can ask an array if an element is present with the "ArrayIsDefined" instruction. Try out this example that brings a bunch of things together: 
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfoutput>
@@ -760,7 +760,7 @@ There are lots of cool things to do with an array. You can rearrange the order o
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -784,7 +784,7 @@ A structure is a *collection of data* where each element of data is addressed by
 
 A structure is an unordered collection, it’s just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset ages = {jack = 11, brian = 12, tracy = 11} />
@@ -798,7 +798,7 @@ Joey is #ages["joey"]# years old.
 </cfoutput>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -813,7 +813,7 @@ writeOutput ("Joey is #ages["joey"]# years old.");
 
 Here we create a structure named "ages". Structures are made up what are called key-value pairs. The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```. It is worth noting that when adding a key that is quoted, as is the case with "jill", the case sensitivity of the key will be preserved. Otherwise all keys will be uppercase. 
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset ages["jimmy"] = 14 />
@@ -821,7 +821,7 @@ Here we create a structure named "ages". Structures are made up what are called 
 <cfdump var="#ages#" />
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -833,7 +833,7 @@ writeDump (var=ages);
 
 In the second chunk of the example, we add a new key and value to the structure. Since the **jimmy** key wasn't in the original structure, it's added with the value of "14". If the key **jimmy** already existed then the value would be replaced by "14". Every key in a structure must be unique! In the second line we reference the key **joey** which already exists, so the value gets replaced with the "9". Then, just to show you the state of the structure, we dump out the list of keys and the list of values.
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cfset StructSort(ages)>
@@ -844,7 +844,7 @@ In the second chunk of the example, we add a new key and value to the structure.
 </cfloop>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 <cfscript>
@@ -869,7 +869,7 @@ Some instructions return a "true" or "false", so they're used in conditional sta
 
 Why do we have conditional statements? Most often its to control conditional instructions, especially "if" / "else if" / "else" structures. Lets write an example by adding a method to our **PersonalChef** class:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cffunction name="water_boiling" returnType="component">
@@ -893,7 +893,7 @@ Why do we have conditional statements? Most often its to control conditional ins
 </cffunction>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 public component function water_boiling(numeric minutes){
@@ -940,7 +940,7 @@ Only *one* section of the "if" / "else if" / "else" structure can have its instr
 
 Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your _PersonalChef.cfc_:
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cffunction name="countdown" returnType="component">
@@ -954,7 +954,7 @@ Another time we use conditional statements is when we want to repeat a set of in
 </cffunction>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 public component function countdown (numeric counter){
@@ -1002,7 +1002,7 @@ If you have three eggs, eat three eggs, then you might think you have *nothing* 
 
 A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our ```makeEggs``` method to  illustrate "NULL" :
 
-#### Tag
+#### Tag Syntax
 
 ```cfm
 <cffunction name="makeEggs" returnType="component">
@@ -1021,7 +1021,7 @@ A large percentage of the errors you encounter while writing CFML code will invo
 </cffunction>
 ```
 
-#### Syntax
+#### Script Syntax
 
 ```cfm
 public component function makeEggs (numeric quantity){
