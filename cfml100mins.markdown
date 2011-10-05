@@ -21,7 +21,7 @@ ColdFusion Markup Language (CFML) is a web programming language, which is especi
 
 Although many people think of ColdFusion, or CFML, as an old programming language, Allaire, Macromedia, and Adobe have all devoted resources to its continued improvement. [ColdFusion](http://www.adobe.com/coldfusion) originated as proprietary technology, however, the availability of competing open source products like [Railo](http://www.getrailo.com/) and [OpenBD](http://www.openbluedragon.org/) has made CFML more widely available. 
 
-In 1995 Jeremy and JJ Allaire invented ColdFusion to make it easier to connect simple HTML pages to a database. ColdFusion now includes advanced features for enterprise integration and application development. When ColdFusion was originally released, it was adopted in both the government and private sector. 
+In 1995 [Jeremy](http://en.wikipedia.org/wiki/Jeremy_Allaire) and [JJ Allaire](http://en.wikipedia.org/wiki/Joseph_J._Allaire) invented ColdFusion to make it easier to connect simple HTML pages to a database. ColdFusion now includes advanced features for enterprise integration and application development. When ColdFusion was originally released, it was adopted in both the government and private sector. 
 
 CFML tag syntax resembles HTML and the CFML script syntax, CFScript, resembles ECMAScript (JavaScript). You may want to focus on either the tag or script based examples depending on your comfort level.
 
