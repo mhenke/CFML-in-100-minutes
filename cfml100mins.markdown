@@ -851,7 +851,7 @@ In the second chunk of the example, we add a new key and value to the structure.
 <cfscript>
 StructSort(ages);
 for(student in ages) {
- WriteOutput ("#student# is #ages[student]# years old.<br />");
+ WriteOutput ('"#student# is #ages[student]# years old.<br />"');
 }
 </cfscript>
 ```
