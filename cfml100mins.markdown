@@ -2,20 +2,19 @@
 
 ColdFusion Markup Language (CFML) is a web programming language, which is especially suited for new developers as it was written to make a programmer's job easy and not care if the computer's job is hard. In this brief introduction we'll look at key language features you need to get started.
 
-1.  Syntax
-2.  Variables
-3.  Components, Methods, and Parameters
-4.  Strings
-5.  Numbers
-6.  Recordsets
-    1. Prevent SQL Injection
-7.  Arrays
-8.  Structures
-9.  Conditionals
-    1.  If, Else If, & Else
-    2.  Looping
-
-10. Nothingness & Null
+1.  [Syntax](#syntax)
+2.  [Variables](#variables)
+3.  [Components, Methods, and Parameters](#cfc)
+4.  [Strings](#strings)
+5.  [Numbers](#numbers)
+6.  [Recordsets](#recordsets)
+    1. [Prevent SQL Injection](#sqlinjection)
+7.  [Arrays](#arrays)
+8.  [Structures](#structures)
+9.  [Conditionals](#conditionals)
+    1.  [If, Else If, & Else](#if)
+    2.  [Looping](#loop)
+10. [Nothingness & Null](#nothingness)
 
 ## CFML History
 
@@ -27,6 +26,8 @@ CFML tag syntax resembles HTML and the CFML script syntax, CFScript, resembles E
 
 And you want to learn CFML so here goes!
 
+
+<a name="syntax" />
 ## 1. Syntax
 
 There are two ways to write CFML code. You can use tag or script syntax. For the examples, please focus on one or the other so this tutorial is not confusing. 
@@ -115,7 +116,7 @@ end
 s = Sample.new
 puts s.hello
 ```
-
+<a name="variables" />
 ## 2. Variables
 
 Everything needs a name so we can refer to it. A variable, like in math, is just a name for a piece of data. In CFML, variables are very flexible and can be changed at any time. Variables are assigned using a single equals sign ( = ) where the **right** side of the equals sign is evaluated first, then the value is assigned to the variable named on the **left** side of the equals.
@@ -189,7 +190,7 @@ writeOutput("b = #b#<br/>");
 ```
 
 *The first few lines in the first example are simple if you've done any programming language before, but the last few get interesting when combining strings and numbers. The code looks a little messy since after each instruction we output a variable.
-
+<a name="cfc" />
 ## 3. Components, Methods, and Parameters
 
 ### Components (aka Objects or Classes)
@@ -321,7 +322,7 @@ component name = "PersonalChef" {
  }
 }
 ```
-
+<a name="strings" />
 ## 4. Strings
 
 In CFML a string is defined as a quote ( **'** or **"** ) followed by zero or more letters, numbers, or symbols and followed by another quote ( **'** or **"**  ). Some simple strings would be **hello** or **This sentence is a string!**. Strings can be anything from "", the empty string, to really long sets of text. This whole tutorial, for instance, is stored in a string. Strings have a few important instructions that we'll use.
@@ -466,7 +467,7 @@ message = "Happy #today#!";
 If you compare the output you'll see the second example gives the exact same results. The code itself is a little more compact and, personally, I find it much easier to read.
 
 Basically *interpolating* means evaluate the code inside this ```#``` wrapper and put it into the string.
-
+<a name="numbers" />
 ## 5. Numbers
 
 There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including "+", "-", "/" and "*". The "++" operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the "++" operator:
@@ -551,7 +552,7 @@ while (loop < 5) {
 }
 </cfscript>
 ```
-
+<a name="recordsets" />
 ## 6. Recordsets
 
 A query is a request to a database. It returns ```query object``` containing a **recordset** and other information. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. ```cfquery``` passes SQL statements to the ```datasource```. The ```datasource``` is set in the ColdFusion administrator.
@@ -593,7 +594,7 @@ There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br
 ```
 
 While it's not strictly necessary to prepend the recordset name before the column name inside the ```<cfoutput>```, it's strongly recommended that you do in order to prevent referencing the wrong variable scope.
-
+<a name="sqlinjection" />
 #### Prevent SQL Injection
 In ColdFuison it is easy to make your queries to the database dynamic by passing in variables, however a ColdFusion developer must make their sure their queries are not vulenrable to malicious code.  This type of code, known as SQL Injection, allows a hacker to run queries on your database by passing code to your query through a url or form value.  It is imperitive that queries are protected using a tag called cfqueryparam. **It is never a good idea to leave query variables unprotected**
 
@@ -680,7 +681,7 @@ for (x = 1; x <= GetBreakfastItems.RecordCount; x++) {
 } 
 </cfscript>
 ```
-
+<a name="arrays" />
 ## 7. Arrays
 
 Often we need to organize a group and put them into a *collection*. There are two main types of collections: **arrays** and **structures**.
@@ -777,7 +778,7 @@ writeDump (var = ArrayIsDefined (favorite_colors,4));
 ```
 
 We use arrays whenever we need a list where the elements are in a specific order.
-
+<a name="structures" />
 ## 8. Structures
 
 A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like "science["Joey"]" which could be read as "look in the collection named 'science' and find the thing named 'Joey'".
@@ -858,13 +859,13 @@ for(student in ages) {
 The last chunk of the example used StructSort to get the sorted array "students" from "ages". Then, it iterated through the "students" array using a loop and gave each element of the array the name "student". It then printed out one line with that student’s name and age from "ages".
 
 While that last part probably seemed complicated, it's just to illustrate that structures are unordered.
-
+<a name="conditionals" />
 ## 9. Conditionals
 
 Conditional statements evaluate to "true" or "false" only. The most common conditional operators are ```==``` (equal), ```!=``` (not equal), ```>``` (greater than), ```>=``` (greater than or equal to), ```<``` (less than), and ```<=``` (less than or equal to). You can also define the operators as abbreviations: ```EQ```, ```NEQ```, ```GT```, ```GTE```, ```LT```, and ```LTE```. You can **only** use the abbreviations when using tags.
 
 Some instructions return a "true" or "false", so they're used in conditional statements, for example, "IsArray" which is "true" only when the variable is an "array". Structures have an instruction named ```StructKeyExists``` which returns "true" if a key is present in a structure.
-
+<a name="if" />
 ### 9. 1. If, Else If, & Else
 
 Why do we have conditional statements? Most often its to control conditional instructions, especially "if" / "else if" / "else" structures. Lets write an example by adding a method to our **PersonalChef** class:
@@ -935,7 +936,7 @@ An "if" block has:
     "if" nor "else if" statements were true
 
 Only *one* section of the "if" / "else if" / "else" structure can have its instructions run. If the "if" is "true", for instance, CFML will never look at the "else if". Once one block executes, that’s it.
-
+<a name="loop" />
 ### 9. 2. Looping
 
 Another time we use conditional statements is when we want to repeat a set of instructions. Try out this simple example by adding it to your _PersonalChef.cfc_:
@@ -992,6 +993,7 @@ the difference between ```=``` and ```==```.
 *   ```==``` is a *question*. It means "is the thing on the right equal to
     the thing on the left" (or its *asking* not *telling*.)
 
+<a name="nothingness" />
 ## 10. Nothingness & Null
 
 What is *nothingness*? Is there nothingness only in outer space? Really, when we think of *nothing* isn't it just the absence of something? Ok, that's too much philosophy
