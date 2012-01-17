@@ -659,29 +659,130 @@ For full documentation on the cfqueryparam tag, see the [Adobe LiveDocs](http://
 
 ###Looping Through Results
 
-You can also loop through a query using standard loop constructs, though they differ when using tags and script.
+There are three standard ways to loop through query results.  No one way is better than another across all application needs, but each does have specific instances where it excels.  Some items to account for when deciding which type of loop to use to iterate over a query are:
 
-When looping through a query with ```<cfloop>```, you need to make sure you have a ```<cfoutput>``` tag around your content (or around the loop) to ensure the ColdFusion instructions are recognized.
+1. What is going on in the code already (are you inside a larger ```<cfoutput>``` block, for instance).
+2. Do you need grouping capabilities?
+3. Are you using ```<cfscript>``` or tag syntax in your code at the point you need to iterate a query?
 
-#### Tag Syntax
+In the following sections we will take a peek at the three common ways to loop query result objects.  One thing you will notice (and please, notice it!) is that we are always scoping our query variables.  It is especially important with queries, as many times query column names might also exist is variables in other scopes that take precedence over the query scope.  Get into the habit of scoping your query variables.  It will save you time in the long run during debugging and application maintenance.
+
+#### ```<CFOUTPUT query="">```
+```<cfoutput>``` makes it very easy to loop over your query.  All you need to do is pass the query attribute with the string name of your query.  ColdFusion will leap into action and perform whatever logic you have in between the start and end ```<cfoutput>``` tags once for each line in the query.
 
 ```cfm
-<cfloop query = "GetBreakfastItems">
- <cfoutput>There are #GetBreakfastItems.Quantity# #GetBreakfastItems.Item# in the pantry<br /></cfoutput>
+<!--- assumes a query result named myQuery with at least two columns named firstname and lastname --->
+<cfoutput query="myQuery">
+    #myQuery.firstName# #myQuery.lastName#
+</cfoutput>
+```
+
+Notice we are passing the string name of the query variable and not the actual query variable here (no hashmarks around the variable name).
+
+```<cfoutput>``` has other useful attributes that assist in looping over your queries.  One powerful attribute is ```group```.  Simply pass in the column name you want to group by, and ColdFusion allows you to perform a subloop and group on the top-level column.  This is best explained by example:
+
+```cfm
+<!--- employee has many phone numbers, all stored in the phone table --->
+<cfquery name="myQuery" datasource="myDSN">
+SELECT employee.name, phone.number
+FROM employee left join phone on (employee.id = phone.employeeid)
+order by employee.name
+</cfquery>
+
+<cfoutput query="myQuery" group="name">
+	<h1>#myQuery.name#</h1>
+	<cfoutput>
+		 #myQuery.phone#<br />
+	</cfoutput>
+</cfoutput>
+```
+
+The code above would output an employee name as a heading and then iterate over all phone numbers.  When all records for that employee have been output, it moves on to the next grouping.  Note that we need to order by the field we are grouping on in our SQL statement for this to work.
+
+Sometimes you want to paginate results, or limit the result set.  ```<cfoutput>``` takes an attribute for ```maxrows``` as well as ```startrow``` and ```endrow```.  For a full explanation of how this works see [Adobe LiveDocs for looping over a query](http://help.adobe.com/en_US/ColdFusion/9.0/CFMLRef/WSc3ff6d0ea77859461172e0811cbec22c24-7ff6.html).  It is also important to note that maxrows does not limit the amount of data that is returned from the SQL query itself, but rather just affects the loop itself.
+
+```cfm
+<!--- assumes a query result named myQuery with at least two columns named firstname and lastname --->
+<cfoutput query="myQuery" startRow="5" endRow="10">
+	#myQuery.firstName# #myQuery.lastName#<br />
+</cfoutput>
+```
+
+The ```startRow``` and ```endRow``` attributes are usually variables that are passed in based on the current page state and are usually not static numbers as above.
+
+#### Query loop
+ColdFusion also allows us to iterate queries using ```<cfloop>```.  This is especially handy if you are outputting a query within an existing ```cfoutput``` block, or if you have no need to output the query but want to perform some sort of logic on the values, or create a different recordset from the values.  The syntax is almost identical to that of ```<cfoutput>``` except it does not allow for the ```maxrows``` attribute (see Iterative Loop below for limiting output using ```<cfloop>```) or grouping.
+
+If you are using ```<cfloop>``` to create output from a query and are not already within an existing ```<cfoutput>``` block, you will need to surround your output with ```<cfoutput>```.
+
+```cfm
+<cfoutput>
+	<cfloop query="myQuery">
+		#myQuery.firstName# #myQuery.lastName#<br />
+	</cfloop>
+</cfoutput>
+```
+
+Even though the query loop is not indexed, you might still have need for an index variable.  You can either make your own index and increment it during each loop, or, you can use the ```query.currentRow``` attribute depending on your specific needs.
+
+```cfm
+<cfoutput>
+	<cfset x = 1 />
+	<cfloop query="myQuery">
+		Current Row: #myQuery.currentRow# OR #x#<br />
+		<cfset x++ />
+	</cfloop>
+</cfoutput>
+```
+
+#### Iterative loop (index)
+```<cfloop>``` also allows us to iterate over a query as an indexed loop.  An indexed loop is used often in ```<cfscript>``` where ```for``` loops do not support queries directly.  If we want to iterate over the entire query recordset we use the ```query.recordCount``` property.  When looping through the query you'll reference the query row just like you would a multidimensional array using the counter set up in your for statement to pick up the correct row from the recordset.  Notice again that we are using ```<cfoutput>``` here to tell ColdFusion to process the hashmark directives.
+
+#### Tag Syntax
+```cfm
+<cfoutput>
+	<cfloop from="1" to="#myQuery.recordCount#" index="i">
+		#myQuery.firstName[i]# #myQuery.lastName[i]#<br />
+	</cfloop>
+</cfoutput>
+```
+
+
+### Script Syntax
+```cfm
+<cfscript>
+	for ( i=1;i<=myQuery.recordCount;i++ ) {
+		writeOutput("#myQuery.firstName[i]# #myQuery.lastName[i]#<br />");
+	}
+</cfscript>
+```
+
+You can also limit the total rows by supplying different ```from``` and ```to``` values.
+
+### Other loops
+There are some other ways to loop over queries, and one that comes in handy for fringe cases is to loop over ```columnList```.  ```ColumnList``` is a property of the query object that contains the column names contained within the result set.  This type of loop can be handy for processing multiple queries where the column names are unknown until runtime.  An example would be a function that converts queries to arrays.  This can be handy when you need to reorder query columns, as they are alphabetized within the query object and do not retain the original order from the SQL query.
+
+#### Tag Syntax
+```cfm
+<cfloop from="1" to="#listLen(myQuery.columnList)#" index="i">
+	<cfloop from="1" to="#myQuery.recordCount#" index="j">
+		 #myQuery[i][j]#
+	</cfloop>
 </cfloop>
 ```
 
-When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in your for statement to pick up the correct row from the recordset. So the syntax becomes ```recordsetName.ColumnName[rowNumber]```.
-
 #### Script Syntax
-
 ```cfm
-<cfscript> 
-for (x = 1; x <= GetBreakfastItems.RecordCount; x++) { 
- writeOutput("There are #GetBreakfastItems.Quantity[x]# #GetBreakfastItems.Item[x]# in the pantry<br />");
-} 
+<cfscript>
+	for ( i=1;i<=listLen(myQuery.columnList);i++ ) {
+		for ( var j=1;j<=myQuery.recordCount;j++ ) {
+			writeOutput("#myQuery.firstName[i][j]# #myQuery.[i][j]#<br />");
+		}
+	}
+}
 </cfscript>
 ```
+
 <a name="arrays" />
 ## 7. Arrays
 
