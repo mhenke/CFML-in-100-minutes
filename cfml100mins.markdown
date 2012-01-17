@@ -8,6 +8,8 @@ ColdFusion Markup Language (CFML) is a web programming language, which is especi
 4.  [Strings](#strings)
 5.  [Numbers](#numbers)
 6.  [Recordsets](#recordsets)
+    1. Querying
+    2. Looping Through Results
 7.  [Arrays](#arrays)
 8.  [Structures](#structures)
 9.  [Conditionals](#conditionals)
