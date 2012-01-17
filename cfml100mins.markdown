@@ -119,7 +119,7 @@ puts s.hello
 <a name="variables" />
 ## 2. Variables
 
-Everything needs a name so we can refer to it. A variable, like in math, is just a name for a piece of data. In CFML, variables are very flexible and can be changed at any time. Variables are assigned using a single equals sign ( = ) where the **right** side of the equals sign is evaluated first, then the value is assigned to the variable named on the **left** side of the equals.
+Everything needs a name so we can refer to it. A variable, like in math, is just a name for a piece of data. In CFML, variables are very flexible and can be changed at any time. Variables are assigned using a single equals sign ```=``` where the **right** side of the equals sign is evaluated first, then the value is assigned to the variable named on the **left** side of the equals.
 
 Go into a CFML file, enter in these example instructions, and observe the output that CFML gives you back:
 
@@ -190,6 +190,7 @@ writeOutput("b = #b#<br/>");
 ```
 
 *The first few lines in the first example are simple if you've done any programming language before, but the last few get interesting when combining strings and numbers. The code looks a little messy since after each instruction we output a variable.
+
 <a name="cfc" />
 ## 3. Components, Methods, and Parameters
 
@@ -294,7 +295,7 @@ The method is requiring us to pass in a "color" telling it how to do the method 
 
 ### Return Value
 
-In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns *nothing*. We'll talk about *nothing* and "null" in the last section of "CFML in 100 minutes". If you called ```makeToast``` method above like ```<cfset result = frank.makeToast("burned") />``` or ```set result = frank.makeToast("burned");```, and tried to output "result" you should have seen "Variable RESULT is undefined".
+In CFML, every time you call a method you won't necessarily get a value back. By default, a CFML method returns *nothing*. We'll talk about *nothing* and "null" in the last section of "CFML in 100 minutes". If you called ```makeToast``` method above like ```<cfset result = frank.makeToast("burned") />``` or ```set result = frank.makeToast("burned");```, and tried to output ```result``` you should have seen "Variable RESULT is undefined".
 
 To return data, we use ```cfreturn``` to instruct the method to return a "value". Since that wasn't in the last instruction before the ending ```cffunction``` in your ```makeToast``` method, you received *nothing* and tried to putting that into the "result" variable.
 
@@ -470,7 +471,7 @@ Basically *interpolating* means evaluate the code inside this ```#``` wrapper an
 <a name="numbers" />
 ## 5. Numbers
 
-There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including "+", "-", "/" and "*". The "++" operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the "++" operator:
+There are two basic kinds of numbers in CFML: integers (whole numbers) and real (numbers with a decimal point). For our workshop, we'll only be dealing with integers. You can use normal math operations with integers including ```+```, ```-```, ```/``` and ```*```. The ```++``` operator can be used to increment a number. It is also the only one we will use to control a loop. We will talk more about Conditional Looping in section 9. Try out this example for the ```++``` operator:
 
 #### Tag Syntax
 
@@ -670,7 +671,7 @@ When looping through a query with ```<cfloop>```, you need to make sure you have
 </cfloop>
 ```
 
-When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in your for statement to pick up the correct row from the recordset. So the syntax becomes "recordsetName.ColumnName[rowNumber]".
+When looping through a query in ```cfscript```, you'll need to reference the query just like you would a multidimensional array, using the counter set up in your for statement to pick up the correct row from the recordset. So the syntax becomes ```recordsetName.ColumnName[rowNumber]```.
 
 #### Script Syntax
 
@@ -686,7 +687,7 @@ for (x = 1; x <= GetBreakfastItems.RecordCount; x++) {
 
 Often we need to organize a group and put them into a *collection*. There are two main types of collections: **arrays** and **structures**.
 
-An **array** is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the **indices**. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The **index** is the address of a specific element inside the array. In CFML the index always begins with "1". An array is defined in CFML as an opening "[" then zero or more elements, and a closing "]". Try out this code:
+An **array** is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the **indices**. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The **index** is the address of a specific element inside the array. In CFML the index always begins with "1". An array is defined in CFML as an opening ```[``` then zero or more elements, and a closing ```]```. Try out this code:
 
 #### Tag Syntax
 
@@ -744,7 +745,7 @@ In order to get an element in the array you use the syntax ```ArrayAppend(array,
 * What did the "ArraySort" instruction do to the collection?
 * What does "ArrayLen" instruction return?
 
-There are lots of cool things to do with an array. You can rearrange the order of the elements using the ```ArraySort``` instruction like we did in the last example. You can iterate through each element using the ```cfloop``` instruction. You can find the address of a specific element by using the "arrayName[index]" instruction. You can ask an array if an element is present with the "ArrayIsDefined" instruction. Try out this example that brings a bunch of things together: 
+There are lots of cool things to do with an array. You can rearrange the order of the elements using the ```ArraySort``` instruction like we did in the last example. You can iterate through each element using the ```cfloop``` instruction. You can find the address of a specific element by using the ```arrayName[index]``` instruction. You can ask an array if an element is present with the ```ArrayIsDefined``` instruction. Try out this example that brings a bunch of things together: 
 
 #### Tag Syntax
 
@@ -778,10 +779,11 @@ writeDump (var = ArrayIsDefined (favorite_colors,4));
 ```
 
 We use arrays whenever we need a list where the elements are in a specific order.
+
 <a name="structures" />
 ## 8. Structures
 
-A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like "science["Joey"]" which could be read as "look in the collection named 'science' and find the thing named 'Joey'".
+A structure is a *collection of data* where each element of data is addressed by a name. As an analogy, think about a classroom of children. Under ideal circumstances, each student has a name and can be found by using that name. We might look in a science classroom for a child named Joey and that would result in finding an actual student. We could write this like ```science["Joey"]``` which could be read as "look in the collection named 'science' and find the thing named 'Joey'".
 
 A structure is an unordered collection, it’s just a bunch of data collected together where each one has a unique name/key. Structures have a slightly more complicated syntax:
 
@@ -812,7 +814,7 @@ writeOutput ("Joey is #ages["joey"]# years old.");
 </cfscript>
 ```
 
-Here we create a structure named "ages". Structures are made up what are called key-value pairs. The **key** is used as the address and the **value** is the object at that address. In the "ages" structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using "{}" the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```. It is worth noting that when adding a key that is quoted, as is the case with "jill", the case sensitivity of the key will be preserved. Otherwise all keys will be uppercase. 
+Here we create a structure named ```ages```. Structures are made up what are called key-value pairs. The **key** is used as the address and the **value** is the object at that address. In the ```ages``` structure we have keys including **joey** and **jill** and values including "12" and "14". When creating a structure using ```{}``` the key and value are linked by the ```=``` symbol. So to create a structure, the structures start with a curly bracket ```{```, have zero or more entries made up of a *key*, ```=```, and a *value* separated by commas, then end with a closing curly bracket ```}```. It is worth noting that when adding a key that is quoted, as is the case with "jill", the case sensitivity of the key will be preserved. Otherwise all keys will be uppercase. 
 
 #### Tag Syntax
 
@@ -856,19 +858,20 @@ for(student in ages) {
 </cfscript>
 ```
 
-The last chunk of the example used StructSort to get the sorted array "students" from "ages". Then, it iterated through the "students" array using a loop and gave each element of the array the name "student". It then printed out one line with that student’s name and age from "ages".
+The last chunk of the example used ```StructSort``` to get the sorted array "students" from "ages". Then, it iterated through the "students" array using a loop and gave each element of the array the name "student". It then printed out one line with that student’s name and age from "ages".
 
 While that last part probably seemed complicated, it's just to illustrate that structures are unordered.
+
 <a name="conditionals" />
 ## 9. Conditionals
 
-Conditional statements evaluate to "true" or "false" only. The most common conditional operators are ```==``` (equal), ```!=``` (not equal), ```>``` (greater than), ```>=``` (greater than or equal to), ```<``` (less than), and ```<=``` (less than or equal to). You can also define the operators as abbreviations: ```EQ```, ```NEQ```, ```GT```, ```GTE```, ```LT```, and ```LTE```. You can **only** use the abbreviations when using tags.
+Conditional statements evaluate to ```true``` or ```false``` only. The most common conditional operators are ```==``` (equal), ```!=``` (not equal), ```>``` (greater than), ```>=``` (greater than or equal to), ```<``` (less than), and ```<=``` (less than or equal to). You can also define the operators as abbreviations: ```EQ```, ```NEQ```, ```GT```, ```GTE```, ```LT```, and ```LTE```. You can **only** use the abbreviations when using tags.
 
-Some instructions return a "true" or "false", so they're used in conditional statements, for example, "IsArray" which is "true" only when the variable is an "array". Structures have an instruction named ```StructKeyExists``` which returns "true" if a key is present in a structure.
+Some instructions return a ```true``` or ```false```, so they're used in conditional statements, for example, "IsArray" which is "true" only when the variable is an "array". Structures have an instruction named ```StructKeyExists``` which returns "true" if a key is present in a structure.
 <a name="if" />
 ### 9. 1. If, Else If, & Else
 
-Why do we have conditional statements? Most often its to control conditional instructions, especially "if" / "else if" / "else" structures. Lets write an example by adding a method to our **PersonalChef** class:
+Why do we have conditional statements? Most often its to control conditional instructions, especially ```if``` / ```else if``` / ```else``` structures. Lets write an example by adding a method to our **PersonalChef** class:
 
 #### Tag Syntax
 
@@ -924,18 +927,19 @@ Try this example using *5*, *7*, *8* and *9* for the values of *minutes*.
 
 Lastly, when total is 9, it goes:" Is it "true" that 9 is less than 7?
 
-No. Next, is it "true" that 9 is equal to 7? No. Next, is it "true" that 9 is equal to 8? No. Since none of those are true, execute the "else" and print the line "Hot! Hot! Hot!".
+No. Next, is it ```true``` that 9 is equal to 7? No. Next, is it ```true``` that 9 is equal to 8? No. Since none of those are true, execute the ```else``` and print the line ```Hot! Hot! Hot!```.
 
-An "if" block has:
+An ```if``` block has:
 
-*   One "if" statement whose instructions are executed only if the
+*   One ```if``` statement whose instructions are executed only if the
     statement is true
-*   Zero or more "else if" statements whose instructions are executed
+*   Zero or more ```else if``` statements whose instructions are executed
     only if the statement is true
-*   Zero or one "else" statement whose instructions are executed if no
-    "if" nor "else if" statements were true
+*   Zero or one ```else``` statement whose instructions are executed if no
+    ```if``` nor ```else if``` statements were true
 
-Only *one* section of the "if" / "else if" / "else" structure can have its instructions run. If the "if" is "true", for instance, CFML will never look at the "else if". Once one block executes, that’s it.
+Only *one* section of the ```if``` / ```else if``` / ```else``` structure can have its instructions run. If the ```if``` is ```true```, for instance, CFML will never look at the ```else if```. Once one block executes, that’s it.
+
 <a name="loop" />
 ### 9. 2. Looping
 
@@ -968,21 +972,21 @@ public component function countdown (numeric counter){
 }
 ```
 
-See how that works? The "counter" starts out as whatever parameter we
-pass in. The "while" instruction evaluates the conditional statement
-"arguments.counter GT 0" and finds that yes, the counter is greater than
+See how that works? The ```counter``` starts out as whatever parameter we
+pass in. The ```while``` instruction evaluates the conditional statement
+```arguments.counter GT 0``` and finds that yes, the counter is greater than
 zero. Since the condition is true, execute the instructions inside the
 loop. First print out **The counter is #arguments.counter#** then take
-the value of "arguments.counter" and subtract one from it. Next, we overwrite the previous value of "arguments.counter" with the new value. Then the loop goes back to the
-"condition" / "while" statement. Is it still true? If so, print the line
+the value of ```arguments.counter``` and subtract one from it. Next, we overwrite the previous value of ```arguments.counter``` with the new value. Then the loop goes back to the
+```condition``` / ```while``` statement. Is it still true? If so, print the line
 and subtract one again. Keep repeating until the condition is false.
 
 You can also combine conditional statements using logical operators. The
 most common are known as "logical and" and "logical or". In CFML you can
 write a "logical and" with either the word "and" or with double
-ampersands like this: "&&". You can write a "logical or" with the word
-"or" or with double pipes like this: "||". For each operation, the
-symbolic representation ( "&&" and "||" ) is more common.
+ampersands like this: ```&&```. You can write a "logical or" with the word
+```or``` or with double pipes like this: ```||```. For each operation, the
+symbolic representation ( ```&&``` and ```||``` ) is more common.
 
 The #1 mistake people encounter when writing conditional statements is
 the difference between ```=``` and ```==```.
@@ -998,11 +1002,11 @@ the difference between ```=``` and ```==```.
 
 What is *nothingness*? Is there nothingness only in outer space? Really, when we think of *nothing* isn't it just the absence of something? Ok, that's too much philosophy
 
-ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can receive a "NULL" value from an external source and maintain the "NULL" value until you try to use it. ColdFusion will convert the "NULL" into an empty string (in the case of recordset) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a "NULL" value from a method. ```IsNull()``` instruction will test for "NULL" values and return "true" or "false".
+ColdFusion did not have a way of referring to nothingness until version 9. ColdFusion can receive a ```NULL``` value from an external source and maintain the ```NULL``` value until you try to use it. ColdFusion will convert the ```NULL``` into an empty string (in the case of recordset) or potentially destroy the variable altogether. However now with greater support for "NULL" values, ColdFusion allows you to pass in and return a ```NULL``` value from a method. ```IsNull()``` instruction will test for ```NULL``` values and return ```true``` or ```false```.
 
 If you have three eggs, eat three eggs, then you might think you have *nothing* , but in terms of eggs you have "0". Zero is something, it's a number, and it's *not nothing*.
 
-A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our ```makeEggs``` method to  illustrate "NULL" :
+A large percentage of the errors you encounter while writing CFML code will involve a variable not existing. You thought something was there, you tried to do something to it, and you can't do something to nothing so CFML creates an error. Lets rewrite our ```makeEggs``` method to  illustrate ```NULL``` :
 
 #### Tag Syntax
 
