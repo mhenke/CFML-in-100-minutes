@@ -789,7 +789,9 @@ There are some other ways to loop over queries, and one that comes in handy for 
 
 Often we need to organize a group and put them into a *collection*. There are two main types of collections: **arrays** and **structures**.
 
-An **array** is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the **indices**. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The **index** is the address of a specific element inside the array. In CFML the index always begins with "1". An array is defined in CFML as an opening ```[``` then zero or more elements, and a closing ```]```. Try out this code:
+An **array** is a number-indexed list. Picture a city block of houses. Together they form an array and their addresses are the **indices**. Each house on the block will have a unique address. Some addresses might be empty, but the addresses are all in a specific order. The **index** is the address of a specific element inside the array. In CFML the index always begins with "1". Say that again, **ColdFusion uses 1 based arrays**.  This is different than some other languages and is very important to note.
+
+An array can be created 2 ways in CFML.  Starting with ColdFusion 9 we can use shorthand notation to create an array.  We do this as an opening ```[``` then zero or more elements, and a closing ```]```. Try out this code:
 
 #### Tag Syntax
 
@@ -810,6 +812,30 @@ writeOutput("<br />");
 writeDump(favorite_colors[2]);
 writeOutput("<br />");
 writeDump(var = ArrayLen(favorite_colors));
+</cfscript>
+```
+
+Prior to ColdFusion 9 or if you need an array with multiple dimensions (think associative arrays and matrices) we can use the ```arrayNew()``` function.  ```ArrayNew()``` takes a single argument which is the number of dimensions the array has.  We can create up to three dimensional arrays in ColdFusion.
+#### Tag Syntax
+
+```cfm
+<cfset myArray = arrayNew(2) />
+<cfset myArray[1][1] = 'Hammer' />
+<cfset myArray[1][2] = 'Nail' />
+<cfset myArray[2][1] = 'Screwdriver' />
+<cfset myArray[1][2] = 'Screw' />
+
+```
+
+#### Script Syntax
+
+```cfm
+<cfscript>
+	myArray = arrayNew(2);
+	myArray[1][1] = 'Hammer';
+	myArray[1][2] = 'Nail';
+	myArray[2][1] = 'Screwdriver';
+	myArray[1][2] = 'Screw';
 </cfscript>
 ```
 
