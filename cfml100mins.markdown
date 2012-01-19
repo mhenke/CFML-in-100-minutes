@@ -1055,7 +1055,7 @@ While that last part probably seemed complicated, it's just to illustrate that s
 <a name="structKeyExists">
 ### 8.3 structKeyExists
 </a>
-When referencing a structure by key names, it is ususally good practice to make sure that the key exists in the structure first. This is done with the ``` structKeyExists(structure, key) ``` function.  Lets say we have a structure named Person and we want to check that it has a key named "yearBorn" before doing something with it.  That would be done with the following code:
+When referencing a structure by key names, it is ususally good practice to make sure that the key exists in the structure first. This is done with the ``` structKeyExists(structure, "key") ``` function.  Lets say we have a structure named Person and we want to check that it has a key named "yearBorn" before doing something with it.  That would be done with the following code:
 
 ```cfm
 <cfscript>
