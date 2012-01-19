@@ -12,6 +12,8 @@ ColdFusion Markup Language (CFML) is a web programming language, which is especi
     2. Looping Through Results
 7.  [Arrays](#arrays)
 8.  [Structures](#structures)
+    1. structKeyExists Function
+    2.  [Looping](#structureLooping)
 9.  [Conditionals](#conditionals)
     1.  [If, Else If, & Else](#if)
     2.  [Looping](#loop)
@@ -1049,6 +1051,53 @@ for(student in ages) {
 The last chunk of the example used ```StructSort``` to get the sorted array "students" from "ages". Then, it iterated through the "students" array using a loop and gave each element of the array the name "student". It then printed out one line with that student’s name and age from "ages".
 
 While that last part probably seemed complicated, it's just to illustrate that structures are unordered.
+
+<a name="structKeyExists">
+### 8.3 structKeyExists
+</a>
+When referencing a structure by key names, it is ususally good practice to make sure that the key exists in the structure first. This is done with the ```cfm structKeyExists(structure, key) ``` function.  Lets say we have a structure named Person and we want to check that it has a key named "yearBorn" before doing something with it.  That would be done with the following code:
+
+```cfm
+<cfscript>
+if(structKeyExists(Person,"yearBorn")){
+  Person.age = year(now()) - Person.yearBorn;
+}
+</cfscript>
+```
+
+<a name="structureLooping">
+### 8.2 Looping through a structure
+</a>
+
+Sometimes it is convienent to loop through all the keys of a structure.  This is done with a for-in type of loop.  Lets look at an example using the following struct:
+
+```cfm
+<cfscript >
+  myStruct = {apple = "Apple", banana = "Banana", pear = "Pear"};
+</cfscript>
+```
+
+#### Tag Syntax
+
+Using tag syntax we use what is called a "collection" loop.  The cfloop syntax takes two parameters, the name of the collection, and the variable name that holds the collection's key:
+
+```cfm
+<cfloop collection="#myStruct#" item="fruit">
+  #myStruct[fruit]#
+</cfloop>
+```
+
+#### Script Syntax
+
+Using script syntax we use what is called a "for-in" loop.  The syntax of a for-in loop looks like ```cfm for(key in structure)```.  The code to loop through the structure we created earler would look like this:
+
+```cfm
+<cfscript >
+  for(fruit in myStruct){
+    writeOutput(myStruct[fruit]);
+  }
+</cfscript>
+```
 
 <a name="conditionals" >
 ## 9. Conditionals
