@@ -867,6 +867,24 @@ writeOutput("<br />");
 </cfscript>
 ```
 
+We can also search an array for a specific value and get the index
+
+#### Tag Syntax
+
+```cfm
+<cfset brownIndex = ArrayFind(favorite_colors,"brown")/>
+<cfdump var="#brownIndex#"/>
+```
+
+#### Script Syntax
+
+```cfm
+<cfscript>
+brownIndex = ArrayFind(favorite_colors,"brown");
+WriteDump(brownIndex);
+</cfscript>
+```
+
 In order to get an element in the array you use the syntax ```ArrayAppend(array,"value")``` or ```arrayname[index] = "value"```. The first example of adding an array element is **with an instruction**. The second is updating an array element is **by assignment**. So looking at the final "favorite_colors" array:
 
 * What's the index of **brown** ?
