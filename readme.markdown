@@ -28,6 +28,8 @@ Bradley Moore (@orangexception on twitter) * [http://orangexception.com](http://
 
 Ryan Anklam * [GitHub](https://github.com/bittersweetryan) * [@bittersweetryan on twitter](http://twitter.com/#!/bittersweetryan) * [http://blog.bittersweetryan.com](http://blog.bittersweetryan.com)
 
+Nicholas Tunney [@ntunney on Twitter](http://www.twitter.com/ntunney)
+
 ## Git Workflow for Contributors
 
 This project uses the excellent [Git Workflow series](http://www.silverwareconsulting.com/index.cfm/Git-Workflow) by [Bob Silverburg](https://github.com/bobsilverberg/) for contributions.
