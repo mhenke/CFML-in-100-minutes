@@ -911,7 +911,7 @@ We use arrays whenever we need a list where the elements are in a specific order
 Just like looping queries, there are multiple ways to loop over arrays.
 
 #### Array Loop
-Starting with Adobe ColdFusion 8, you can loop over an array using ```<cfloop>```, passing the array directly into the ```<cfloop>```'s array attribute.  When specifying an array loop, we also have to pass in an index.  Inside the loop each individual array value is referenced by the index.  This can be confusing as the index is not really an index at all, but rather reference to the value stored within the array at that index.
+Starting with Adobe ColdFusion 8 you can loop over an array using ```<cfloop>``` by passing the array directly into the ```<cfloop>```'s array attribute.  When specifying an array loop, we also have to pass in an index.  Inside the loop each individual array value is referenced by the index.  This can be confusing as the index is not really an index at all, but rather reference to the value stored within the array at that index.
 
 #### Tag Syntax
 ```cfm
