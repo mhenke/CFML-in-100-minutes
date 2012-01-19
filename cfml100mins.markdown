@@ -12,7 +12,7 @@ ColdFusion Markup Language (CFML) is a web programming language, which is especi
     2. Looping Through Results
 7.  [Arrays](#arrays)
 8.  [Structures](#structures)
-    1. structKeyExists Function
+    1. [structKeyExists Function] (#structKeyExists)
     2.  [Looping](#structureLooping)
 9.  [Conditionals](#conditionals)
     1.  [If, Else If, & Else](#if)
