@@ -908,6 +908,58 @@ writeDump (var = ArrayIsDefined (favorite_colors,4));
 
 We use arrays whenever we need a list where the elements are in a specific order.
 
+#### Looping
+Just like looping queries, there are multiple ways to loop over arrays.
+
+#### Array Loop
+Starting with Adobe ColdFusion 8 you can loop over an array using ```<cfloop>``` by passing the array directly into the ```<cfloop>```'s array attribute.  When specifying an array loop, we also have to pass in an index.  Inside the loop each individual array value is referenced by the index.  This can be confusing as the index is not really an index at all, but rather reference to the value stored within the array at that index.
+
+#### Tag Syntax
+```cfm
+<cfset myArray = ['Alan', 'Bill', 'Matt'] />
+<cfoutput>
+	<cfloop array="#myArray#" index="arrayValue">
+		#arrayValue#<br />
+	</cfloop>
+</cfoutput>
+
+Output:
+Alan
+Bill
+Matt
+```
+
+One more thing to notice in the example above is that we do not pass in the string name of the array as we did before with the query loop.  Instead, we pass in the array value itself.  Last thing here, there is no ```<cfscript>``` equivalent to an array loop.  See below for more ways to loop over an array which include ```<cfscript>``` options.
+
+#### Iterative loop (index)
+
+```<cfloop>``` also allows us to iterate over an array as an indexed loop.  An indexed loop is used often in ```<cfscript>``` where ```for``` loops do not support arrays directly.  We can start at any index and end at any index.  The most common loop starts at 1 and ends at the last element in the array.  In an array we can find the total number of elements in an array by using the arrayLen() function.  To reference the element by index, use array notation as displayed in the example below.
+
+#### Tag Syntax
+```cfm
+<cfset myArray = ['Alan', 'Bill', 'Matt'] />
+<cfoutput>
+	<cfloop from="1" to="#arrayLen(myArray)#" index="i">
+		#myArray[i]#<br />
+	</cfloop>
+</cfoutput>
+
+Output:
+Alan
+Bill
+Matt
+```
+
+#### Script Syntax
+```cfm
+<cfscript>
+	myArray = ['Alan', 'Bill', 'Matt'];
+	for ( i=1;i<=arrayLen(myArray);i++ ) {
+		writeOutput(myArray[i] & '<br />');
+	}
+</cfscript>
+```
+
 <a name="structures" />
 ## 8. Structures
 
