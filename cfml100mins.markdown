@@ -1,1 +1,1 @@
-see wiki(wiki)
+see [wiki](../../wiki)
