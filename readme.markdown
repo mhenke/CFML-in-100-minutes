@@ -1,6 +1,6 @@
 # readme
 
-CFML in 100 minutes was modified from [Ruby in 100 Minutes](http://jumpstartlab.com/resources/ruby-jumpstart/ruby/)
+CFML in 100 minutes was modified from [Ruby in 100 Minutes](http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html)
 
 ## Where is CFML in 100 minutes?
 
